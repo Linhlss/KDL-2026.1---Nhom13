@@ -1,7 +1,7 @@
 # PHÂN CÔNG CÔNG VIỆC DW & BI — NHÓM 13, 5 THÀNH VIÊN, 5,5 TUẦN
 
 **Đề tài:** Xây dựng kho dữ liệu và hệ thống Business Intelligence hỗ trợ phân tích quy mô, cơ cấu và biến động nhân sự tại các cơ quan liên bang Hoa Kỳ.  
-**Tài liệu chuẩn:** `De_cuong_DW_BI_Nhom13_5_5_tuan_V2_phan_hoi_thay.md`  
+**Tài liệu chuẩn:** `De_cuong_DW_BI_Nhom13_5_5_tuan_V3.md`<br>
 **Nguồn:** 12 Parquet OPM/EHRI, 03–06/2025, ~301,5 MB.  
 **Thời gian:** Ngày 1–39 kể từ ngày khởi động.  
 **Phạm vi:** OPM/EHRI → Relational Source Model → Staging/ODS → DW (3 Fact + Dimensions) → ≥2 Data Mart → 3 Power BI dashboards.
@@ -24,14 +24,16 @@
 
 ## 2. Cổng quyết định tuần 1 — không được bỏ qua
 
+**R01 hiện đã được thầy chấp thuận theo xác nhận trưởng nhóm, ghi nhận ngày 11/11/2026.** [Ghi nhận](evidence/TV1_week1/R01_confirmation.md) chưa đính kèm tin nhắn gốc. Không cần hỏi lại nếu giữ phương án; khóa/quan hệ vẫn phải kiểm.
+
 | ID | Điều chưa được giải quyết | Hành động | Owner | Hạn | Minh chứng |
 |---|---|---|---|---|---|
-| **R01** | Thầy có chấp nhận ERD nguồn quan hệ tái cấu trúc đáp ứng mục “ERD OLTP” không? | TV2 đưa ERD phác thảo, TV1 gửi giảng viên hỏi trực tiếp, TV3 phản biện | TV1 | Ngày 2–5 | Ảnh/tin nhắn trả lời hoặc trạng thái chưa phản hồi trong `docs/00_scope_decisions.md` |
+| **R01** | Đã chấp thuận phương án theo xác nhận TV1 | Lưu ghi nhận; TV2 dựng ERD, TV3 phản biện và kiểm khóa; bổ sung ảnh gốc khi có | TV1 | Ghi nhận quyết định hiện có; ERD theo lịch TV2 | `evidence/TV1_week1/R01_confirmation.md` và ERD/audit khi hoàn thành |
 | **R02** | Publish to web có khả thi không? | TV4 thử một báo cáo tổng hợp từ dữ liệu thật, TV5 mở ẩn danh | TV4/TV5 | Ngày 4 | URL hoạt động hoặc ảnh lỗi và kế hoạch xin duyệt phương án thay thế |
 | **R03** | Có quan hệ PK/FK nào được xác minh qua codebook không? | TV2 kiểm code→label, uniqueness, key scope, orphan, lịch sử mã; TV3 xác nhận DDL | TV2/TV3 | Ngày 7 bản đầu; ngày 12 chốt | `docs/04_relationship_audit.csv` + SQL |
 | **R04** | Baseline và version | 12 file, tháng/version/schema/sha256, khóa baseline | TV2 | Ngày 3 | `docs/03_source_inventory.csv` |
 
-**Nếu R01 không được thầy chấp nhận:** nhóm phải tìm cấu trúc nguồn giao dịch HR có khóa thật hoặc điều chỉnh đề tài trước khi xây full DW; không tự tạo quan hệ nhân viên cho đủ ERD. Nếu R01 chưa có phản hồi, chỉ làm các phần không phụ thuộc và ghi trạng thái chưa đóng.
+**Phương án hiện tại đã được chấp thuận theo TV1.** Nếu về sau đổi phạm vi hoặc nhận nội dung xác nhận khác, nhóm cập nhật quyết định trước khi xây tiếp; không tự tạo quan hệ nhân viên cho đủ ERD.
 
 ## 3. Quản lý tiến độ và bàn giao
 
@@ -53,10 +55,12 @@
 
 ## 4. TV1 — Trưởng nhóm / Business Analyst (MacBook Pro M1)
 
+**ID dùng khi làm việc:** tracker có 23 task TV1, bản Markdown dưới đây gộp thành 21 mục. Dùng ID tracker trên issue và [bảng đối chiếu](docs/00_task_id_crosswalk.csv), tránh nhầm L1-06 ở tuần 1 tracker với L1-06 tuần 2 trong bản gộp này.
+
 ### Tuần 1 — Ngày 1–7
 
 - [ ] **L1-01 | Ngày 1:** Tạo repo issue board, `docs/00_scope_decisions.md` (domain, dataset, ba dashboard, deadline, các quyết định chưa đóng). **Output:** quyết định phạm vi nhóm và lịch họp, người review.
-- [ ] **L1-02 | Ngày 2–3:** Nhận bản ERD phác từ TV2, hỏi thầy có chấp nhận mô hình nguồn quan hệ EHRI thay ERD OLTP giao dịch không. **Output:** ảnh/phản hồi thầy; ghi rõ đồng ý/không đồng ý/chưa trả lời; không tự kết luận.
+- [ ] **L1-02 | Ngày 2–3:** Ghi nhận thầy đã đồng ý phương án ERD tái cấu trúc theo xác nhận TV1 ngày 11/11/2026; lưu nguồn xác nhận, nhận ERD phác từ TV2 khi có và bổ sung ảnh/tin nhắn gốc khi được cung cấp. **Output:** quyết định R01 có nguồn ghi nhận; không hỏi lại nếu không đổi phương án, không coi PK/FK đã được kiểm.
 - [ ] **L1-03 | Ngày 3:** Đối chiếu sheet yêu cầu và thông báo kỳ này: báo cáo, slides, phiếu đánh giá, thời lượng 30–45 phút, public. **Output:** `docs/00_course_requirements.md`.
 - [ ] **L1-04 | Ngày 4–6:** Viết bối cảnh: HR data cấp cơ quan, OPM EHRI và Federal Workforce Data; phân biệt nguồn được OPM công bố với hệ thống phân tích nhóm đề xuất. **Output:** `docs/01_business_scope.md`.
 - [ ] **L1-05 | Ngày 6–7:** Sơ đồ quy trình quản trị nhân lực và phân tích dữ liệu, cây nghiệp vụ, điểm phân tích A01–A10 và mapping KPI. **Output:** `diagrams/01_business_process.drawio`, `diagrams/01_business_tree.drawio`, `docs/01_touchpoint_mapping.csv`.
@@ -243,7 +247,7 @@
 
 | Mốc | Người giao → nhận | Hạn | Sản phẩm | Điều kiện nhận |
 |---|---|---|---|---|
-| H01 | TV2 → TV1 | 4 | Inventory và source ERD phác | Có nội dung đủ để hỏi thầy, không có nhân viên giả |
+| H01 | TV2 → TV1 | 4 | Inventory và source ERD phác | Đủ để đối chiếu phương án đã chấp thuận; không có nhân viên giả |
 | H02 | TV1 → toàn nhóm | 5 | Quyết định R01 và thông báo thầy | Ghi rõ đồng ý / không đồng ý / chưa trả lời |
 | H03 | TV2 → TV3 | 10 | Verified codebook, FK audit | Mã, phạm vi, exceptions và source đầy đủ |
 | H04 | TV1/TV2 → TV4 | 11 | KPI Dictionary + field mapping | Mọi KPI có trường dữ liệu, kỳ và grain |
@@ -304,3 +308,7 @@ TV3 thao tác DB/ETL và TV4 thao tác Power BI trên Windows; TV5 chuẩn bị 
 - [ ] Đã tập hai lần, tất cả người có thể trả lời về giới hạn OPM, grain, ERD, KPI và pipeline.
 
 **Quy tắc ưu tiên khi trễ:** P0 gồm ERD/ETL/DW/Dim/OLAP/3 dashboard/SQL–DAX/báo cáo; P1 là quality và performance; P2 là API scheduler, thêm kỳ, AI, Lakehouse, ML hoặc dashboard thứ tư. Cắt P2 trước, không thay thế lỗi kiến trúc bằng mở rộng công nghệ.
+
+## Cập nhật gói bàn giao TV1
+
+Ngày 11/11/2026: giữ 12 file OPM; chốt mở rộng tự phát hiện/nạp kỳ mới và kiểm chất lượng sau MVP. Phân tích lệch tháng báo cáo–hiệu lực chỉ dự kiến. Chưa triển khai ETL/DB/BI. Xem [phạm vi hiện hành](docs/00_scope_decisions.md), [bảng việc](docs/00_task_board.md) và [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md). Các đầu việc TV1 có sản phẩm ở trạng thái REVIEW, không tự ghi DONE/PASS.

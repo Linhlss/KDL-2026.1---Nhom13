@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="750" viewBox="0 0 1540 750">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#536479"/></marker></defs>
+<rect width="1540" height="750" fill="#ffffff"/>
+<text x="36" y="56" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#16293e">Cây nghiệp vụ và các điểm phân tích</text>
+<text x="36" y="97" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#506174">Đi từ câu hỏi nhân lực tới nguồn, kết quả và bằng chứng.</text>
+<path d="M770,235 L205,310" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M770,235 L580,310" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M770,235 L955,310" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M770,235 L1332,310" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="495" y="140" width="550" height="95" rx="14" fill="#e8eefc" stroke="#bbc8d7"/>
+<text x="513" y="176" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Phân tích nhân lực liên bang</text>
+<text x="513" y="216" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Quy mô · cơ cấu · hành động · biến động</text>
+<rect x="35" y="310" width="340" height="205" rx="14" fill="#e5f3ee" stroke="#bbc8d7"/>
+<text x="53" y="346" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Dữ liệu dùng được?</text>
+<text x="53" y="386" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A01: nhận file/kỳ/version</text>
+<text x="53" y="414" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A02: chất lượng</text>
+<text x="53" y="442" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A03: mã và quan hệ</text>
+<text x="53" y="470" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">TV2, TV3, TV5</text>
+<rect x="410" y="310" width="340" height="205" rx="14" fill="#fff0db" stroke="#bbc8d7"/>
+<text x="428" y="346" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Có bao nhiêu, ở đâu?</text>
+<text x="428" y="386" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A04: quy mô snapshot</text>
+<text x="428" y="414" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A05: cơ cấu theo nhóm</text>
+<text x="428" y="442" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">D1: Employment</text>
+<text x="428" y="470" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">TV2 → TV3 → TV4</text>
+<rect x="785" y="310" width="340" height="205" rx="14" fill="#eae8fb" stroke="#bbc8d7"/>
+<text x="803" y="346" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Có những lượt nào?</text>
+<text x="803" y="386" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A06: tiếp nhận</text>
+<text x="803" y="414" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A07: rời cơ quan</text>
+<text x="803" y="442" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">D2: hai họ hành động</text>
+<text x="803" y="470" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">TV2 → TV3 → TV4</text>
+<rect x="1160" y="310" width="345" height="205" rx="14" fill="#eae8fb" stroke="#bbc8d7"/>
+<text x="1178" y="346" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Quy mô đổi thế nào?</text>
+<text x="1178" y="386" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">A08: so hai snapshot</text>
+<text x="1178" y="414" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">D3: nhóm tăng/giảm</text>
+<text x="1178" y="442" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Không dùng K08 thay K02</text>
+<text x="1178" y="470" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">TV1, TV3, TV4</text>
+<rect x="410" y="575" width="715" height="90" rx="14" fill="#fce8ec" stroke="#bbc8d7"/>
+<text x="428" y="611" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">A09 đối soát · A10 nhận xét</text>
+<text x="428" y="651" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">TV5 kiểm độc lập; TV1 và mỗi thành viên giải thích phần mình.</text>
+<text x="36" y="723" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#506174">Thiết kế nhóm sẽ triển khai; số minh họa là tổng nguồn đã kiểm metadata. Chưa phải pipeline đã chạy.</text>
+</svg>

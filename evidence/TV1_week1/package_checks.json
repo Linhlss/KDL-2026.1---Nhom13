@@ -1,0 +1,277 @@
+{
+  "checked_on": "2026-11-11",
+  "scope": "Kiểm kỹ thuật gói tài liệu TV1; không phải kiểm pipeline, SQL, DAX hay nghiệm thu của thành viên.",
+  "result": "CHECKS_OK",
+  "relative_links_checked": 62,
+  "csv_counts": {
+    "touchpoints": 10,
+    "kpis_draft": 10,
+    "tv1_task_crosswalk": 23
+  },
+  "source_counts_and_april_arithmetic": "Đã kiểm metadata summary và phép tính, chưa full-scan lại nguồn.",
+  "diagram_check": "XML hợp lệ; đã xem 4 bản PNG cùng bố cục với SVG; kiểm text nằm trong khung.",
+  "diagram_text_bounds_checked": 105,
+  "tracker": {
+    "sheets": 9,
+    "tasks": 92,
+    "review": 6,
+    "todo": 86,
+    "done": 0,
+    "pass": 0,
+    "start_date_blank": true,
+    "reviewer_confirmation_blank": true,
+    "native_hyperlinks": 13,
+    "preservation": {
+      "changed_cells": [
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M6",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N6",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O6",
+          "value": "Phạm vi + bảng việc"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P6",
+          "value": "Hồ sơ TV1"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q6",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V6",
+          "value": "TV4 review phạm vi; tên/ngày bắt đầu chưa điền."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M7",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N7",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O7",
+          "value": "Xác nhận R01"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P7",
+          "value": "TV1 xác nhận"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q7",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V7",
+          "value": "Thầy đã đồng ý theo TV1; chưa có ảnh gốc; khóa/ERD vẫn phải kiểm."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M8",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N8",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O8",
+          "value": "Yêu cầu môn học"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P8",
+          "value": "Ô nguồn GV"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q8",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V8",
+          "value": "Chờ TV5 review; 100M/thông báo học kỳ hiện hành chưa xác nhận."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M9",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N9",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O9",
+          "value": "Bài toán và luồng"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P9",
+          "value": "Metadata nguồn"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q9",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V9",
+          "value": "TV2 review ý nghĩa và giới hạn; chưa có pipeline."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M10",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N10",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O10",
+          "value": "Sơ đồ nghiệp vụ"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P10",
+          "value": "Kiểm gói"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q10",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V10",
+          "value": "TV2 review hai quy trình/cây; không thay ERD nguồn."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "M11",
+          "value": "REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "N11",
+          "value": 100
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "O11",
+          "value": "Mapping A01–A10"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "P11",
+          "value": "KPI v0"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "Q11",
+          "value": "CHUA_REVIEW"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "V11",
+          "value": "TV2 review trường; TV4 chốt KPI tuần 2."
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "G7",
+          "value": "Ghi nhận chấp thuận R01 theo xác nhận TV1; lưu nguồn xác nhận, nhận ERD phác của TV2 khi có, bổ sung ảnh gốc sau; không hỏi lại nếu phương án không đổi"
+        },
+        {
+          "sheet": "92_nhiem_vu",
+          "cell": "H7",
+          "value": "Ghi nhận quyết định và nguồn xác nhận; chưa có ảnh gốc/ngày trả lời; PK/FK và ERD vẫn phải kiểm"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "C6",
+          "value": "TV1 ghi nhận; TV2/TV3 xây và kiểm ERD"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "D6",
+          "value": "Đã ghi nhận chấp thuận; ERD theo lịch TV2"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "E6",
+          "value": "Xác nhận TV1 và ghi nhận R01; ảnh gốc bổ sung khi có"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "F6",
+          "value": "ĐÃ GIẢI QUYẾT"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "G6",
+          "value": "Ghi nhận TV1"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "H6",
+          "value": "Đồng ý ERD tái cấu trúc (theo TV1)"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "I6",
+          "value": "Giảng viên (theo TV1)"
+        },
+        {
+          "sheet": "3_rui_ro",
+          "cell": "K6",
+          "value": "Bổ sung ảnh; TV2/TV3 kiểm khóa và ERD."
+        }
+      ],
+      "native_hyperlinks_added": 13,
+      "changed_original_parts": [
+        "xl/worksheets/sheet5.xml",
+        "xl/worksheets/_rels/sheet5.xml.rels",
+        "xl/worksheets/_rels/sheet2.xml.rels",
+        "xl/worksheets/sheet2.xml"
+      ],
+      "all_other_parts_identical": true,
+      "preserved": "9 sheets, formulas, formats, validations, x14 conditional formatting, views, names and existing cached formula results",
+      "scope": "Repo copy only; source tracker and source documents untouched"
+    }
+  },
+  "originals_unchanged": true,
+  "issues_created": 11,
+  "remaining_human_actions": [
+    "TV2/TV4/TV5 review sản phẩm theo phân công",
+    "Bổ sung ảnh/tin nhắn gốc R01 khi có; không hỏi lại nếu giữ phương án",
+    "Xác nhận riêng cách hiểu 100M và thông báo học kỳ hiện hành",
+    "Điền ngày bắt đầu, tên thật, lịch họp khi nhóm thống nhất"
+  ]
+}

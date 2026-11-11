@@ -1,0 +1,24 @@
+﻿tracker_id_canonical,assignment_md_grouped_id,task,note
+L1-01,L1-01,"Tạo docs/00_scope_decisions.md: đề tài, ba dashboard, 12 file baseline, 100 MB, P0/P1/P2, năm vai trò, lịch trình bày dự kiến",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-02,L1-02,"Soạn câu hỏi R01 kèm hình ERD bản nháp 3 bảng record + bảng ref, giải thích không có employee ID; gửi giảng viên",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-03,L1-03,"Kiểm tra hướng dẫn học kỳ hiện dùng, biểu mẫu báo cáo và yêu cầu public",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-04,L1-04,Viết bối cảnh OPM HR systems → EHRI → công bố → phân tích BI; phân biệt quy trình có nguồn với quy trình ứng dụng do nhóm thiết kế,Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-05,L1-05 (phần sơ đồ),Vẽ hai sơ đồ quy trình nghiệp vụ và phác thảo cây nghiệp vụ,Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-06,L1-05 (phần mapping),"Đánh dấu từng điểm A01–A10 với nguồn, KPI, Dimension và dashboard; phối hợp TV2 để tránh KPI không có cột nguồn",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-07,L1-06,"Viết persona, FR/NFR, ba câu hỏi quản trị chính, cây yêu cầu tổng",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-08,L1-07,"Chốt nghĩa K01–K10: công thức, kỳ thời gian, grain, bộ lọc, điều kiện NULL/0, trường nguồn, nguồn đối chiếu",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-09,L1-08,"Review kiểm toán agency_code, occupational_series_code, duty_station_code: không duyệt nhãn, FK hoặc hierarchy thiếu nguồn",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-10,L1-09 (họp),"Họp chốt G2 cùng TV2–TV5: business grain, bộ lọc Power BI, report/effective month, bảng nào public; ký quyết định docs/00_model_decisions.md",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-11,L1-09 (viết báo cáo),"Viết ngay Phần III.1–III.3 báo cáo dựa trên evidence, không chờ cuối tuần 5",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-12,L1-10,"Đọc 12-file reconciliation cùng TV5; kiểm tra định nghĩa headcount, event count, event difference; không chấp nhận KPI khác định nghĩa trong dictionary",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-13,L1-11,"Viết Phần I “Tổng quan DW”, Phần II “Tổng quan BI” theo cấu trúc thầy, liên hệ công nghệ nhóm dùng",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-14,L1-12,"Chuẩn bị slide bối cảnh, nguồn, luồng nghiệp vụ, KPI mapping và ERD disclaimer; làm việc với TV2/TV3 để khớp tên bảng",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-15,L1-13,"Review cả 3 dashboard với TV4: persona, câu hỏi, slide story bối cảnh → thao tác → bằng chứng → insight → hành động",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-16,L1-14,"Kiểm cách viết mọi số trên dashboard: đơn vị người/lượt/%, tháng report/effective, threshold “nhóm đặt”, không suy ra nguyên nhân",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-17,L1-15,Tích hợp phần báo cáo nghiệp vụ và kết quả EDA thực; ghi nguồn trích dẫn OPM/Power BI đầy đủ,Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-18,L1-16,"Ghép báo cáo theo đúng 3 phần thầy yêu cầu; định dạng Times New Roman 12, căn đều, số trang, mục lục, tham khảo và phụ lục",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-19,L1-17,"Chốt slide 30–45 phút, phân thời lượng 5 người, xác định người thao tác demo trên Windows và chuyển dữ liệu giữa các máy",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-20,L1-18,"Thu bảng đánh giá thành viên theo mẫu của thầy, đủ chữ ký, kiểm đúng quy định bậc điểm",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-21,L1-19,"Chạy C01–C11 self-review, chốt danh sách điểm còn thiếu và phân công xử lý trước ngày 35",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-22,L1-20,Chủ trì 2 lần tổng duyệt và đặt câu hỏi ngẫu nhiên cho thành viên khác phần mình; kiểm báo cáo không ghi sai phạm vi OPM,Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.
+L1-23,L1-21,"Kiểm đúng phiên bản cuối cùng của .pbix, DB dump, slide, báo cáo và các liên kết trong README; xác nhận nộp đủ",Dùng tracker_id_canonical khi cập nhật issue và workbook; không đổi ID task hiện có.

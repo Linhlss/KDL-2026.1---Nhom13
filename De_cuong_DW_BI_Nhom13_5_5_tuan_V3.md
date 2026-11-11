@@ -22,7 +22,7 @@ Bộ dữ liệu sử dụng gồm 12 file Parquet OPM/EHRI về nhân sự liê
 | Separations | 4 | 92.511 | Bản ghi rời cơ quan |
 | **Tổng** | **12** | **9.181.290** | Không phải 9,18 triệu nhân viên khác nhau |
 
-Ngưỡng quy mô do nhóm xác nhận với yêu cầu môn học là **100 MB**, không phải 100 triệu bản ghi. Dataset hiện vượt ngưỡng này. Các trường mã và tên xuất hiện trong dữ liệu bao gồm những nhóm như `agency_code`, `department_code`, `agency_subelement_code`, `occupational_series_code`, `occupational_group_code`, `duty_station_code`, `pay_plan_code`, `grade`. Employment có kỳ snapshot; các file sự kiện có kỳ báo cáo và kỳ hiệu lực hành động. Không có khóa `employee_id` công khai để liên kết một người qua ba họ dữ liệu.
+Tài liệu giảng viên ghi “Lớn hơn 100M”. Nhóm đang dự trù theo **100 MB** và dataset vượt ngưỡng MB này; chưa có bằng chứng xác nhận riêng cách hiểu “100M”. Không suy rộng sự đồng ý về ERD thành xác nhận ngưỡng dữ liệu. Các trường mã và tên xuất hiện trong dữ liệu bao gồm những nhóm như `agency_code`, `department_code`, `agency_subelement_code`, `occupational_series_code`, `occupational_group_code`, `duty_station_code`, `pay_plan_code`, `grade`. Employment có kỳ snapshot; các file sự kiện có kỳ báo cáo và kỳ hiệu lực hành động. Không có khóa `employee_id` công khai để liên kết một người qua ba họ dữ liệu.
 
 **Chốt baseline:** 12 file trong ZIP, ghi đầy đủ tên file, tháng, source version, số byte, số dòng, schema, SHA-256 vào `docs/03_source_inventory.csv`. Giữ nguyên raw files; không pha trộn bản phát hành khác nhau trong cùng một kết quả mà không có quy tắc version. Những số đếm `REDACTED` và lệch kỳ chỉ được nêu ở báo cáo sau khi chạy script kiểm chứng.
 
@@ -49,7 +49,7 @@ Kết quả phục vụ công tác phân tích và lập báo cáo nhân lực, 
 
 | ID | Tình trạng | Vấn đề | Hành động cụ thể | Người/hạn | Nếu không đạt |
 |---|---|---|---|---|---|
-| **R01** | Chưa xác nhận | Thầy yêu cầu ERD OLTP; chưa chứng minh thầy chấp nhận ERD nguồn quan hệ tái cấu trúc từ EHRI thay hoàn toàn OLTP giao dịch | Gửi sơ đồ có ba bảng bản ghi, bảng mã, các khóa đã/đang kiểm; hỏi rõ có đạt mục ERD OLTP không | TV1 gửi ngày 2–3, theo dõi đến ngày 5 | Xin tiêu chí cụ thể và cân nhắc nguồn HR quan hệ thực sự trước khi xây full DW; không dựng quan hệ giả |
+| **R01** | Đã chấp thuận theo xác nhận TV1 ghi nhận 11/11/2026; chưa có ảnh gốc | Giữ ERD mô hình nguồn quan hệ tái cấu trúc cho mục ERD OLTP; không gọi là OLTP gốc OPM | Lưu nguồn xác nhận; TV2/TV3 tiếp tục kiểm khóa, quan hệ và mapping | TV1 ghi nhận; TV2/TV3 xây và kiểm theo lịch | Chỉ trao đổi lại với thầy nếu đổi phương án hoặc nội dung chấp thuận khác; không dựng quan hệ giả |
 | **R02** | Cần thử | Quyền Power BI Publish to web | TV4 thử dashboard chỉ chứa dữ liệu tổng hợp, TV5 truy cập ẩn danh | Ngày 1–4 | Xin quyền admin hoặc phương án thay thế được thầy chấp thuận |
 | **R03** | Cần kiểm chứng | Mã Agency, Occupation, Duty Station, Pay Plan có đủ điều kiện làm PK/FK không | Dùng codebook OPM, kiểm uniqueness, key scope, orphan và mã quá khứ | TV2–TV3, ngày 8–12 | Không ép relationship sai; đưa ngoại lệ vào bảng QA |
 | **R04** | Cần kiểm chứng | Version/file/schema drift | Lưu checksum và metadata; chỉ dùng 12 file baseline | TV2, ngày 3 | Cách ly file/version khác khỏi baseline |
@@ -58,7 +58,7 @@ Kết quả phục vụ công tác phân tích và lập báo cáo nhân lực, 
 | **R07** | Cần rà soát hành chính | Mã học kỳ và lịch báo cáo trong nguồn hướng dẫn khác lịch nhóm hiện tại | Kiểm thông báo thầy và cách nộp hiện hành | TV1, ngày 3 | Lấy yêu cầu hiện hành làm chuẩn |
 | **R08** | Cần kiểm thử | Public Power BI model có thể lộ dữ liệu bản ghi | Tạo semantic model công khai riêng từ mart tổng hợp, thử export và quyền xem | TV4–TV5, ngày 25 | Không công bố raw/ODS, xin duyệt phương án khác |
 
-**Cổng khóa quyết định tuần 1:** tình trạng R01 phải được ghi chính xác là **đồng ý**, **không đồng ý** hoặc **chưa phản hồi**, có link/ảnh bằng chứng. Không được mặc nhiên ghi “đạt yêu cầu C04” khi chưa xác nhận.
+**Cập nhật R01:** thầy đã đồng ý phương án ERD nguồn quan hệ tái cấu trúc, theo xác nhận trưởng nhóm được ghi nhận ngày 11/11/2026. [Nguồn ghi nhận](evidence/TV1_week1/R01_confirmation.md) chưa có ảnh/tin nhắn gốc và không ghi ngày thầy trả lời. Không cần hỏi lại nếu phương án giữ nguyên; TV2/TV3 vẫn phải kiểm chứng khóa, ERD và mapping. C04 chưa được nghiệm thu.
 
 ## 3. Đối chiếu 11 tiêu chí giảng viên chấm
 
@@ -337,4 +337,10 @@ DW_BI_Group13/
 | C10 | 3 dashboard, DAX/OLAP/story, SQL reconciliation, publication thực tế |
 | C11 | Benchmark công bằng, hạn chế, tổng kết và hồ sơ bảo vệ |
 
+**Lưu ý hiện trạng:** R01 đã được chấp thuận theo xác nhận TV1; không còn coi là chưa hỏi thầy. Sự chấp thuận không thay kết quả kiểm khóa và nghiệm thu C04.
+
 **Định nghĩa DONE:** Có file thành phẩm, hướng dẫn chạy, bằng chứng từ dữ liệu thật, người review và kết quả kiểm thử. **R01 chưa được thầy chấp thuận thì không được khẳng định C04 đã chính thức đạt.**
+
+## Cập nhật gói bàn giao TV1
+
+Ngày 11/11/2026: giữ 12 file OPM; chốt mở rộng tự phát hiện/nạp kỳ mới và kiểm chất lượng sau MVP. Phân tích lệch tháng báo cáo–hiệu lực chỉ dự kiến. Chưa triển khai ETL/DB/BI. Xem [phạm vi hiện hành](docs/00_scope_decisions.md), [bảng việc](docs/00_task_board.md) và [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md). Các đầu việc TV1 có sản phẩm ở trạng thái REVIEW, không tự ghi DONE/PASS.

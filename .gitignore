@@ -1,0 +1,38 @@
+# Local operating system and Office files
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
+*.bak
+
+# Local secrets; commit example configuration only
+.env
+.env.*
+!.env.example
+!*.env.example
+*.pem
+*.key
+
+# Raw datasets and database exports
+*.parquet
+data/raw/
+data/downloads/
+*.dump
+*.backup
+*.db
+*.sqlite
+*.sqlite3
+db_dumps/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local dependency and authoring outputs
+node_modules/
+.cache/
+tmp/

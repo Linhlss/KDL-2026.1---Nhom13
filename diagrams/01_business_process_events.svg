@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="650" viewBox="0 0 1540 650">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#536479"/></marker></defs>
+<rect width="1540" height="650" fill="#ffffff"/>
+<text x="36" y="56" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#16293e">Quy trình 2: tiếp nhận và rời cơ quan</text>
+<text x="36" y="97" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#506174">Tháng báo cáo lấy từ kỳ file; tháng hiệu lực giữ riêng từ cột nguồn.</text>
+<path d="M290,270 L335,270" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M590,270 L635,270" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M890,270 L935,270" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M1190,270 L1235,270" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="35" y="160" width="255" height="225" rx="14" fill="#e5f3ee" stroke="#bbc8d7"/>
+<text x="53" y="196" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">A01–A03 · TV2</text>
+<text x="53" y="236" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">File tháng 04</text>
+<text x="53" y="264" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Accessions: 7.153</text>
+<text x="53" y="292" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Separations: 24.088</text>
+<text x="53" y="320" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Kiểm category</text>
+<rect x="335" y="160" width="255" height="225" rx="14" fill="#fff0db" stroke="#bbc8d7"/>
+<text x="353" y="196" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">A06–A07 · TV3</text>
+<text x="353" y="236" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Hai họ xử lý riêng</text>
+<text x="353" y="264" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giữ hai loại tháng</text>
+<text x="353" y="292" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Tổng hợp từng họ</text>
+<text x="353" y="320" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Không JOIN raw–raw</text>
+<rect x="635" y="160" width="255" height="225" rx="14" fill="#eae8fb" stroke="#bbc8d7"/>
+<text x="653" y="196" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">K06–K08 · TV4</text>
+<text x="653" y="236" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">7.153 − 24.088</text>
+<text x="653" y="264" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">= −16.935 lượt</text>
+<text x="653" y="292" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Event Difference</text>
+<text x="653" y="320" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Không là HC change</text>
+<rect x="935" y="160" width="255" height="225" rx="14" fill="#eae8fb" stroke="#bbc8d7"/>
+<text x="953" y="196" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">D2 · TV4</text>
+<text x="953" y="236" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Lọc tháng báo cáo</text>
+<text x="953" y="264" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Cơ quan/category</text>
+<text x="953" y="292" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Đơn vị: lượt</text>
+<text x="953" y="320" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giải thích phạm vi</text>
+<rect x="1235" y="160" width="270" height="225" rx="14" fill="#e8eefc" stroke="#bbc8d7"/>
+<text x="1253" y="196" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">A10 · TV1</text>
+<text x="1253" y="236" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">So với snapshot</text>
+<text x="1253" y="264" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">như hai góc nhìn</text>
+<text x="1253" y="292" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Không ép bằng nhau</text>
+<text x="1253" y="320" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Không gán nhân quả</text>
+<rect x="335" y="455" width="855" height="95" rx="14" fill="#fce8ec" stroke="#bbc8d7"/>
+<text x="353" y="491" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">A09 · TV5 kiểm suốt quá trình</text>
+<text x="353" y="531" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Kiểm số theo từng họ/kỳ; kiểm bộ lọc, nhân dòng và mất dòng.</text>
+<text x="36" y="623" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#506174">Thiết kế nhóm sẽ triển khai; số minh họa là tổng nguồn đã kiểm metadata. Chưa phải pipeline đã chạy.</text>
+</svg>

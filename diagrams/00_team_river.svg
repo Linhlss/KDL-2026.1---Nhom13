@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="680" viewBox="0 0 1540 680">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#536479"/></marker></defs>
+<rect width="1540" height="680" fill="#ffffff"/>
+<text x="36" y="56" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#16293e">Dòng công việc: mỗi người đưa thêm điều gì vào?</text>
+<text x="36" y="97" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#506174">Các vai trò phối hợp liên tục; TV5 kiểm từ nguồn tới báo cáo, không đợi bước cuối.</text>
+<path d="M290,285 L335,285" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M590,285 L635,285" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M890,285 L935,285" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M1190,285 L1235,285" stroke="#536479" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="35" y="175" width="255" height="230" rx="14" fill="#e8eefc" stroke="#bbc8d7"/>
+<text x="53" y="211" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">TV1 · Đặt câu hỏi</text>
+<text x="53" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Cần biết gì?</text>
+<text x="53" y="279" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Số được hiểu ra sao?</text>
+<text x="53" y="307" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giao: phạm vi, KPI v0</text>
+<text x="53" y="335" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Nhận lại: giới hạn</text>
+<rect x="335" y="175" width="255" height="230" rx="14" fill="#e5f3ee" stroke="#bbc8d7"/>
+<text x="353" y="211" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">TV2 · Hiểu nguồn</text>
+<text x="353" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">File/cột nào trả lời?</text>
+<text x="353" y="279" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Mã và kỳ nghĩa gì?</text>
+<text x="353" y="307" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giao: dictionary, ERD</text>
+<text x="353" y="335" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Nêu chỗ chưa kiểm</text>
+<rect x="635" y="175" width="255" height="230" rx="14" fill="#fff0db" stroke="#bbc8d7"/>
+<text x="653" y="211" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">TV3 · Dẫn dữ liệu</text>
+<text x="653" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Nhận và tổ chức</text>
+<text x="653" y="279" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giữ đúng số</text>
+<text x="653" y="307" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giao: bảng, log,</text>
+<text x="653" y="335" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Mart và số đối soát</text>
+<rect x="935" y="175" width="255" height="230" rx="14" fill="#eae8fb" stroke="#bbc8d7"/>
+<text x="953" y="211" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">TV4 · Cho thấy số</text>
+<text x="953" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Mô hình và chỉ số</text>
+<text x="953" y="279" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Bộ lọc, biểu đồ</text>
+<text x="953" y="307" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Giao: D1, D2, D3</text>
+<text x="953" y="335" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Nhãn kỳ và đơn vị</text>
+<rect x="1235" y="175" width="270" height="230" rx="14" fill="#f2f5f9" stroke="#bbc8d7"/>
+<text x="1253" y="211" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">Cả nhóm · Giải thích</text>
+<text x="1253" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Trả lời câu hỏi</text>
+<text x="1253" y="279" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Dẫn đúng bằng chứng</text>
+<text x="1253" y="307" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Nêu điều chưa biết</text>
+<text x="1253" y="335" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Viết phần báo cáo</text>
+<rect x="335" y="470" width="855" height="110" rx="14" fill="#fce8ec" stroke="#bbc8d7"/>
+<text x="353" y="506" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#16293e">TV5 · Kiểm suốt dòng chảy</text>
+<text x="353" y="546" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#16293e">Đếm độc lập → kiểm nạp → kiểm tổng → SQL/DAX → lọc/public; lỗi trả đúng người.</text>
+<text x="36" y="653" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#506174">Thiết kế nhóm sẽ triển khai; số minh họa là tổng nguồn đã kiểm metadata. Chưa phải pipeline đã chạy.</text>
+</svg>

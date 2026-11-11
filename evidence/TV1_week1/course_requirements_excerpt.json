@@ -1,0 +1,397 @@
+{
+  "filename": "Hướng dẫn môn học - DW & BI 20252.xlsx",
+  "sha256": "73eb9a21cfa7cd309a496e58f9841eefaee1fcfc096d790496e4949ae7963bb4",
+  "extracted_on": "2026-11-11",
+  "rows": [
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 2,
+      "cells": {
+        "B": "Kích thước",
+        "C": "Lớn hơn 100M",
+        "G": 1.0,
+        "H": "Retail sales",
+        "I": "Bán lẻ"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 4,
+      "cells": {
+        "B": "Gợi ý (không bắt buộc)",
+        "C": "Có thể import vào CSDL (ví dụ: SQL Server, Oracle,...)",
+        "G": 3.0,
+        "H": "Procurement",
+        "I": "Mua sắm"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 5,
+      "cells": {
+        "C": "Nên là CSDL có dạng quan hệ",
+        "G": 4.0,
+        "H": "Order Management",
+        "I": "Quản lý đơn hàng"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 17,
+      "cells": {
+        "B": "Mô phỏng hoạt động xây dựng Datawarehouse & BI"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 18,
+      "cells": {
+        "C": "Làm việc được với dữ liệu lớn (xử lý các vấn đề liên quan tới performance)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 19,
+      "cells": {
+        "C": "Tổ chức được các lớp (data sources-> Data warehouse -> Data mart->BI)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 26,
+      "cells": {
+        "C": "Sử dụng Power BI"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 27,
+      "cells": {
+        "C": "Sử dụng được hệ quản trị CSDL"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 35,
+      "cells": {
+        "D": "Quy trình nghiệp vụ",
+        "I": "*) có hình vẽ mô tả quy trình nghiệp vụ\n*) có đánh dấu hệ thống phân tích ở những giai đoạn nào của quy trình\n*) Trình bày được theo cây nghiệp vụ\n*) Trình bày được mô hình kinh doanh (Vd: Canva model)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 36,
+      "cells": {
+        "D": "Trình bày về Yêu cầu phân tích",
+        "I": "*) Trình bày theo các chủ điểm cần phân tích\n*) Các chủ điểm này cần quan tâm theo các khía cạnh gì\n*) Trình bày được theo dạng cây yêu cầu phân tích\n*) Trình bày được chi tiết cây phân tích dữ liệu của từng dashboard"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 37,
+      "cells": {
+        "D": "Hệ thống dữ liệu",
+        "I": "*) kích cỡ file dữ liệu, số bảng ghi, số bảng, số thuộc tính,...\n*) Tần suất , số lượng bản ghi, kích cỡ dữ liệu cập nhật mới với dữ liệu có tính cập nhật\n*) Trình bày được theo dạng phân loại dữ liệu Data Taxonomy\n*) Luồng dữ liệu giữa các hệ thống CNTT"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 38,
+      "cells": {
+        "D": "ERD hệ thống OLTP, Data flow",
+        "I": "*) Trên OLTP có gạch chân các trường dữ liệu và ghi chú mapping tương ứng khi chuyển sang OLAP"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 40,
+      "cells": {
+        "D": "Trình bày về khám phá dữ liệu",
+        "I": "*) Trình bày về dữ liệu có chỗ nào bị lỗi, cần tiền xử lý\n*) Trình bày về phân bố dữ liệu (parteto, distribution)\n*) Trình bày được các đặc trưng của các trường dữ liệu\n*) Trình bày về phân tích tương quan giữa các dimension và dimension và fact (sử dụng scatter chart hoặc bảng phân tích tương quan\n*) Sử dụng đa dạng công cụ (R, Excel- Data Analysis Tool)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 41,
+      "cells": {
+        "D": "Trình bày về kiến trúc datawarehouse",
+        "I": "*) Kiến trúc cho bài toán của mình (các hoạt động ETL, dimension, fact, tên dashboard cụ thể gì?)\n\n*) Có hình ảnh logo công nghệ sử dụng ở mỗi phần (vd: công cụ ETL gì, công cụ trực quan hóa gì,...)\n"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 42,
+      "cells": {
+        "D": "Trình bày về các nội dung ETL (các bảng có dữ liệu cụ thể)",
+        "I": "*) có tổng hợp các nội dung ETL và công nghệ ETL sử dụng: \n*) Sử dụng mô hình data pieline hoặc mô hình ETL jobs\n*) có before-after ETL. Sử dụng các hình shape bôi các phần tiền xử lý\n*) có nội dung đổi từ OLTP-> OLAP như thế nào\n*) Sử dụng đa dạng công cụ (Python, SQL, Power Query, ETL Tools,...)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 43,
+      "cells": {
+        "D": "Trình bày về các dimension",
+        "I": "*) Có chi tiết dữ liệu ở các dimension (hệ thống chiều khái niệm)\n*) Có thống kê số lượng bản ghi ở mỗi dimension\n*) Có phân nhóm các dimension có liên quan tơi nhau (VD: tỉnh, vùng, miền, quốc gia)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 44,
+      "cells": {
+        "D": "Trình bày về data model logic, vật lý của các staging/data marts/datawarehouse",
+        "I": "*) Sử dụng màu sắc để phân biệt fact & dimension\n*) Nhóm các vùng có liên quan vào với nhau sử dụng Shape\n"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 45,
+      "cells": {
+        "D": "Trình bày về bảng chỉ số chính (KPI) cần quan tâm, cây phân tích dashboard",
+        "I": "*) Trình bày về bảng KPI\n*) Trình bày về cây phân tích"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 47,
+      "cells": {
+        "D": "Trình bày về dashboard",
+        "I": "*) Có thống kê số lượng dashboard (dash phân tích theo dòng thời gian, dashboard OLAP, dash vận hành, dash thống kê-dự án,...)\n*) Sử dụng đa dạng biểu đồ\n*) Có sử dụng slicer trong quá trình phân tích để đi sâu hơn vào 1 vấn đề\n*) Sử dụng định dạng có điều kiện, DAX. Vd; cho các hoạt động cảnh báo, phân tích tăng trưởng,...\n*) Public được dashboard lên website"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 48,
+      "cells": {
+        "D": "Trình bày về bài học nhóm đã thu được khi làm"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 49,
+      "cells": {
+        "C": "Các chủ đề mở rộng"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 50,
+      "cells": {
+        "D": "Cơ sở dữ liệu lớn"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 51,
+      "cells": {
+        "D": "Cơ sở dữ liệu địa lý"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 52,
+      "cells": {
+        "D": "Các giải pháp lưu trữ dữ liệu, so sánh & đánh giá"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 53,
+      "cells": {
+        "D": "Thu thập dữ liệu"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 54,
+      "cells": {
+        "D": "Tiền xử lý dữ liệu"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 55,
+      "cells": {
+        "D": "Các giải pháp tiền xử lý dữ liệu thực tiễn"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 56,
+      "cells": {
+        "D": "Các tính năng cập nhật mới của các công cụ (trực quan hóa dữ liệu, tiền xử lý dữ liệu,...)"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 58,
+      "cells": {
+        "B": "Làm báo cáo trình bày trong 30-45 phút"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 2,
+      "cells": {
+        "A": "Yêu cầu nội dung:",
+        "E": "Yêu cầu nội dung:"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 3,
+      "cells": {
+        "B": "Đánh giá thành viên trong nhóm",
+        "E": "Tự đánh giá báo cáo cá nhân"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 4,
+      "cells": {
+        "B": "Tự đánh giá báo cáo",
+        "E": "Phần I: Kết quả thực hành"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 5,
+      "cells": {
+        "B": "Phần I: Tổng quan về Data warehouse",
+        "F": "Thực hành 1: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 6,
+      "cells": {
+        "B": "Phần II: Tổng quan về BI",
+        "F": "Thực hành 2: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 7,
+      "cells": {
+        "B": "Phần III: Ứng dụng Datawarehouse và BI vào bài toán xxx",
+        "F": "Thực hành 3: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 8,
+      "cells": {
+        "C": "Giới thiệu về bài toán (Requirement)",
+        "F": "Thực hành 4: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 9,
+      "cells": {
+        "C": "Giới thiệu về ODS",
+        "F": "Thực hành 5: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 10,
+      "cells": {
+        "C": "Kiến trúc Datawarehouse",
+        "F": "Thực hành 6: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 11,
+      "cells": {
+        "C": "Tiền xử lý dữ liệu",
+        "F": "Thực hành ....: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 12,
+      "cells": {
+        "C": "Mô hình dữ liệu OLTP",
+        "F": "Thực hành 13: Tên nội dung"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 13,
+      "cells": {
+        "C": "Mô hình dữ liệu OLAP",
+        "E": "Phần II: Kết quả thu được, đánh giá và góp ý cho môn học"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 14,
+      "cells": {
+        "C": "Các mẫu dashboard",
+        "F": "Kết quả thu được"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 18,
+      "cells": {
+        "B": "Có mục lục, kết luận, tài liệu tham khảo, có số trang",
+        "F": "Có mục lục, tài liệu tham khảo, có số trang"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 19,
+      "cells": {
+        "B": "Font chữ Time newRoman 12",
+        "F": "Font chữ Time newRoman 12"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 20,
+      "cells": {
+        "B": "Căn lề 2 bên",
+        "F": "Căn lề 2 bên"
+      }
+    },
+    {
+      "sheet": "Nội dung báo cáo",
+      "row": 21,
+      "cells": {
+        "B": "Không sai chính tả",
+        "F": "Không sai chính tả"
+      }
+    },
+    {
+      "sheet": "Đánh giá thành viên nhóm",
+      "row": 13,
+      "cells": {
+        "B": "Chú ý:",
+        "C": "Bảng đánh giá này yêu cầu trưởng nhóm phải làm"
+      }
+    },
+    {
+      "sheet": "Đánh giá thành viên nhóm",
+      "row": 14,
+      "cells": {
+        "C": "Điểm đánh giá của mỗi thành viên trong nhóm phải có tổi thiểu 4 bậc điểm"
+      }
+    },
+    {
+      "sheet": "Đánh giá thành viên nhóm",
+      "row": 15,
+      "cells": {
+        "C": "Điểm từ 1 đến 5 (Cao nhất là 5, thấp nhất là 1)"
+      }
+    },
+    {
+      "sheet": "Đánh giá thành viên nhóm",
+      "row": 16,
+      "cells": {
+        "C": "Tất cả thành viên cần KÝ vào bảng đánh giá"
+      }
+    }
+  ]
+}
