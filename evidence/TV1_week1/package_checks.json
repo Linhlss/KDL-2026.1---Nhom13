@@ -264,6 +264,21 @@
       "all_other_parts_identical": true,
       "preserved": "9 sheets, formulas, formats, validations, x14 conditional formatting, views, names and existing cached formula results",
       "scope": "Repo copy only; source tracker and source documents untouched"
+    },
+    "independent_full_cell_comparison": {
+      "checked_on": "2026-11-12",
+      "all_cells_compared": true,
+      "actual_value_changes": 40,
+      "unexpected_value_changes": 0,
+      "untargeted_style_changes": 0,
+      "formulas_unchanged": true,
+      "table_definitions_preserved": true,
+      "native_hyperlinks_checked": 13,
+      "row_cell_addresses_consistent": true,
+      "restored_original_cells": [
+        "92_nhiem_vu!W7:W11",
+        "3_rui_ro!A7"
+      ]
     }
   },
   "originals_unchanged": true,
@@ -273,5 +288,14 @@
     "Bổ sung ảnh/tin nhắn gốc R01 khi có; không hỏi lại nếu giữ phương án",
     "Xác nhận riêng cách hiểu 100M và thông báo học kỳ hiện hành",
     "Điền ngày bắt đầu, tên thật, lịch họp khi nhóm thống nhất"
-  ]
+  ],
+  "correction": {
+    "on": "2026-11-12",
+    "reason": "Khôi phục các ô gốc bị mất trong bước xuất tracker: ghi chú cơ sở ngày hạn W7:W11 và nhãn R02 A7. Không đổi nhiệm vụ hoặc hạn của TV2–TV5.",
+    "restored_original_cells": [
+      "92_nhiem_vu!W7:W11",
+      "3_rui_ro!A7"
+    ],
+    "reverified": "So mọi ô với bản gốc, chỉ cho phép các thay đổi đã liệt kê; kiểm cấu trúc hàng, công thức, kiểu ô, bố cục và hyperlink."
+  }
 }
