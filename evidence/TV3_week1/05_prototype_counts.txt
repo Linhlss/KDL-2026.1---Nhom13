@@ -1,0 +1,53 @@
+Accessions (full file)
+Null display is "NULL".
+ sql_count | distinct_ordinals | first_ordinal | last_ordinal | duplicate_source_keys | wrong_source_hashes
+-----------+-------------------+---------------+--------------+-----------------------+---------------------
+      7153 |              7153 |             1 |         7153 |                     0 |                   0
+(1 row)
+
+ data_type | columns
+-----------+---------
+ bigint    |       1
+ text      |      69
+(2 rows)
+
+             field             | nulls | empty | redacted | zero | leading_zero
+-------------------------------+-------+-------+----------+------+--------------
+ agency_code                   |     0 |     0 |        0 |    0 |            0
+ agency_subelement_code        |     0 |     0 |        0 |    0 |            0
+ annualized_adjusted_basic_pay |    97 |     0 |     2594 |    0 |            0
+ count                         |     0 |     0 |        0 |    0 |            0
+ duty_station_code             |     0 |     0 |     2593 |    0 |         1113
+ grade                         |     3 |     0 |        1 |    0 |         5181
+ occupational_series_code      |     0 |     0 |        0 |    0 |         4477
+ pay_plan_code                 |    20 |     0 |        0 |    0 |            0
+(8 rows)
+
+PASS count, ordinal, checksum and source column types
+
+Employment (first 50000 rows)
+Null display is "NULL".
+ sql_count | distinct_ordinals | first_ordinal | last_ordinal | duplicate_source_keys | wrong_source_hashes
+-----------+-------------------+---------------+--------------+-----------------------+---------------------
+     50000 |             50000 |             1 |        50000 |                     0 |                   0
+(1 row)
+
+ data_type | columns
+-----------+---------
+ bigint    |       1
+ text      |      65
+(2 rows)
+
+             field             | nulls | empty | redacted | zero | leading_zero
+-------------------------------+-------+-------+----------+------+--------------
+ agency_code                   |     0 |     0 |        0 |    0 |            0
+ agency_subelement_code        |     0 |     0 |        0 |    0 |            0
+ annualized_adjusted_basic_pay |    79 |     0 |    16004 |    0 |            0
+ count                         |     0 |     0 |        0 |    0 |            0
+ duty_station_code             |     0 |     0 |    16004 |    0 |         5585
+ grade                         |     0 |     0 |        0 |    0 |        28540
+ occupational_series_code      |     0 |     0 |        0 |    0 |        35262
+ pay_plan_code                 |     0 |     0 |        0 |    0 |            0
+(8 rows)
+
+PASS count, ordinal, checksum and source column types

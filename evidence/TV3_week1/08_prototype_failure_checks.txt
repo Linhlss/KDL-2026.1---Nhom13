@@ -1,0 +1,3 @@
+PASS: reran real Accessions file; existing prototype was replaced without duplicate source rows.
+PASS: mismatched checksum failed with a nonzero exit; existing results were preserved.
+PASS: invalid string in a synthetic Parquet caused a psycopg DataError during COPY; rollback preserved the real Accessions table.
