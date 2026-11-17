@@ -1,0 +1,13 @@
+﻿dataset,period,file,month_column,total_rows,null_month,malformed_month,mismatch_month,matching_month
+employment,202503,employment_202503_v4.parquet,snapshot_yyyymm,2289192,0,0,0,2289192
+employment,202504,employment_202504_v4.parquet,snapshot_yyyymm,2271969,0,0,0,2271969
+employment,202505,employment_202505_v4.parquet,snapshot_yyyymm,2255056,0,0,0,2255056
+employment,202506,employment_202506_v4.parquet,snapshot_yyyymm,2241780,0,0,0,2241780
+accessions,202503,accessions_202503_v5.parquet,personnel_action_effective_date_yyyymm,4862,0,0,53,4809
+accessions,202504,accessions_202504_v5.parquet,personnel_action_effective_date_yyyymm,7153,0,0,43,7110
+accessions,202505,accessions_202505_v5.parquet,personnel_action_effective_date_yyyymm,8813,0,0,53,8760
+accessions,202506,accessions_202506_v5.parquet,personnel_action_effective_date_yyyymm,9954,0,0,120,9834
+separations,202503,separations_202503_v5.parquet,personnel_action_effective_date_yyyymm,22061,0,0,63,21998
+separations,202504,separations_202504_v5.parquet,personnel_action_effective_date_yyyymm,24088,0,0,61,24027
+separations,202505,separations_202505_v5.parquet,personnel_action_effective_date_yyyymm,26415,0,0,54,26361
+separations,202506,separations_202506_v5.parquet,personnel_action_effective_date_yyyymm,19947,0,0,146,19801
