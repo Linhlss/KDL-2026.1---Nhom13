@@ -1,0 +1,76 @@
+{
+  "total_records": 9181290,
+  "by_dataset": {
+    "employment": 9057997,
+    "accessions": 30782,
+    "separations": 92511
+  },
+  "mismatch_total": 593,
+  "mismatch_by_dataset": {
+    "employment": 0,
+    "accessions": 269,
+    "separations": 324
+  },
+  "column_groups": 201,
+  "source_files": 12,
+  "profile_columns": 804,
+  "issues": 10,
+  "files_csv": [
+    "count_quality.csv",
+    "agency_top10_share.csv",
+    "column_profile.csv",
+    "monthly_trends.csv",
+    "validation_checks.csv",
+    "month_consistency.csv",
+    "month_check_extended.csv",
+    "count_check_by_dataset.csv",
+    "data_quality_findings.csv",
+    "file_summary.csv",
+    "column_quality_aggregated.csv",
+    "category_top10.csv"
+  ],
+  "checks": [
+    {
+      "test": "Kiểm kê đúng 12 file, 4 tháng/3 nhóm",
+      "expected": "12 files (3 x 4)",
+      "observed": "12 files",
+      "status": "PASS"
+    },
+    {
+      "test": "Tổng số bản ghi",
+      "expected": "9,181,290 (V2)",
+      "observed": "9181290",
+      "status": "PASS"
+    },
+    {
+      "test": "804 bản ghi metadata cột",
+      "expected": "(64 + 68 + 69) x 4",
+      "observed": "804",
+      "status": "PASS"
+    },
+    {
+      "test": "Mỗi cột có total_rows khớp file",
+      "expected": "804/804 phù hợp",
+      "observed": "804/804",
+      "status": "PASS"
+    },
+    {
+      "test": "Kiểm tra phân loại count bao phủ toàn bộ dòng",
+      "expected": "12/12 phù hợp",
+      "observed": "12/12",
+      "status": "PASS"
+    },
+    {
+      "test": "Kiểm tra tháng bao phủ toàn bộ dòng",
+      "expected": "12/12 phù hợp",
+      "observed": "12/12",
+      "status": "PASS"
+    },
+    {
+      "test": "count_numeric_sum của top10 bằng record_count",
+      "expected": "652/652 phù hợp",
+      "observed": "652/652",
+      "status": "PASS"
+    }
+  ]
+}

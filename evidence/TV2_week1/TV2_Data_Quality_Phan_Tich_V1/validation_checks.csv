@@ -1,0 +1,8 @@
+﻿test,expected,observed,status
+"Kiểm kê đúng 12 file, 4 tháng/3 nhóm",12 files (3 x 4),12 files,PASS
+Tổng số bản ghi,"9,181,290 (V2)",9181290,PASS
+804 bản ghi metadata cột,(64 + 68 + 69) x 4,804,PASS
+Mỗi cột có total_rows khớp file,804/804 phù hợp,804/804,PASS
+Kiểm tra phân loại count bao phủ toàn bộ dòng,12/12 phù hợp,12/12,PASS
+Kiểm tra tháng bao phủ toàn bộ dòng,12/12 phù hợp,12/12,PASS
+count_numeric_sum của top10 bằng record_count,652/652 phù hợp,652/652,PASS
