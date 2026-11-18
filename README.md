@@ -2,10 +2,11 @@
 
 Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và biến động nhân sự liên bang Hoa Kỳ. Môn MI4214; năm vai trò; kế hoạch 39 ngày từ ngày khởi động chưa chốt.
 
-**Hiện trạng:** gói chuẩn bị TV1 tuần 1 đã có bản để review. Chưa triển khai ETL, DW, Mart hoặc Power BI; chưa có nghiệm thu DONE/PASS.
+**Hiện trạng (18/11/2026):** gói TV1 tuần 1, profiling v1 của TV2 ([PR #13](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/13)) và môi trường PostgreSQL + ingest prototype của TV3 ([PR #14](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/14)) đã ở `main`, trạng thái **REVIEW**. TV1 đã [đo lại baseline](evidence/TV1_week2/README.md) và số liệu khớp. Chưa có ODS/DW/Mart/Power BI; prototype mới nạp Accessions 202504 đầy đủ + 50.000 dòng Employment mẫu. Chưa có nghiệm thu DONE/PASS. Đích kế tiếp: cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
 
 ## Bắt đầu ở đâu?
 
+- **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
 - **TV2:** đọc [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md), sau đó nhận năm task L2-01–L2-05.
 - **Cả nhóm:** đọc [bài toán và dòng công việc](docs/01_business_scope.md), [phạm vi đã chọn](docs/00_scope_decisions.md) và [bảng công việc tuần 1](docs/00_task_board.md).
 - **Reviewer:** [đối chiếu yêu cầu thầy](docs/00_course_requirements.md), [mapping A01–A10](docs/01_touchpoint_mapping.csv), [KPI v0](docs/02_kpi_dictionary.csv) và [lưu ý kỳ đo](docs/02_kpi_draft_notes.md).
@@ -48,8 +49,10 @@ Ngày 1–7: phạm vi/nguồn/môi trường; 8–14: thiết kế và bản ch
 
 - [Đề cương V3](De_cuong_DW_BI_Nhom13_5_5_tuan_V3.md)
 - [Phân công V3](Phan_cong_DW_BI_Nhom13_5_5_tuan_V3.md)
+- [Kế hoạch thực thi và nghiệm thu G2 (TV2/TV3 phối hợp TV4/TV5)](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md)
+- [Việc tiếp theo theo thứ tự](docs/00_next_steps_by_member.md)
 - [Tracker triển khai](Progress_Tracker_DW_BI_Nhom13_5_5_tuan.xlsx)
 - [Đối chiếu ID tracker và phân công](docs/00_task_id_crosswalk.csv)
 - [Sơ đồ chỉnh sửa được và bản xem GitHub](diagrams/README.md)
 
-Các đường dẫn sản phẩm TV2 trong phiếu giao việc là đầu ra sẽ tạo; chưa phải file đã tồn tại. Raw Parquet, file tạm Office, secrets và DB dump không commit. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
+Các đường dẫn `docs/03_*`, `docs/04_*`, `data/reference/*` trong phiếu giao việc là đầu ra sẽ tạo; sản phẩm TV2 hiện có nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump không commit. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
