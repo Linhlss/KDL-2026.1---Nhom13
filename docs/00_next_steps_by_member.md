@@ -30,7 +30,7 @@ flowchart LR
   J --> K[TV5 L5-06 đối soát KPI<br/>25/11]
 ```
 
-Ai chậm ở ô nào thì báo ngay trong ngày: `task_id` + thiếu gì + ai cấp + cần trước ngày nào.
+Mỗi task có issue GitHub riêng (bảng trong [task board](00_task_board.md#issue-tuần-2--đường-tới-g2-tạo-18112026)); cập nhật tiến độ và link commit ngay trong issue. Ai chậm ở ô nào thì báo ngay trong ngày: `task_id` + thiếu gì + ai cấp + cần trước ngày nào.
 
 ---
 
