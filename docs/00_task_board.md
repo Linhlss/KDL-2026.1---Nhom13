@@ -20,6 +20,8 @@ ID tracker là chuẩn. [Bảng đối chiếu ID](00_task_id_crosswalk.csv) gi�
 
 ## Sẵn sàng bàn giao nghĩa là gì?
 
+Tiến độ L3-01 đến L3-04, sản phẩm và bằng chứng nằm trong [bảng bàn giao tuần 1 của TV3](../reports/TV3_week1_summary.md).
+
 TV2 đọc được phạm vi và biết phải trả inventory, dictionary, ERD v0, taxonomy/flow cho ai. TV2 không đợi cả chuỗi TV1 → TV2 → TV3 tuần tự kết thúc: có thể khảo sát dữ liệu ngay, TV3 thử môi trường, TV4 thử công bố và TV5 kiểm đếm song song.
 
 Chưa có người review thực tế; ngày khởi động, tên thật và lịch họp chưa điền. Các issue để mở. Bản tracker trong repo có link sản phẩm, nhưng cột nghiệm thu vẫn bằng 0 cho đến khi có DONE, PASS, reviewer và bằng chứng đúng quy ước. Mức tự báo 100% ở sáu task TV1 chỉ ghi đã nộp bản soạn; không có nghĩa đã review hoặc đã xác nhận xong các quy định học kỳ còn mở.

@@ -1,0 +1,159 @@
+Source: public OPM EHRI Parquet mirror, pinned revision above in each download URL.
+Checksum reference: SHA-256 in the mirror Git LFS metadata.
+TV2 group baseline SHA-256 manifest: not yet available for comparison.
+
+Filename: accessions_202504_v5.parquet
+URL: https://huggingface.co/datasets/impactproject/opm-ehri-data/resolve/408c124926a6610280e511d739b2ca722dabf04f/accessions/accessions_202504_v5.parquet
+Family / report month / version: accessions / 202504 / 5
+Bytes: 283855
+Footer rows: 7153
+Columns: 68
+SHA-256: 933b33c65b2553867efce924cfe87696ba5152c25d0861b5f1cb085481da72fa
+Checksum matches mirror: yes
+TV1 footer baseline match: filename, bytes, row count and ordered field names
+Prototype selection: full file
+Arrow schema:
+  accession_category: string
+  accession_category_code: string
+  age_bracket: string
+  agency: string
+  agency_code: string
+  agency_subelement: string
+  agency_subelement_code: string
+  annualized_adjusted_basic_pay: string
+  appointment_not_to_exceed_date: string
+  appointment_type: string
+  appointment_type_code: string
+  bargaining_unit: string
+  bargaining_unit_code: string
+  bargaining_unit_status: string
+  cfo_act_agency_indicator: string
+  consolidated_statistical_area: string
+  consolidated_statistical_area_code: string
+  core_based_statistical_area: string
+  core_based_statistical_area_code: string
+  count: string
+  department: string
+  department_code: string
+  duty_station_city: string
+  duty_station_code: string
+  duty_station_country: string
+  duty_station_country_code: string
+  duty_station_county: string
+  duty_station_county_code: string
+  duty_station_state: string
+  duty_station_state_abbreviation: string
+  duty_station_state_country_territory_code: string
+  education_level: string
+  education_level_bracket: string
+  education_level_code: string
+  flsa_category: string
+  flsa_category_code: string
+  grade: string
+  length_of_service_years: string
+  locality_pay_area: string
+  locality_pay_area_code: string
+  nsftp_indicator: string
+  occupational_category: string
+  occupational_category_code: string
+  occupational_group: string
+  occupational_group_code: string
+  occupational_series: string
+  occupational_series_code: string
+  pathways_group: string
+  pay_basis: string
+  pay_basis_code: string
+  pay_plan: string
+  pay_plan_code: string
+  personnel_action_effective_date_yyyymm: string
+  personnel_office_identifier_code: string
+  position_occupied: string
+  position_occupied_code: string
+  service_computation_date_leave: string
+  stem_occupation: string
+  stem_occupation_type: string
+  step_or_rate_type: string
+  step_or_rate_type_code: string
+  supervisory_status: string
+  supervisory_status_code: string
+  tenure: string
+  tenure_code: string
+  veteran_indicator: string
+  work_schedule: string
+  work_schedule_code: string
+
+Filename: employment_202504_v4.parquet
+URL: https://huggingface.co/datasets/impactproject/opm-ehri-data/resolve/408c124926a6610280e511d739b2ca722dabf04f/employment/employment_202504_v4.parquet
+Family / report month / version: employment / 202504 / 4
+Bytes: 74442213
+Footer rows: 2271969
+Columns: 64
+SHA-256: d0bfcf7158fbd552469ec2f8df84cb0ec12c51578e6c571aa21d7c32fe203e72
+Checksum matches mirror: yes
+TV1 footer baseline match: filename, bytes, row count and ordered field names
+Prototype selection: first 50000 rows
+Arrow schema:
+  age_bracket: string
+  agency: string
+  agency_code: string
+  agency_subelement: string
+  agency_subelement_code: string
+  annualized_adjusted_basic_pay: string
+  appointment_type: string
+  appointment_type_code: string
+  bargaining_unit: string
+  bargaining_unit_code: string
+  bargaining_unit_status: string
+  cfo_act_agency_indicator: string
+  consolidated_statistical_area: string
+  consolidated_statistical_area_code: string
+  core_based_statistical_area: string
+  core_based_statistical_area_code: string
+  count: string
+  department: string
+  department_code: string
+  duty_station_city: string
+  duty_station_code: string
+  duty_station_country: string
+  duty_station_country_code: string
+  duty_station_county: string
+  duty_station_county_code: string
+  duty_station_state: string
+  duty_station_state_abbreviation: string
+  duty_station_state_country_territory_code: string
+  education_level: string
+  education_level_bracket: string
+  education_level_code: string
+  flsa_category: string
+  flsa_category_code: string
+  grade: string
+  length_of_service_years: string
+  locality_pay_area: string
+  locality_pay_area_code: string
+  nsftp_indicator: string
+  occupational_category: string
+  occupational_category_code: string
+  occupational_group: string
+  occupational_group_code: string
+  occupational_series: string
+  occupational_series_code: string
+  pay_basis: string
+  pay_basis_code: string
+  pay_plan: string
+  pay_plan_code: string
+  personnel_office_identifier_code: string
+  position_occupied: string
+  position_occupied_code: string
+  service_computation_date_leave: string
+  snapshot_yyyymm: string
+  stem_occupation: string
+  stem_occupation_type: string
+  step_or_rate_type: string
+  step_or_rate_type_code: string
+  supervisory_status: string
+  supervisory_status_code: string
+  tenure: string
+  tenure_code: string
+  veteran_indicator: string
+  work_schedule: string
+  work_schedule_code: string

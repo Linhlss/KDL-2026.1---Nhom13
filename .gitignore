@@ -36,3 +36,4 @@ __pycache__/
 node_modules/
 .cache/
 tmp/
+reports/TV3_week1_load_log.local.csv
