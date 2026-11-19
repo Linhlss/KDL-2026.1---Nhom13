@@ -1,0 +1,7 @@
+reference_id,title,source_url,accessed_on,scope,applicability,status,source_locator
+FWD,FWD Data Dictionary,https://data.opm.gov/FWD%20Data%20Dictionary.xlsx,2026-11-19,Employment; Accessions; Separations; grouped action fields,Published dictionary; date-specific enumerations not supplied,FOUND,Sheet1 reviewed for field definitions and sample values
+EHRI,EHRI Data Standards,https://data.opm.gov/data-standards/ehri-data-standards,2026-11-19,Agency/Subelement; Occupation; Pay Plan; Grade,Current and past values offered; 202503–202506 applicability pending,NEED_VERIFY,All Data Elements; All Current Values; All Past Values
+DUTY,OPM Duty Stations,https://data.opm.gov/data-standards/duty-stations,2026-11-19,Duty Station code; city; state; country,Live listing; historical coverage for 202503–202506 pending,NEED_VERIFY,US and Other tables
+PAY,OPM Pay Plans,https://www.opm.gov/policy-data-oversight/pay-leave/pay-administration/fact-sheets/pay-plans,2026-11-19,Pay Plan meaning and OPM approval,Definition; see EHRI for valid values,FOUND,Definition and Importance of Pay Plan Codes
+RELEASE,OPM Data Sources,https://data.opm.gov/resources/data-sources,2026-11-19,EHRI Status; EHRI Dynamics; OPM monthly release,Official publication process,FOUND,EHRI and Data release process
+API,OPM API Access,https://data.opm.gov/get-data/api-access,2026-11-19,Family; year; month; version metadata,Versioned delivery endpoint,FOUND,GET List available files; GET Download a file
