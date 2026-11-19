@@ -15,6 +15,17 @@ DIM_KEYS = {
     "accession_category_code": ("dim_accession_category", "accession_category_key"),
     "separation_category_code": ("dim_separation_category", "separation_category_key"),
 }
+MVP_LABELS = {
+    "agency": "dim_agency",
+    "accession_category": "dim_accession_category",
+    "separation_category": "dim_separation_category",
+}
+
+
+def fact_lineage_sql(ods, fact):
+    template = (ROOT / "sql/tests/06_fact_lineage.sql").read_text(encoding="utf-8")
+    return " ".join(template.split()).replace("{{ods_table}}", f"ods.{ods}").replace(
+        "{{fact_table}}", f"dw.{fact}")
 
 
 def row(family, source, dtype, schema, table, col, rule, test, *, time_role="",
@@ -31,8 +42,7 @@ def model(fields):
         lineage = f"SELECT file_id, source_row_ordinal FROM ods.{ods} GROUP BY 1,2 HAVING COUNT(*) > 1"
         orphan = (f"SELECT o.file_id FROM ods.{ods} o LEFT JOIN raw_meta.source_file f "
                   "ON o.file_id = f.file_id WHERE f.file_id IS NULL")
-        fact_lineage = (f"SELECT file_id, source_row_ordinal FROM ods.{ods} EXCEPT "
-                        f"SELECT file_id, source_row_ordinal FROM dw.{fact}")
+        fact_lineage = fact_lineage_sql(ods, fact)
         for key, rule, test in (
             ("file_id", "Use registered source_file ID resolved by SHA-256", orphan),
             ("source_row_ordinal", "Persist original row ordinal as one-based, consistent with TV3 prototype", lineage),
@@ -87,10 +97,44 @@ def model(fields):
                           lookup="Cardinality-preserving LEFT JOIN after scope and key review",
                           nullable="Unknown only after review", redacted="Retain REDACTED state",
                           status="PARTIAL")
+            if name in MVP_LABELS:
+                dim = MVP_LABELS[name]
+                yield row(family, name, dtype, "dw", dim, name, "Confirm source label against scoped OPM reference",
+                          f"SELECT {name}_code FROM ods.{ods} GROUP BY {name}_code "
+                          f"HAVING COUNT(DISTINCT {name}) > 1",
+                          lookup="Use the reference label only after code and scope review", status="PARTIAL")
             if name == "annualized_adjusted_basic_pay":
                 yield row(family, name, dtype, "dw", fact, name, "Parse observed amount to DECIMAL(18,2)",
                           f"SELECT COUNT(*) FROM dw.{fact} WHERE {name} < 0",
                           nullable="NULL for unavailable", redacted="Set numeric NULL; carry state separately")
+        yield from k10_rows(family)
+
+
+def k10_rows(family):
+    checks = {
+        "source_file": ("manifest.filename", "Keep the filename from the checked manifest"),
+        "report_month": ("manifest.report_month", "Keep the file's report month"),
+        "lookup_field": ("relationship_audit.key_columns", "Keep the exact key columns used by the check"),
+        "lookup_status": ("relationship_audit.status", "Keep the audit status for this scope"),
+        "eligible_rows": ("relationship_audit.eligible_rows", "Count rows whose keys are present"),
+        "matched_rows": ("relationship_audit.reference_unique_matches",
+                         "Count eligible rows with exactly one official match. Use NULL if the reference is incomplete"),
+        "coverage_pct": ("relationship_audit.k10_coverage_pct",
+                         "Divide 100 * matched_rows by eligible_rows. Use NULL if unverified or the denominator is zero"),
+    }
+    validation = (
+        "SELECT * FROM audit.fk_lookup_coverage WHERE matched_rows > eligible_rows "
+        "OR (lookup_status = 'VERIFIED' AND eligible_rows > 0 AND coverage_pct IS NULL) "
+        "OR (coverage_pct IS NOT NULL AND (lookup_status IS DISTINCT FROM 'VERIFIED' "
+        "OR eligible_rows IS NULL OR eligible_rows <= 0 OR matched_rows IS NULL "
+        "OR ABS(coverage_pct - 100.0 * matched_rows / NULLIF(eligible_rows, 0)) > 0.000001))"
+    )
+    for target, (source, rule) in checks.items():
+        yield row(family, source, "derived", "audit",
+                  "fk_lookup_coverage", target, rule,
+                  validation,
+                  time_role="report_month", lookup="One official reference check per source file and key",
+                  nullable="See coverage rule", redacted="Count separately from eligible", status="PARTIAL")
 
 
 if __name__ == "__main__":

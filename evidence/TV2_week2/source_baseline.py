@@ -91,6 +91,14 @@ def identifier(value):
     return '"' + value.replace('"', '""') + '"'
 
 
+def text_state_sql(column):
+    """Classify text with the same TRIM and REDACTED rules as profiling v1."""
+    return (f"CASE WHEN {column} IS NULL THEN 'NULL' "
+            f"WHEN TRIM(CAST({column} AS VARCHAR)) = '' THEN 'EMPTY' "
+            f"WHEN UPPER(TRIM(CAST({column} AS VARCHAR))) = 'REDACTED' "
+            "THEN 'REDACTED' ELSE 'PRESENT' END")
+
+
 def dictionary(con, files, schemas, inventory):
     profiling = ROOT / "evidence/TV2_week1/TV2_Data_Quality_Phan_Tich_V1/column_quality_aggregated.csv"
     quality = {(row["dataset"], row["column"]): row for row in read_csv(profiling)}
@@ -108,7 +116,7 @@ def dictionary(con, files, schemas, inventory):
             raw = identifier(field)
             example = con.execute(f"""
                 SELECT {raw}, count(*) AS n FROM read_parquet(?)
-                WHERE {raw} IS NOT NULL AND {raw} NOT IN ('', 'REDACTED')
+                WHERE ({text_state_sql(raw)}) = 'PRESENT'
                 GROUP BY {raw} ORDER BY n DESC, {raw} LIMIT 1
             """, [str(sample)]).fetchone()
             stats = quality[family, field]

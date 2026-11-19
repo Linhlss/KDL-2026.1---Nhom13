@@ -10,9 +10,9 @@ SELECT count(*) AS records,
            NOT regexp_full_match(business_month, '[0-9]{4}(0[1-9]|1[0-2])')) AS invalid_month,
        count(*) FILTER (WHERE business_month <> report_month) AS different_month,
        count(*) FILTER (WHERE annualized_adjusted_basic_pay IS NULL) AS pay_null,
-       count(*) FILTER (WHERE annualized_adjusted_basic_pay = '') AS pay_empty,
-       count(*) FILTER (WHERE annualized_adjusted_basic_pay = 'REDACTED') AS pay_redacted,
-       count(*) FILTER (WHERE annualized_adjusted_basic_pay NOT IN ('', 'REDACTED')
+       count(*) FILTER (WHERE TRIM(annualized_adjusted_basic_pay) = '') AS pay_empty,
+       count(*) FILTER (WHERE UPPER(TRIM(annualized_adjusted_basic_pay)) = 'REDACTED') AS pay_redacted,
+       count(*) FILTER (WHERE UPPER(TRIM(annualized_adjusted_basic_pay)) NOT IN ('', 'REDACTED')
            AND try_cast(annualized_adjusted_basic_pay AS DECIMAL(18,2)) IS NULL) AS pay_invalid,
        count(*) FILTER (WHERE try_cast(annualized_adjusted_basic_pay AS DECIMAL(18,2)) < 0)
            AS pay_negative
