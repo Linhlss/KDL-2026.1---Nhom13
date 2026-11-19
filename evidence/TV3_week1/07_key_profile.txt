@@ -1,0 +1,18 @@
+Accessions (full file)
+          field           | rows_profiled | null_or_blank | redacted | distinct_codes | codes_without_label | codes_with_multiple_labels
+--------------------------+---------------+---------------+----------+----------------+---------------------+----------------------------
+ agency_code              |          7153 |             0 |        0 |             54 |                   0 |                          0
+ duty_station_code        |          7153 |             0 |     2593 |            931 |                  17 |                          0
+ occupational_series_code |          7153 |             0 |        0 |            265 |                   0 |                          0
+ pay_plan_code            |          7153 |            20 |        0 |             55 |                   0 |                          0
+(4 rows)
+
+
+Employment (first 50000 rows)
+          field           | rows_profiled | null_or_blank | redacted | distinct_codes | codes_without_label | codes_with_multiple_labels
+--------------------------+---------------+---------------+----------+----------------+---------------------+----------------------------
+ agency_code              |         50000 |             0 |        0 |             31 |                   0 |                          0
+ duty_station_code        |         50000 |             0 |    16004 |           2811 |                  97 |                          0
+ occupational_series_code |         50000 |             0 |        0 |            426 |                   0 |                          0
+ pay_plan_code            |         50000 |             0 |        0 |             55 |                   0 |                          0
+(4 rows)

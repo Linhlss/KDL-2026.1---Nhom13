@@ -1,0 +1,30 @@
+PostgreSQL client
+psql (PostgreSQL) 18.7 (Postgres.app)
+
+Database connection
+   database   |   server_version    | port
+--------------+---------------------+------
+ workforce_dw | 18.7 (Postgres.app) | 5432
+(1 row)
+
+BEGIN
+CREATE SCHEMA
+CREATE SCHEMA
+CREATE SCHEMA
+CREATE SCHEMA
+CREATE SCHEMA
+CREATE SCHEMA
+CREATE SCHEMA
+COMMIT
+
+Project schemas
+  schema
+----------
+ audit
+ dw
+ mart
+ ods
+ raw_meta
+ ref
+ staging
+(7 rows)

@@ -1,0 +1,4 @@
+﻿total_rows,null_count,empty_count,redacted_count,numeric_count,other_invalid_count,negative_numeric_count,zero_numeric_count,dataset,min_numeric,max_numeric,sum_numeric_nonredacted
+9057997,0,0,0,9057997,0,0,0,employment,1.0,1.0,9057997.0
+30782,0,0,0,30782,0,0,0,accessions,1.0,1.0,30782.0
+92511,0,0,0,92511,0,0,0,separations,1.0,1.0,92511.0

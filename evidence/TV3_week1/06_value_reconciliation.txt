@@ -1,0 +1,4 @@
+Independently read source batches and PostgreSQL rows ordered by source_row_ordinal.
+Compared every raw cell without printing source values.
+accessions_202504_v5.parquet: 7153 rows x 68 columns = 486404 exact cell matches (PASS)
+employment_202504_v4.parquet: 50000 rows x 64 columns = 3200000 exact cell matches (PASS)

@@ -1,0 +1,13 @@
+﻿dataset,period,file,rows,columns
+employment,202503,employment_202503_v4.parquet,2289192,64
+employment,202504,employment_202504_v4.parquet,2271969,64
+employment,202505,employment_202505_v4.parquet,2255056,64
+employment,202506,employment_202506_v4.parquet,2241780,64
+accessions,202503,accessions_202503_v5.parquet,4862,68
+accessions,202504,accessions_202504_v5.parquet,7153,68
+accessions,202505,accessions_202505_v5.parquet,8813,68
+accessions,202506,accessions_202506_v5.parquet,9954,68
+separations,202503,separations_202503_v5.parquet,22061,69
+separations,202504,separations_202504_v5.parquet,24088,69
+separations,202505,separations_202505_v5.parquet,26415,69
+separations,202506,separations_202506_v5.parquet,19947,69
