@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="06_etl_data_flow" name="Luồng ETL G2 và checkpoint">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1800" pageHeight="1330" background="#f7f9fc">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="project" parent="1" vertex="1" value="NHÓM 13  /  TV3 G2  /  THÁNG 04 2025" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="52" y="30" width="1696" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" vertex="1" value="Luồng ETL G2 và checkpoint" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=39;fontColor=#16273d;fontStyle=1;">
+          <mxGeometry x="52" y="75" width="1696" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" vertex="1" value="Từng file có lineage, transaction và trạng thái audit để chạy lại và đối soát" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=21;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="52" y="135" width="1696" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="j00" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;FILE → METADATA&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J00 · Kiểm nguồn&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;Inventory / manifest TV2&lt;br&gt;SHA-256 + bytes + schema&lt;br&gt;Đăng ký source_file&lt;br&gt;Checkpoint file hợp lệ&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="60" y="250" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="j01" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;PARQUET → STAGING&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J01 · Nạp Staging&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PyArrow batch → COPY&lt;br&gt;file_id + ordinal 1-based&lt;br&gt;Transaction theo file&lt;br&gt;Checkpoint row count&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="495" y="250" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="j02" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;STAGING → ODS&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J02 · Chuẩn hóa ODS&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;Raw + typed/status + DQ&lt;br&gt;Giữ đủ dòng nguồn&lt;br&gt;Report / effective month&lt;br&gt;Checkpoint lineage&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="930" y="250" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="j03" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;ODS / LOOKUP → DIM&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J03 · Build Dimension&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;Month / Agency / Category&lt;br&gt;TV2 derived lookup READY&lt;br&gt;Khóa surrogate + Unknown&lt;br&gt;Chờ TV4 duyệt logic&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1365" y="250" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="e01" parent="1" edge="1" source="j00" target="j01" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" parent="1" edge="1" source="j01" target="j02" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" parent="1" edge="1" source="j02" target="j03" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j04" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;ODS + DIM → FACT&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J04 · Build 3 Fact&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;Mỗi dòng nguồn → 1 Fact&lt;br&gt;PK file_id + ordinal&lt;br&gt;FK Dimension / time roles&lt;br&gt;Checkpoint ODS = Fact&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="930" y="665" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="j05" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;FACT → MART&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J05 · Build 2 Mart&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:18px&quot; color=&quot;#52647a&quot;&gt;workforce_monthly&lt;br&gt;personnel_flows_monthly&lt;br&gt;Tổng hợp về month + agency&lt;br&gt;Checkpoint tổng measure&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="495" y="665" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="j06" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;SOURCE → SQL KPI&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;J06 · Đối soát&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;Nguồn / ODS / Fact / Mart&lt;br&gt;K01 / K06 / K07 kỳ 202504&lt;br&gt;Log thực đo + code version&lt;br&gt;TV5 kiểm lại độc lập&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="60" y="665" width="375" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="e34" parent="1" edge="1" source="j03" target="j04" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1552" y="785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e45" parent="1" edge="1" source="j04" target="j05" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e56" parent="1" edge="1" source="j05" target="j06" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e34label" parent="1" vertex="1" value="Lineage ODS → Fact" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=16;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="1365" y="550" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#a64b3a&quot;&gt;&lt;b&gt;CHECKPOINT XUYÊN LUỒNG&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;Audit và nhánh lỗi&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;audit.load_run ghi SUCCESS / SKIPPED / FAIL theo job, file và run_id.&lt;br&gt;Lỗi rollback dữ liệu theo phạm vi file; audit FAIL được ghi độc lập. audit.dq_issue giữ ngoại lệ có lineage.&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="60" y="1010" width="1680" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="err" parent="1" edge="1" source="j00" target="audit" style="edgeStyle=none;strokeColor=#a64b3a;strokeWidth=2;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="247" y="560" />
+              <mxPoint x="30" y="560" />
+              <mxPoint x="30" y="1085" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="errlabel" parent="1" vertex="1" value="Sai checksum / schema / file thiếu / lỗi nạp → FAIL + bảo toàn lượt hợp lệ" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#a64b3a;fontStyle=0;">
+          <mxGeometry x="58" y="585" width="850" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" parent="1" vertex="1" value="Bước Power BI trên Windows và đối soát SQL–DAX chờ TV4/TV5. J03–J05 theo mô hình đề xuất chờ duyệt." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=19;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="60" y="1220" width="1680" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

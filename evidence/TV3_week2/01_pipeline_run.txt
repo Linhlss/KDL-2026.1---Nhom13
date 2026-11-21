@@ -1,0 +1,5 @@
+SUCCESS employment_202504_v4.parquet 2271969 rows
+SUCCESS accessions_202504_v5.parquet 7153 rows
+SUCCESS separations_202504_v5.parquet 24088 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2271969, "measure_sum": 2271969, "unknown_agency_rows": 206687}, "accessions": {"rows": 7153, "measure_sum": 7153, "unknown_agency_rows": 1591}, "separations": {"rows": 24088, "measure_sum": 24088, "unknown_agency_rows": 1936}}, "marts": {"headcount": 2271969, "accessions": 7153, "separations": 24088, "workforce_groups": 114, "flow_groups": 88}}
+Completed all month=202504 db=workforce_dw; TV4/TV5 review pending
