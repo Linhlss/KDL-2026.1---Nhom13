@@ -40,4 +40,4 @@ python -B evidence/TV2_week2/review_checks.py --postgres-j02 | psql -X -v ON_ERR
 
 ## Cập nhật L2-07 ngày 21/11/2026
 
-Audit mới dùng bảng Current/Past Values đầy đủ cho mã Subelement bốn ký tự và danh sách nhãn action quan sát trong bản công bố FedScope đến 03/2025. Có 1.339 dòng `HU**` được đánh dấu ngoại lệ và 2.652 khóa–tháng có thể nạp làm lookup dẫn xuất. Kiểm LEFT JOIN giữ đủ 9.181.290 dòng trên 12 file. TV3 và TV5 có thể kiểm lại khóa, nhãn và phạm vi trước khi duyệt. [Nguồn và cách nạp lookup](../../data/reference/README.md)
+Audit dùng bản chụp Current/Past Values có kiểm SHA-256 cho mã Subelement bốn ký tự và nhãn action quan sát trong bản công bố FedScope đến 03/2025. Có 1.339 dòng `HU**` được đánh dấu ngoại lệ. Bảng lookup có 2.521 khóa–tháng `READY`, 131 khóa–tháng `REVIEW` vì lệch nhãn EHRI và 5 khóa–tháng `UNKNOWN`. Kiểm LEFT JOIN giữ đủ 9.181.290 dòng trên 12 file. TV3 và TV5 có thể kiểm lại khóa, nhãn và phạm vi trước khi duyệt. [Nguồn và cách nạp lookup](../../data/reference/README.md)

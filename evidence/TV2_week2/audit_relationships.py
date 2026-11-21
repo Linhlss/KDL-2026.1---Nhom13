@@ -190,7 +190,12 @@ def derived_lookup(by_month, references, fedscope_labels, dated_labels):
             ehri_check = ""
             if ehri_label:
                 ehri_check = "MATCH" if observed == {ehri_label.strip().casefold()} else "DIFFERENT"
-            status = "UNKNOWN" if reason else "READY"
+            if reason:
+                status = "UNKNOWN"
+            elif ehri_check == "DIFFERENT":
+                status, reason = "REVIEW", "EHRI_LABEL_DIFFERENCE"
+            else:
+                status = "READY"
             rows.append(dict(relation=relation, report_month=month, code=key[0],
                              label=names[0] if status == "READY" else "", observed_rows=count,
                              provenance="DERIVED_LOOKUP", load_status=status, exception=reason,

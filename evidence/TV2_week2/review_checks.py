@@ -6,6 +6,7 @@ from datetime import date
 import duckdb
 
 from audit_relationships import derived_lookup, reference_metrics, state
+from prepare_opm_lookup import agency_categories, read_ehri_tables
 from quality_handoff import lookup_query
 from source_mapping import TABLES, fact_lineage_sql
 
@@ -112,26 +113,55 @@ def check_derived_lookup():
     url = "https://data.opm.gov/data-standards/agency-subelement"
     start = date(2025, 3, 1)
     duplicate = ("0002", start, None, url, "COMPLETE")
-    references = {"agency_subelement": [("0001", start, None, url, "COMPLETE"), duplicate, duplicate]}
+    references = {"agency_subelement": [
+        ("0001", start, None, url, "COMPLETE"),
+        duplicate,
+        duplicate,
+        ("0004", start, None, url, "COMPLETE"),
+    ]}
     by_month = {
         ("agency_subelement", "202503"): Counter({
             (("0001",), "Single"): 9, (("0002",), "Conflicting authority"): 2,
-            (("0003",), "Missing from authority"): 3,
+            (("0003",), "Missing from authority"): 3, (("0004",), "Same label"): 1,
         }),
         ("separation_category", "202503"): Counter({
             (("SC",), "QUIT"): 4, (("SD",), "Other description"): 3,
         }),
     }
     labels = {("separation_category", "SC"): {"Quit"}, ("separation_category", "SD"): {"Retirement"}}
-    dated_labels = {("agency_subelement", "0001"): [(start, None, "Original label")]}
+    dated_labels = {
+        ("agency_subelement", "0001"): [(start, None, "Original label")],
+        ("agency_subelement", "0004"): [(start, None, "SAME LABEL")],
+    }
     rows = {r["code"]: r for r in derived_lookup(by_month, references, labels, dated_labels)}
-    assert rows["0001"]["load_status"] == "READY" and rows["0001"]["label"] == "Single"
+    assert rows["0001"]["load_status"] == "REVIEW" and not rows["0001"]["label"]
+    assert rows["0001"]["observed_labels"] == "Single"
+    assert rows["0001"]["exception"] == "EHRI_LABEL_DIFFERENCE"
     assert rows["0001"]["ehri_label"] == "Original label" and rows["0001"]["ehri_label_check"] == "DIFFERENT"
     assert rows["0002"]["exception"] == "OPM_DUPLICATE_ACTIVE_KEY" and not rows["0002"]["label"]
     assert rows["0003"]["exception"] == "OPM_KEY_NOT_ACTIVE" and not rows["0003"]["label"]
+    assert rows["0004"]["load_status"] == "READY" and rows["0004"]["label"] == "Same label"
     assert rows["SC"]["fedscope_label_check"] == "MATCH"
     assert rows["SD"]["exception"] == "FEDSCOPE_LABEL_REVIEW" and not rows["SD"]["label"]
     print("Monthly derived lookup and quarantine checks passed.")
+
+
+def check_ehri_snapshot():
+    tables = read_ehri_tables()
+    assert len(agency_categories(tables)) == 782
+    for index, tab in enumerate(("Current values", "Past values")):
+        modified = tables.copy()
+        lines = tables[index].splitlines(keepends=True)
+        assert lines[1] != lines[2]
+        lines[1] = lines[2]
+        modified[index] = b"".join(lines)
+        try:
+            agency_categories(modified)
+        except ValueError as error:
+            assert f"{tab}: SHA-256" in str(error)
+        else:
+            raise AssertionError(f"{tab} accepted a changed snapshot with the same row count")
+    print("Both EHRI snapshots passed checksum verification and rejected altered inputs.")
 
 
 def main():
@@ -144,6 +174,7 @@ def main():
         return
     check_reference()
     check_derived_lookup()
+    check_ehri_snapshot()
     with duckdb.connect() as con:
         check_lineage(con)
         findings = con.execute(j02_fixture_sql()).fetchall()

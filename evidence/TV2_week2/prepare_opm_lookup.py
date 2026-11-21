@@ -3,16 +3,20 @@ import argparse
 import csv
 import hashlib
 from datetime import date, datetime
-from io import TextIOWrapper
+from io import StringIO, TextIOWrapper
 from pathlib import Path
 from zipfile import ZipFile
 
-from source_baseline import ROOT, read_csv, write_csv
+from source_baseline import ROOT, write_csv
 
 AGENCY_URL = "https://data.opm.gov/data-standards/agency-subelement"
 BASELINE_START = date(2025, 3, 1)
 BASELINE_END = date(2025, 6, 30)
-EHRI_TAB_ROWS = {"Current values": 802, "Past values": 2931}
+EHRI_SNAPSHOT = ROOT / "data/reference/source/ehri_agency_subelement_20261121.zip"
+EHRI_TABS = (
+    ("Current values", "current.csv", 802, "d314c34544265596dd6bde709734d14f04c6e6111fdca3b1ae7c440a5513d0a3"),
+    ("Past values", "past.csv", 2931, "47593feb63e9224d4157b8cfc4fa2aaa667c0308ab3952b8be26749d7c1f39b4"),
+)
 FED_SCOPE = {
     "accession_category": (
         "https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip",
@@ -47,12 +51,21 @@ def fedscope_categories(path, relation):
             for code, label in sorted(pairs)]
 
 
-def agency_categories(paths):
+def read_ehri_tables(paths=None):
+    if paths is not None:
+        return [path.read_bytes() for path in paths]
+    with ZipFile(EHRI_SNAPSHOT) as snapshot:
+        return [snapshot.read(member) for _, member, _, _ in EHRI_TABS]
+
+
+def agency_categories(tables):
     result = []
-    for path, tab in zip(paths, ("Current values", "Past values"), strict=True):
-        rows = read_csv(path)
-        if len(rows) != EHRI_TAB_ROWS[tab]:
-            raise ValueError(f"{tab}: expected {EHRI_TAB_ROWS[tab]} rows, found {len(rows)}")
+    for data, (tab, _, expected_rows, expected_hash) in zip(tables, EHRI_TABS, strict=True):
+        if hashlib.sha256(data).hexdigest() != expected_hash:
+            raise ValueError(f"{tab}: SHA-256 does not match the EHRI snapshot from 2026-11-21")
+        rows = list(csv.DictReader(StringIO(data.decode("utf-8-sig"), newline="")))
+        if len(rows) != expected_rows:
+            raise ValueError(f"{tab}: expected {expected_rows} rows, found {len(rows)}")
         for row in rows:
             code = row["code"]
             start = datetime.strptime(row["valid_from"], "%m/%d/%Y").date()
@@ -77,10 +90,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("accessions_zip", type=Path)
     parser.add_argument("separations_zip", type=Path)
-    parser.add_argument("--agency-tables", type=Path, nargs=2, required=True, metavar=("CURRENT", "PAST"),
-                        help="Full EHRI tables with code, label, valid_from and valid_through")
+    parser.add_argument("--agency-tables", type=Path, nargs=2, metavar=("CURRENT", "PAST"),
+                        help="Exact EHRI snapshot CSVs. Defaults to the archived copies")
     args = parser.parse_args()
-    agency = agency_categories(args.agency_tables)
+    agency = agency_categories(read_ehri_tables(args.agency_tables))
     rows = agency + fedscope_categories(args.accessions_zip, "accession_category") + fedscope_categories(
         args.separations_zip, "separation_category")
     rows.sort(key=lambda row: (row["relation"], row["code"], row["valid_from"], row["label"]))
