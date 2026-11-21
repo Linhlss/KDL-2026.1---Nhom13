@@ -1,5 +1,7 @@
 # Báo cáo Data Quality / Data Profiling — TV2, Nhóm 13
 
+> Chuẩn nghiệm thu hiện hành là V3 và kế hoạch G2. Xem [gói TV2 cập nhật](../../TV2_week2/README.md).
+
 > **Trạng thái:** Bản phân tích kết quả profiling v1 — 16/11/2026.  Nguồn số liệu: 5 CSV trong `csv.zip` do script `profile_12_parquet.py` của TV2 xuất từ 12 file Parquet (03–06/2025). Đối chiếu yêu cầu theo `De_cuong_DW_BI_Nhom13_5_5_tuan_V2.md` và `Phan_cong_DW_BI_Nhom13_5_5_tuan_V2.md`.
 
 ## 1. Phạm vi và phương pháp

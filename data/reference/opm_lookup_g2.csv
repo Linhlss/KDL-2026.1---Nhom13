@@ -1,0 +1,797 @@
+relation,code,label,valid_from,valid_through,source_url,coverage,source_scope
+accession_category,AA,Transfer In - Individual Transfer,,,https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip,SAMPLE,FedScope 202404–202503
+accession_category,AB,Transfer In - Mass Transfer,,,https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip,SAMPLE,FedScope 202404–202503
+accession_category,AC,New Hire - Competitive Service Appointment,,,https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip,SAMPLE,FedScope 202404–202503
+accession_category,AD,New Hire - Excepted Service Appointment,,,https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip,SAMPLE,FedScope 202404–202503
+accession_category,AE,New Hire - Senior Executive Service (SES) Appt,,,https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip,SAMPLE,FedScope 202404–202503
+agency,AF,DEPARTMENT OF THE AIR FORCE,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,AG,DEPARTMENT OF AGRICULTURE,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,AH,NATIONAL FOUNDATION ON THE ARTS AND THE HUMANITIES,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,AR,DEPARTMENT OF THE ARMY,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,CM,DEPARTMENT OF COMMERCE,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,DD,DEPARTMENT OF DEFENSE,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,DJ,DEPARTMENT OF JUSTICE,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,DL,DEPARTMENT OF LABOR,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,DN,DEPARTMENT OF ENERGY,2007-07-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,ED,DEPARTMENT OF EDUCATION,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,FQ,COURT SERVICES AND OFFENDER SUPERVISION AGENCY FOR THE DISTRICT OF COLUMBIA,2000-10-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,FR,FEDERAL RESERVE SYSTEM,2010-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,GS,GENERAL SERVICES ADMINISTRATION,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,HB,COMMITTEE FOR PURCHASE FROM PEOPLE WHO ARE BLIND AND SEVERELY DISABLED,2016-08-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,HE,DEPARTMENT OF HEALTH AND HUMAN SERVICES,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,HF,FEDERAL HOUSING FINANCE AGENCY,2008-07-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,HS,DEPARTMENT OF HOMELAND SECURITY,2003-01-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,HU,DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,IN,DEPARTMENT OF THE INTERIOR,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,JL,JUDICIAL BRANCH,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,LL,LEGISLATIVE BRANCH,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,NN,NATIONAL AERONAUTICS AND SPACE ADMINISTRATION,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,NV,DEPARTMENT OF THE NAVY,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,RH,ARMED FORCES RETIREMENT HOME,2004-07-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,SM,SMITHSONIAN INSTITUTION,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,ST,DEPARTMENT OF STATE,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,TD,DEPARTMENT OF TRANSPORTATION,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,TR,DEPARTMENT OF THE TREASURY,1986-12-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,VA,DEPARTMENT OF VETERANS AFFAIRS,1989-03-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,WH,EXECUTIVE OFFICE OF THE PRESIDENT,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency,XX,EXECUTIVE BRANCH,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,SAMPLE,Current values
+agency_subelement,AA00,ADMINISTRATIVE CONFERENCE OF THE UNITED STATES,2010-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AB00,AMERICAN BATTLE MONUMENTS COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF02,AIR FORCE INSPECTION AGENCY (FO),2011-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF03,AIR FORCE OPERATIONAL TEST AND EVALUATION CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF04,AIR FORCE COMMUNICATIONS AGENCY (HISTORICAL),2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF06,AIR FORCE AUDIT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF07,AIR FORCE OFFICE OF SPECIAL INVESTIGATIONS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF09,AIR FORCE PERSONNEL CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0B,U.S. AIR FORCE ACADEMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0D,"U.S. AIR FORCES, EUROPE",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0J,AIR EDUCATION AND TRAINING COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0M,"HEADQUARTERS, AIR FORCE RESERVE COMMAND",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0R,PACIFIC AIR FORCES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0U,"AIR FORCE INTELLIGENCE, SURVEILLANCE, & RECONNAISSANCE AGENCY",2014-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF0V,AIR FORCE SPECIAL OPERATIONS COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF12,AIR FORCE PUBLIC AFFAIRS AGENCY,2008-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF13,HQ USAF AND SUPPORT ELEMENTS,2008-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF15,AIR FORCE CIVIL ENGINEER CENTER,2012-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF16,AIR FORCE MORTUARY AFFAIRS OPERATIONS,2014-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF18,DEFENSE HEALTH AGENCY AIR FORCE ELEMENT,2014-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1B,AIR FORCE MANPOWER ANALYSIS AGENCY,2015-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1C,AIR COMBAT COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1K,AIR FORCE CYBER COMMAND,2007-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1L,AIR MOBILITY COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1M,AIR FORCE MATERIEL COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1Q,HQ AF FLIGHT STANDARDS AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1R,UNITED STATES AFRICA COMMAND,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1S,"HEADQUARTERS, AIR FORCE SPACE COMMAND",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF1Y,AIR FORCE CIVILIAN CAREER TRAINING,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF20,AIR FORCE AGENCY FOR MODELING/SIMULATION,2009-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2A,AIR FORCE COST ANALYSIS AGENCY,2011-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2E,AIR FORCE LEGAL OPERATIONS AGENCY,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2F,AIR FORCE MEDICAL SUPPORT AGENCY,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2H,AIR FORCE OPERATIONS GROUP,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2I,AIR NATIONAL GUARD SUPPORT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2K,AIR FORCE HISTORICAL RESEARCH AGENCY,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2L,AIR FORCE TECHNICAL APPLICATIONS CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2M,AIR FORCE REVIEW BOARDS AGENCY,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2Q,"HEADQUARTERS, AIR FORCE WEATHER AGENCY",2013-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2R,AIR FORCE PROGRAM EXECUTIVE OFFICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2S,AIR FORCE ELEMENTS NORAD,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2T,AIR FORCE SAFETY CENTER,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2W,11TH WING,2005-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF2Z,AIR FORCE MEDICAL COMMAND,2024-10-28,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF30,AFELM DISA,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF33,AFELM DLA,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF34,AIR NATIONAL GUARD,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF35,AIR ELEMENTS DEFENSE INTELLIGENCE AGENCY,2006-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF37,AFELM DEFENSE THREAT REDUCTION AGENCY,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF38,AFELM JCS,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF39,AIR FORCE ELEMENT OSD,1994-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3A,"DEFENSE CONTRACT MANAGEMENT AGENCY, AF ELEMENT",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3B,AFELM DEFENSE MEDIA ACTIVITY,2015-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3C,"AIR FORCE ELEMENTS, U.S. CENTRAL COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3D,"AIR FORCE ELEMENTS, U.S. SPECIAL OPERATIONS COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3G,"AIR FORCE ELEMENTS, NATO",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3K,"AIR FORCE ELEMENTS, U.S. EUROPEAN COMMAND",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3M,"AIR FORCE ELEMENTS, U.S. SOUTHERN COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3O,"AIR FORCE ELEMENTS, U.S. PACIFIC COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3Q,"AIR FORCE ELEMENTS, U.S. STRATEGIC COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3T,"AIR FORCE ELEMENTS, U.S. TRANSPORTATION COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3V,AIR FORCE ELEMENTS,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF3Y,AIR FORCE FREQUENCY MANAGEMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF40,NATIONAL AIR AND SPACE INTELLIGENCE CENTER,2014-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF41,"NATIONAL GEOSPATIAL-INTEL AGENCY, AF ELEMENT",2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4B,NON-DOD AND OTHER SUPPORT-USSF,2023-11-29,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4C,AFELM US CYBER COMMAND,2017-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4D,U.S. NORTHERN COMMAND,2012-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4F,OFFICE OF CHIEF OF SPACE OPERATIONS,2019-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4G,UNITED STATES SPACE FORCE,2019-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4H,USSF SUPPORT TO HAF (NON-OCSO),2024-01-10,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4S,AFELM US SPACE COMMAND,2019-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4V,NON-DOD AND OTHER SUPPORT,2015-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF4W,AIR FORCE DISTRICT OF WASHINGTON,2005-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF5C,CYBERSPACE CAPABILITIES CENTER,2024-08-22,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF5D,DEFENSE CYBER CRIME CENTER,2020-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF5K,AIR FORCE PETROLEUM AGENCY,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6A,SPACE RAPID CAPABILITIES OFFICE,2024-01-10,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6B,SPACE FUTURES COMMAND,2024-03-05,2025-11-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,AF6C,SFELM UNITED STATES SPACE COMMAND,2022-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6D,SPACE DEVELOPMENT AGENCY,2022-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6E,SPACE FORCE SERVICE WIDE SUPPORT ACTIVITIES,2024-03-05,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6F,UNITED STATES SPACE FORCE FORCES,2020-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6G,USSF SUPPORT TO USAF (NON-HAF),2024-01-10,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6H,USSF SUPPORT TO HAF (NON-OCSO),2024-01-10,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6K,UNITED STATES SPACE FORCE COMPONENTS,2023-09-29,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6N,NATIONAL SPACE INTELLIGENCE CENTER,2024-01-10,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6R,SFELM NATIONAL RECONNAISSANE OFFICE,2022-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6S,SPACE SYSTEMS COMMAND,2021-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6T,SPACE TRAINING AND READINESS COMMAND,2021-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AF6V,SPACE FORCE ELEMENTS,2022-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFCC,INTEGRATED CAPABILITIES COMMAND,2024-10-24,2026-04-01,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,AFCT,AIR FORCES CENTRAL,2024-09-19,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFCY,AIR FORCE CYBER AND INTELLIGENCE COMMAND,2025-02-05,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFGS,AIR FORCE GLOBAL STRIKE COMMAND,2008-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFNG,AIR NATIONAL GUARD UNITS,2018-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFNS,AIR FORCES NORTHERN - AIR FORCES SPACE,2024-09-19,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFSN,AIR FORCES SOUTHERN,2024-09-04,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AFZG,U.S. SPECIAL OPERATIONS COMMAND (ANG),2018-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG01,OFFICE OF THE SECRETARY OF AGRICULTURE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG02,AGRICULTURAL MARKETING SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG03,AGRICULTURAL RESEARCH SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG07,RURAL DEVELOPMENT,2018-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG08,RISK MANAGEMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG10,FOREIGN AGRICULTURAL SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG11,FOREST SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG13,OFFICE OF COMMUNICATIONS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG14,OFFICE OF THE GENERAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG15,RURAL UTILITIES SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG16,NATURAL RESOURCES CONSERVATION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG18,ECONOMIC RESEARCH SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG20,NATIONAL AGRICULTURAL STATISTICS SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG22,NATIONAL INSTITUTE OF FOOD AND AGRICULTURE,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG23,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG30,FOOD AND NUTRITION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG32,RURAL BUSINESS-COOPERATIVE SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG34,ANIMAL AND PLANT HEALTH INSPECTION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG36,"GRAIN INSPECTION, PACKERS AND STOCKYARDS ADMINISTRATION",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG37,FOOD SAFETY AND INSPECTION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG38,OFFICE OF THE CHIEF ECONOMIST,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG42,OFFICE OF BUDGET AND PROGRAM ANALYSIS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG90,OFFICE OF THE CHIEF FINANCIAL OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AG99,FPAC BUSINESS CENTER,2018-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGAO,OFFICE OF PARTNERSHIPS AND PUBLIC ENGAGEMENT,2020-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGCR,CIVIL RIGHTS,2009-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGDA,DEPARTMENTAL ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGEM,OFFICE OF ENVIRONMENTAL MARKETS,2010-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGFA,FARM SERVICE AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGHL,HOMELAND SECURITY STAFF,2008-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGIT,OFFICE OF THE CHIEF INFORMATION OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AGNA,NATIONAL APPEALS DIVISION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AH01,NATIONAL ENDOWMENT FOR THE ARTS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AH02,NATIONAL ENDOWMENT FOR THE HUMANITIES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AH03,INSTITUTE OF MUSEUM AND LIBRARY SERVICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AM00,U.S. AGENCY FOR INTERNATIONAL DEVELOPMENT,2020-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AN00,AFRICAN DEVELOPMENT FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AP00,APPALACHIAN REGIONAL COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AR2A,U.S. ARMY CYBER COMMAND,2010-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AR3A,U.S. ARMY CENTRAL,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AR5A,U.S. ARMY NORTH,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARA1,U.S. ARMY AFRICA/SOUTHERN EUROPEAN TASK FORCE (USARAF/SETAF),2011-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAA,U.S. ARMY ACCESSION COMMAND,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAE,U.S. ARMY ACQUISITION SUPPORT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAF,UNITED STATES ARMY FUTURES COMMAND,2018-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAN,U.S. ARMY NATIONAL MILITARY CEMETERIES,2015-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAP,U.S. MILITARY ENTRANCE PROCESSING COMMAND,2009-10-01,2026-09-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,ARAS,U.S. ARMY INTELLIGENCE AND SECURITY COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARAT,U.S. ARMY TEST AND EVALUATION COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARBA,U.S. ARMY INSTALLATION MANAGEMENT COMMAND,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCB,U.S. ARMY CRIMINAL INVESTIGATION COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCC,U.S. ARMY CORRECTIONS COMMAND,2025-05-18,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCE,U.S. ARMY CORPS OF ENGINEERS,2007-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCH,US ARMY CIVILIAN HUMAN RESOURCES AGENCY,2017-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCP,CIVILIAN PROTECTION CENTER OF EXCELLENCE (CP COE),2024-01-17,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARCS,IMMEDIATE OFFICE OF THE CHIEF OF STAFF OF THE ARMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARDJ,JOINT SPECIAL OPERATIONS COMMAND,2014-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARE0,59TH ORDNANCE BRIGADE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARE1,IMMEDIATE OFFICE OF THE COMMANDER-IN-CHIEF OF THE U.S. ARMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARE2,21ST THEATER SUSTAINMENT COMMAND (TSC),2007-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARE3,UNITED STATES ARMY EUROPE AND AFRICA,2020-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARE5,U.S. ARMY V CORPS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AREB,1ST PERSONNEL COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARED,"U.S. MILITARY COMMUNITY ACTIVITY, HEIDELBERG",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AREN,SEVENTH ARMY TRAINING COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARFB,US ARMY FINANCIAL MANAGEMENT COMMAND,2017-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARFC,U.S. ARMY FORCES COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARG6,U.S. ARMY NETWORK ENTERPRISE TECHNOLOGY COMMAND/9TH ARMY SIGNAL COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARGB,OFFICE OF THE CHIEF OF THE NATIONAL GUARD BUREAU,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARHC,US ARMY HUMAN RESOURCES COMMAND (DRU),2017-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARHR,U.S. ARMY RESERVE COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARHS,U.S. ARMY HEALTH SERVICES COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARJ1,U.S. ARMY ELEMENT SHAPE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARJA,JOINT ACTIVITIES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARJC,U.S. JOINT COUNTER,2024-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARMA,U.S. MILITARY ACADEMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARMC,U.S. ARMY MEDICAL COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARMD,SURGEON GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARMW,U.S. ARMY MILITARY DISTRICT OF WASHINGTON,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARNG,ARMY NATIONAL GUARD UNITS,2018-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARP1,"U.S. ARMY, PACIFIC",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARP8,EIGHTH U.S. ARMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARPS,MILITARY POSTAL SERVICE AGENCY,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSA,OFFICE OF THE SECRETARY OF THE ARMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSB,FIELD OPERATING OFFICES OF THE OFFICE OF THE SECRETARY OF THE ARMY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSC,U.S. ARMY SPACE AND MISSILE DEFENSE COMMAND/U. S. ARMY FORCES STRATEGIC COMMAND,2008-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSE,HQDA FIELD OPERATING AGENCIES AND STAFF SUPPORT AGENCIES,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSF,MISCELLANEOUS FIELD OPERATING AGENCIES,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSJ,"JOINT SERVICES AND ACTIVITIES SUPPORTED BY THE OFFICE, SECRETARY OF THE ARMY",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSO,U.S. ARMY SOUTH,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSP,U.S. SPECIAL OPERATIONS COMMAND (ARMY),2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARSU,U.S. ARMY SOUTHERN COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARTA,U.S. ARMY RECRUITING COMMAND AND U.S. ARMY CADET COMMAND,2013-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARTC,U.S. ARMY TRAINING AND DOCTRINE COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARTW,U.S. ARMY WAR COLLEGE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX1,U.S. ARMY MATERIAL COMMAND,2012-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX2,"HEADQUARTERS, AMC",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX3,"HEADQUARTERS, STAFF SUPPORT ACTIVITIES, AMC",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX4,"TRAINING ACTIVITIES, AMC",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX6,U.S. ARMY AVIATION AND MISSILE COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX7,U.S. ARMY TANK-AUTOMOTIVE AND ARMAMENT COMMAND (TACOM),2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX8,U.S. ARMY COMMUNICATIONS ELECTRONICS COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARX9,UNITED STATES ARMY MEDICAL LOGISTICS COMMAND,2020-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXA,UNITED STATES ARMY INSTALLATION MANAGEMENT COMMAND,2019-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXB,U.S. ARMY CHEMICAL MATERIALS AGENCY,2012-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXC,U.S. ARMY SUSTAINMENT COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXD,U.S. ARMY CONTRACTING COMMAND,2008-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXF,UNITED STATES ARMY FINANCIAL MANAGEMENT COMMAND,2020-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXG,UNITED STATES ARMY PRINT AND MEDIA DISTRIBUTION CENTER,2020-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXK,MATERIEL ACQUISITION ACTIVITIES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXL,MATERIEL ACQUISITION PROJECT MANAGERS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXP,U.S. ARMY SECURITY ASSISTANCE COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXQ,U.S. ARMY JOINT MUNITIONS COMMAND,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXR,"U.S. ARMY RESEARCH, DEVELOPMENT AND ENGINEERING COMMAND",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ARXT,U.S. ARMY MILITARY SURFACE DEPLOYMENT AND DISTRIBUTION COMMAND,2007-09-01,2026-03-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,ARXX,MATERIEL READINESS ACTIVITIES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AU00,FEDERAL LABOR RELATIONS AUTHORITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,AW00,ARCTIC RESEARCH COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BD00,MERIT SYSTEMS PROTECTION BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BF00,DEFENSE NUCLEAR FACILITIES SAFETY BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BG00,PENSION BENEFIT GUARANTY CORPORATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BH00,COMMISSION FOR THE PRESERVATION OF AMERICA¿S HERITAGE ABROAD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BJ00,ILLINOIS AND MICHIGAN CANAL NATIONAL HERITAGE CORRIDOR COMMISSION. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1994-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BK00,JAMES MADISON MEMORIAL FELLOWSHIP FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BO00,OFFICE OF MANAGEMENT AND BUDGET,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BT00,ARCHITECTURAL AND TRANSPORTATION BARRIERS COMPLIANCE BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BW00,NUCLEAR WASTE TECHNICAL REVIEW BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,BZ00,CHRISTOPHER COLUMBUS FELLOWSHIP FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CC00,COMMISSION ON CIVIL RIGHTS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CE00,COUNCIL OF ECONOMIC ADVISERS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CF00,COMMISSION OF FINE ARTS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CI00,CENTRAL INTELLIGENCE AGENCY.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM33,TECHNOLOGY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM51,OFFICE OF THE SECRETARY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM52,ECONOMIC DEVELOPMENT ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM53,BUREAU OF ECONOMIC ANALYSIS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM54,NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM55,INTERNATIONAL TRADE ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM56,PATENT AND TRADEMARK OFFICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM57,NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM59,MINORITY BUSINESS DEVELOPMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM61,NATIONAL TELECOMMUNICATIONS AND INFORMATION ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM62,NATIONAL TECHNICAL INFORMATION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM63,U.S. CENSUS BUREAU,2016-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM64,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM65,ECONOMICS AND STATISTICS ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CM67,BUREAU OF INDUSTRY AND SECURITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CT00,COMMODITY FUTURES TRADING COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CU00,NATIONAL CREDIT UNION ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,CX00,NATIONAL COMMISSION ON LIBRARIES AND INFORMATION SCIENCE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DA00,DELTA REGIONAL AUTHORITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DB00,PUBLIC INTEREST DECLASSIFICATION BOARD,2006-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DC00,OFFICE OF POLICY DEVELOPMENT.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1998-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD01,OFFICE OF THE SECRETARY OF DEFENSE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD02,ORGANIZATION OF THE JOINT CHIEFS OF STAFF,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD04,DEFENSE INFORMATION SYSTEMS AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD05,DEFENSE INTELLIGENCE AGENCY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD06,DEFENSE SECURITY COOPERATION AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD07,DEFENSE LOGISTICS AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD08,U.S. COURT OF APPEALS FOR THE ARMED FORCES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD10,DEFENSE CONTRACT AUDIT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD11,NATIONAL GEOSPATIAL-INTELLIGENCE AGENCY.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2003-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD12,DEFENSE COUNTERINTELLIGENCE AND SECURITY AGENCY,2019-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD13,DEFENSE ADVANCED RESEARCH PROJECTS AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD15,UNIFORMED SERVICES UNIVERSITY OF THE HEALTH SCIENCES,2013-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD16,DEPARTMENT OF DEFENSE EDUCATION ACTIVITY,2005-02-01,2026-04-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,DD21,WASHINGTON HEADQUARTERS SERVICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD23,OFFICE OF ECONOMIC ADJUSTMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD25,DEFENSE LEGAL SERVICES AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD26,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD27,MISSILE DEFENSE AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD28,NATIONAL SECURITY AGENCY/CENTRAL SECURITY SERVICE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,2026-10-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,DD29,DEFENSE TECHNOLOGY SECURITY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD34,DEFENSE COMMISSARY AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD35,DEFENSE FINANCE AND ACCOUNTING SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD36,ARMY AND AIR FORCE EXCHANGE SERVICE (NONAPPROPRIATED FUND). NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1991-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD48,DEFENSE HUMAN RESOURCES ACTIVITY,2005-02-01,2026-10-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,DD53,DEFENSE POW/MIA ACCOUNTING AGENCY,2015-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD58,DEFENSE PRISONER OF WAR/MISSING PERSONNEL OFFICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD59,CONSOLIDATED METROPOLITAN TECHNICAL PERSONNEL CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1995-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD60,DEFENSE HEALTH AGENCY,2013-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD61,DEFENSE THREAT REDUCTION AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD62,DEFENSE CAREER MANAGEMENT AND SUPPORT AGENCY.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD63,DEFENSE CONTRACT MANAGEMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD64,EASTERN REGIONAL SUPPORT CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD65,PENTAGON FORCE PROTECTION AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD66,DEPARTMENT OF DEFENSE COUNTERINTELLIGENCE FIELD ACTIVITY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD67,UNIFIED COMBATANT COMMAND HEADQUARTERS.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2003-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD68,DEPARTMENT OF DEFENSE TEST RESOURCE MANAGEMENT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD69,NATIONAL DEFENSE UNIVERSITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD70,ARMED FORCES RADIOBIOLOGY RESEARCH INSTITUTE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES..,2004-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD71,DEFENSE MICROELECTRONICS ACTIVITY,2012-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD72,PENTAGON RENOVATION PROGRAM OFFICE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2004-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD73,VIRGINIA CONTRACTING ACTIVITY.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2004-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD74,DEFENSE TECHNICAL INFORMATION CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD75,DEFENSE CIVILIAN PERSONNEL ADVISORY SERVICE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES..,2011-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD76,U.S. TRANSPORTATION COMMAND.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2005-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD77,BUSINESS TRANSFORMATION AGENCY,2005-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD78,DEFENSE PROGRAMS SUPPORT ACTIVITY.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2006-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD79,JOINT IMPROVISED-THREAT DEFEAT AGENCY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2015-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD80,DEFENSE MEDIA ACTIVITY,2008-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD81,DEFENSE ACQUISITION UNIVERSITY,2010-06-01,2025-11-17,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,DD82,NATIONAL RECONNAISSANCE OFFICE,2015-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD83,MILITARY TREATMENT FACILITIES UNDER DHA,2017-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DD84,SPACE DEVELOPMENT AGENCY,2020-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC0,US CYBER COMMAND (CYBERCOM) HEADQUARTERS. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES..,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC1,ARMY CYBER COMMAND (ARCYBER). NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC2,NAVY FLEET CYBER COMMAND (FLTCYBER). NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC3,AIR FORCE CYBER COMMAND (AFCYBER). NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC4,MARINE FORCES CYBER COMMAND (MARFORCYBER). NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DDC5,JOINT FORCES HEADQUARTERS-DODIN. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DG00,NORTHERN BORDER REGIONAL COMMISSION,2010-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ01,"OFFICES, BOARDS AND DIVISIONS",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ02,FEDERAL BUREAU OF INVESTIGATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ03,BUREAU OF PRISONS/FEDERAL PRISON SYSTEM,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ06,DRUG ENFORCEMENT ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ07,OFFICE OF JUSTICE PROGRAMS,2005-02-01,2026-07-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,DJ08,U.S. MARSHALS SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ09,EXECUTIVE OFFICE FOR U.S. ATTORNEYS AND THE OFFICE OF THE U.S. ATTORNEYS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ10,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ11,U.S. TRUSTEE PROGRAM,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ12,EXECUTIVE OFFICE FOR IMMIGRATION REVIEW,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ14,COMMUNITY RELATIONS SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJ15,"BUREAU OF ALCOHOL, TOBACCO, FIREARMS AND EXPLOSIVES",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DJJA,USAO/NORTHERN DISTRICT OF OKLAHOMA,2025-05-18,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLAA,OFFICE OF THE SECRETARY OF LABOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLAM,OFFICE OF THE ASSISTANT SECRETARY FOR ADMINISTRATION AND MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLBL,BUREAU OF INTERNATIONAL LABOR AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLCA,OFFICE OF CONGRESSIONAL AND INTERGOVERNMENTAL AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLCF,OFFICE OF THE CHIEF FINANCIAL OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLEH,OFFICE OF DISABILITY EMPLOYMENT POLICY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLES,EMPLOYMENT STANDARDS ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLET,EMPLOYMENT AND TRAINING ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLIG,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLLS,BUREAU OF LABOR STATISTICS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLMS,MINE SAFETY AND HEALTH ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLOF,OFFICE OF FEDERAL CONTRACT COMPLIANCE PROGRAMS,2009-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLOL,OFFICE OF LABOR-MANAGEMENT STANDARDS,2009-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLOW,OFFICE OF WORKERS¿ COMPENSATION PROGRAMS,2009-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLPA,OFFICE OF PUBLIC AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLPE,OFFICE OF THE ASSISTANT SECRETARY FOR POLICY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLPW,EMPLOYEE BENEFITS SECURITY ADMINISTRATION,2009-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLSH,OCCUPATIONAL SAFETY AND HEALTH ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLSL,OFFICE OF THE SOLICITOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLVE,VETERANS EMPLOYMENT AND TRAINING SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLWB,WOMEN'S BUREAU,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DLWH,WAGE AND HOUR DIVISION,2009-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DN00,DEPARTMENT OF ENERGY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DN03,BONNEVILLE POWER ADMINISTRATION.  CODE IS FOR USE IN FILE NAME RECORD ONLY.,2007-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DNFE,FEDERAL ENERGY REGULATORY COMMISSION.,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DO00,OFFICE OF THE NATIONAL CYBER DIRECTOR,2021-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,DQ00,DENALI COMMISSION,2006-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EB00,EXPORT-IMPORT BANK OF THE UNITED STATES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EC00,OFFICE OF ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEA,IMMEDIATE OFFICE OF THE SECRETARY OF EDUCATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEB,OFFICE OF THE DEPUTY SECRETARY OF EDUCATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEC,OFFICE FOR CIVIL RIGHTS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDED,"OFFICE OF PLANNING, EVALUATION AND POLICY DEVELOPMENT",2005-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEE,OFFICE OF THE UNDER SECRETARY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEF,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEG,OFFICE OF THE GENERAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEH,OFFICE OF SPECIAL EDUCATION AND REHABILITATIVE SERVICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEI,OFFICE OF THE CHIEF INFORMATION OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEJ,OFFICE OF LEGISLATION AND CONGRESSIONAL AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEK,OFFICE OF FINANCE AND OPERATIONS,2019-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEL,OFFICE OF THE CHIEF FINANCIAL OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEM,OFFICE OF MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEN,FEDERAL STUDENT AID,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEO,OFFICE OF COMMUNICATIONS AND OUTREACH,2005-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEP,OFFICE OF POSTSECONDARY EDUCATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEQ,OFFICE OF SAFE AND DRUG-FREE SCHOOLS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDER,INSTITUTE OF EDUCATION SCIENCES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDES,OFFICE OF ELEMENTARY AND SECONDARY EDUCATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDET,OFFICE OF ENGLISH LANGUAGE ACQUISITION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEU,OFFICE OF INNOVATION AND IMPROVEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEV,"OFFICE OF CAREER, TECHNICAL, AND ADULT EDUCATION",2014-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEX,NATIONAL INSTITUTE FOR LITERACY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEY,ADVISORY COUNCILS AND COMMITTEES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EDEZ,NATIONAL ASSESSMENT GOVERNING BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EE00,EQUAL EMPLOYMENT OPPORTUNITY COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EO00,MORRIS K. UDALL SCHOLARSHIP AND EXCELLENCE IN NATIONAL ENVIRONMENTAL POLICY FOUNDATION,2009-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EP00,ENVIRONMENTAL PROTECTION AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EQ00,COUNCIL ON ENVIRONMENTAL QUALITY/OFFICE OF ENVIRONMENTAL QUALITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ES00,"COMMISSION ON EXECUTIVE, LEGISLATIVE, AND JUDICIAL SALARIES",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EW00,TRADE AND DEVELOPMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,EX00,EXECUTIVE RESIDENCE AT THE WHITE HOUSE.  ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM.  CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2003-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FC00,FEDERAL COMMUNICATIONS COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FD00,FEDERAL DEPOSIT INSURANCE CORPORATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FI00,FEDERAL FINANCIAL INSTITUTIONS EXAMINATION COUNCIL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FJ00,CHEMICAL SAFETY AND HAZARD INVESTIGATION BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FK00,FARM CREDIT SYSTEM INSURANCE CORPORATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FL00,FARM CREDIT ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FM00,FEDERAL MEDIATION AND CONCILIATION SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FQ01,OFFICE OF THE DIRECTOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FQ02,PRETRIAL SERVICES AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FRBG,FEDERAL RESERVE SYSTEM ¿ BOARD OF GOVERNORS.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES..,2010-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FRFT,BUREAU OF CONSUMER FINANCIAL PROTECTION,2010-12-01,2025-11-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,FT00,FEDERAL TRADE COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,FW00,OFFICE OF SPECIAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GB00,DEVELOPMENT FINANCE CORPORATION,2020-02-02,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GC00,GULF COAST ECOSYSTEM RESTORATION COUNCIL,2013-01-02,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GE00,BARRY GOLDWATER SCHOLARSHIP AND EXCELLENCE IN EDUCATION FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GG00,OFFICE OF GOVERNMENT ETHICS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GJ00,PRESIDIO TRUST,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GK00,CENTENNIAL OF FLIGHT COMMISSION.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2001-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GM00,VALLES CALDERA TRUST,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GN00,WHITE HOUSE COMMISSION ON THE NATIONAL MOMENT OF REMEMBRANCE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GO00,VIETNAM EDUCATION FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GQ00,ELECTION ASSISTANCE COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS01,IMMEDIATE OFFICE OF THE ADMINISTRATOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS02,OFFICE OF ADMINISTRATIVE SERVICES,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS03,PUBLIC BUILDINGS SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS04,OFFICE OF CIVIL RIGHTS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS10,OFFICE OF SMALL BUSINESS UTILIZATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS11,OFFICE OF THE CHIEF FINANCIAL OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS12,OFFICE OF GENERAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS13,CIVILIAN BOARD OF CONTRACT APPEALS,2011-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS14,OFFICE OF THE HUMAN RESOURCES MANAGEMENT,2014-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS15,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS16,OFFICE OF THE CHIEF ACQUISITION OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS18,TECHNOLOGY TRANSFORMATION SERVICE,2016-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS19,OFFICE OF CITIZEN SERVICES AND INNOVATIVE TECHNOLOGIES,2010-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS20,OFFICE OF CONGRESSIONAL AND INTERGOVERNMENTAL AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS22,OFFICES OF THE REGIONAL ADMINISTRATORS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS26,OFFICE OF GOVERNMENT-WIDE POLICY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS28,OFFICE OF GSA IT,2014-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS29,OFFICE OF CHILDCARE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS30,FEDERAL ACQUISITION SERVICE,2005-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS31,OFFICE OF MISSION ASSURANCE,2013-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS32,OFFICE OF STRATEGIC COMMUNICATION,2016-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GS33,OFFICE OF THE CUSTOMER EXPERIENCE,2015-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GU00,THE US SEMIQUINCENTENNIAL COMMISSION,2018-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GW00,"INTERNATIONAL BOUNDARY AND WATER COMMISSION, U.S. SECTION",2018-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GX00,INTERNATIONAL BOUNDARY COMMISSION: UNITED STATES AND CANADA,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GY00,INTERNATIONAL JOINT COMMISSION: UNITED STATES AND CANADA,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,GZ00,THE WOMEN'S SUFFRAGE CENTENNIAL COMMISSION,2018-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HB01,OFFICE OF THE COMMITTEE FOR PURCHASE FROM PEOPLE WHO ARE BLIND OR SEVERELY DISABLED,2016-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HB02,OFFICE OF INSPECTOR GENERAL,2016-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HD00,U.S. HOLOCAUST MEMORIAL MUSEUM,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE10,OFFICE OF THE SECRETARY OF HEALTH AND HUMAN SERVICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE11,PROGRAM SUPPORT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE12,ADMINISTRATION FOR COMMUNITY LIVING,2012-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE13,OFFICE OF INSPECTOR GENERAL,2013-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE31,OFFICE OF THE ASSISTANT SECRETARY FOR HEALTH,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE32,SUBSTANCE ABUSE AND MENTAL HEALTH SERVICES ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE33,AGENCY FOR HEALTHCARE RESEARCH AND QUALITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE34,HEALTH RESOURCES AND SERVICES ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE35,AGENCY FOR TOXIC SUBSTANCES AND DISEASE REGISTRY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE36,FOOD AND DRUG ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE37,INDIAN HEALTH SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE38,NATIONAL INSTITUTES OF HEALTH,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE39,CENTERS FOR DISEASE CONTROL AND PREVENTION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE50,OFFICE OF MEDICARE HEARINGS AND APPEALS,2017-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE60,ADMINISTRATION FOR STRATEGIC PREPAREDNESS AND RESPONSE,2023-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE70,CENTERS FOR MEDICARE & MEDICAID SERVICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HE90,ADMINISTRATION FOR CHILDREN AND FAMILIES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HFHA,FEDERAL HOUSING FINANCE AGENCY,2011-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HFHI,OFFICE OF INSPECTOR GENERAL,2011-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HP00,ADVISORY COUNCIL ON HISTORIC PRESERVATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSAA,DHS HEADQUARTERS,2006-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSAB,CITIZENSHIP AND IMMIGRATION SERVICES,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSAC,U.S. COAST GUARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSAD,U.S. SECRET SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSAE,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSBB,IMMIGRATION AND CUSTOMS ENFORCEMENT,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSBC,TRANSPORTATION SECURITY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSBD,CUSTOMS AND BORDER PROTECTION,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSBE,FEDERAL LAW ENFORCEMENT TRAINING CENTERS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSCA,CYBERSECURITY AND INFRASTRUCTURE SECURITY AGENCY,2018-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSCB,FEDERAL EMERGENCY MANAGEMENT AGENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSDA,DOMESTIC NUCLEAR DETECTION OFFICE,2006-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSFA,SCIENCE AND TECHNOLOGY DIRECTORATE,2011-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HSIC,OFFICE OF INTELLIGENCE AND ANALYSIS,2022-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HT00,HARRY S. TRUMAN SCHOLARSHIP FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU01,OFFICE OF THE SENIOR COORDINATOR FOR NEW ENGLAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU02,OFFICE OF THE SENIOR COORDINATOR FOR NEW YORK/NEW JERSEY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU03,OFFICE OF THE SENIOR COORDINATOR FOR MID-ATLANTIC,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU04,OFFICE OF THE SENIOR COORDINATOR FOR SOUTHEAST/CARIBBEAN,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU05,OFFICE OF THE SENIOR COORDINATOR FOR MIDWEST,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU06,OFFICE OF THE SENIOR COORDINATOR FOR SOUTHWEST,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU07,OFFICE OF THE SENIOR COORDINATOR FOR GREAT PLAINS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU08,OFFICE OF THE SENIOR COORDINATOR FOR ROCKY MOUNTAINS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU09,OFFICE OF THE SENIOR COORDINATOR FOR PACIFIC/HAWAII,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HU10,OFFICE OF THE SENIOR COORDINATOR FOR NORTHWEST/ALASKA,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUAA,OFFICE OF THE SECRETARY OF HOUSING AND URBAN DEVELOPMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUBB,OFFICE OF THE CHIEF HUMAN CAPITAL OFFICER,2010-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUCC,OFFICE OF GENERAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUDD,ASSISTANT SECRETARY FOR COMMUNITY PLANNING AND DEVELOPMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUEE,ASSISTANT SECRETARY FOR FAIR HOUSING AND EQUAL OPPORTUNITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUFF,OFFICE OF THE CHIEF FINANCIAL OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUGG,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUII,OFFICE OF DEPARTMENTAL OPERATIONS AND COORDINATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUJJ,ASSISTANT SECRETARY FOR CONGRESSIONAL AND INTERGOVERNMENTAL RELATIONS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUKA,CENTER FOR FAITH-BASED AND COMMUNITY INITIATIVES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUKK,OFFICE OF FIELD POLICY AND MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HULL,OFFICE OF HEALTHY HOMES AND LEAD HAZARD CONTROL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUMM,ASSISTANT SECRETARY FOR HOUSING--FEDERAL HOUSING COMMISSIONER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUNN,OFFICE OF THE CHIEF PROCUREMENT OFFICER,2007-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUPP,ASSISTANT SECRETARY FOR PUBLIC AND INDIAN HOUSING,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUQQ,OFFICE OF THE CHIEF INFORMATION OFFICER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HURR,ASSISTANT SECRETARY FOR POLICY DEVELOPMENT AND RESEARCH,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUTT,GOVERNMENT NATIONAL MORTGAGE ASSOCIATION (GINNIE MAE),2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUUU,OFFICE OF DEPARTMENTAL EQUAL EMPLOYMENT OPPORTUNITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUVV,OFFICE OF DISASTER MANAGEMENT AND NATIONAL SECURITY,2010-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUWW,ASSISTANT SECRETARY FOR PUBLIC AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUXX,OFFICE OF STRATEGIC PLANNING AND MANAGEMENT,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUYY,OFFICE OF SUSTAINABLE HOUSING AND COMMUNITIES,2010-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HUZZ,OFFICE OF THE CHIEF ADMINISTRATIVE OFFICER,2022-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,HW00,U.S. INTERAGENCY COUNCIL ON HOMELESSNESS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IB00,U.S. AGENCY FOR GLOBAL MEDIA,2018-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IF00,INTER-AMERICAN FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IG00,COUNCIL OF THE INSPECTORS GENERAL ON INTEGRITY AND EFFICIENCY,2010-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN01,OFFICE OF THE SECRETARY OF THE INTERIOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN05,BUREAU OF LAND MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN06,INDIAN AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN07,BUREAU OF RECLAMATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN08,GEOLOGICAL SURVEY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN10,NATIONAL PARK SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN15,U.S. FISH AND WILDLIFE SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN21,OFFICE OF THE SOLICITOR,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN22,OFFICE OF SURFACE MINING RECLAMATION AND ENFORCEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN23,"BUREAU OF OCEAN ENERGY MANAGEMENT, REGULATION, AND ENFORCEMENT",2010-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN24,OFFICE OF THE INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN26,BUREAU OF SAFETY AND ENVIRONMENTAL ENFORCEMENT,2011-02-01,2026-06-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,IN27,BUREAU OF OCEAN ENERGY MANAGEMENT,2011-02-01,2026-07-01,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,IN28,BUREAU OF INDIAN EDUCATION,2020-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IN29,BUREAU OF TRUST FUNDS ADMINISTRATION,2020-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IO00,OFFICE OF COOPERATIVE PROGRAMS,2008-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,IP00,INTELLECTUAL PROPERTY ENFORCEMENT COORDINATOR (IPEC),2019-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,JL01,SUPREME COURT OF THE UNITED STATES.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,JL02,U.S. COURTS.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,JL03,U.S. TAX COURT,2013-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,KR00,NATIONAL COMMISSION ON FISCAL RESPONSIBILITY AND REFORM,2010-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,KS00,CORPORATION FOR NATIONAL AND COMMUNITY SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,KY00,PUBLIC BUILDINGS REFORM BOARD,2019-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LA00,ARCHITECT OF THE CAPITOL. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LB00,BOTANIC GARDEN.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LC00,LIBRARY OF CONGRESS.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LD00,CONGRESSIONAL BUDGET OFFICE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,2026-01-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,LF00,FEDERAL ELECTION COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LG00,"GOVERNMENT ACCOUNTABILITY OFFICE.  ORGANIZATION (WHOSE NAME, PRIOR TO JULY 7, 2004, HAD BEEN THE GENERAL ACCOUNTING OFFICE) HAS NOT MADE HR SUBMISSIONS TO THE OPM SINCE OCTOBER 1, 1992.  CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.",2004-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL01,SENATE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL02,HOUSE OF REPRESENTATIVES. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES..,1999-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL05,THE NAMING COMMISSION. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2021-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL06,"COMMISSION ON PLANNING, PROGRAMMING, BUDGETING, AND EXECUTION REFORM",2021-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL07,AFGHANISTAN WAR COMMISSION. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2022-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL08,NATIONAL SECURITY COMMISSION ON EMERGING BIOTECHNOLOGY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL09,COMMISSION ON THE NATIONAL DEFENSE STRATEGY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL10,CONGRESSIONAL COMMISSION ON THE STRATEGIC POSTURE OF THE UNITED STATES. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2023-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,LL11,NAVY FUTURES COMMISSION,2023-01-01,2026-02-28,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,LP00,GOVERNMENT PRINTING OFFICE,2005-02-01,2025-09-02,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,LQ00,JOHN C. STENNIS CENTER FOR PUBLIC SERVICE TRAINING AND DEVELOPMENT. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1989-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,MA00,MARINE MAMMAL COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,MC00,FEDERAL MARITIME COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,MI00,MILLENNIUM CHALLENGE CORPORATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NF00,NATIONAL SCIENCE FOUNDATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NK00,NATIONAL COUNCIL ON DISABILITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NL00,NATIONAL LABOR RELATIONS BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NM00,NATIONAL MEDIATION BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN10,"HEADQUARTERS, NASA",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN21,AMES RESEARCH CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN22,JOHN GLENN RESEARCH CENTER AT LEWIS FIELD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN23,LANGLEY RESEARCH CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN24,NEIL A. ARMSTRONG FLIGHT RESEARCH CENTER,2014-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN51,GODDARD SPACE FLIGHT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN62,GEORGE C. MARSHALL SPACE FLIGHT CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN64,JOHN C. STENNIS SPACE CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN72,LYNDON B. JOHNSON SPACE CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN73,SPACE STATION PROGRAM OFFICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NN76,JOHN F. KENNEDY SPACE CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NP00,NATIONAL CAPITAL PLANNING COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NQ00,NATIONAL ARCHIVES AND RECORDS ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NS00,NATIONAL SECURITY COUNCIL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NU00,NUCLEAR REGULATORY COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV08,IMMEDIATE OFFICE OF THE SECRETARY OF THE NAVY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV09,NAVY STAFF OFFICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV10,NAVY FIELD OFFICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV11,IMMEDIATE OFFICE OF THE CHIEF OF NAVAL OPERATIONS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV12,"DIRECTORATE FOR ADMINISTRATIONS, LOGISTICS, AND OPERATIONS (DALO)",2019-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV14,OFFICE OF NAVAL RESEARCH,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV15,NAVAL INTELLIGENCE COMMAND,2005-02-01,2025-03-02,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,NV15,NAVAL INTELLIGENCE ACTIVITY,2025-03-03,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV18,NAVAL MEDICAL COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV19,NAVAL AIR SYSTEMS COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV22,BUREAU OF NAVAL PERSONNEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV23,NAVAL SUPPLY SYSTEMS COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV24,NAVAL SEA SYSTEMS COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV25,NAVAL FACILITIES ENGINEERING COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV27,U.S. MARINE CORPS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV30,STRATEGIC SYSTEMS PROGRAMS (SSP),2019-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV33,MILITARY SEALIFT COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV39,"COMMANDER, NAVAL INFORMATION WARFARE SYSTEMS COMMAND (NAVWARSYSCOM)",2020-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV41,NAVY SYSTEMS MANAGEMENT ACTIVITY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV52,"COMMANDER, NAVY INSTALLATIONS",2005-02-01,2025-07-13,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,NV60,UNITED STATES FLEET FORCES COMMAND,2016-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV61,"U.S. NAVAL FORCES, EUROPE",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV62,CHIEF OF NAVAL EDUCATION AND TRAINING,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV65,NAVAL METEOROLOGY AND OCEANOGRAPHY COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV69,NAVAL SECURITY GROUP COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV70,"U.S. PACIFIC FLEET, COMMANDER IN CHIEF",2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV72,NAVY RESERVE FORCE,2016-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV74,NAVAL SPECIAL WARFARE COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NV76,NAVAL EDUCATION AND TRAINING COMMAND,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,NVZS,U.S. SPECIAL OPERATIONS COMMAND (NAVY),2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OI00,OFFICE OF THE DIRECTOR OF NATIONAL INTELLIGENCE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2005-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OM00,OFFICE OF PERSONNEL MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OP00,OFFICE OF PANDEMIC PREPAREDNESS AND RESPONSE POLICY,2023-05-08,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OS00,OCCUPATIONAL SAFETY AND HEALTH REVIEW COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OV00,OFFICE OF THE VICE PRESIDENT.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,OY00,COMMISSION ON THE STATE OF U.S. OLYMPICS AND PARALYMPICS (CSUSOP),2022-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,PD00,THE PUBLIC DEFENDER SERVICE FOR THE DISTRICT OF COLUMBIA,2006-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,PI00,PUBLIC INTERNATIONAL ORGANIZATION. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1983-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,PJ00,POSTAL REGULATORY COMMISSION.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2006-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,PO00,U.S. POSTAL SERVICE. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,PU00,PEACE CORPS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,QQ00,OFFICE OF NATIONAL DRUG CONTROL POLICY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,QS00,SOUTHEAST CRESCENT REGIONAL COMMISSION,2022-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,QZ00,FEDERAL COMPENSATION BOARD,2008-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RE00,OFFICE OF NAVAJO AND HOPI INDIAN RELOCATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RF00,FEDERAL RETIREMENT THRIFT INVESTMENT BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RH00,ARMED FORCES RETIREMENT HOME,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RJ00,CIVIL RIGHTS COLD CASE REVIEW BOARD (CRCCRB),2022-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RO00,MEDICAID AND CHIP PAYMENT AND ACCESS COMMISSION,2009-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RR00,RAILROAD RETIREMENT BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,RS00,FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SB00,SMALL BUSINESS ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SE00,SECURITIES AND EXCHANGE COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SK00,CONSUMER PRODUCT SAFETY COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SM01,NATIONAL GALLERY OF ART,2005-02-01,2026-01-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,SM02,WOODROW WILSON INTERNATIONAL CENTER FOR SCHOLARS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SM03,SMITHSONIAN INSTITUTION (EXCEPT UNITS ADMINISTERED UNDER SEPARATE BOARDS OF TRUSTEES),2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SM04,JOHN F. KENNEDY CENTER FOR THE PERFORMING ARTS,2005-02-01,2026-03-31,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,SS00,SELECTIVE SERVICE SYSTEM,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ST00,DEPARTMENT OF STATE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ST14,METROPOLITAN TECHNICAL SUPPORT CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ST27,NORTHERN REGIONAL PERSONNEL CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ST32,MATERIEL ACQUISITION SUPPORT CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ST46,EASTERN REGIONAL PERSONNEL CENTER.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,SZ00,SOCIAL SECURITY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TB00,NATIONAL TRANSPORTATION SAFETY BOARD,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TC00,U.S. INTERNATIONAL TRADE COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD01,OFFICE OF THE SECRETARY OF TRANSPORTATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD03,FEDERAL AVIATION ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD04,FEDERAL HIGHWAY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD05,FEDERAL RAILROAD ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD06,GREAT LAKES SAINT LAWRENCE SEAWAY DEVELOPMENT CORPORATION,2021-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD09,FEDERAL TRANSIT ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD10,NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD12,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD13,MARITIME ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD16,PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD17,FEDERAL MOTOR CARRIER SAFETY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TD18,TRANSPORTATION ADMINISTRATIVE SERVICE CENTER,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TK00,FINANCIAL STABILITY OVERSIGHT COUNCIL,2011-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TN00,OFFICE OF THE U.S. TRADE REPRESENTATIVE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR35,OFFICE OF THRIFT SUPERVISION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR36,SPECIAL INSPECTOR GENERAL FOR THE TROUBLED ASSETS RELIEF PROGRAM (TARP),2008-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR37,SPECIAL INSPECTOR GENERAL FOR PANDEMIC RECOVERY (SIGPR),2020-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR40,ALCOHOL AND TOBACCO TAX AND TRADE BUREAU,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR91,DEPARTMENTAL OFFICES,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR93,INTERNAL REVENUE SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TR95,OFFICE OF INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAA,FINANCIAL MANAGEMENT SERVICE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAB,BUREAU OF THE PUBLIC DEBT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAD,U.S. MINT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAF,FINANCIAL CRIMES ENFORCEMENT NETWORK,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAI,BUREAU OF ENGRAVING AND PRINTING,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRAJ,OFFICE OF THE COMPTROLLER OF THE CURRENCY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRFD,BUREAU OF THE FISCAL SERVICE,2013-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TRTG,OFFICE OF THE INSPECTOR GENERAL FOR TAX ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TS00,OFFICE OF SCIENCE AND TECHNOLOGY POLICY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TV00,TENNESSEE VALLEY AUTHORITY. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,TW00,SURFACE TRANSPORTATION BOARD,2019-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,UJ00,JAPAN-UNITED STATES FRIENDSHIP COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,UT00,UTAH RECLAMATION MITIGATION AND CONSERVATION COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAA,OFFICE OF THE SECRETARY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAD,BOARD OF VETERANS' APPEALS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAE,GENERAL COUNSEL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAF,INSPECTOR GENERAL,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAG,MY VA INITIATIVE,2014-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAH,VA CTR FOR INNOVATION,2016-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAI,ELECTRONIC HEALTH RECORD MODERNIZATION,2018-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAAJ,OFFICE OF ACCOUNTABILITY AND WHISTLEBLOWER PROTECTION,2020-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABA,IMMEDIATE OFFICE OF THE ASSISTANT SECRETARY FOR HUMAN RESOURCES AND ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABC,CHIEF HUMAN CAPITAL OFFICER,2019-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABD,ASSISTANT SECRETARY FOR DIVERSITY AND INCLUSION,2009-11-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABE,DEPUTY ASSISTANT SECRETARY FOR ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABF,DEPUTY ASSISTANT SECRETARY FOR OFFICE OF RESOLUTION MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABG,DEPUTY ASSISTANT SECRETARY FOR CORPORATE SENIOR EXECUTIVE MANAGEMENT,2009-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABH,DEPUTY ASSISTANT SECRETARY FOR LABOR MANAGEMENT RELATIONS,2007-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABI,DEAN FOR VA LEARNING UNIVERSITY,2009-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABJ,VETERAN EMPLOYMENT SERVICES OFFICE,2011-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABK,OFFICE OF ENTERPRISE OPERATIONS,2013-12-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VABL,STRATEGIC MANAGEMENT GRP,2016-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VADA,IMMEDIATE OFFICE OF THE ASSISTANT SECRETARY FOR MANAGEMENT,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VADC,DEPUTY ASSISTANT SECRETARY FOR BUDGET,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VADD,DEPUTY ASSISTANT SECRETARY FOR FINANCE,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VADE,DEPUTY ASSISTANT SECRETARY FOR FMBTS,2021-06-20,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VADG,"EXECUTIVE DIRECTOR, OFFICE OF ACQUISITION AND LOGISTICS",2019-02-01,2025-11-30,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Past values
+agency_subelement,VAEA,IMMEDIATE OFFICE OF THE ASSISTANT SECRETARY FOR INFORMATION AND TECHNOLOGY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAEB,DEPUTY ASSISTANT SECRETARY FOR INFORMATION AND TECHNOLOGY,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGA,"IMMEDIATE OFFICE OF THE ASSISTANT SECRETARY FOR OPERATIONS, SECURITY, AND PREPAREDNESS",2006-07-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGB,EXECUTIVE DIRECTOR FOR SECURITY AND LAW ENFORCEMENT,2017-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGC,DEP ASST SEC FOR EMERGENCY MGT & RESILIENCE,2017-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGD,"EXECUTIVE DIRECTOR FOR IDENTITY, CREDENTIAL, AND ACCESSMANAGEMENT",2017-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGE,DIRECTOR FOR RESOURCE MANAGEMENT,2017-05-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGF,PLANS EXERCISE TRN & EVAL,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGG,OPS & NATIONAL SECURITY SER,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGH,VA INTEGRATED OPS CENTER,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGI,ACCESS MANAGEMENT,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGJ,IDENTITY MANAGEMENT,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAGK,PERSONNEL SECURITY,2017-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHA,OFFICE OF ENTERPRISE INTEGRATION,2019-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHB,DEPUTY ASSISTANT SECRETARY FOR PROGRAM AND DATA ANALYSIS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHC,DEPUTY ASSISTANT SECRETARY FOR PLANNING AND EVALUATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHD,NATIONAL CENTER FOR VETERAN ANALYSIS AND STATISTICS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHE,DEPUTY ASSISTANT SECRETARY FOR SECURITY PREPAREDNESS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHF,VA CENTER FOR INNOVATION,2015-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAHG,VET CUSTOMER EXPER (VCE),2016-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAJA,OFFICE OF THE ASSISTANT SECRETARY FOR PUBLIC AND INTERGOVERNMENTAL AFFAIRS,2006-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAJB,DEPUTY ASSISTANT SECRETARY FOR INTERGOVERNMENTAL AFFAIRS,2006-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAJC,DEPUTY ASSISTANT SECRETARY FOR PUBLIC AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAKA,IMMEDIATE OFFICE OF THE ASSISTANT SECRETARY FOR CONGRESSIONAL AND LEGISLATIVE AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAKB,DEPUTY ASSISTANT SECRETARY FOR CONGRESSIONAL AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAKC,DEPUTY ASSISTANT SECRETARY FOR LEGISLATIVE AFFAIRS,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VALA,VETERANS BENEFITS ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VAPA,NATIONAL CEMETERY ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VATA,VETERANS HEALTH ADMINISTRATION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VD00,PRIVACY AND CIVIL LIBERTIES OVERSIGHT BOARD,2012-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,VQ00,OPEN SOURCE CENTER,2008-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WH01,WHITE HOUSE OFFICE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WH03,OFFICE OF THE PRESIDENT.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1986-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WH04,NATIONAL SPACE COUNCIL,2021-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WH05,UNITED STATES DOGE SERVICE,2025-01-24,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WHX1,OFFICE OF THE FORMER PRESIDENT. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2008-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WHY1,OFFICE OF THE PRESIDENT ELECT.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2008-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WK00,FEDERAL PERMITTING IMPROVEMENT STEERING COUNCIL,2019-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WU00,SOUTHWEST BORDER REGIONAL COMMISSION,2023-01-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WX00,WORLD WAR 1 CENTENNIAL COMMISSION,2014-06-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,WZ00,WESTERN HEMISPHERE DRUG POLICY COMMISSION,2019-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,YE00,COMMISSION ON THE PREVENTION OF WEAPONS OF MASS DESTRUCTION PROLIFERATION AND TERRORISM,2008-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,YF00,FINANCIAL CRISIS INQUIRY COMMISSION,2009-08-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,YG00,RONALD REAGAN CENTENNIAL COMMISSION,2010-10-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZD00,U.S. COURT OF APPEALS FOR VETERANS CLAIMS.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZG00,OFFICE OF CONGRESSIONAL WORKPLACE RIGHTS. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2019-04-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZL00,MEDICARE PAYMENT ADVISORY COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZO00,COMMISSION ON SECURITY AND COOPERATION IN EUROPE.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,1999-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZP00,U.S. COMMISSION ON INTERNATIONAL RELIGIOUS FREEDOM,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZS00,UNITED STATES-CHINA ECONOMIC AND SECURITY REVIEW COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZU00,DWIGHT D. EISENHOWER MEMORIAL COMMISSION,2005-02-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZV00,COMMISSION ON THE PEOPLE'S REPUBLIC OF CHINA. NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2001-09-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+agency_subelement,ZX00,ABRAHAM LINCOLN BICENTENNIAL COMMISSION.  NOTE: ORGANIZATION DOES NOT MAKE HR SUBMISSIONS TO OPM. CODE MAY BE USED FOR OTHER DOCUMENTATION PURPOSES.,2002-03-01,,https://data.opm.gov/data-standards/agency-subelement,COMPLETE,Current values
+separation_category,SA,Transfer Out - Individual Transfer,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SB,Transfer Out - Mass Transfer,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SC,Quit,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SD,Retirement - Voluntary,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SE,Retirement - Early Out,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SG,Retirement - Other,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SH,Reduction In Force (RIF),,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SJ,Termination (Expired Appt/Other),,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
+separation_category,SL,Other Separation,,,https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip,SAMPLE,FedScope 202404–202503
