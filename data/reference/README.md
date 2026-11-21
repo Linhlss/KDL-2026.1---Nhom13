@@ -4,10 +4,20 @@
 
 [Manifest kiểm chứng](verified_codebook_manifest.csv) ghi trạng thái theo quan hệ. Lookup dẫn xuất từ Parquet dùng để khảo sát code–label với TV3 và TV5. Chỉ đặt FK sau khi kiểm đủ bảng mã đúng kỳ, khóa trùng, orphan và số dòng sau lookup.
 
-[Mẫu đối chiếu OPM](opm_lookup_samples.csv) lấy mã Agency/Subelement và khoảng hiệu lực từ các tab [Current/Past Values](https://data.opm.gov/data-standards/agency-subelement). Mã `IN`, `AC` và `SC` lấy từ cột Sample Value của FWD Dictionary và có phạm vi minh họa. Bản xuất đầy đủ chưa lấy được, nên các phép đo này dùng phạm vi `SAMPLE`.
+## Bảng mã OPM dùng cho G2
+
+[Bảng mã theo kỳ](opm_lookup_g2.csv) lưu mã, nhãn, ngày hiệu lực và nguồn. Hai tab [Agency/Subelement Current/Past Values](https://data.opm.gov/data-standards/agency-subelement) được đọc ngày 21/11/2026. Số dòng thu được khớp bộ đếm của OPM, gồm 802 Current Values và 2.931 Past Values. Sau khi lọc khoảng hiệu lực giao với 03–06/2025, còn 751 dòng Subelement bốn ký tự và 31 dòng mã hai ký tự. `COMPLETE` áp dụng cho miền mã Subelement bốn ký tự theo EHRI. Tập mã hai ký tự vẫn ở `SAMPLE` vì phạm vi Agency cấp cao của FWD rộng hơn.
+
+Bản công bố FedScope 04/2024–03/2025 có 5 cặp mã–nhãn Accessions và 9 cặp Separations. Các nhãn này khớp mọi giá trị quan sát được trong 30.782 Accessions và 92.511 Separations của baseline khi bỏ khoảng trắng đầu/cuối và so không phân biệt hoa thường. Bản công bố này ghi nhận mã đã xuất hiện đến 03/2025, nên kết quả dùng phạm vi `SAMPLE`. [Accessions](https://www.opm.gov/data/datasets/Files/761/6124a377-5e92-43e7-ade2-3be674580bc7.zip) · [Separations](https://www.opm.gov/data/datasets/Files/763/1e0ad2cd-40ee-4646-9daa-58b762bcddfb.zip)
 
 Audit tách NULL, chuỗi rỗng sau TRIM và REDACTED sau TRIM và so không phân biệt hoa thường. Với khóa ghép, thứ tự phân loại là NULL → rỗng → REDACTED. Giá trị gốc, gồm số 0 đầu mã, được giữ để so khớp chính xác.
 
-Các phép đối chiếu chính thức chạy theo từng file, dùng ngày cuối tháng báo cáo để lọc khoảng hiệu lực theo cả hai đầu. Với `SAMPLE`, các trường `reference_*` chỉ đo tập mã mẫu. `reference_left_join_rows` tính số dòng LEFT JOIN trước khi lọc trùng, dùng số bản ghi theo mã nhân số dòng tham chiếu khớp, hoặc nhân 1 nếu không khớp. `orphan_rows`, `duplicate_ref_keys` và tỷ lệ K10 của toàn file để trống khi thiếu bộ mã đầy đủ. Event vẫn giữ tháng hiệu lực riêng.
+Các phép đối chiếu chạy theo từng file. Audit dùng cuối tháng báo cáo để xét ngày hiệu lực theo cả hai đầu. Event vẫn giữ tháng hiệu lực riêng. Với `SAMPLE`, các trường `reference_*` chỉ đo phạm vi mã đã xác định. `reference_left_join_rows` cho biết số dòng LEFT JOIN trước khi lọc khóa trùng. `orphan_rows` và `duplicate_ref_keys` để trống khi thiếu bộ mã đầy đủ. K10 để trống với phạm vi chưa xác minh hoặc mẫu số bằng 0.
 
-Khi có export đầy đủ, chạy `audit_relationships.py <raw> --references <csv>` với cùng cột như file mẫu. Mỗi quan hệ dùng một phạm vi, `SAMPLE` hoặc `COMPLETE`. Chỉ dùng `COMPLETE` cho bộ mã bao phủ toàn miền khóa và các kỳ cần kiểm, ghi rõ nguồn và ngày bắt đầu hiệu lực. Ngày kết thúc trống biểu thị còn hiệu lực. Giữ các dòng tham chiếu vốn trùng để audit phát hiện được chúng.
+## Bàn giao TV3 và kiểm lại
+
+[Lookup theo kỳ](derived_lookup_g2.csv) là bảng `DERIVED_LOOKUP` từ nhãn quan sát trong Parquet. Khi nạp, lọc `load_status = 'READY'` và đặt khóa chính `(relation, report_month, code)`. LEFT JOIN theo cả ba thành phần. Dòng thiếu hoặc tra không khớp được giữ nguyên với cờ Unknown/DQ. Cột `ehri_label_check` đánh dấu 104 khóa–tháng Subelement có nhãn quan sát khác danh mục EHRI. Cả hai nhãn được giữ để TV3 và TV5 đối chiếu.
+
+Kiểm trên DuckDB nạp được 2.652 khóa duy nhất từ 2.657 khóa–tháng. Có 5 khóa–tháng `UNKNOWN`, gồm mã `HU**` qua bốn tháng và một khóa–tháng có nhiều nhãn. LEFT JOIN Agency và Subelement giữ đúng 9.181.290 dòng trên 12 file. Audit theo danh mục EHRI xác định 1.339 bản ghi `HU**` không có khóa hoạt động và 0 khóa tham chiếu trùng tại cuối mỗi tháng. Xem [audit](../../docs/04_relationship_audit.csv) và [danh sách ngoại lệ](../../evidence/TV2_week2/relationship_exceptions.csv).
+
+Chạy `python -B evidence/TV2_week2/audit_relationships.py <raw>` để tái tạo audit và lookup từ CSV đã chốt. Để tái tạo CSV tham chiếu, tải hai ZIP ở trên và lưu hai tab EHRI vào CSV với các cột `code`, `label`, `valid_from`, `valid_through`. Ngày tab hiển thị dạng `MM/DD/YYYY` và `Present` cho khoảng mở. Từ thư mục gốc, chạy `python -B evidence/TV2_week2/prepare_opm_lookup.py accessions.zip separations.zip --agency-tables current.csv past.csv`. Script xác nhận hash hai ZIP và số dòng của hai tab.

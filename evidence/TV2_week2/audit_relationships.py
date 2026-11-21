@@ -10,7 +10,7 @@ import duckdb
 from source_baseline import DUTY, EHRI, FWD, ROOT, identifier, make_inventory, paths, read_csv, write_csv
 
 OPM_AGENCY = "https://data.opm.gov/data-standards/agency-subelement"
-OPM_SAMPLE = ROOT / "data/reference/opm_lookup_samples.csv"
+OPM_REFERENCE = ROOT / "data/reference/opm_lookup_g2.csv"
 
 RELATIONS = {
     "department": (("department_code",), "department", FWD),
@@ -24,6 +24,7 @@ RELATIONS = {
     "accession_category": (("accession_category_code",), "accession_category", FWD),
     "separation_category": (("separation_category_code",), "separation_category", FWD),
 }
+MVP_LOOKUPS = ("agency", "agency_subelement", "accession_category", "separation_category")
 
 
 def state(values):
@@ -39,6 +40,8 @@ def state(values):
 
 def load_reference(path):
     references = defaultdict(list)
+    fedscope_labels = defaultdict(set)
+    dated_labels = defaultdict(list)
     for row in read_csv(path):
         relation = row["relation"]
         if relation not in RELATIONS or len(RELATIONS[relation][0]) != 1:
@@ -51,9 +54,24 @@ def load_reference(path):
                 or (end is not None and (start is None or end < start))):
             raise ValueError(f"Invalid reference record for {relation}: {row}")
         references[relation].append((row["code"], start, end, row["source_url"], mode))
+        if row.get("source_scope") == "FedScope 202404–202503" and row.get("label"):
+            fedscope_labels[relation, row["code"]].add(row["label"])
+        elif start is not None and row.get("label"):
+            dated_labels[relation, row["code"]].append((start, end, row["label"]))
     if any(len({r[4] for r in rows}) != 1 for rows in references.values()):
         raise ValueError("Use one reference coverage mode per relation")
-    return references
+    return references, fedscope_labels, dated_labels
+
+
+def month_end(month):
+    year, month_number = int(month[:4]), int(month[4:])
+    return date(year, month_number, monthrange(year, month_number)[1])
+
+
+def active_reference_keys(month, references):
+    as_of = month_end(month)
+    return Counter((code,) for code, start, end, _, _ in references
+                   if (start is None or start <= as_of) and (end is None or as_of <= end))
 
 
 def reference_metrics(by_key, month, references, source_rows=None):
@@ -63,10 +81,7 @@ def reference_metrics(by_key, month, references, source_rows=None):
                   k10_coverage_pct="")
     if not month or not references:
         return result
-    year, month_number = int(month[:4]), int(month[4:])
-    as_of = date(year, month_number, monthrange(year, month_number)[1])
-    active = Counter((code,) for code, start, end, _, _ in references
-                     if (start is None or start <= as_of) and (end is None or as_of <= end))
+    active = active_reference_keys(month, references)
     if not active:
         return result
     complete = references[0][4] == "COMPLETE"
@@ -89,8 +104,7 @@ def reference_metrics(by_key, month, references, source_rows=None):
     return result
 
 
-def audit_scope(grouped, relation, scope, month=None, references=()):
-    keys, label, reference = RELATIONS[relation]
+def profile_keys(grouped, label):
     counts = Counter()
     by_key = Counter()
     labels = defaultdict(set)
@@ -101,6 +115,12 @@ def audit_scope(grouped, relation, scope, month=None, references=()):
             by_key[key] += count
             if label and state((name,)) == "present":
                 labels[key].add(name)
+    return counts, by_key, labels
+
+
+def audit_scope(grouped, relation, scope, month=None, references=()):
+    keys, label, reference = RELATIONS[relation]
+    counts, by_key, labels = profile_keys(grouped, label)
     ambiguous = [key for key in by_key if len(labels[key]) > 1]
     unlabelled = [key for key in by_key if not labels[key]] if label else []
     derived_keys = {key for key in by_key if len(labels[key]) == 1} if label else set(by_key)
@@ -124,20 +144,67 @@ def audit_scope(grouped, relation, scope, month=None, references=()):
                   derived_lookup_unmatched_rows=(sum(by_key[key] for key in by_key.keys() - derived_keys) if label else ""),
                   **metrics, status="VERIFIED" if verified else "PARTIAL" if label else "UNSUPPORTED",
                   reviewer="PENDING TV3/TV5")
+    reasons = [("MULTIPLE_LABELS", ambiguous), ("NO_LABEL", unlabelled)]
+    if metrics["reference_coverage"] == "COMPLETE":
+        active = active_reference_keys(month, references)
+        reasons.extend([
+            ("OPM_KEY_NOT_ACTIVE", [key for key in by_key if active[key] == 0]),
+            ("OPM_DUPLICATE_ACTIVE_KEY", [key for key in active if active[key] > 1]),
+        ])
     exceptions = [
         dict(relation=relation, scope=scope, key=" | ".join(key), exception=reason,
              observed_labels=" | ".join(sorted(labels[key])), eligible_rows=by_key[key])
-        for reason, matches in (("MULTIPLE_LABELS", ambiguous), ("NO_LABEL", unlabelled))
+        for reason, matches in reasons
         for key in sorted(matches)
     ]
     return result, exceptions
 
 
-def scan(con, files, schemas, inventory, references):
+def derived_lookup(by_month, references, fedscope_labels, dated_labels):
+    rows = []
+    archived_relations = {relation for relation, _ in fedscope_labels}
+    for (relation, month), grouped in sorted(by_month.items()):
+        _, by_key, labels = profile_keys(grouped, RELATIONS[relation][1])
+        catalog = references.get(relation, ())
+        active = active_reference_keys(month, catalog) if catalog and catalog[0][4] == "COMPLETE" else None
+        as_of = month_end(month)
+        for key, count in sorted(by_key.items()):
+            names = sorted(labels[key])
+            observed = {name.strip().casefold() for name in names}
+            reason = "NO_LABEL" if not names else "MULTIPLE_LABELS" if len(names) > 1 else ""
+            if active is not None and active[key] != 1:
+                reason = "OPM_DUPLICATE_ACTIVE_KEY" if active[key] > 1 else "OPM_KEY_NOT_ACTIVE"
+            published = fedscope_labels.get((relation, key[0]), set())
+            label_check = ""
+            if published:
+                normalized = {name.strip().casefold() for name in published}
+                label_check = "MATCH" if observed == normalized and len(normalized) == 1 else "REVIEW"
+                if label_check == "REVIEW" and not reason:
+                    reason = "FEDSCOPE_LABEL_REVIEW"
+            elif relation in archived_relations:
+                label_check = "NOT_IN_ARCHIVE"
+                reason = reason or "FEDSCOPE_CODE_NOT_OBSERVED"
+            active_labels = [label for start, end, label in dated_labels.get((relation, key[0]), ())
+                             if start <= as_of and (end is None or as_of <= end)]
+            ehri_label = active_labels[0] if len(active_labels) == 1 else ""
+            ehri_check = ""
+            if ehri_label:
+                ehri_check = "MATCH" if observed == {ehri_label.strip().casefold()} else "DIFFERENT"
+            status = "UNKNOWN" if reason else "READY"
+            rows.append(dict(relation=relation, report_month=month, code=key[0],
+                             label=names[0] if status == "READY" else "", observed_rows=count,
+                             provenance="DERIVED_LOOKUP", load_status=status, exception=reason,
+                             observed_labels=" | ".join(names), fedscope_label_check=label_check,
+                             ehri_label=ehri_label, ehri_label_check=ehri_check))
+    return rows
+
+
+def scan(con, files, schemas, inventory, references, fedscope_labels, dated_labels):
     query = (ROOT / "sql/tests/04_fk_audit.sql").read_text(encoding="utf-8")
     summaries = []
     exceptions = []
     all_scopes = defaultdict(Counter)
+    by_month = defaultdict(Counter)
     per_file = {row["filename"]: row["row_count"] for row in inventory}
     for (family, month), path in files.items():
         scope = f"{family}/{month}"
@@ -162,27 +229,33 @@ def scan(con, files, schemas, inventory, references):
             exceptions.extend(issues)
             all_scopes[relation, family].update(counts)
             all_scopes[relation, "all_families"].update(counts)
+            if relation in MVP_LOOKUPS:
+                by_month[relation, month].update(counts)
     for (relation, scope), grouped in all_scopes.items():
         item, issues = audit_scope(grouped, relation, f"{scope}/all_months")
         summaries.append(item)
         if scope == "all_families":
             exceptions.extend(issues)
-    return summaries, exceptions
+    return summaries, exceptions, derived_lookup(by_month, references, fedscope_labels, dated_labels)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("raw", type=Path)
-    parser.add_argument("--references", type=Path, default=OPM_SAMPLE,
-                        help="Scoped official keys and validity dates; defaults to OPM samples")
+    parser.add_argument("--references", type=Path, default=OPM_REFERENCE,
+                        help="Scoped official keys and validity dates")
     args = parser.parse_args()
     files = paths(args.raw.resolve())
     inventory, schemas = make_inventory(files)
+    references, fedscope_labels, dated_labels = load_reference(args.references)
     with duckdb.connect() as con:
-        summaries, exceptions = scan(con, files, schemas, inventory, load_reference(args.references))
+        summaries, exceptions, lookup = scan(con, files, schemas, inventory, references,
+                                             fedscope_labels, dated_labels)
     write_csv(ROOT / "docs/04_relationship_audit.csv", summaries)
     write_csv(ROOT / "evidence/TV2_week2/relationship_exceptions.csv", exceptions)
-    print(f"{len(summaries)} relationship scopes; {len(exceptions)} exception groups")
+    write_csv(ROOT / "data/reference/derived_lookup_g2.csv", lookup)
+    print(f"{len(summaries)} relationship scopes, {len(exceptions)} exception groups, "
+          f"{len(lookup)} derived code-month keys")
 
 
 if __name__ == "__main__":

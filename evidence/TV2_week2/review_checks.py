@@ -5,7 +5,7 @@ from datetime import date
 
 import duckdb
 
-from audit_relationships import reference_metrics, state
+from audit_relationships import derived_lookup, reference_metrics, state
 from quality_handoff import lookup_query
 from source_mapping import TABLES, fact_lineage_sql
 
@@ -108,6 +108,32 @@ def check_reference():
     print("Reference scope, duplicate, orphan and K10 checks passed.")
 
 
+def check_derived_lookup():
+    url = "https://data.opm.gov/data-standards/agency-subelement"
+    start = date(2025, 3, 1)
+    duplicate = ("0002", start, None, url, "COMPLETE")
+    references = {"agency_subelement": [("0001", start, None, url, "COMPLETE"), duplicate, duplicate]}
+    by_month = {
+        ("agency_subelement", "202503"): Counter({
+            (("0001",), "Single"): 9, (("0002",), "Conflicting authority"): 2,
+            (("0003",), "Missing from authority"): 3,
+        }),
+        ("separation_category", "202503"): Counter({
+            (("SC",), "QUIT"): 4, (("SD",), "Other description"): 3,
+        }),
+    }
+    labels = {("separation_category", "SC"): {"Quit"}, ("separation_category", "SD"): {"Retirement"}}
+    dated_labels = {("agency_subelement", "0001"): [(start, None, "Original label")]}
+    rows = {r["code"]: r for r in derived_lookup(by_month, references, labels, dated_labels)}
+    assert rows["0001"]["load_status"] == "READY" and rows["0001"]["label"] == "Single"
+    assert rows["0001"]["ehri_label"] == "Original label" and rows["0001"]["ehri_label_check"] == "DIFFERENT"
+    assert rows["0002"]["exception"] == "OPM_DUPLICATE_ACTIVE_KEY" and not rows["0002"]["label"]
+    assert rows["0003"]["exception"] == "OPM_KEY_NOT_ACTIVE" and not rows["0003"]["label"]
+    assert rows["SC"]["fedscope_label_check"] == "MATCH"
+    assert rows["SD"]["exception"] == "FEDSCOPE_LABEL_REVIEW" and not rows["SD"]["label"]
+    print("Monthly derived lookup and quarantine checks passed.")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--postgres-j02", action="store_true",
@@ -117,6 +143,7 @@ def main():
         print(j02_fixture_sql().strip())
         return
     check_reference()
+    check_derived_lookup()
     with duckdb.connect() as con:
         check_lineage(con)
         findings = con.execute(j02_fixture_sql()).fetchall()

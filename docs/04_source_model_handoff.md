@@ -5,10 +5,12 @@ Trạng thái đề xuất là REVIEW. [ERD](../diagrams/04_relational_source_er
 | Quan hệ | Bằng chứng | Trạng thái TV2 |
 |---|---|---|
 | Source file → ba bảng ODS | 12 checksum khớp manifest, ordinal trong mỗi file duy nhất từ 1 đến n | VERIFIED trên Parquet; chờ áp vào DDL và review |
-| Department, Agency, Subelement, Occupation, Duty Station, Pay Plan và Action Category | Audit đủ bốn kỳ. Đã đối chiếu mẫu mã Agency/Subelement và hai nhóm action với OPM. Cần danh mục đầy đủ để xác minh FK | PARTIAL |
+| Subelement | Danh mục EHRI đúng kỳ đã đối chiếu trên 12 file. Không trùng khóa hoạt động. Có 1.339 dòng `HU**` cần giữ riêng trong Unknown/DQ | PARTIAL ở cấp quan hệ |
+| Agency và Action Category | Đã đối chiếu mẫu Agency hai ký tự và nhãn action từ bản công bố FedScope đến 03/2025. Các mã và nhãn tra được theo tháng nằm trong bảng lookup dẫn xuất | PARTIAL |
+| Department, Occupation, Duty Station và Pay Plan | Có số liệu audit bốn kỳ. Cần danh mục đầy đủ để xác minh FK | PARTIAL |
 | FK riêng cho Grade hoặc khóa nhân viên xuyên họ | Grade phụ thuộc pay plan; ba họ giữ grain riêng | UNSUPPORTED |
 
-[Audit](04_relationship_audit.csv) · [Nguồn tham chiếu](../data/reference/verified_codebook_manifest.csv) · [Mapping](04_source_to_target_mapping.csv)
+[Audit](04_relationship_audit.csv) · [Nguồn tham chiếu](../data/reference/README.md) · [Lookup theo kỳ](../data/reference/derived_lookup_g2.csv) · [Mapping](04_source_to_target_mapping.csv)
 
 **TV3** đối chiếu các bảng/cột ứng viên với DDL. Kiểm tra lineage ODS → Fact phải trả về 0 lỗi cho từng cặp bảng. Báo cáo phân biệt khóa thiếu, thừa, trùng và NULL theo file và ordinal.
 

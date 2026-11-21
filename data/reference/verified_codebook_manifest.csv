@@ -1,11 +1,11 @@
 relation,key_columns,source_id,baseline_scope,reference_kind,status,next_check
 department,department_code,FWD,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,PARTIAL,Historical allowed values
-agency,agency_code,EHRI_AGENCY,202503–202506,OPM_SAMPLE,PARTIAL,Obtain complete dated code set for the FWD agency_code domain
-agency_subelement,agency_subelement_code,EHRI_AGENCY,202503–202506,OPM_SAMPLE,PARTIAL,Obtain complete Current/Past Values export and check source labels
+agency,agency_code,EHRI_AGENCY,202503–202506,EHRI_TWO_CHARACTER_SUBSET,PARTIAL,Obtain the full FWD high-level agency domain
+agency_subelement,agency_subelement_code,EHRI_AGENCY,202503–202506,OPM_DATED_CATALOG,PARTIAL,Review HU** and differences between published labels with TV3/TV5
 occupational_group,occupational_group_code,FWD,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,PARTIAL,Historical group catalog and any series-to-group exceptions
 occupational_series,occupational_series_code,EHRI,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,PARTIAL,Historical series codes and names
 duty_station,duty_station_code,DUTY,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,PARTIAL,"Historical geography, full code scope and missing city labels"
 pay_plan,pay_plan_code,EHRI,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,PARTIAL,Code validity intervals and label changes
 pay_plan_grade,pay_plan_code + grade,EHRI,202503–202506,PARQUET_DERIVED_WITH_OFFICIAL_DEFINITION,UNSUPPORTED,No generic Grade FK; needs plan-specific rules
-accession_category,accession_category_code,FWD,202503–202506,OPM_SAMPLE,PARTIAL,Published sample AC confirmed; full dated category catalog pending
-separation_category,separation_category_code,FWD,202503–202506,OPM_SAMPLE,PARTIAL,Published sample SC confirmed; full dated category catalog pending
+accession_category,accession_category_code,FEDSCOPE_ACC,202503–202506,OPM_ARCHIVE_OBSERVED_LABELS,PARTIAL,Every observed label matches the archive through 202503. Need full dated reference
+separation_category,separation_category_code,FEDSCOPE_SEP,202503–202506,OPM_ARCHIVE_OBSERVED_LABELS,PARTIAL,Every observed label matches the archive through 202503. Need full dated reference
