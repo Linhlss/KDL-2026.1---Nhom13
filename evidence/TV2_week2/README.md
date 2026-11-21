@@ -38,6 +38,17 @@ python -B evidence/TV2_week2/review_checks.py --postgres-j02 | psql -X -v ON_ERR
 
 **Trạng thái REVIEW.** TV3 và TV4 xác nhận tên bảng, trường và vai trò kỳ theo DDL và bus matrix G2. TV5 kiểm độc lập theo #35/#38.
 
+## L2-12 · Đối soát trước và sau
+
+[Bảng trước và sau](../../reports/07_source_quality_to_etl_rules.csv) ghi `before`, `rule`, `after`, `affected_rows` và `impact` cho từng quy tắc trên từng file. Lệnh `quality_handoff.py` ở trên chạy [SQL đo kiểm](../../sql/tests/07_l212_before_after.sql) với tham số kỳ báo cáo và đường dẫn Parquet, rồi ghi lại CSV. [Ảnh kết quả thực thi DuckDB](l2_12_duckdb_before_after.png) lưu lệnh, kết quả tổng hợp và trích đoạn SQL.
+
+- **DQ01** · 9.181.290 dòng có `count = 1` sau khi ép kiểu. Mỗi bản ghi nguồn vẫn góp một đơn vị đếm.
+- **DQ02** · Giữ 4.236.467 dòng có lương ở trạng thái `NULL`, rỗng hoặc `REDACTED` và đếm riêng từng trạng thái trong CSV.
+- **DQ03** · Lookup Agency dẫn xuất theo từng file giữ đúng một dòng cho mỗi dòng nguồn. Ca kiểm J02 8 dòng kiểm tra riêng mã không khớp và mã có nhiều nhãn tham chiếu.
+- **DQ04** · Giữ đủ 593 dòng lệch giữa tháng trong dữ liệu và tháng của file, gồm 269 Accessions và 324 Separations. Cả hai kỳ vẫn có thể dùng để đối soát.
+
+Cả 12 file đều giữ nguyên số dòng và số thứ tự dòng phân biệt. J02 trên PostgreSQL thuộc bước xác nhận của TV3.
+
 ## Cập nhật L2-07 ngày 21/11/2026
 
 Audit dùng bản chụp Current/Past Values có kiểm SHA-256 cho mã Subelement bốn ký tự và nhãn action quan sát trong bản công bố FedScope đến 03/2025. Có 1.339 dòng `HU**` được đánh dấu ngoại lệ. Bảng lookup có 2.521 khóa–tháng `READY`, 131 khóa–tháng `REVIEW` vì lệch nhãn EHRI và 5 khóa–tháng `UNKNOWN`. Kiểm LEFT JOIN giữ đủ 9.181.290 dòng trên 12 file. TV3 và TV5 có thể kiểm lại khóa, nhãn và phạm vi trước khi duyệt. [Nguồn và cách nạp lookup](../../data/reference/README.md)

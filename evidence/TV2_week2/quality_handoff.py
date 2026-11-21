@@ -4,7 +4,11 @@ from pathlib import Path
 
 import duckdb
 
-from source_baseline import ROOT, TIME, dq_checks, identifier, make_inventory, paths, read_csv, text_state_sql, write_csv
+from source_baseline import (
+    FAMILIES, ROOT, TIME, dq_checks, identifier, make_inventory, paths, read_csv, text_state_sql, write_csv,
+)
+
+MEASUREMENT_SQL = ROOT / "sql/tests/07_l212_before_after.sql"
 
 
 def lookup_query(source_rows, reference_rows):
@@ -39,23 +43,8 @@ def measure_file(con, path, month, time_field):
         FROM read_parquet(?, file_row_number=true)
     """
     derived_reference = "SELECT DISTINCT raw_code AS code, agency_label AS label FROM s"
-    query = f"""
-        SELECT count(*) AS after_rows, count(DISTINCT ordinal) AS unique_ordinals,
-               count(*) FILTER (WHERE try_cast(raw_count AS BIGINT) = 1) AS parse_count,
-               count(*) FILTER (WHERE business_month <> ?) AS different_month,
-               count(*) FILTER (WHERE pay_state = 'NULL') AS pay_null,
-               count(*) FILTER (WHERE pay_state = 'EMPTY') AS pay_empty,
-               count(*) FILTER (WHERE pay_state = 'REDACTED') AS pay_redacted,
-               count(*) FILTER (WHERE pay_state = 'PRESENT'
-                                AND try_cast(raw_pay AS DECIMAL(18,2)) IS NULL) AS pay_invalid,
-               count(*) FILTER (WHERE lookup_state = 'NULL') AS lookup_null,
-               count(*) FILTER (WHERE lookup_state = 'EMPTY') AS lookup_empty,
-               count(*) FILTER (WHERE lookup_state = 'REDACTED') AS lookup_redacted,
-               count(*) FILTER (WHERE lookup_state = 'MATCHED') AS lookup_matched,
-               count(*) FILTER (WHERE lookup_state = 'UNKNOWN') AS lookup_unknown,
-               count(*) FILTER (WHERE lookup_state = 'AMBIGUOUS') AS lookup_ambiguous
-        FROM ({lookup_query(source, derived_reference)}) normalized
-    """
+    query = MEASUREMENT_SQL.read_text(encoding="utf-8").replace(
+        "{{normalized}}", lookup_query(source, derived_reference))
     cursor = con.execute(query, [month, str(path)])
     return dict(zip([item[0] for item in cursor.description], cursor.fetchone(), strict=True))
 
@@ -77,26 +66,53 @@ def compare_file(item, measured, quality, expected_mismatch):
     lookup = dict(null_rows=measured["lookup_null"], empty_rows=measured["lookup_empty"],
                   redacted_rows=measured["lookup_redacted"], matched_rows=measured["lookup_matched"],
                   unknown_rows=measured["lookup_unknown"], ambiguous_rows=measured["lookup_ambiguous"])
+    unavailable_pay = sum(pay.values())
+    numeric_pay = before - unavailable_pay - measured["pay_invalid"]
+    outside_match = before - lookup["matched_rows"]
+    different_month = measured["different_month"]
     rules = (
         ("DQ01", "Raw count text", "Validate and cast count to BIGINT", "count = 1",
-         measured["parse_count"], {}),
+         measured["parse_count"], f"Each row contributes one count. The count total equals {before} source rows.",
+         {}),
         ("DQ02", "Raw annualized pay", "Carry NULL / EMPTY / REDACTED states separately",
-         "Keep raw value and state. Cast only present pay", sum(pay.values()), pay),
+         "Keep raw value and state. Cast only present pay", unavailable_pay,
+         f"Preserves {unavailable_pay} unavailable pay values by state. {numeric_pay} rows have usable numeric pay.",
+         pay),
         ("DQ03", "Source agency code", "LEFT JOIN per-file derived agency lookup",
-         "Preserve each ordinal and report lookup states separately",
-         before - lookup["matched_rows"], lookup),
+         "Preserve each ordinal and report lookup states separately", outside_match,
+         f"Retains all {before} source rows. {outside_match} rows lack a unique match in the per-file lookup.",
+         lookup),
         ("DQ04", "Snapshot/effective YYYYMM", "Carry report month and business month separately",
-         "Retain all mismatched periods", measured["different_month"], {}),
+         "Retain all mismatched periods", different_month,
+         f"Keeps {different_month} rows with different periods. Counts can still use the original report month.",
+         {}),
     )
     return [
         dict(family=item["family"], report_month=item["report_month"], source_file=item["filename"],
-             rule_id=code, before=raw, rule=rule, after=target, affected_rows=affected,
+             rule_id=code, before=raw, rule=rule, after=target, affected_rows=affected, impact=impact,
              before_rows=before, after_rows=measured["after_rows"],
              **{key: details.get(key, "") for key in ("null_rows", "empty_rows", "redacted_rows",
                                                      "matched_rows", "unknown_rows", "ambiguous_rows")},
              validation="MEASURED in DuckDB. PostgreSQL J02 pending")
-        for code, raw, rule, target, affected, details in rules
+        for code, raw, rule, target, affected, impact, details in rules
     ]
+
+
+def print_summary(result):
+    print(f"DuckDB {duckdb.__version__}  |  {MEASUREMENT_SQL.relative_to(ROOT).as_posix()}")
+    print(f"{'Family':<13} {'Before':>11} {'After':>11} {'Count = 1':>11} "
+          f"{'Pay unavailable':>16} {'Agency unmatched':>17} {'Month differs':>13}")
+    groups = {family: [row for row in result if row["family"] == family] for family in FAMILIES}
+    groups["Total"] = result
+    for family, rows in groups.items():
+        by_rule = {rule: [row for row in rows if row["rule_id"] == rule]
+                   for rule in ("DQ01", "DQ02", "DQ03", "DQ04")}
+        before = sum(row["before_rows"] for row in by_rule["DQ01"])
+        after = sum(row["after_rows"] for row in by_rule["DQ01"])
+        affected = [sum(row["affected_rows"] for row in rows) for rows in by_rule.values()]
+        print(f"{family:<13} {before:>11,} {after:>11,} {affected[0]:>11,} "
+              f"{affected[1]:>16,} {affected[2]:>17,} {affected[3]:>13,}")
+    print(f"{len(result) // 4} Parquet files  |  {len(result)} rule measurements")
 
 
 def main():
@@ -117,8 +133,7 @@ def main():
             expected = int(crosscheck[name]["rows_time_field_ne_file_month"])
             result.extend(compare_file(item, measured, checks[name], expected))
     write_csv(ROOT / "reports/07_source_quality_to_etl_rules.csv", result)
-    mismatches = sum(row["affected_rows"] for row in result if row["rule_id"] == "DQ04")
-    print(f"{len(result)} measurements across all files; all rows and {mismatches} month differences retained")
+    print_summary(result)
 
 
 if __name__ == "__main__":
