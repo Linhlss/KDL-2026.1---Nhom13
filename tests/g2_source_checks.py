@@ -88,6 +88,11 @@ def check(conn, directory):
     preserved_source(conn, file_id)
     print("PASS checksum mismatch records FAIL and preserves the loaded source")
 
+    wrong_version = dict(good, version="v99")
+    expect_failure(conn, args, wrong_version, (ValueError,))
+    preserved_source(conn, file_id)
+    print("PASS manifest version inconsistent with filename fails before a source can be skipped")
+
     invalid = parquet_fixture(directory, "accessions", invalid=True)
     expect_failure(conn, args, invalid, (psycopg.Error,))
     assert conn.execute(
