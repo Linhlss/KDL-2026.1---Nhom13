@@ -1,5 +1,7 @@
 # TV2 — Gói kết quả Data Profiling / Data Quality (bản 1)
 
+> Chuẩn nghiệm thu hiện hành là V3 và kế hoạch G2. Xem [gói TV2 cập nhật](../../TV2_week2/README.md).
+
 **Nguồn nhập:** `csv.zip`, gồm 5 CSV do lệnh `py profile_12_parquet.py` trên máy TV2 xuất ra từ 12 Parquet.  
 **Đối chiếu yêu cầu:** đề cương và phân công Nhóm 13 bản V2.
 

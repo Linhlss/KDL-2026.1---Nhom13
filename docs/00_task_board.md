@@ -57,6 +57,8 @@ Hạn theo T0 = 18/11/2026. Thứ tự và phụ thuộc: [Việc tiếp theo c�
 
 Tiến độ L3-01 đến L3-04, sản phẩm và bằng chứng nằm trong [bảng bàn giao tuần 1 của TV3](../reports/TV3_week1_summary.md).
 
+Tiến độ triển khai G2 của TV3, đầu vào TV2 đã tích hợp và phần còn chờ TV4/TV5 nằm trong [bảng bàn giao tuần 2](../reports/TV3_week2_summary.md).
+
 TV2 đọc được phạm vi và biết phải trả inventory, dictionary, ERD v0, taxonomy/flow cho ai. TV2 không đợi cả chuỗi TV1 → TV2 → TV3 tuần tự kết thúc: có thể khảo sát dữ liệu ngay, TV3 thử môi trường, TV4 thử công bố và TV5 kiểm đếm song song.
 
 Chưa có người review thực tế; ngày khởi động, tên thật và lịch họp chưa điền. Các issue để mở. Bản tracker trong repo có link sản phẩm, nhưng cột nghiệm thu vẫn bằng 0 cho đến khi có DONE, PASS, reviewer và bằng chứng đúng quy ước. Mức tự báo 100% ở sáu task TV1 chỉ ghi đã nộp bản soạn; không có nghĩa đã review hoặc đã xác nhận xong các quy định học kỳ còn mở.

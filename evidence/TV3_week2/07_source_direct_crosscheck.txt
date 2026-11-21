@@ -1,0 +1,4 @@
+PASS employment {"count_not_one": 0, "occupation_leading_zero": 1430757, "other_month": 0, "pay_empty": 0, "pay_null": 4547, "pay_redacted": 1049466, "rows": 2271969}
+PASS accessions {"count_not_one": 0, "occupation_leading_zero": 4477, "other_month": 43, "pay_empty": 0, "pay_null": 97, "pay_redacted": 2594, "rows": 7153}
+PASS separations {"count_not_one": 0, "occupation_leading_zero": 16589, "other_month": 61, "pay_empty": 0, "pay_null": 313, "pay_redacted": 6355, "rows": 24088}
+TV3 source-direct crosscheck passed; independent TV5 review pending.
