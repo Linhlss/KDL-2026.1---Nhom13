@@ -1,7 +1,7 @@
 # Đặc tả ba dashboard D1 / D2 / D3 (L4-02)
 
 **Task:** L4-02 (issue #31) — Owner: TV4 — Reviewer: TV1 — Người nhận tiếp: TV1, TV3
-**Phiên bản:** v0.1, ngày 19/11/2026 (cập nhật theo bàn giao G2 của TV2, PR #42)
+**Phiên bản:** v0.2, ngày 22/11/2026 (mục 4 theo DDL/Mart thật của TV3, PR #43; trước đó v0.1 theo PR #42)
 **Trạng thái:** REVIEW (chờ TV1 xác nhận; chưa PASS)
 **Đầu vào đã dùng:** `docs/02_kpi_dictionary.csv` (K01–K10), `docs/01_business_scope.md`, số tổng hợp từ `evidence/TV2_week1/TV2_Data_Quality_Phan_Tich_V1/` (profiling v1 của TV2), và bàn giao G2 của TV2 trên nhánh `tv2/g2-source-model` (PR #42, chưa merge): `docs/04_relationship_audit.csv`, `docs/04_source_model_handoff.md`, `reports/05_eda_findings.md`. Các đầu vào của TV2 đang ở trạng thái REVIEW, chưa PASS.
 
@@ -37,7 +37,7 @@ Phạm vi dữ liệu: 12 file Parquet OPM/EHRI, 4 kỳ 03–06/2025 (Employment
 | Phát hiện | Số liệu (audit TV2, Employment) | Hệ quả cho dashboard |
 |---|---|---|
 | Quan hệ danh mục (agency, nghề nghiệp, địa điểm, pay plan, category) mới ở trạng thái **PARTIAL** | Danh mục lịch sử chưa đối chiếu hết | Chưa vẽ hierarchy hay khẳng định FK; ghi `uncertain` trong bus matrix |
-| **Grade không có FK riêng (UNSUPPORTED)** | Grade phụ thuộc pay plan | `dim_grade` dùng cặp **pay_plan + grade**, không dùng grade đơn lẻ |
+| **Grade không có FK riêng (UNSUPPORTED)** | Grade phụ thuộc pay plan | chiều cấp bậc (chưa có trong DW G2) dùng cặp **pay_plan + grade**, không dùng grade đơn lẻ |
 | `duty_station` bị `REDACTED` nhiều | 1.050.981 / 2.289.192 bản ghi tháng 03 (≈ 45,9%); 1.046.119 tháng 04; 1.036.800 tháng 05; 1.032.821 tháng 06 (≈ 46%/tháng); khoảng 17.000 mã khác nhau | Chiều địa điểm không đủ tin cậy: **bản đồ D1 chưa khả thi**; nếu dùng chiều này phải hiển thị nhóm `REDACTED` riêng |
 | `pay_plan` có giá trị NULL | 366 bản ghi tháng 03, 2.488 tháng 04, 2.444 tháng 05, 2.430 tháng 06 | Giữ nhóm `Unknown` trong cơ cấu K05, không loại ngầm |
 | Event có tháng hiệu lực khác tháng file | 593 bản ghi (269 Accessions, 324 Separations) trong 4 kỳ | Giữ hai trục thời gian tách riêng; ghi vào tooltip D2 |
@@ -71,26 +71,33 @@ Số tổng kiểm dùng cho đối soát (đối chiếu `monthly_trends.csv`, 
 
 ## 4. Quy ước chung cho mô hình, định dạng và trình bày
 
-### 4.1. Mô hình dự kiến (chốt ở L4-03/L4-04)
+### 4.1. Mô hình (theo DDL và Mart của TV3, PR #43; bus matrix ở `docs/09_bus_matrix.md`)
 
-| Thành phần | Tên dự kiến | Ghi chú |
-|---|---|---|
-| Fact | `fact_employment_snapshot` | Một dòng = một bản ghi Employment trong một snapshot |
-| Fact | `fact_accessions` | Một dòng = một bản ghi hành động tiếp nhận được công bố |
-| Fact | `fact_separations` | Một dòng = một bản ghi hành động rời cơ quan được công bố |
-| Dimension | `dim_month` | Vai trò chính: tháng snapshot (Employment) và tháng báo cáo (event) |
-| Dimension (vai trò phụ) | `dim_effective_month` | Bản role-playing của tháng, quan hệ không active, dùng bằng `USERELATIONSHIP` |
-| Dimension | `dim_agency` | Mã và tên cơ quan; chỉ dựng hierarchy khi TV2 xác minh |
-| Dimension | `dim_accession_category`, `dim_separation_category` | Theo codebook thật |
-| Dimension (nếu có căn cứ) | `dim_occupation` | Chỉ thêm vào slicer khi TV2 đánh dấu `verified` |
-| Dimension | `dim_grade` | Khóa là cặp `pay_plan_code + grade` (grade không có FK riêng, UNSUPPORTED) |
-| Dimension (hạn chế) | `dim_location` | `duty_station` bị `REDACTED` khoảng 46%; chỉ dùng như thuộc tính phụ, nhóm `REDACTED` hiển thị riêng, không dùng cho bản đồ |
+Nguồn của Power BI cho MVP là bản database chuyển của TV3, chỉ gồm các Dimension và hai bảng Mart. Ba bảng Fact chi tiết không nằm trong bản chuyển.
 
-Quan hệ trong Power BI: một chiều (Dim → Fact), không dùng many-to-many hay bi-directional nếu gây đếm đôi.
+| Thành phần | Tên thật | Grain / ghi chú | Có trong DB chuyển |
+|---|---|---|---|
+| Mart | `mart.workforce_monthly` | Tháng snapshot + agency. Cột: `month_key`, `agency_key`, `agency_code`, `agency_label`, `headcount`, `source_rows` | Có |
+| Mart | `mart.personnel_flows_monthly` | Tháng báo cáo + agency. Cột: `month_key`, `agency_key`, `agency_code`, `agency_label`, `accessions`, `separations`, `net_actions`, `source_rows` | Có |
+| Dimension | `dw.dim_month` | `month_key`, `yyyymm`, `calendar_year`, `calendar_month`; key 0 = Unknown | Có |
+| Dimension | `dw.dim_agency` | Mỗi (tháng, mã agency) một `agency_key`; key 0 = Unknown; nhãn trạng thái PARTIAL | Có |
+| Dimension | `dw.dim_action_category` | Có cột `family` (accessions / separations / unknown); thay cho hai Dimension category riêng | Có |
+| Fact | `dw.fact_employment_snapshot` | Một dòng nguồn Employment; `count_value`, `snapshot_month_key`, `report_month_key` | Không (chỉ qua Mart) |
+| Fact | `dw.fact_accessions`, `dw.fact_separations` | Một dòng nguồn; `report_month_key`, `effective_month_key`, `category_key` | Không (chỉ qua Mart) |
+| Dimension (vai trò phụ) | bản sao `dim_month` tên `dim_effective_month` | Chỉ dùng khi nạp Fact sự kiện (quan hệ không active, `USERELATIONSHIP`) | Chưa dùng được với Mart |
+| Chiều chưa có | pay_plan + grade, duty_station, occupation | Xem `NOT_IN_G2` trong `docs/08_dimension_catalog.csv`; grade chỉ dùng như cặp với pay_plan, `duty_station` ~46% REDACTED nên không làm slicer chính | Không |
+
+Quan hệ trong Power BI: một chiều (Dimension → bảng Mart), không dùng many-to-many hay bi-directional nếu gây đếm đôi.
+Ví dụ cho MVP: `dim_month[month_key]` → `workforce_monthly[month_key]` và → `personnel_flows_monthly[month_key]`. Hai bảng Mart không nối với nhau; chúng chỉ gặp nhau qua `dim_month` (và `agency_code` khi cần).
+
+**Giới hạn của Mart đối với dashboard:**
+- Mart có grain tháng + agency, nên **không có category và không có tháng hiệu lực**. Biểu đồ theo loại hành động và góc nhìn theo `effective_month` ở D2 chưa làm được trên Mart; cần nạp Fact sự kiện hoặc thêm Mart mới (hỏi TV3).
+- `dim_agency` có `agency_key` khác nhau theo từng tháng. Khi so sánh nhiều tháng (K02, K03, D3), nhóm và lọc theo `agency_code`, không theo `agency_key`.
+- Dòng agency Unknown (key 0) chiếm khá nhiều: tháng 04/2025 có 206.687 dòng Employment, 1.591 Accessions, 1.936 Separations. Hiển thị nhóm này riêng, không ẩn đi.
 
 ### 4.1.1. Tên schema và bảng đã có trong repo
 
-Schema do TV3 tạo (`sql/01_create_schemas.sql`): `raw_meta`, `staging`, `ref`, `ods`, `dw`, `mart`, `audit`. Mapping TV2 dùng `ods.ods_employment_record`, `dw.fact_employment_snapshot`, `raw_meta.source_file`; mỗi dòng Fact mang `file_id` và `source_row_ordinal` để truy vết. Báo cáo Power BI chỉ nối vào schema `mart` hoặc các view tổng hợp, **không** nối trực tiếp vào `ods` hay `raw_meta`. Tên cột Dimension và Fact vẫn là dự kiến cho đến khi chốt bus matrix (L4-03/04) và DDL (L3-07).
+Schema do TV3 tạo (`sql/01_create_schemas.sql`): `raw_meta`, `staging`, `ref`, `ods`, `dw`, `mart`, `audit`. Mỗi dòng Fact mang `file_id` và `source_row_ordinal` để truy vết về ODS. Báo cáo Power BI chỉ nối vào `mart` và các Dimension `dw.dim_*`, **không** nối vào `ods`, `staging` hay `raw_meta`. Tên cột ở mục này lấy từ `sql/03_dw_ddl.sql` và `sql/04_create_marts.sql` (nhánh `tv3/g2-pipeline`); các bảng còn **PROPOSED** cho đến khi TV4 hoàn tất duyệt (L4-03/04) và G2 được chốt.
 
 ### 4.2. Định dạng hiển thị
 
@@ -130,7 +137,7 @@ Schema do TV3 tạo (`sql/01_create_schemas.sql`): `raw_meta`, `staging`, `ref`,
 
 ```
 +------------------------------------------------------------------------------+
-| [D1 Workforce Overview]  [D2]  [D3]                                          |
+| [D1 Workforce Overview]  [D2 Personnel Flows]  [D3 Workforce Changes]        |
 +--------------+---------------------------------------------------------------+
 | Bộ lọc       |  [K01 Headcount tháng 04/2025]  [K02 Thay đổi]  [K03 MoM %]  |
 | - Tháng      |       2.271.969 người           −17.223 người      −0,75%     |
@@ -168,7 +175,7 @@ Ghi chú: bản đồ địa lý đã **bỏ khỏi bố cục** (mục 2.1). N�
 Headcount =
 VAR m = MAX ( dim_month[month_key] )
 RETURN
-    CALCULATE ( COUNTROWS ( fact_employment_snapshot ), dim_month[month_key] = m )
+    CALCULATE ( SUM ( workforce_monthly[headcount] ), dim_month[month_key] = m )
 
 -- Tháng liền trước có trong dữ liệu (bỏ lọc tháng để tìm)
 Prev Month Key =
@@ -180,7 +187,7 @@ Headcount Prev =
 VAR pm = [Prev Month Key]
 RETURN
     IF ( ISBLANK ( pm ), BLANK (),
-         CALCULATE ( COUNTROWS ( fact_employment_snapshot ), dim_month[month_key] = pm ) )
+         CALCULATE ( SUM ( workforce_monthly[headcount] ), dim_month[month_key] = pm ) )
 
 -- K02
 Headcount Change =
@@ -202,7 +209,7 @@ K05 dùng cùng mẫu với K04, thay `dim_agency` bằng chiều đang hiển t
 
 ```sql
 -- K01: headcount theo tháng
-SELECT m.month_key, COUNT(*) AS headcount
+SELECT m.month_key, SUM(f.count_value) AS headcount
 FROM dw.fact_employment_snapshot f
 JOIN dw.dim_month m ON m.month_key = f.snapshot_month_key
 WHERE m.month_key = 202504
@@ -210,7 +217,7 @@ GROUP BY m.month_key;
 
 -- K02/K03: so với tháng liền trước (không lọc thêm nên cùng phạm vi)
 WITH hc AS (
-  SELECT snapshot_month_key AS month_key, COUNT(*) AS headcount
+  SELECT snapshot_month_key AS month_key, SUM(count_value) AS headcount
   FROM dw.fact_employment_snapshot
   GROUP BY snapshot_month_key
 )
@@ -224,8 +231,8 @@ ORDER BY cur.month_key;
 
 -- K04: tỷ trọng cơ quan trong tháng 04
 SELECT a.agency_code,
-       COUNT(*) AS headcount,
-       ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 4) AS share_pct
+       SUM(f.count_value) AS headcount,
+       ROUND(100.0 * SUM(f.count_value) / SUM(SUM(f.count_value)) OVER (), 4) AS share_pct
 FROM dw.fact_employment_snapshot f
 JOIN dw.dim_agency a ON a.agency_key = f.agency_key
 WHERE f.snapshot_month_key = 202504
@@ -233,7 +240,7 @@ GROUP BY a.agency_code
 ORDER BY headcount DESC;
 ```
 
-Đối chiếu thêm với TV2: tổng `COUNT(*)` phải khớp tổng `SUM(count)` sau cast (trường `count` đều bằng 1 trong 12 file).
+Đối chiếu thêm với TV2: tổng `SUM(count_value)` phải khớp số dòng nguồn (trường `count` đều bằng 1 trong 12 file) và cột `source_rows` của Mart. SQL tham chiếu chính thức của TV3 nằm ở `sql/05_g2_kpi.sql` (K01/K06/K07 trên Mart).
 
 ### 5.6. Câu chuyện dự kiến (storytelling)
 
@@ -296,11 +303,11 @@ ORDER BY headcount DESC;
 ### 6.4. DAX dự kiến
 
 ```dax
--- K06: quan hệ active là fact_accessions[report_month_key] -> dim_month
-Accessions = COUNTROWS ( fact_accessions )
+-- K06: personnel_flows_monthly nối dim_month theo tháng báo cáo
+Accessions = SUM ( personnel_flows_monthly[accessions] )
 
 -- K07
-Separations = COUNTROWS ( fact_separations )
+Separations = SUM ( personnel_flows_monthly[separations] )
 
 -- K08: tính từng Fact rồi trừ, không nối Fact với Fact.
 -- Cả hai measure cùng bị lọc bởi dim_month và dim_agency dùng chung.
@@ -312,9 +319,10 @@ IF ( ISBLANK ( [Accessions] ) && ISBLANK ( [Separations] ),
 -- Góc nhìn phụ theo tháng hiệu lực
 Accessions by Effective Month =
 CALCULATE ( [Accessions], USERELATIONSHIP ( fact_accessions[effective_month_key], dim_effective_month[month_key] ) )
+-- Chỉ làm được khi nạp fact_accessions; Mart hiện không có effective_month
 ```
 
-`Accessions` và `Separations` phải dùng các Dimension dùng chung. Loại hành động của Accessions (`dim_accession_category`) không dùng được để lọc Separations và ngược lại; khi lọc category ở D2 cần ghi rõ slicer nào ảnh hưởng measure nào.
+`Accessions` và `Separations` phải dùng các Dimension dùng chung. Loại hành động nằm trong `dim_action_category` (cột `family`): luôn lọc đúng `family` (accessions hoặc separations) và ghi rõ slicer nào ảnh hưởng measure nào. Mart chưa có category, nên slicer này chỉ dùng được khi nạp Fact sự kiện.
 
 ### 6.5. SQL đối chiếu (PostgreSQL, dự kiến)
 
@@ -325,9 +333,9 @@ SELECT m.month_key,
        COALESCE(s.cnt, 0) AS separations,
        COALESCE(a.cnt, 0) - COALESCE(s.cnt, 0) AS event_difference
 FROM dw.dim_month m
-LEFT JOIN (SELECT report_month_key, COUNT(*) AS cnt FROM dw.fact_accessions  GROUP BY 1) a
+LEFT JOIN (SELECT report_month_key, SUM(count_value) AS cnt FROM dw.fact_accessions  GROUP BY 1) a
        ON a.report_month_key = m.month_key
-LEFT JOIN (SELECT report_month_key, COUNT(*) AS cnt FROM dw.fact_separations GROUP BY 1) s
+LEFT JOIN (SELECT report_month_key, SUM(count_value) AS cnt FROM dw.fact_separations GROUP BY 1) s
        ON s.report_month_key = m.month_key
 ORDER BY m.month_key;
 ```
@@ -419,13 +427,13 @@ RETURN IF ( NOT ISBLANK ( cur ) && NOT ISBLANK ( prv ), 1, 0 )
 ```sql
 -- K09: thay đổi theo cơ quan giữa 202503 và 202504
 WITH c AS (
-  SELECT a.agency_code, COUNT(*) AS hc
+  SELECT a.agency_code, SUM(f.count_value) AS hc
   FROM dw.fact_employment_snapshot f
   JOIN dw.dim_agency a ON a.agency_key = f.agency_key
   WHERE f.snapshot_month_key = 202504
   GROUP BY a.agency_code
 ), p AS (
-  SELECT a.agency_code, COUNT(*) AS hc
+  SELECT a.agency_code, SUM(f.count_value) AS hc
   FROM dw.fact_employment_snapshot f
   JOIN dw.dim_agency a ON a.agency_key = f.agency_key
   WHERE f.snapshot_month_key = 202503
@@ -517,7 +525,7 @@ Chuẩn "ít nhất 10 test" là chuẩn nhóm tự đặt. Giá trị kỳ vọ
 |---|---|---|---|
 | Danh sách trường/mã `verified` (cơ quan, nghề nghiệp, cấp bậc, category) | TV2 | Audit G2 đã bàn giao (PR #42, REVIEW): các quan hệ đang **PARTIAL**, Grade **UNSUPPORTED**; cần TV3/TV5 review và đối chiếu danh mục lịch sử | Theo PR #42 |
 | Ánh xạ địa điểm đủ tin cậy (để làm lại bản đồ D1, chiều địa điểm) | TV2 | `duty_station` bị `REDACTED` khoảng 46%; chưa có ánh xạ | Chưa có hạn |
-| Tên bảng/cột thật trong DW | TV3 (và bus matrix của TV4) | Schema đã có (`dw`, `mart`...); tên cột Fact/Dim đổi trong DAX/SQL khi có DDL | 23/11 (L3-07) |
+| Tên bảng/cột thật trong DW | TV3 (và bus matrix của TV4) | Đã có trong PR #43 (PROPOSED) và đã áp dụng vào mục 4; cập nhật nếu TV3 đổi DDL | Theo PR #43 |
 | Phương án TV4 kết nối PostgreSQL | TV3 (L3-03) | Làm `.pbix` MVP | 19–20/11 |
 | Ngưỡng cảnh báo | TV1 xác nhận | Mục 8 | Khi review |
 | Chọn locale hiển thị số (dấu chấm hay phẩy) | Cả nhóm | Mục 4.2 | Khi dựng D1 |
@@ -532,14 +540,20 @@ Chuẩn "ít nhất 10 test" là chuẩn nhóm tự đặt. Giá trị kỳ vọ
 - [ ] Ba wireframe đã vẽ và xuất ảnh (xem mục 12)
 - [ ] TV1 xác nhận cả ba trang trả lời được câu hỏi nghiệp vụ (ghi tên, nhận xét, PASS/FAIL trong issue #31)
 
-## 12. Wireframe dạng ảnh 
+## 12. Wireframe dạng ảnh (việc còn lại của TV4)
 
-Các sơ đồ ASCII ở mục 5.2, 6.2, 7.2 là bản phác. TV4 vẽ lại ba trang trang trống trong Power BI Desktop, xuất PNG và đặt vào `docs/diagrams/`:
+Các sơ đồ ASCII ở mục 5.2, 6.2, 7.2 là bản phác. TV4 vẽ lại ba trang bằng draw.io, Figma hoặc trang trống trong Power BI Desktop, xuất PNG và đặt vào `docs/img/` (hoặc `diagrams/`):
 
-- `docs/diagrams/10_wireframe_D1.png`
-- `docs/diagrams/10_wireframe_D2.png`
-- `docs/diagrams/10_wireframe_D3.png`
+- `docs/img/10_wireframe_D1.png`
+- `docs/img/10_wireframe_D2.png`
+- `docs/img/10_wireframe_D3.png`
 
 Sau đó chèn vào tài liệu bằng `![D1](img/10_wireframe_D1.png)` ở đầu mục 5, 6, 7.
 
+## 13. Lịch sử thay đổi
 
+| Ngày | Thay đổi | Người |
+|---|---|---|
+| 19/11/2026 | Soạn v0: ba trang, KPI, DAX/SQL dự kiến, bộ test, ngưỡng minh họa | TV4 |
+| 19/11/2026 | v0.1: theo bàn giao G2 của TV2 (PR #42): thêm mục 2.1 giới hạn dữ liệu, `dim_grade` theo pay plan + grade, bỏ bản đồ D1 và bỏ Địa điểm khỏi slicer chính, thêm 593 bản ghi lệch tháng vào tooltip D2, tên schema theo repo | TV4 |
+| 22/11/2026 | v0.2: mục 4 theo DDL/Mart thật của TV3 (PR #43): `dim_action_category`, `mart.workforce_monthly`, `mart.personnel_flows_monthly`; DAX dùng bảng Mart; SQL dùng `SUM(count_value)`; ghi giới hạn Mart (không có category/tháng hiệu lực, agency theo tháng, Unknown) | TV4 |
