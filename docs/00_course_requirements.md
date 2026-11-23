@@ -48,6 +48,6 @@ Nguồn: sheet **Nội dung báo cáo**, B3:C14, B18:B21.
 
 ## 4. Kết quả review và việc theo dõi
 
-TV5 xác nhận bản đối chiếu đủ để TV2 triển khai. Hai góp ý về dashboard và tính điểm báo cáo đã được bổ sung ở mục 1 và 2. Sau review, TV1 ghi nhận giảng viên đã xác nhận đơn vị 100 MB. [Issue #3](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/3) giữ mở để TV1 bổ sung thông báo học kỳ hiện hành, hạn nộp chính thức và ảnh/tin nhắn gốc về phương án ERD khi có. PASS này áp dụng cho bản đối chiếu làm đầu vào, không xác nhận từng sản phẩm của nhóm đã đạt yêu cầu.
+TV5 xác nhận bản đối chiếu đủ để TV2 triển khai. Hai góp ý về dashboard và tính điểm báo cáo đã được bổ sung ở mục 1 và 2. Sau review, TV1 ghi nhận giảng viên đã xác nhận đơn vị 100 MB. [Issue #3](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/3) đã DONE/PASS **riêng phần đối chiếu workbook 20252 cho TV2**. Việc cần bổ sung còn mở tại [#1](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/1) (thông báo học kỳ hiện hành, hạn/kênh nộp), [#2](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/2) (ảnh/tin nhắn gốc xác nhận phương án ERD); kiểm Publish to web tại [#12](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/12). PASS này áp dụng cho bản đối chiếu làm đầu vào, không xác nhận từng sản phẩm của nhóm đã đạt yêu cầu.
 
 Trích xuất các ô nguồn liên quan được lưu trong [minh chứng yêu cầu](../evidence/TV1_week1/course_requirements_excerpt.json); tên file và SHA-256 giúp đối chiếu bản gốc mà không công bố toàn bộ workbook mẫu.
