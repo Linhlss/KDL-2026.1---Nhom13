@@ -8,6 +8,7 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 
 - **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
 - **TV2:** đọc [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md), sau đó nhận năm task L2-01–L2-05.
+- **TV4 và TV5:** đọc [yêu cầu dashboard D1–D3 và số cần đối soát](docs/02_requirements.md).
 - **Cả nhóm:** đọc [bài toán và dòng công việc](docs/01_business_scope.md), [phạm vi đã chọn](docs/00_scope_decisions.md) và [bảng công việc tuần 1](docs/00_task_board.md).
 - **Reviewer:** [đối chiếu yêu cầu thầy](docs/00_course_requirements.md), [mapping A01–A10](docs/01_touchpoint_mapping.csv), [KPI v0](docs/02_kpi_dictionary.csv) và [lưu ý kỳ đo](docs/02_kpi_draft_notes.md).
 
