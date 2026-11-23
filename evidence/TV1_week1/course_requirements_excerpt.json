@@ -229,6 +229,20 @@
       }
     },
     {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 61,
+      "cells": {
+        "B": "Báo cáo cá nhân sẽ tính vào điểm giữa kỳ"
+      }
+    },
+    {
+      "sheet": "Hướng dẫn bài tập nhóm",
+      "row": 62,
+      "cells": {
+        "B": "Báo cáo nhóm sẽ tính vào điểm cuối kỳ."
+      }
+    },
+    {
       "sheet": "Nội dung báo cáo",
       "row": 2,
       "cells": {
