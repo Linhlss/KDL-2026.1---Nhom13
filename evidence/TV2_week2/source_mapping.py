@@ -3,8 +3,8 @@ from source_baseline import ROOT, TIME, read_csv, write_csv
 
 TABLES = {
     "employment": ("ods_employment_record", "fact_employment_snapshot"),
-    "accessions": ("ods_accession_record", "fact_accessions"),
-    "separations": ("ods_separation_record", "fact_separations"),
+    "accessions": ("ods_accessions_record", "fact_accessions"),
+    "separations": ("ods_separations_record", "fact_separations"),
 }
 DIM_KEYS = {
     "agency_code": ("dim_agency", "agency_key"),

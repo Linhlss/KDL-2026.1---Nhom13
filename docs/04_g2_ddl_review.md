@@ -1,15 +1,15 @@
 # L2-08 · Đối chiếu mapping và ERD với DDL G2
 
-**23/11/2026 · REVIEW.** TV2 đối chiếu mapping và ERD tại commit `1e3b5fc` với DDL và code nạp tại commit `cb4f55b` của TV3. Phạm vi thực chạy của TV3 là ba file kỳ 04/2025. Bus matrix và Dimension catalog cần TV4 xác nhận. [Issue L2-08](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/18) · [PR TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43) · [Bus matrix TV4](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/32)
+**23/11/2026 · REVIEW.** TV2 đối chiếu mapping và ERD với DDL G2 của TV3. Bản hiện tại đã cập nhật tên hai bảng ODS theo PR #43 tại commit `9d60e1c`. Phạm vi thực chạy của TV3 là ba file kỳ 04/2025. Bus matrix và Dimension catalog cần TV4 xác nhận. [Đối chiếu ban đầu](https://github.com/Linhlss/KDL-2026.1---Nhom13/blob/f37a46af2238695484bf0c9ed14205907021611d/docs/04_g2_ddl_review.md) · [PR TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43) · [Issue L2-08](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/18)
 
 ## Kết quả theo từng trường
 
-[Bảng đối chiếu](04_g2_ddl_comparison.csv) ghi số dòng trong [mapping TV2](04_source_to_target_mapping.csv), đích dự kiến, đích vật lý TV3, kiểu và khả năng nhận NULL theo catalog. `tv3_validation_sql` chứa truy vấn theo tên vật lý của TV3. Cột `original_sql_status` ghi kết quả chạy `EXPLAIN` trên câu SQL trong mapping ban đầu.
+[Bảng đối chiếu](04_g2_ddl_comparison.csv) ghi số dòng trong [mapping TV2](04_source_to_target_mapping.csv), đích dự kiến, đích vật lý TV3, kiểu và khả năng nhận NULL theo catalog. `tv3_validation_sql` chứa truy vấn theo tên vật lý của TV3. Cột `original_sql_status` ghi kết quả chạy `EXPLAIN` trên câu SQL có sẵn trong mapping TV2 sau khi sửa tên ODS.
 
 | Kết quả | Dòng | Cách đọc |
 | --- | ---: | --- |
-| `EXACT_TARGET` | 54 | Cùng tên schema, bảng và cột |
-| `TARGET_CHANGED` | 70 | Có đích vật lý tương ứng với tên bảng hoặc cột khác |
+| `EXACT_TARGET` | 100 | Cùng tên schema, bảng và cột, gồm đủ 67 dòng có đích ODS |
+| `TARGET_CHANGED` | 24 | Có đích vật lý tương ứng với tên bảng hoặc cột DW khác |
 | `ODS_ONLY` | 30 | Dữ liệu có ở ODS. Chiều hoặc cột Fact dự kiến chưa có trong DDL G2 |
 | `NOT_IN_DDL` | 21 | Các dòng định nghĩa K10 tham chiếu bảng coverage dự kiến |
 | `IMPLEMENTED_ONLY` | 40 | Bổ sung đối chiếu cho 25 cột DW và 15 cột dẫn xuất ODS mà mapping dự kiến chưa có dòng riêng |
@@ -21,7 +21,7 @@ Bốn dòng đầu cộng thành **175 dòng mapping gốc**. Bảng đối chi�
 | Phần kiểm | Kết quả |
 | --- | --- |
 | Source file → ODS | ERD v1 và DDL cùng dùng PK `raw_meta.source_file.file_id`, SHA-256 duy nhất và FK từ ODS về source file. DDL còn đặt duy nhất `filename` và cặp `(family, report_month)`. |
-| Bảng ODS | Employment khớp tên. ERD ghi `ods_accession_record` và `ods_separation_record`, còn DDL dùng `ods_accessions_record` và `ods_separations_record`. |
+| Bảng ODS | Mapping, ERD v1 và bản SVG dùng đúng tên DDL cho cả ba họ. Hai bảng event dùng `ods_accessions_record` và `ods_separations_record`. |
 | ODS → Fact | Mỗi Fact giữ grain một dòng Parquet. Cả ba dùng PK `(file_id, source_row_ordinal)` và FK ghép đến đúng bảng ODS. |
 | Kỳ báo cáo | `manifest.report_month` đi vào `source_file.report_month` và ODS `report_month`. Cả ba Fact dùng `report_month_key` tham chiếu `dim_month.month_key`. |
 | Kỳ snapshot | Employment lấy `snapshot_yyyymm` từ Parquet và tra `snapshot_month_key` riêng. |
@@ -40,7 +40,7 @@ Bốn dòng đầu cộng thành **175 dòng mapping gốc**. Bảng đối chi�
 
 ## Bằng chứng kiểm
 
-- Khởi tạo nguyên văn DDL từ PR #43 trong PostgreSQL 18.7 cô lập bằng PGlite 0.5.17. Kiểm tra mã blob Git của ba file DDL trước khi chạy. PostgreSQL xác nhận **51/175** dòng SQL cũ lập được kế hoạch truy vấn. Có **106** dòng lỗi tên bảng và **18** dòng lỗi tên cột. Toàn bộ **116 câu SQL khác nhau** ở cột `tv3_validation_sql` lập được kế hoạch, bao phủ **154 dòng** có đích vật lý. [PGlite](https://pglite.dev/docs/)
+- Khởi tạo nguyên văn DDL từ PR #43 trong PostgreSQL 18.7 cô lập bằng PGlite 0.5.17. Sửa tên ODS cập nhật **46 đích mapping** và **54 dòng SQL kiểm**, gồm các truy vấn lineage và tra nhãn đọc ODS. Số dòng SQL trong mapping lập được kế hoạch tăng từ **51 lên 105** trên tổng 175. Còn 52 dòng lỗi tên bảng và 18 dòng lỗi tên cột liên quan DW và K10. Toàn bộ **116 câu SQL khác nhau** ở cột `tv3_validation_sql` lập được kế hoạch, bao phủ **154 dòng** có đích vật lý. [PGlite](https://pglite.dev/docs/)
 - **15 ca lineage dữ liệu thử đạt** trên đúng ba cặp bảng của DDL. Mỗi cặp có ca hợp lệ trả về 0 lỗi, ODS thiếu Fact được báo và DDL chặn Fact thừa, trùng hoặc NULL bằng FK, PK và ràng buộc bắt buộc tương ứng.
 - **12 ca kiểm vai trò tháng đạt** trên cùng dữ liệu thử. Hai Fact event giữ được tháng hiệu lực khác tháng báo cáo. Khi cố tình làm lệch tháng báo cáo giữa ODS và Fact, truy vấn báo đúng một dòng lỗi và phép kiểm tháng nghiệp vụ vẫn trả 0 lỗi.
 - Đọc lại trực tiếp ba Parquet 04/2025, khớp **2.271.969 Employment**, **7.153 Accessions**, **24.088 Separations** và giữ **43 Accessions**, **61 Separations** lệch kỳ. TV3 đã công bố 0 sai biệt lineage cho từng họ trong PostgreSQL trên chính kỳ này. [Báo cáo đối soát TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/blob/cb4f55baf2fc6c47c40a81a07d6cef96fe13c445/reports/07_reconciliation.csv) · [Kiểm trực tiếp nguồn của TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/blob/cb4f55baf2fc6c47c40a81a07d6cef96fe13c445/evidence/TV3_week2/07_source_direct_crosscheck.txt)
