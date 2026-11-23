@@ -91,6 +91,49 @@ def check(conn):
         raise AssertionError("Invalid counts unexpectedly published")
     assert conn.execute("SELECT sum(headcount) FROM mart.workforce_monthly").fetchone()[0] == 4
     print("PASS invalid count blocks publish and preserves previous Mart state")
+    check_lookup_states(conn)
+
+
+def check_lookup_states(conn):
+    cases = (
+        (3, "   ", "EMPTY"),
+        (4, " redacted ", "REDACTED"),
+        (5, None, "NULL"),
+        (6, "001", "MATCHED_DERIVED"),
+        (7, " 001 ", "UNKNOWN"),
+    )
+    for relation in ("agency", "accession_category", "separation_category"):
+        for code in ("001", " redacted "):
+            conn.execute(
+                "INSERT INTO ref.derived_lookup VALUES(%s,'202504',%s,'Fixture','DERIVED_LOOKUP','READY')",
+                (relation, code),
+            )
+    for file_id, family in enumerate(("employment", "accessions", "separations"), 1):
+        for ordinal, code, _ in cases:
+            conn.execute(sql.SQL(
+                "INSERT INTO {} VALUES(%s,%s,'202504',1,'202504','202503',%s,%s,%s,ARRAY[]::text[])"
+            ).format(sql.Identifier("ods", f"ods_{family}_record")),
+                (file_id, ordinal, code, code, code))
+        conn.execute("UPDATE raw_meta.source_file SET row_count=7 WHERE file_id=%s", (file_id,))
+
+    with conn.transaction():
+        result = build_model(conn, "202504")
+    for family, fact in (
+        ("employment", "fact_employment_snapshot"),
+        ("accessions", "fact_accessions"),
+        ("separations", "fact_separations"),
+    ):
+        assert result["facts"][family]["rows"] == 7
+        prefixes = ("agency",) if family == "employment" else ("agency", "category")
+        for prefix in prefixes:
+            actual = conn.execute(sql.SQL(
+                "SELECT source_row_ordinal, {code}, {state}, {key} <> 0 "
+                "FROM {fact} WHERE report_month_key=202504 AND source_row_ordinal>=3 ORDER BY 1"
+            ).format(code=sql.Identifier(f"{prefix}_code"), state=sql.Identifier(f"{prefix}_lookup_state"),
+                     key=sql.Identifier(f"{prefix}_key"), fact=sql.Identifier("dw", fact))).fetchall()
+            assert actual == [(ordinal, code, state, state == "MATCHED_DERIVED")
+                              for ordinal, code, state in cases], (fact, prefix, actual)
+    print("PASS Fact lookup states preserve whitespace, leading zeros, row counts and key 0")
 
 
 def check_label_review(conn):

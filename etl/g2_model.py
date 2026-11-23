@@ -64,7 +64,7 @@ def build_model(conn, month):
             "ON r.relation = d.relation AND r.report_month = d.report_month AND r.code = d.code "
             "WHERE d.report_month = %s "
             "AND d.relation IN ('agency', 'accession_category', 'separation_category') "
-            "AND d.code IS NOT NULL AND btrim(d.code) <> '' AND d.code <> 'REDACTED' "
+            "AND btrim(d.code) <> '' AND upper(btrim(d.code)) <> 'REDACTED' "
             "GROUP BY d.relation, d.report_month, d.code HAVING count(*) = 1 "
             "AND bool_and(CASE WHEN d.load_status = 'READY' THEN d.label "
             "WHEN d.load_status = 'REVIEW' AND r.review_result = ANY(%s) "
@@ -184,6 +184,15 @@ def build_model(conn, month):
         return metrics
 
 
+def lookup_state_sql(raw_code, dimension_key):
+    return (
+        f"CASE WHEN {raw_code} IS NULL THEN 'NULL' "
+        f"WHEN btrim({raw_code}) = '' THEN 'EMPTY' "
+        f"WHEN upper(btrim({raw_code})) = 'REDACTED' THEN 'REDACTED' "
+        f"WHEN {dimension_key} IS NULL THEN 'UNKNOWN' ELSE 'MATCHED_DERIVED' END"
+    )
+
+
 def insert_fact(cur, family, fact, month_key):
     employment = family == "employment"
     business_column = "snapshot_yyyymm" if employment else "effective_month"
@@ -195,9 +204,7 @@ def insert_fact(cur, family, fact, month_key):
     selects = [
         "o.file_id", "o.source_row_ordinal", "%(month_key)s",
         "coalesce(t.month_key,0)", "coalesce(a.agency_key,0)", "o.agency_code",
-        "CASE WHEN o.agency_code IS NULL THEN 'NULL' WHEN o.agency_code='' THEN 'EMPTY' "
-        "WHEN o.agency_code='REDACTED' THEN 'REDACTED' "
-        "WHEN a.agency_key IS NULL THEN 'UNKNOWN' ELSE 'MATCHED_DERIVED' END",
+        lookup_state_sql("o.agency_code", "a.agency_key"),
         "o.count_value", "coalesce(o.dq_flags,ARRAY[]::text[])",
     ]
     extra_join = sql.SQL("")
@@ -206,10 +213,7 @@ def insert_fact(cur, family, fact, month_key):
         base_columns.extend(["category_key", "category_code", "category_lookup_state"])
         selects.extend([
             "coalesce(c.category_key,0)", f"o.{category}_code",
-            f"CASE WHEN o.{category}_code IS NULL THEN 'NULL' "
-            f"WHEN o.{category}_code='' THEN 'EMPTY' "
-            f"WHEN o.{category}_code='REDACTED' THEN 'REDACTED' "
-            "WHEN c.category_key IS NULL THEN 'UNKNOWN' ELSE 'MATCHED_DERIVED' END",
+            lookup_state_sql(f"o.{category}_code", "c.category_key"),
         ])
         extra_join = sql.SQL(
             "LEFT JOIN g2_ready_lookup lc ON lc.relation={relation} "

@@ -6,20 +6,8 @@ TABLES = {
     "accessions": ("ods_accessions_record", "fact_accessions"),
     "separations": ("ods_separations_record", "fact_separations"),
 }
-DIM_KEYS = {
-    "agency_code": ("dim_agency", "agency_key"),
-    "occupational_series_code": ("dim_occupation", "occupation_key"),
-    "duty_station_code": ("dim_location", "location_key"),
-    "grade": ("dim_grade", "grade_key"),
-    "age_bracket": ("dim_age_bracket", "age_bracket_key"),
-    "accession_category_code": ("dim_accession_category", "accession_category_key"),
-    "separation_category_code": ("dim_separation_category", "separation_category_key"),
-}
-MVP_LABELS = {
-    "agency": "dim_agency",
-    "accession_category": "dim_accession_category",
-    "separation_category": "dim_separation_category",
-}
+ACTION_RELATIONS = {"accessions": "accession_category", "separations": "separation_category"}
+MONTH_PATTERN = "^[0-9]{4}(0[1-9]|1[0-2])$"
 
 
 def fact_lineage_sql(ods, fact):
@@ -60,7 +48,7 @@ def model(fields):
             ("schema_hash", "SELECT file_id FROM raw_meta.source_file WHERE schema_hash IS NULL"),
         ):
             yield row(family, f"manifest.{field}", "derived", "raw_meta", "source_file", field,
-                      "Read from locked manifest", check, nullable="Required", time_role="report_month")
+                      "Read from locked manifest", check, nullable="Required")
         for field in fields:
             if field["dataset"] != family:
                 continue
@@ -68,54 +56,120 @@ def model(fields):
             if dtype != "derived":
                 yield row(family, name, dtype, "ods", ods, name, "Keep source value and type",
                           f"SELECT COUNT(*) FROM ods.{ods} WHERE {name} IS NULL")
-            if name == "count":
-                measure = "record_count" if family == "employment" else "event_count"
-                yield row(family, name, dtype, "dw", fact, measure, "Validate then cast to BIGINT",
-                          f"SELECT COUNT(*), SUM({measure}) FROM dw.{fact}",
-                          nullable="Required", redacted="DQ error")
-            if name in ("report_month", "snapshot_yyyymm", TIME):
-                role = {TIME: "effective_month", "snapshot_yyyymm": "snapshot_month"}.get(name, name)
-                rule = ("Carry manifest value through source_file" if name == "report_month"
-                        else "Validate and preserve the source YYYYMM")
-                yield row(family, name, dtype, "dw", fact, role, rule,
-                          f"SELECT COUNT(*) FROM dw.{fact} WHERE {role} IS NULL", time_role=role,
-                          nullable="Required", redacted="DQ error")
-                yield row(family, name, dtype, "dw", "dim_month", "month_yyyymm",
-                          f"Use independent {role} role", "SELECT month_yyyymm FROM dw.dim_month "
-                          "GROUP BY 1 HAVING COUNT(*) > 1", time_role=role, nullable="Required")
-            if name in DIM_KEYS:
-                dim, key = DIM_KEYS[name]
-                natural = "pay_plan_code, grade" if name == "grade" else name
-                columns = natural.split(", ")
-                for column in columns:
-                    yield row(family, column, dtype, "dw", dim, column, "Keep natural key in agreed scope",
-                              f"SELECT {natural} FROM dw.{dim} GROUP BY {natural} HAVING COUNT(*) > 1",
-                              nullable="Unknown only after review", status="PARTIAL")
-                yield row(family, natural, dtype, "dw", fact, key, "Resolve surrogate from agreed reference",
-                          f"SELECT COUNT(*) FROM dw.{fact} f LEFT JOIN dw.{dim} d "
-                          f"ON f.{key} = d.{key} WHERE d.{key} IS NULL",
-                          lookup="Cardinality-preserving LEFT JOIN after scope and key review",
-                          nullable="Unknown only after review", redacted="Retain REDACTED state",
-                          status="PARTIAL")
-            if name in MVP_LABELS:
-                dim = MVP_LABELS[name]
-                yield row(family, name, dtype, "dw", dim, name, "Confirm source label against scoped OPM reference",
-                          f"SELECT {name}_code FROM ods.{ods} GROUP BY {name}_code "
-                          f"HAVING COUNT(DISTINCT {name}) > 1",
-                          lookup="Use the reference label only after code and scope review", status="PARTIAL")
-            if name == "annualized_adjusted_basic_pay":
-                yield row(family, name, dtype, "dw", fact, name, "Parse observed amount to DECIMAL(18,2)",
-                          f"SELECT COUNT(*) FROM dw.{fact} WHERE {name} < 0",
-                          nullable="NULL for unavailable", redacted="Set numeric NULL; carry state separately")
+        yield from typed_rows(family, ods, fact)
+        yield from month_rows(family, ods, fact)
+        yield from lookup_rows(family, ods, fact, "agency", "agency", "dim_agency")
+        if family in ACTION_RELATIONS:
+            yield from lookup_rows(family, ods, fact, ACTION_RELATIONS[family], "category", "dim_action_category")
         yield from k10_rows(family)
+
+
+def typed_rows(family, ods, fact):
+    time_source = "snapshot_yyyymm" if family == "employment" else TIME
+    effective_source = "NULL::text" if family == "employment" else TIME
+    pay = "annualized_adjusted_basic_pay"
+    checks = (
+        ("manifest.report_month", "report_month", "Use the registered source file report month",
+         f"SELECT o.file_id FROM ods.{ods} o JOIN raw_meta.source_file f USING (file_id) "
+         "WHERE o.report_month IS DISTINCT FROM f.report_month", "Required", "report_month"),
+        ("count", "count_value", "Cast valid text to bigint and keep the source count",
+         f"SELECT file_id, source_row_ordinal FROM ods.{ods} WHERE count_value IS NULL",
+         "NULL for invalid bigint", ""),
+        (effective_source, "effective_month", "Carry source action month for event families",
+         f"SELECT file_id, source_row_ordinal FROM ods.{ods} WHERE effective_month IS DISTINCT FROM {effective_source}",
+         "Preserve raw NULL", "effective_month" if family != "employment" else ""),
+        (pay, "pay_value", "Parse numeric pay in ODS and retain the raw value and state",
+         f"SELECT file_id, source_row_ordinal FROM ods.{ods} WHERE pay_state = 'VALUE' AND pay_value IS NULL",
+         "NULL for unavailable pay", ""),
+        (pay, "pay_state", "Classify NULL, EMPTY, REDACTED, VALUE and INVALID in J02",
+         f"SELECT file_id, source_row_ordinal FROM ods.{ods} WHERE pay_state NOT IN "
+         "('NULL', 'EMPTY', 'REDACTED', 'VALUE', 'INVALID')", "Required", ""),
+        (f"count | {time_source} | {pay}", "dq_flags", "Record count, month and pay quality flags in ODS",
+         f"SELECT file_id, source_row_ordinal FROM ods.{ods} WHERE dq_flags IS NULL", "Required", ""),
+    )
+    for source, target, rule, check, nullable, role in checks:
+        yield row(family, source, "derived", "ods", ods, target, rule, check,
+                  nullable=nullable, time_role=role)
+    for field in ("count_value", "dq_flags"):
+        yield row(family, f"ods.{field}", "derived", "dw", fact, field, "Carry typed value from ODS",
+                  f"SELECT f.file_id, f.source_row_ordinal FROM dw.{fact} f "
+                  f"JOIN ods.{ods} o USING (file_id, source_row_ordinal) "
+                  f"WHERE f.{field} IS DISTINCT FROM o.{field}", nullable="Required")
+
+
+def month_rows(family, ods, fact):
+    business_role = "snapshot_month" if family == "employment" else "effective_month"
+    business_column = "snapshot_yyyymm" if family == "employment" else "effective_month"
+    business_source = "snapshot_yyyymm" if family == "employment" else TIME
+    for role, source, expected in (
+        ("report_month", "manifest.report_month", "o.report_month"),
+        (business_role, business_source, f"CASE WHEN o.{business_column} ~ '{MONTH_PATTERN}' THEN o.{business_column} END"),
+    ):
+        key = f"{role}_key"
+        yield row(family, source, "derived", "dw", fact, key,
+                  "Resolve the independent month role against dim_month; key 0 for unknown business month",
+                  f"SELECT f.file_id, f.source_row_ordinal FROM dw.{fact} f "
+                  f"JOIN ods.{ods} o USING (file_id, source_row_ordinal) "
+                  f"JOIN dw.dim_month d ON d.month_key=f.{key} WHERE d.yyyymm IS DISTINCT FROM {expected}",
+                  time_role=role, nullable="Required")
+        for column in ("month_key", "yyyymm", "calendar_year", "calendar_month"):
+            yield row(family, source, "derived", "dw", "dim_month", column,
+                      "Derive key, year and month from valid YYYYMM; key 0 reserves Unknown",
+                      "SELECT yyyymm FROM dw.dim_month WHERE month_key <> 0 GROUP BY 1 HAVING COUNT(*) > 1",
+                      time_role=role, nullable="Nullable attributes for Unknown")
+
+
+def lookup_rows(family, ods, fact, relation, prefix, dimension):
+    key, code, state = (f"{prefix}_{suffix}" for suffix in ("key", "code", "lookup_state"))
+    raw = f"{relation}_code"
+    is_category = prefix == "category"
+    scope = f" WHERE family = '{family}'" if is_category else ""
+    natural = f"month_key, {'family, ' if is_category else ''}{code}"
+    unique = f"SELECT {natural} FROM dw.{dimension}{scope} GROUP BY {natural} HAVING COUNT(*) > 1"
+    columns = {
+        key: "generated identity",
+        "month_key": "manifest.report_month",
+        code: f"ref.derived_lookup.code ({raw})",
+        f"{prefix}_label": "ref.derived_lookup.label",
+        "provenance": "ref.derived_lookup.provenance",
+        "verification_status": "PARTIAL",
+    }
+    if is_category:
+        columns["family"] = f"ref.derived_lookup.relation ({relation})"
+    for target, source in columns.items():
+        yield row(family, source, "derived", "dw", dimension, target,
+                  "Load only a unique READY lookup by report month and code; reserve key 0",
+                  unique, lookup="DERIVED_LOOKUP; official coverage PARTIAL", nullable="Required", status="PARTIAL")
+    source_table = f"FROM dw.{fact} f JOIN ods.{ods} o USING (file_id, source_row_ordinal)"
+    family_mismatch = f" OR d.family IS DISTINCT FROM '{family}'" if is_category else ""
+    for target, rule, check, nullable in (
+        (key, "LEFT JOIN month-scoped derived lookup; send unresolved rows to key 0",
+         f"SELECT f.file_id, f.source_row_ordinal FROM dw.{fact} f LEFT JOIN dw.{dimension} d "
+         f"ON f.{key}=d.{key} WHERE d.{key} IS NULL OR (f.{key} <> 0 AND "
+         f"(d.month_key IS DISTINCT FROM f.report_month_key OR d.{code} IS DISTINCT FROM f.{code}{family_mismatch}))", "Required"),
+        (code, "Keep raw code including leading zeros and whitespace",
+         f"SELECT f.file_id, f.source_row_ordinal {source_table} WHERE f.{code} IS DISTINCT FROM o.{raw}",
+         "Preserve raw NULL"),
+        (state, "Classify after btrim and uppercase REDACTED; join on the exact raw code",
+         f"SELECT f.file_id, f.source_row_ordinal {source_table} WHERE f.{state} IS DISTINCT FROM "
+         f"CASE WHEN o.{raw} IS NULL THEN 'NULL' WHEN btrim(o.{raw}) = '' THEN 'EMPTY' "
+         f"WHEN upper(btrim(o.{raw})) = 'REDACTED' THEN 'REDACTED' "
+         f"WHEN f.{key} = 0 THEN 'UNKNOWN' ELSE 'MATCHED_DERIVED' END", "Required"),
+    ):
+        yield row(family, raw, "string", "dw", fact, target, rule, check,
+                  nullable=nullable, lookup="Exact key; retain raw code and DQ state", status="PARTIAL")
 
 
 def k10_rows(family):
     checks = {
+        "file_id": ("raw_meta.source_file.file_id", "Expose coverage for the matching active LOADED file"),
+        "family": ("manifest.family", "Use the family of the registered source file"),
         "source_file": ("manifest.filename", "Keep the filename from the checked manifest"),
+        "source_sha256": ("manifest.sha256", "Match the audited source file by SHA-256"),
         "report_month": ("manifest.report_month", "Keep the file's report month"),
         "lookup_field": ("relationship_audit.key_columns", "Keep the exact key columns used by the check"),
         "lookup_status": ("relationship_audit.status", "Keep the audit status for this scope"),
+        "reference_coverage": ("relationship_audit.reference_coverage", "Distinguish complete, sampled and unchecked reference scope"),
         "eligible_rows": ("relationship_audit.eligible_rows", "Count rows whose keys are present"),
         "matched_rows": ("relationship_audit.reference_unique_matches",
                          "Count eligible rows with exactly one official match. Use NULL if the reference is incomplete"),
