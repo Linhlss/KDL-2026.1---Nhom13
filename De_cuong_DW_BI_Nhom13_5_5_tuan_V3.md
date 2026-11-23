@@ -22,7 +22,9 @@ Bộ dữ liệu sử dụng gồm 12 file Parquet OPM/EHRI về nhân sự liê
 | Separations | 4 | 92.511 | Bản ghi rời cơ quan |
 | **Tổng** | **12** | **9.181.290** | Không phải 9,18 triệu nhân viên khác nhau |
 
-Tài liệu giảng viên ghi “Lớn hơn 100M”. Nhóm đang dự trù theo **100 MB** và dataset vượt ngưỡng MB này; chưa có bằng chứng xác nhận riêng cách hiểu “100M”. Không suy rộng sự đồng ý về ERD thành xác nhận ngưỡng dữ liệu. Các trường mã và tên xuất hiện trong dữ liệu bao gồm những nhóm như `agency_code`, `department_code`, `agency_subelement_code`, `occupational_series_code`, `occupational_group_code`, `duty_station_code`, `pay_plan_code`, `grade`. Employment có kỳ snapshot; các file sự kiện có kỳ báo cáo và kỳ hiệu lực hành động. Không có khóa `employee_id` công khai để liên kết một người qua ba họ dữ liệu.
+Tài liệu giảng viên ghi “Lớn hơn 100M”. Theo [xác nhận riêng của giảng viên do TV1 ghi nhận](evidence/TV1_week1/100MB_confirmation.md), yêu cầu này là **lớn hơn 100 MB**. Tổng dung lượng 12 Parquet là 301.504.795 byte (khoảng 301,5 MB), vượt ngưỡng này.
+
+Các trường mã và tên xuất hiện trong dữ liệu bao gồm những nhóm như `agency_code`, `department_code`, `agency_subelement_code`, `occupational_series_code`, `occupational_group_code`, `duty_station_code`, `pay_plan_code`, `grade`. Employment có kỳ snapshot; các file sự kiện có kỳ báo cáo và kỳ hiệu lực hành động. Không có khóa `employee_id` công khai để liên kết một người qua ba họ dữ liệu.
 
 **Chốt baseline:** 12 file trong ZIP, ghi đầy đủ tên file, tháng, source version, số byte, số dòng, schema, SHA-256 vào `docs/03_source_inventory.csv`. Giữ nguyên raw files; không pha trộn bản phát hành khác nhau trong cùng một kết quả mà không có quy tắc version. Những số đếm `REDACTED` và lệch kỳ chỉ được nêu ở báo cáo sau khi chạy script kiểm chứng.
 

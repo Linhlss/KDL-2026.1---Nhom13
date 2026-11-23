@@ -13,6 +13,7 @@ Người dùng dự kiến là chuyên viên phân tích nhân lực. Đây là 
 | Quyết định | Nội dung | Căn cứ |
 |---|---|---|
 | Nguồn và baseline | Giữ 12 Parquet OPM/EHRI, 03–06/2025; khoảng 301,5 MB; 9.181.290 bản ghi qua các kỳ | Bộ file local và kiểm metadata; TV2 vẫn kiểm độc lập inventory/version/checksum |
+| Ngưỡng dung lượng | Yêu cầu “Lớn hơn 100M” nghĩa là **lớn hơn 100 MB**. Bộ 12 Parquet khoảng 301,5 MB vượt ngưỡng này. | [Giảng viên xác nhận theo TV1](../evidence/TV1_week1/100MB_confirmation.md) |
 | Phương án mục ERD OLTP | Dựng ERD mô hình nguồn quan hệ tái cấu trúc từ dữ liệu OPM và các mã đã kiểm chứng | Thầy đã đồng ý, theo xác nhận của trưởng nhóm trong trao đổi ngày 11/11/2026; xem [ghi nhận R01](../evidence/TV1_week1/R01_confirmation.md) |
 | Ranh giới của chấp thuận | Không gọi mô hình tái cấu trúc là OLTP gốc của OPM; không coi khóa/quan hệ đã được kiểm chỉ vì thầy đồng ý | TV2 audit khóa, TV3 kiểm cấu trúc và TV5 review |
 | Sản phẩm mục tiêu | Python/PostgreSQL → Staging/ODS → DW với 3 Fact → ít nhất 2 Mart → 3 dashboard Power BI | Quyết định thiết kế của nhóm, chưa triển khai |
@@ -35,7 +36,7 @@ Không tạo employee_id, không nối lịch sử cá nhân, không cộng bố
 | P1 — mở rộng đã chốt | Nhận diện kỳ mới/version mới, kiểm trước khi nạp, ghi log kết quả | TV2 định nghĩa kiểm; TV3 thực hiện; TV4 thể hiện kỳ cập nhật; TV5 thử; TV1 chốt phạm vi | Có demo thêm kỳ mà không nạp trùng |
 | P2 — chỉ dự kiến | Trang phân tích lệch kỳ | Cả nhóm xem xét sau MVP | Không lấn yêu cầu chính và không tự gán nguyên nhân |
 
-R01 đã được chấp thuận theo TV1; ảnh/tin nhắn gốc chưa đính kèm. R02 (quyền công bố Power BI), R03 (audit mã/khóa), R04 (baseline/version) vẫn cần TV4/TV5, TV2/TV3 và TV2 thực hiện tương ứng. Cách hiểu “100M”, thông báo học kỳ, tên thật, ngày bắt đầu và lịch họp chưa có bằng chứng chốt; xem [đối chiếu yêu cầu](00_course_requirements.md). Không mở lại câu hỏi ERD với thầy nếu phương án không thay đổi.
+R01 đã được chấp thuận theo TV1; ảnh/tin nhắn gốc chưa đính kèm. R02 (quyền công bố Power BI), R03 (audit mã/khóa), R04 (baseline/version) vẫn cần TV4/TV5, TV2/TV3 và TV2 thực hiện tương ứng. Thông báo học kỳ, hạn nộp chính thức, tên thật, ngày bắt đầu và lịch họp chưa có bằng chứng chốt; xem [đối chiếu yêu cầu](00_course_requirements.md). Không mở lại câu hỏi ERD với thầy nếu phương án không thay đổi.
 
 ## 5. Ai đóng góp và giao lại gì?
 
