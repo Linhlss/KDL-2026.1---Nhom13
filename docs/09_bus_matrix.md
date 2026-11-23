@@ -70,7 +70,16 @@ Quy tắc dùng chung:
 
 Chưa có mục nào được ghi PASS; việc chốt G2 phụ thuộc kết quả restore, kết nối Power BI và đối soát SQL–DAX của TV4/TV5.
 
-## 6. Việc còn lại
+## 6. Sản phẩm liên quan (L4-03/L4-04)
+
+| Sản phẩm | Nội dung |
+|---|---|
+| `docs/08_dimension_catalog.csv` | Danh mục theo cặp Fact–Dimension: `Fact, grain, Dim, natural_key, hierarchy, role_month, verified_status, unknown_rule, source_field` |
+| `docs/08_dimension_columns.csv` | Chi tiết cột của từng Dimension (kiểu dữ liệu, nguồn, cách xử lý Unknown) |
+| `diagrams/08_dimension_groups.drawio` | Nhóm Dimension: thời gian, tổ chức, hành động nhân sự; phần chưa có trong G2 |
+| `diagrams/09_dw_logical.drawio` | Mô hình logic: 3 Fact, 3 Dimension, vai trò tháng và khóa nối |
+
+## 7. Việc còn lại
 
 - [ ] TV3 phản hồi các mục "Cần xem lại / Cần bổ sung"
 - [ ] TV1 review
