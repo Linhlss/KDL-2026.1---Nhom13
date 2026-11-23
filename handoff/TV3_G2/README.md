@@ -2,6 +2,8 @@
 
 TV4 nhận database tổng hợp MVP tháng 04/2025 để restore trên PostgreSQL 18 và thử Power BI trên Windows. TV5 nhận mã và [hướng dẫn replay độc lập](TV5_REPLAY.md) từ ba file Parquet của TV2. Mô hình bên dưới là **đề xuất chờ TV4 duyệt**; tích hợp, bằng chứng Windows, PBIX và kết luận QA tiếp tục chờ TV4/TV5.
 
+[Nhận xét cuối theo từng yêu cầu kế hoạch](../../evidence/TV3_week2/11_final_plan_review.md) ghi kết quả tự kiểm lại của TV3 trước khi đẩy bổ sung, cùng các phần TV4/TV5 còn cần xác nhận.
+
 [Dump trong repo](workforce_g2.dump) · [Tải dump trực tiếp](https://raw.githubusercontent.com/Linhlss/KDL-2026.1---Nhom13/tv3/g2-pipeline/handoff/TV3_G2/workforce_g2.dump) · [SHA-256](workforce_g2.dump.sha256) · [Runbook SQL/ETL và DAX](../../docs/07_runbook.md) · [SQL KPI](../../sql/05_g2_kpi.sql) · [Thiết kế grain](../../docs/TV3_g2_model_decisions.md)
 
 File `workforce_g2.dump` được tạo từ `workforce_g2_transfer` bằng PostgreSQL 18.7, định dạng custom, dung lượng 20.918 byte. Clone/cập nhật đúng nhánh `tv3/g2-pipeline` để nhận dump và checksum cùng phiên bản. Raw Parquet không nằm trong dump và không được theo dõi trên Git.
