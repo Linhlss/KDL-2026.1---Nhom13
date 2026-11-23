@@ -1,0 +1,19 @@
+dw.dim_month: 9 rows copied
+dw.dim_agency: 493 rows copied
+dw.dim_action_category: 53 rows copied
+mart.workforce_monthly: 486 rows copied
+mart.personnel_flows_monthly: 340 rows copied
+Transfer ready: workforce_g3_transfer; validate private dump/restore before TV4 handoff
+PostgreSQL: pg_dump (PostgreSQL) 18.7 (Postgres.app)
+Private dump: workforce_g3.dump bytes= 29843 SHA256= 6d85ea2932e226f05d293bfd48bde7f2cb9b21c54ba9987d419167afbe54e1b8
+PASS restored exact rows dw.dim_month 9
+PASS restored exact rows dw.dim_agency 493
+PASS restored exact rows dw.dim_action_category 53
+PASS restored exact rows mart.workforce_monthly 486
+PASS restored exact rows mart.personnel_flows_monthly 340
+PASS restored month / K01 / K06 / K07: 202503 2289192 4862 22061
+PASS restored month / K01 / K06 / K07: 202504 2271969 7153 24088
+PASS restored month / K01 / K06 / K07: 202505 2255056 8813 26415
+PASS restored month / K01 / K06 / K07: 202506 2241780 9954 19947
+PASS temporary restore DB removed; transfer DB and dump retained locally for private handoff
+Windows and Power BI execution remain PENDING TV4

@@ -1,5 +1,7 @@
 # Chạy pipeline G2 tháng 04 năm 2025
 
+Tuần 3 có [runbook G3 riêng](TV3_week3_runbook.md) để nạp đủ 12 file, đối soát bốn kỳ và kiểm May rerun. Các lệnh/trạng thái MVP tháng 04 dưới đây được giữ để replay bằng chứng G2.
+
 Pipeline dùng PostgreSQL 18, Python 3.12 và ba file Parquet baseline của TV2. Chạy các lệnh dưới từ thư mục gốc repo trên nhánh `tv3/g2-pipeline`. [Thiết kế G2](TV3_g2_model_decisions.md) ghi grain, khóa, kỳ thời gian và phần đang chờ TV4. [Báo cáo tuần 2](../reports/TV3_week2_summary.md) liên kết kết quả thực chạy và các mục review.
 
 **TV5 trên Windows:** dùng [hướng dẫn PowerShell đầy đủ](../handoff/TV3_G2/TV5_REPLAY.md) để tạo Python 3.12/venv, nhận và kiểm hash ba Parquet, tạo database QA riêng, chạy regression và lưu expected/actual độc lập.

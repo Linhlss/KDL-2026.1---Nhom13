@@ -93,6 +93,31 @@ def check(conn, directory):
     preserved_source(conn, file_id)
     print("PASS manifest version inconsistent with filename fails before a source can be skipped")
 
+    # Same filename with a new verified digest is a source-version conflict, not a reload.
+    original = (directory / good["filename"]).read_bytes()
+    changed = pq.read_table(directory / good["filename"]).set_column(
+        1, "agency_code", pa.array(["CHANGED", "CHANGED"], type=pa.string()))
+    pq.write_table(changed, directory / good["filename"])
+    changed_item = dict(good, sha256=hashlib.sha256((directory/good["filename"]).read_bytes()).hexdigest(),
+                        size_bytes=str((directory/good["filename"]).stat().st_size))
+    expect_failure(conn, args, changed_item, (ValueError,))
+    preserved_source(conn, file_id)
+    (directory / good["filename"]).write_bytes(original)
+    print("PASS changed hash under an existing filename is rejected without replacing active data")
+
+    unsupported = parquet_fixture(directory, "separations")
+    path = directory / unsupported["filename"]
+    table = pq.read_table(path).set_column(0, "count", pa.array([1, 1], type=pa.int64()))
+    pq.write_table(table, path)
+    schema = "|".join(f"{field.name}:{field.type}" for field in table.schema)
+    unsupported.update(sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                       size_bytes=str(path.stat().st_size),
+                       schema_hash=hashlib.sha256(schema.encode()).hexdigest()[:16])
+    expect_failure(conn, args, unsupported, (ValueError,))
+    assert conn.execute("SELECT count(*) FROM raw_meta.source_file WHERE family='separations'").fetchone()[0] == 0
+    preserved_source(conn, file_id)
+    print("PASS unsupported non-text source schema records FAIL before registration and preserves valid data")
+
     invalid = parquet_fixture(directory, "accessions", invalid=True)
     expect_failure(conn, args, invalid, (psycopg.Error,))
     assert conn.execute(

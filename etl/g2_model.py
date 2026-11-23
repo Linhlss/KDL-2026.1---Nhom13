@@ -32,7 +32,7 @@ def build_model(conn, month):
 
         for family in FACTS:
             cur.execute(sql.SQL(
-                "SELECT count(*) FILTER (WHERE o.count_value IS NULL OR o.count_value < 0), "
+                "SELECT count(*) FILTER (WHERE o.count_value IS DISTINCT FROM 1), "
                 "count(*) FROM {} o JOIN raw_meta.source_file f USING(file_id) "
                 "WHERE f.report_month = %s AND f.is_active AND f.status = 'LOADED'"
             ).format(sql.Identifier("ods", f"ods_{family}_record")), (month,))

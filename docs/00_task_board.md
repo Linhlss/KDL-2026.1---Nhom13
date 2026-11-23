@@ -1,4 +1,17 @@
-# Bảng công việc và bàn giao G2
+# Bảng công việc và bàn giao G2 G3
+
+## Tuần 3 của TV3
+
+Nhánh `tv3/g3-full-pipeline` kế thừa PR G2 #43 chưa merge. [Báo cáo G3](../reports/TV3_week3_summary.md) và [runbook](TV3_week3_runbook.md) ghi actual và dependency, không tự chốt G3/DONE thay reviewer. ID dưới đây theo phân công V3; chưa gán số issue GitHub tuần 3 khi chưa có.
+
+| Task | Owner | Trạng thái gửi review | Sản phẩm và phần chờ |
+| --- | --- | --- | --- |
+| L3-10 | TV3 | REVIEW | [12-file counts](../reports/week3/07_file_counts.csv), [load log](../reports/week3/07_load_log.csv), [before–after](../reports/week3/07_before_after.csv); TV2/TV5 xác nhận |
+| L3-11 | TV3 | REVIEW phần thực thi; model PROPOSED | 3 Fact, PK/FK/Unknown, [catalog quan sát](../reports/week3/08_dimension_observed.csv); chờ bus matrix/catalog và grain chính thức TV4 |
+| L3-12 | TV3 | REVIEW phần tháng/cơ quan | 2 Mart đủ bốn kỳ, [SQL KPI](../sql/07_g3_kpi.sql); chiều/category bổ sung chờ TV4 thống nhất |
+| L3-13 | TV3 | REVIEW tự kiểm | [J06](../reports/week3/07_reconciliation.csv), [May rerun](../reports/week3/TV3_week3_rerun_results.csv), [hướng dẫn lỗi/version](TV3_week3_runbook.md); TV5 QA độc lập còn chờ, replacement thật NOT_TESTED |
+
+H07 gửi review; TV4 còn cần nhận Mart/Windows/PBIX và TV5 ký kết quả độc lập. TV1 điền lịch thực tế và chốt G3. Chi tiết phần còn mở nằm trong báo cáo tuần 3.
 
 > **Cập nhật nhánh TV3 ngày 23/11/2026:** gói tuần 2 **REVIEW** tại [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Đã có đầu vào TV2, pipeline ba nguồn tháng 04 và gói [TV4 restore/Power BI](../handoff/TV3_G2/README.md), [TV5 replay Windows](../handoff/TV3_G2/TV5_REPLAY.md). Mô hình **PROPOSED, chờ TV4**; tích hợp và nghiệm thu **chờ TV4/TV5**. Kết quả tự kiểm của TV3 chưa thay cho nghiệm thu độc lập. Các mốc 18/11 bên dưới giữ để truy vết lịch sử.
 
