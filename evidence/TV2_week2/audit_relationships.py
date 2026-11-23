@@ -118,7 +118,7 @@ def profile_keys(grouped, label):
     return counts, by_key, labels
 
 
-def audit_scope(grouped, relation, scope, month=None, references=()):
+def audit_scope(grouped, relation, scope, month=None, references=(), *, source_sha256=""):
     keys, label, reference = RELATIONS[relation]
     counts, by_key, labels = profile_keys(grouped, label)
     ambiguous = [key for key in by_key if len(labels[key]) > 1]
@@ -143,7 +143,7 @@ def audit_scope(grouped, relation, scope, month=None, references=()):
                   derived_lookup_keys=len(derived_keys) if label else "",
                   derived_lookup_unmatched_rows=(sum(by_key[key] for key in by_key.keys() - derived_keys) if label else ""),
                   **metrics, status="VERIFIED" if verified else "PARTIAL" if label else "UNSUPPORTED",
-                  reviewer="PENDING TV3/TV5")
+                  reviewer="PENDING TV3/TV5", source_sha256=source_sha256)
     reasons = [("MULTIPLE_LABELS", ambiguous), ("NO_LABEL", unlabelled)]
     if metrics["reference_coverage"] == "COMPLETE":
         active = active_reference_keys(month, references)
@@ -210,7 +210,7 @@ def scan(con, files, schemas, inventory, references, fedscope_labels, dated_labe
     exceptions = []
     all_scopes = defaultdict(Counter)
     by_month = defaultdict(Counter)
-    per_file = {row["filename"]: row["row_count"] for row in inventory}
+    per_file = {row["filename"]: row for row in inventory}
     for (family, month), path in files.items():
         scope = f"{family}/{month}"
         # DuckDB exposes zero-based positions; ODS uses the one-based prototype convention.
@@ -218,7 +218,8 @@ def scan(con, files, schemas, inventory, references, fedscope_labels, dated_labe
             SELECT count(*), count(DISTINCT file_row_number), min(file_row_number + 1), max(file_row_number + 1)
             FROM read_parquet(?, file_row_number=true)
         """, [str(path)]).fetchone()
-        if n != per_file[path.name] or (n, first, last) != (unique_n, 1, n):
+        file = per_file[path.name]
+        if n != file["row_count"] or (n, first, last) != (unique_n, 1, n):
             raise ValueError(f"File-row grain failed for {path.name}")
         for relation, (keys, label, _) in RELATIONS.items():
             if not set(keys).issubset(schemas[family, month]):
@@ -227,7 +228,9 @@ def scan(con, files, schemas, inventory, references, fedscope_labels, dated_labe
             groups = con.execute(query.replace("{{keys}}", items).replace(
                 "{{label}}", identifier(label) if label else "NULL"), [str(path)]).fetchall()
             counts = Counter({(tuple(row[:-2]), row[-2]): row[-1] for row in groups})
-            item, issues = audit_scope(counts, relation, scope, month, references.get(relation, ()))
+            item, issues = audit_scope(
+                counts, relation, scope, month, references.get(relation, ()), source_sha256=file["sha256"]
+            )
             if item["tested_rows"] != n:
                 raise ValueError(f"Lost rows in audit of {relation}, {scope}")
             summaries.append(item)
