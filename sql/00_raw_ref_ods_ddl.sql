@@ -28,6 +28,32 @@ CREATE TABLE IF NOT EXISTS audit.dq_issue (
  details text NOT NULL, affected_rows bigint NOT NULL
 );
 CREATE INDEX IF NOT EXISTS dq_issue_file ON audit.dq_issue(file_id);
+
+CREATE TABLE IF NOT EXISTS audit.lookup_coverage_snapshot (
+ family text NOT NULL, report_month text NOT NULL,
+ source_file text NOT NULL, source_sha256 text NOT NULL,
+ lookup_field text NOT NULL,
+ lookup_status text NOT NULL CHECK (lookup_status IN ('VERIFIED','PARTIAL','UNSUPPORTED')),
+ reference_coverage text NOT NULL CHECK (reference_coverage IN ('COMPLETE','SAMPLE','NOT_CHECKED')),
+ eligible_rows bigint NOT NULL CHECK (eligible_rows >= 0),
+ matched_rows bigint CHECK (matched_rows BETWEEN 0 AND eligible_rows),
+ CHECK ((reference_coverage = 'COMPLETE') = (matched_rows IS NOT NULL)),
+ CHECK (lookup_status <> 'VERIFIED' OR reference_coverage = 'COMPLETE'),
+ PRIMARY KEY (family, report_month, source_sha256, lookup_field)
+);
+
+CREATE OR REPLACE VIEW audit.fk_lookup_coverage AS
+SELECT f.file_id, f.family, c.source_file, c.source_sha256, c.report_month,
+       c.lookup_field, c.lookup_status, c.reference_coverage, c.eligible_rows, c.matched_rows,
+       CASE WHEN c.lookup_status = 'VERIFIED'
+            THEN round(100.0 * c.matched_rows / NULLIF(c.eligible_rows, 0), 6)
+       END AS coverage_pct
+FROM audit.lookup_coverage_snapshot c
+JOIN raw_meta.source_file f
+  ON f.family = c.family AND f.report_month = c.report_month
+ AND f.filename = c.source_file AND f.sha256 = c.source_sha256
+WHERE f.is_active AND f.status = 'LOADED';
+
 CREATE TABLE IF NOT EXISTS ref.derived_lookup (
  relation text, report_month text, code text, label text, observed_rows text,
  provenance text, load_status text, exception text, observed_labels text,
