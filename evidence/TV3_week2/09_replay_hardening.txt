@@ -84,3 +84,35 @@ TV3 source-direct crosscheck passed; independent TV5 review pending.
 PASS real-source QA database removed
 PASS all handed-off report SHA256 unchanged; outputs only in --report-dir QA folders
 TV3 verification completed; TV4 Windows/PBIX and TV5 independent conclusion remain pending
+
+Clean checkout commit
+c46f0961efc7037e293911ee213d616b98bfa062
+Clean checkout path: /private/tmp/tv3-g2-clean-vsjf5wsl
+Initial git status
+
+All local Markdown links
+Local Markdown link targets checked: 239
+PASS all local Markdown link targets exist
+PASS all 17 documented code/config/inventory/dump/evidence entry files present
+PASS clean-checkout code SHA256 matches the real-source verification run
+PASS clean-checkout dump checksum matches handoff SHA256
+PASS documented pipeline/source-direct CLI entrypoints load from clean checkout
+Python compilation
+
+Clean-checkout replay regression
+PASS CLI > dotenv > legacy database/raw-directory defaults
+PASS direct checker accepts all three verified files in flat and family directories
+PASS direct checker rejects invalid/absent months, missing/duplicate families, missing file and checksum mismatch
+SUCCESS employment_202504_v5.parquet 2 rows
+SUCCESS accessions_202504_v5.parquet 2 rows
+SUCCESS separations_202504_v5.parquet 2 rows
+PASS J06 rejects zero, one and two LOADED families, exports FAIL coverage and records audit FAIL
+PASS complete source coverage alone cannot pass missing Fact/Mart reconciliation
+PASS J06 passes only complete matching layers and excludes inactive/unloaded sources
+PASS J06 valid inventory month without loaded data fails with audit evidence
+PASS source-direct compares all three inputs, rejects absent/invalid months and fails mismatches under python -O
+PASS --report-dir keeps reviewer outputs separate and handed-off report hashes unchanged
+PASS disposable database, Parquet fixtures and reviewer reports removed
+Final git status
+
+PASS checkout remains clean after verification; raw data, local secrets and venv were not required in the checkout
