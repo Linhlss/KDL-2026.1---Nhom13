@@ -1,15 +1,17 @@
 # L2-08 · Đối chiếu mapping và ERD với DDL G2
 
-**23/11/2026 · REVIEW.** Nhánh tích hợp dùng đầu vào TV2 tại `e23de2c` và pipeline TV3 tại `9d60e1c`. Phạm vi thực chạy G2 dùng ba file kỳ 04/2025. [PR TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43) · [Issue L2-08](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/18)
+**23/11/2026 · REVIEW.** Nhánh tích hợp dùng đầu vào TV2 tại `e23de2c` và cập nhật bàn giao TV3 tại `3b30235`. Phạm vi thực chạy G2 dùng ba file kỳ 04/2025. [PR TV3](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43) · [Issue L2-08](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/18)
 
 ## Kết quả sau đồng bộ
 
 - **24 dòng DW.** [Mapping vật lý](04_source_to_target_mapping.csv) dùng các khóa `report_month_key`, `snapshot_month_key`, `effective_month_key`, `count_value`, nhãn Agency và một `dim_action_category` có cột `family`. Mapping ghi cả mã gốc, trạng thái lookup, cờ chất lượng và provenance. Cả 50 cột của ba Fact và ba Dimension đều có dòng truy vết.
 - **30 đích thiết kế.** Mapping chỉ tới trường gốc đang lưu ở ODS cho nghề, địa điểm, nhóm tuổi, pay plan và grade. Lương có `annualized_adjusted_basic_pay`, `pay_value` và `pay_state` tại ODS. TV4 xác nhận phạm vi các chiều và KPI bổ sung trong bus matrix. [Issue bus matrix](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/32)
-- **21 dòng K10 trước đối chiếu.** `audit.fk_lookup_coverage` đã có trong DDL. Luồng `init` và `all` nạp audit TV2 theo từng file và trường, gắn SHA-256 từ inventory. View chỉ hiển thị audit của file đang `LOADED`, còn hoạt động và khớp định danh lẫn SHA-256. `SAMPLE` và `NOT_CHECKED` để trống tử số. Tỷ lệ chỉ hiện với `VERIFIED` và mẫu số dương.
+- **21 dòng K10 trước đối chiếu.** `audit.fk_lookup_coverage` đã có trong DDL. [Audit TV2](04_relationship_audit.csv) lưu SHA-256 của Parquet được kiểm theo từng file và trường. Luồng `init` và `all` so hash đó với inventory trước khi nạp. View chỉ hiển thị audit của file đang `LOADED`, còn hoạt động và khớp định danh lẫn SHA-256. `SAMPLE` và `NOT_CHECKED` để trống tử số. Tỷ lệ chỉ hiện với `VERIFIED` và mẫu số dương.
 - **ETL lookup.** Phân loại mã Agency và action theo khoảng trắng đầu/cuối và chữ hoa/thường đối với `REDACTED`. Mã dùng làm khóa lookup vẫn so khớp nguyên văn. Ca kiểm sử dụng cả `001` và ` 001 ` để xác nhận số 0 đầu và khoảng trắng gốc được giữ. [ETL](../etl/g2_model.py) · [Ca kiểm](../tests/g2_model_checks.py)
 
 Kiểm thử trên PostgreSQL 18.7 đã xác nhận **228 dòng mapping**, với **127 truy vấn SQL khác nhau** lập được kế hoạch. Các bộ kiểm model, K10, nạp nguồn và chạy lại đạt trên database thử riêng.
+
+Lượt rà soát trước khi push chạy lại audit trên 12 Parquet. Cả 104 dòng chi tiết theo file có hash khớp inventory và 36 dòng tổng hợp để trống hash. Các số đo, lookup và bảng ngoại lệ khớp bản trước. Ca hồi quy K10 từ chối inventory có SHA-256 khác audit dù số dòng bằng nhau.
 
 Replay `--job all --month 202504` trên PostgreSQL 18.7 giữ đúng **2.271.969 Employment**, **7.153 Accessions** và **24.088 Separations** từ nguồn đến Fact. Tổng measure của cả hai Mart khớp, lineage ODS → Fact trả 0 sai biệt cho cả ba họ. Đủ 43 Accessions và 61 Separations lệch kỳ được giữ. J06 ghi 21 phép kiểm đạt và 3 phép kiểm DAX chờ TV4/TV5. View K10 trả 26 kết quả theo file và trường, gồm 8 Employment, 9 Accessions và 9 Separations. Các tỷ lệ của kỳ này để trống theo phạm vi kiểm chứng của audit.
 

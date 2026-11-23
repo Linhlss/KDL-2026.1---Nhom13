@@ -99,6 +99,9 @@ def coverage_snapshot_rows(inventory, audit):
         file = files.get(result["scope"])
         if file is None:
             continue
+        source_sha256 = result.get("source_sha256")
+        if source_sha256 != file["sha256"]:
+            raise ValueError(f"K10 audit SHA-256 disagrees with inventory for {file['filename']}")
         if int(result["tested_rows"]) != int(file["row_count"]):
             raise ValueError(f"K10 audit row count disagrees with inventory for {file['filename']}")
         eligible = int(result["eligible_rows"])
@@ -109,7 +112,7 @@ def coverage_snapshot_rows(inventory, audit):
                 raise ValueError(f"K10 audit denominator disagrees for {result['key_columns']} in {file['filename']}")
             matched = int(result["reference_unique_matches"])
         output.append((
-            file["family"], file["report_month"], file["filename"], file["sha256"],
+            file["family"], file["report_month"], file["filename"], source_sha256,
             result["key_columns"], result["status"], coverage, eligible, matched,
         ))
     return output

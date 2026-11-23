@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
-from g2_pipeline import initialize, rows
+from g2_pipeline import coverage_snapshot_rows, initialize, rows
 from g2_test_support import ROOT, temporary_database
 
 
@@ -16,6 +16,16 @@ def check(conn):
     assert conn.execute("SELECT count(*) FROM audit.fk_lookup_coverage").fetchone()[0] == 0
     source = next(item for item in rows(ROOT / "docs/03_source_inventory.csv")
                   if item["family"] == "employment" and item["report_month"] == "202504")
+    file_audit = [item for item in rows(ROOT / "docs/04_relationship_audit.csv")
+                  if item["scope"] == "employment/202504"]
+    assert len(coverage_snapshot_rows([source], file_audit)) == 8
+    for stale in ({**source, "sha256": "0" * 64}, {**source, "row_count": "1"}):
+        try:
+            coverage_snapshot_rows([stale], file_audit)
+        except ValueError as error:
+            assert "disagrees with inventory" in str(error), error
+        else:
+            raise AssertionError("K10 accepted an audit from a different file")
     conn.execute(
         "INSERT INTO raw_meta.source_file(family, report_month, version, filename, sha256, schema_hash, "
         "size_bytes, row_count, column_count, source_url, status) VALUES "
@@ -41,7 +51,7 @@ def check(conn):
     assert rates == {"fixture_verified": "66.666667", "fixture_zero": None}, rates
     conn.execute("UPDATE raw_meta.source_file SET sha256='fixture-different-sha'")
     assert conn.execute("SELECT count(*) FROM audit.fk_lookup_coverage").fetchone()[0] == 0
-    print("PASS K10 initialization, official scope, zero denominator and source hash")
+    print("PASS K10 initialization, official scope, zero denominator and source hash at load and query")
 
 
 if __name__ == "__main__":

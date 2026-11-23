@@ -165,7 +165,7 @@ def k10_rows(family):
         "file_id": ("raw_meta.source_file.file_id", "Expose coverage for the matching active LOADED file"),
         "family": ("manifest.family", "Use the family of the registered source file"),
         "source_file": ("manifest.filename", "Keep the filename from the checked manifest"),
-        "source_sha256": ("manifest.sha256", "Match the audited source file by SHA-256"),
+        "source_sha256": ("relationship_audit.source_sha256", "Verify the audit hash against inventory and the loaded file"),
         "report_month": ("manifest.report_month", "Keep the file's report month"),
         "lookup_field": ("relationship_audit.key_columns", "Keep the exact key columns used by the check"),
         "lookup_status": ("relationship_audit.status", "Keep the audit status for this scope"),
