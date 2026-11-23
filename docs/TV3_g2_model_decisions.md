@@ -25,6 +25,8 @@ Mỗi Fact giữ khóa nguồn và FK đến đúng bảng ODS. Điều này cho
 
 TV4 cần duyệt grain một dòng nguồn, phạm vi agency theo tháng, việc gộp hai loại category vào một Dimension có cột family, cách trình bày Unknown và các role tháng trong Power BI. Các chiều nghề, địa điểm, grade và hierarchy sẽ được thêm theo catalog và audit đủ căn cứ của nhóm.
 
+Mô hình Power BI cho bản dump tổng hợp được đề xuất trong [gói TV4](../handoff/TV3_G2/README.md): `dim_month` và `dim_agency` lọc một chiều trực tiếp tới cả hai Mart. Dùng slicer Dimension; tránh tạo thêm đường lọc Month → Agency hoặc Mart → Mart. `dim_agency` key 0 có tháng Unknown riêng, nên lọc tháng bằng `dim_month` trực tiếp tới Mart để vẫn giữ nhóm Unknown của tháng được chọn. Đây là đề xuất chờ TV4 xác nhận.
+
 Lượt chạy tháng 04 giữ 206.687 dòng Employment, 1.591 dòng Accessions và 1.936 dòng Separations trong agency key 0 do lookup agency chưa có nhãn READY duy nhất. Tổng measure toàn kỳ vẫn khớp nguồn. Cần TV2/TV4 xử lý nhãn REVIEW và quyết định hiển thị Unknown trước khi sử dụng slicer agency để nhận xét đầy đủ theo cơ quan. [Kết quả model](../evidence/TV3_week2/01_pipeline_run.txt) và [báo cáo bàn giao](../reports/TV3_week2_summary.md) ghi số đo.
 
 ## Mart và KPI
@@ -35,6 +37,8 @@ Lượt chạy tháng 04 giữ 206.687 dòng Employment, 1.591 dòng Accessions 
 | `mart.personnel_flows_monthly` | Report month + agency key | `accessions`, `separations`, `net_actions = accessions - separations`, `source_rows` |
 
 Mart flows tổng hợp từng Fact sự kiện trước rồi UNION ALL về grain chung. Mỗi KPI dùng cùng kỳ và filter khi so với SQL/DAX. K01 tháng 04 cần toàn bộ Employment v4. `count_value` không hợp lệ phải được sửa hoặc xác minh trước khi build model. SQL tham chiếu nằm trong [05_g2_kpi.sql](../sql/05_g2_kpi.sql).
+
+Hai Mart hiện chỉ có grain tháng/cơ quan. Category Dimension chưa liên kết được tới Mart bằng category key; TV4 cần thống nhất grain và Mart bổ sung nếu muốn phân tích theo category.
 
 ## Phần chờ xác nhận
 

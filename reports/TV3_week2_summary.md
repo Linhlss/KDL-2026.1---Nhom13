@@ -2,6 +2,8 @@
 
 Nhánh `tv3/g2-pipeline` triển khai MVP tháng 04/2025 dựa trên đầu vào TV2 commit `8f9ea8d26b529381ce4d6bf69ee2d9f7e3536448`, tích hợp từ `main` commit `f109bbff05726cce6f231ee9644a170b51251f4e`. [Runbook](../docs/07_runbook.md) ghi cách chạy và bàn giao. [Thiết kế G2](../docs/TV3_g2_model_decisions.md) ghi các lựa chọn kỹ thuật cần TV4 review.
 
+**Trạng thái cập nhật 23/11/2026: REVIEW** tại [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Mô hình **PROPOSED, chờ TV4**; tích hợp và kết luận G2 **chờ TV4/TV5**. [TV4 nhận dump và mô hình Power BI đề xuất](../handoff/TV3_G2/README.md); [TV5 replay PowerShell trên QA riêng](../handoff/TV3_G2/TV5_REPLAY.md). Bằng chứng chạy Mac của TV3 chưa thay thế bằng chứng Windows hoặc kết luận QA độc lập.
+
 | Task | Trạng thái bàn giao | Sản phẩm | Review còn cần |
 | --- | --- | --- | --- |
 | L3-05 · DDL nguồn/ODS/audit | REVIEW | [DDL](../sql/00_raw_ref_ods_ddl.sql), 7 schema, PK nguồn và metadata file | TV2 đối chiếu ERD, TV5 replay DDL trên DB sạch |
@@ -9,7 +11,7 @@ Nhánh `tv3/g2-pipeline` triển khai MVP tháng 04/2025 dựa trên đầu vào
 | J02 · Chuẩn hóa | REVIEW | Giữ raw, thêm typed count/pay, time roles và DQ | TV2 review quy tắc, TV5 kiểm before–after |
 | L3-04 · Review ERD | REVIEW | [Biên bản cập nhật G2](../docs/TV3_week1_erd_review.md) theo audit/mapping TV2 | TV5 kiểm lineage và quan hệ khóa độc lập |
 | L3-07 · DW/Mart | PROPOSED · chờ TV4 | [3 Fact/Dimension](../sql/03_dw_ddl.sql), [2 Mart](../sql/04_create_marts.sql) | TV4 giao bus matrix/catalog và duyệt grain, Unknown, time roles; TV5 kiểm PK/FK |
-| L3-08 · MVP tích hợp | BLOCKED tại bước TV4/TV5 | Luồng tháng 04, [SQL K01/K06/K07](../sql/05_g2_kpi.sql) và gói chuyển DB | TV4 tự restore/kết nối PBIX, TV5 đối soát SQL–DAX và ký kết quả |
+| L3-08 · MVP tích hợp | REVIEW phần TV3 · chờ TV4/TV5 | Luồng tháng 04, [SQL K01/K06/K07](../sql/05_g2_kpi.sql) và gói chuyển DB | TV4 tự restore/kết nối PBIX, TV5 đối soát SQL–DAX và ký kết quả |
 | L3-09 · Sơ đồ | REVIEW | Architecture, ETL data flow và DW physical overall cùng bản xem | TV4/TV5 đối chiếu với DDL và hệ thống chạy |
 
 ## Phạm vi và điều kiện nghiệm thu
@@ -41,6 +43,14 @@ Separations đã được bổ sung vào prototype tuần 1 với 24.088 dòng, 
 Phần agency/category trong DW dùng lookup dẫn xuất TV2 đã gate READY, kèm Unknown và mã gốc. Trạng thái xác minh miền mã vẫn PARTIAL. Mô hình thực thi hiện tại giữ grain một dòng nguồn cho từng Fact và phạm vi Dimension theo tháng. TV4 cần duyệt các quyết định này khi giao bus matrix/catalog.
 
 **Giới hạn agency cần TV2/TV4 review.** Có 206.687 dòng Employment, 1.591 dòng Accessions và 1.936 dòng Separations vào nhóm agency Unknown vì khóa chưa có một nhãn READY trong lookup TV2 theo kỳ. Tổng toàn kỳ vẫn được giữ. Bộ lọc agency dùng nhãn Dimension chỉ tách được các nhóm đã qua gate; phần Unknown cần đối chiếu mã gốc ở ODS/Fact và xử lý trước khi kết luận theo từng agency.
+
+**Giới hạn grain Mart.** Hai Mart chỉ hỗ trợ tháng/cơ quan. `dim_action_category` có trong dump để review miền mã; Mart không có category key nên chưa hỗ trợ slicer category. TV4 cần thống nhất grain và bảng tổng hợp bổ sung trước khi triển khai phân tích category.
+
+## Bổ sung khả năng replay ngày 23/11/2026
+
+Pipeline có `--report-dir`, giữ mặc định `reports/` và cho TV5 ghi riêng dưới `.qa/`. `--database`/`--raw-dir` ưu tiên CLI, rồi `PGDATABASE`/`RAW_DATA_DIR` trong `.env`, cuối cùng dùng mặc định cũ. Đường dẫn tương đối tính từ thư mục chạy. J06 chặn tháng thiếu bất kỳ family active/LOADED nào, ghi CSV và audit FAIL. Trình đối soát trực tiếp từ chối tháng không hợp lệ hoặc inventory không đủ ba family trước khi kết luận thành công.
+
+Các CSV và bằng chứng lượt bàn giao cũ được giữ nguyên. J06 mới bổ sung ba phép kiểm coverage, do đó lượt đạt có **21 PASS + 3 PENDING DAX** thay cho 18 PASS + 3 PENDING trong bằng chứng cũ. [Regression replay](../tests/g2_replay_checks.py) kiểm các nhánh lỗi và ưu tiên cấu hình; bằng chứng sửa đổi được lưu riêng trong [09_replay_hardening.txt](../evidence/TV3_week2/09_replay_hardening.txt).
 
 ## Đầu vào và người nhận tiếp theo
 

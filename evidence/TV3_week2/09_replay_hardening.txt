@@ -1,0 +1,86 @@
+TV3 replay hardening verification — 2026-11-23T13:31:11.982049+07:00
+Platform: macOS; TV3 self-check, Windows and independent TV5 review pending
+Base commit: cb4f55baf2fc6c47c40a81a07d6cef96fe13c445
+SHA256 etl/g2_pipeline.py 7c155ae3566d68ce655c56da1eadbf85855759f3e422796f627e5413f6be4620
+SHA256 evidence/TV3_week2/reconcile_sources.py a7e9307c41b33b80ef945380bf91f5585f8bc807484ad5e0d13e301fcc14d170
+SHA256 tests/g2_replay_checks.py 432062ce8b120a9126c8d4f0cf7b820adb100411f32365424b53a3837887505f
+Handed-off reports snapshotted: 20
+
+Dependency consistency
+No broken requirements found.
+
+Synthetic regression g2_model_checks.py
+PASS ambiguous duplicate agency lookup preserves rows under Unknown0
+PASS building another month preserves prior Fact and Mart totals
+PASS repeat model build preserves totals without duplicate Facts
+PASS invalid count blocks publish and preserves previous Mart state
+PASS temporary database removed
+
+Synthetic regression g2_source_checks.py
+SUCCESS employment_202504_v5.parquet 2 rows
+SKIPPED employment_202504_v5.parquet 2 rows
+PASS identical source rerun skips J01/J02 without duplicating rows
+PASS missing file records FAIL and preserves another valid source
+PASS checksum mismatch records FAIL and preserves the loaded source
+PASS manifest version inconsistent with filename fails before a source can be skipped
+PASS COPY failure rolls back metadata/Staging/ODS while both FAIL audit records survive
+PASS no unfinished audit runs after handled failures
+PASS temporary database and Parquet fixtures removed
+
+Synthetic regression g2_replay_checks.py
+PASS CLI > dotenv > legacy database/raw-directory defaults
+PASS direct checker accepts all three verified files in flat and family directories
+PASS direct checker rejects invalid/absent months, missing/duplicate families, missing file and checksum mismatch
+SUCCESS employment_202504_v5.parquet 2 rows
+SUCCESS accessions_202504_v5.parquet 2 rows
+SUCCESS separations_202504_v5.parquet 2 rows
+PASS J06 rejects zero, one and two LOADED families, exports FAIL coverage and records audit FAIL
+PASS complete source coverage alone cannot pass missing Fact/Mart reconciliation
+PASS J06 passes only complete matching layers and excludes inactive/unloaded sources
+PASS J06 valid inventory month without loaded data fails with audit evidence
+PASS source-direct compares all three inputs, rejects absent/invalid months and fails mismatches under python -O
+PASS --report-dir keeps reviewer outputs separate and handed-off report hashes unchanged
+PASS disposable database, Parquet fixtures and reviewer reports removed
+
+PASS dump SHA256 837729db8c478d0cd8a08fa7aebb0b1154f67fbfeeeff7e31483ab0a48b3bcfa
+3869; 0 18031 TABLE DATA dw dim_action_category tranthanhtung
+3867; 0 18010 TABLE DATA dw dim_agency tranthanhtung
+3865; 0 17998 TABLE DATA dw dim_month tranthanhtung
+3871; 0 18078 TABLE DATA mart personnel_flows_monthly tranthanhtung
+3870; 0 18053 TABLE DATA mart workforce_monthly tranthanhtung
+PASS restore dw.dim_month: expected=3 actual=3
+PASS restore dw.dim_agency: expected=123 actual=123
+PASS restore dw.dim_action_category: expected=14 actual=14
+PASS restore mart.workforce_monthly: expected=114 actual=114
+PASS restore mart.personnel_flows_monthly: expected=88 actual=88
+PASS restore KPI K01=2271969 K06=7153 K07=24088
+PASS restore verification database removed
+
+Fresh real-source QA: database/raw path selected from isolated dotenv config
+
+Fresh complete end-to-end
+SUCCESS employment_202504_v4.parquet 2271969 rows
+SUCCESS accessions_202504_v5.parquet 7153 rows
+SUCCESS separations_202504_v5.parquet 24088 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2271969, "measure_sum": 2271969, "unknown_agency_rows": 206687}, "accessions": {"rows": 7153, "measure_sum": 7153, "unknown_agency_rows": 1591}, "separations": {"rows": 24088, "measure_sum": 24088, "unknown_agency_rows": 1936}}, "marts": {"headcount": 2271969, "accessions": 7153, "separations": 24088, "workforce_groups": 114, "flow_groups": 88}}
+Completed all month=202504 db=tv3_g2_check_128ba619fe18; TV4/TV5 review pending
+PASS fresh reconciliation: {"PASS": 21, "PENDING": 3}
+
+Repeat complete end-to-end
+SKIPPED employment_202504_v4.parquet 2271969 rows
+SKIPPED accessions_202504_v5.parquet 7153 rows
+SKIPPED separations_202504_v5.parquet 24088 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2271969, "measure_sum": 2271969, "unknown_agency_rows": 206687}, "accessions": {"rows": 7153, "measure_sum": 7153, "unknown_agency_rows": 1591}, "separations": {"rows": 24088, "measure_sum": 24088, "unknown_agency_rows": 1936}}, "marts": {"headcount": 2271969, "accessions": 7153, "separations": 24088, "workforce_groups": 114, "flow_groups": 88}}
+Completed all month=202504 db=tv3_g2_check_128ba619fe18; TV4/TV5 review pending
+PASS repeat reconciliation: {"PASS": 21, "PENDING": 3}
+PASS real source rows: [["accessions", 7153], ["employment", 2271969], ["separations", 24088]]
+PASS real rerun: all six J01/J02 audit rows SKIPPED
+
+Real Parquet–ODS direct crosscheck with dotenv database/raw directory
+PASS employment {"count_not_one": 0, "occupation_leading_zero": 1430757, "other_month": 0, "pay_empty": 0, "pay_null": 4547, "pay_redacted": 1049466, "rows": 2271969}
+PASS accessions {"count_not_one": 0, "occupation_leading_zero": 4477, "other_month": 43, "pay_empty": 0, "pay_null": 97, "pay_redacted": 2594, "rows": 7153}
+PASS separations {"count_not_one": 0, "occupation_leading_zero": 16589, "other_month": 61, "pay_empty": 0, "pay_null": 313, "pay_redacted": 6355, "rows": 24088}
+TV3 source-direct crosscheck passed; independent TV5 review pending.
+PASS real-source QA database removed
+PASS all handed-off report SHA256 unchanged; outputs only in --report-dir QA folders
+TV3 verification completed; TV4 Windows/PBIX and TV5 independent conclusion remain pending

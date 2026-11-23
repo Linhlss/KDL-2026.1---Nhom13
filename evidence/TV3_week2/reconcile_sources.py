@@ -10,7 +10,23 @@ from psycopg import sql
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "etl"))
-from g2_pipeline import connect, rows
+from g2_pipeline import (
+    connect, resolve_config, rows, safe_error, selected_sources, validate_month, verify_file,
+)
+
+
+def preflight_sources(args):
+    """Validate complete inventory and all input files before comparing any family."""
+    validate_month(args.month)
+    selected = selected_sources(rows(args.inventory), args.month)
+    sources = []
+    for item in selected:
+        path = args.raw_dir / item["filename"]
+        if not path.is_file():
+            path = args.raw_dir / item["family"] / item["filename"]
+        verify_file(path, item)
+        sources.append((item, path))
+    return sources
 
 
 def source_metrics(path, family, month):
@@ -37,33 +53,53 @@ def source_metrics(path, family, month):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT/"configs/.env")
-    parser.add_argument("--database", default="workforce_dw")
+    parser.add_argument("--database")
     parser.add_argument("--month", default="202504")
-    parser.add_argument("--raw-dir", type=Path, default=ROOT/"data/raw")
+    parser.add_argument("--raw-dir", type=Path)
+    parser.add_argument("--inventory", type=Path, default=ROOT/"docs/03_source_inventory.csv")
     args = parser.parse_args()
-    with connect(args) as conn:
-        for item in rows(ROOT/"docs/03_source_inventory.csv"):
-            if item["report_month"] != args.month:
-                continue
-            family = item["family"]
-            path = args.raw_dir / item["filename"]
-            if not path.exists():
-                path = args.raw_dir / family / item["filename"]
-            expected = source_metrics(path, family, args.month)
-            time = "snapshot_yyyymm" if family == "employment" else "effective_month"
-            query = sql.SQL("""
+    try:
+        validate_month(args.month)
+    except ValueError as error:
+        parser.error(str(error))
+    if not args.config.is_file():
+        parser.error("config file missing")
+    resolve_config(args)
+    try:
+        sources = preflight_sources(args)
+        results = []
+        with connect(args) as conn:
+            for item, path in sources:
+                family = item["family"]
+                registered = conn.execute(
+                    "SELECT filename,sha256,row_count FROM raw_meta.source_file "
+                    "WHERE family=%s AND report_month=%s AND is_active AND status='LOADED'",
+                    (family, args.month),
+                ).fetchall()
+                if registered != [(item["filename"], item["sha256"], int(item["row_count"]))]:
+                    raise ValueError(f"{family}: exactly one matching active LOADED source required")
+                expected = source_metrics(path, family, args.month)
+                time = "snapshot_yyyymm" if family == "employment" else "effective_month"
+                query = sql.SQL("""
              SELECT count(*),count(*) FILTER(WHERE "count" IS DISTINCT FROM '1'),
              count(*) FILTER(WHERE pay_state='NULL'),count(*) FILTER(WHERE pay_state='EMPTY'),
              count(*) FILTER(WHERE pay_state='REDACTED'),count(*) FILTER(WHERE o.{time}<>%s),
              count(*) FILTER(WHERE occupational_series_code ~ '^0[0-9]')
              FROM ods.{table} o JOIN raw_meta.source_file f USING(file_id)
              WHERE f.report_month=%s AND f.is_active AND f.status='LOADED'
-            """).format(time=sql.Identifier(time), table=sql.Identifier("ods_"+family+"_record"))
-            actual = dict(zip(expected, conn.execute(query,(args.month,args.month)).fetchone(),strict=True))
-            assert actual == expected, (family, expected, actual)
+                """).format(time=sql.Identifier(time), table=sql.Identifier("ods_"+family+"_record"))
+                actual = dict(zip(expected, conn.execute(query,(args.month,args.month)).fetchone(),strict=True))
+                if actual != expected:
+                    raise ValueError(f"{family}: Parquet/ODS mismatch; expected={expected}; actual={actual}")
+                results.append((family, actual))
+        for family, actual in results:
             print("PASS",family,json.dumps(actual,sort_keys=True))
+    except Exception as error:
+        print("FAIL " + safe_error(error), file=sys.stderr)
+        return 1
     print("TV3 source-direct crosscheck passed; independent TV5 review pending.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

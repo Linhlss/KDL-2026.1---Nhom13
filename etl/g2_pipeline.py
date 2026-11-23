@@ -20,6 +20,31 @@ from psycopg import sql
 ROOT = Path(__file__).resolve().parents[1]
 FAMILIES = ("employment", "accessions", "separations")
 ODS = {family: f"ods_{family}_record" for family in FAMILIES}
+DEFAULT_REPORT_DIR = ROOT / "reports"
+
+
+def validate_month(month):
+    if not re.fullmatch(r"[0-9]{4}(0[1-9]|1[0-2])", month) or int(month[:4]) == 0:
+        raise ValueError("month must be a valid YYYYMM value")
+    return month
+
+
+def selected_sources(inventory, month):
+    validate_month(month)
+    selected = [item for item in inventory if item["report_month"] == month]
+    if sorted(item["family"] for item in selected) != sorted(FAMILIES):
+        raise ValueError("inventory must contain exactly one file for each family in the selected month")
+    return selected
+
+
+def resolve_config(args):
+    """Resolve CLI > .env > legacy defaults; relative paths use the working directory."""
+    config = dotenv_values(args.config, interpolate=False)
+    if args.database is None:
+        args.database = config.get("PGDATABASE") or "workforce_dw"
+    if args.raw_dir is None:
+        args.raw_dir = Path(config["RAW_DATA_DIR"]) if config.get("RAW_DATA_DIR") else ROOT / "data/raw"
+    return args
 
 
 def rows(path):
@@ -39,7 +64,10 @@ def connect(args):
     config = dotenv_values(args.config, interpolate=False)
     settings = {key[2:].lower(): config[key] for key in
                 ("PGHOST", "PGPORT", "PGUSER", "PGPASSWORD") if config.get(key)}
-    return psycopg.connect(dbname=args.database, connect_timeout=5, autocommit=True, **settings)
+    database = getattr(args, "database", None)
+    if database is None:
+        database = config.get("PGDATABASE") or "workforce_dw"
+    return psycopg.connect(dbname=database, connect_timeout=5, autocommit=True, **settings)
 
 
 def apply_sql(conn, path):
@@ -249,17 +277,17 @@ def source_load(conn, args, item, code_version):
         raise
 
 
-def export_logs(conn):
+def export_logs(conn, report_dir=DEFAULT_REPORT_DIR):
     columns = ["run_id", "job", "family", "report_month", "version", "filename",
                "file_id", "sha256", "expected_rows", "actual_rows", "status",
                "duration_seconds", "error", "started_at", "finished_at", "code_version"]
     with conn.cursor() as cur:
         cur.execute("SELECT " + ",".join(columns) + " FROM audit.load_run ORDER BY started_at,run_id")
         records = [dict(zip(columns, row, strict=True)) for row in cur.fetchall()]
-    write_csv(ROOT / "reports/07_load_log.csv", records, columns)
+    write_csv(report_dir / "07_load_log.csv", records, columns)
 
 
-def before_after(conn, month):
+def before_after(conn, month, report_dir=DEFAULT_REPORT_DIR):
     output = []
     for family in FAMILIES:
         table = sql.Identifier("ods", ODS[family])
@@ -292,17 +320,31 @@ def before_after(conn, month):
                                    invalid_count=count_bad,pay_null=nulls,pay_empty=empty,pay_redacted=redacted,
                                    pay_invalid=invalid,reviewer="PENDING TV4/TV5"))
     if output:
-        write_csv(ROOT / "reports/07_before_after.csv", output)
+        write_csv(report_dir / "07_before_after.csv", output)
 
 
-def reconciliation(conn, month):
+def reconciliation(conn, month, report_dir=DEFAULT_REPORT_DIR):
+    validate_month(month)
     result = []
+    sources = {}
+    fields = ["family","report_month","file_id","check","expected","actual","status","reviewer"]
+    for family in FAMILIES:
+        sources[family] = conn.execute(
+            "SELECT file_id,row_count FROM raw_meta.source_file "
+            "WHERE family=%s AND report_month=%s AND is_active AND status='LOADED'",
+            (family, month),
+        ).fetchall()
+        actual = len(sources[family])
+        result.append(dict(family=family,report_month=month,
+                           file_id=sources[family][0][0] if actual == 1 else "",
+                           check="active_loaded_sources",expected=1,actual=actual,
+                           status="PASS" if actual == 1 else "FAIL",reviewer="TV3; PENDING TV5"))
+    if any(record["status"] == "FAIL" for record in result):
+        write_csv(report_dir / "07_reconciliation.csv", result, fields)
+        raise ValueError("Reconciliation requires exactly one active LOADED source for each family")
     for family in FAMILIES:
         fact = "fact_employment_snapshot" if family == "employment" else f"fact_{family}"
-        for file_id, expected in conn.execute(
-            "SELECT file_id,row_count FROM raw_meta.source_file WHERE family=%s AND report_month=%s AND is_active AND status='LOADED'",
-            (family, month),
-        ):
+        for file_id, expected in sources[family]:
             for layer, table in [("staging", f"{family}_record"), ("ods", ODS[family]), ("dw", fact)]:
                 count = conn.execute(sql.SQL("SELECT count(*) FROM {}.{} WHERE file_id=%s").format(
                     sql.Identifier(layer), sql.Identifier(table)), (file_id,)).fetchone()[0]
@@ -334,27 +376,33 @@ def reconciliation(conn, month):
                                    status="PASS" if value==expected else "FAIL",reviewer="TV3; PENDING TV5"))
             result.append(dict(family=family,report_month=month,file_id=file_id,check="powerbi_dax",
                                expected=expected,actual="",status="PENDING",reviewer="PENDING TV4/TV5"))
-    write_csv(ROOT / "reports/07_reconciliation.csv", result,
-              ["family","report_month","file_id","check","expected","actual","status","reviewer"])
-    if not result or any(record["status"] == "FAIL" for record in result):
-        raise ValueError("Source/ODS/Fact reconciliation failed or no source files loaded")
+    write_csv(report_dir / "07_reconciliation.csv", result, fields)
+    if any(record["status"] == "FAIL" for record in result):
+        raise ValueError("Source/ODS/Fact reconciliation failed")
     return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT/"configs/.env")
-    parser.add_argument("--database", default="workforce_dw")
+    parser.add_argument("--database", help="database override; otherwise PGDATABASE from config or workforce_dw")
     parser.add_argument("--month", default="202504")
-    parser.add_argument("--raw-dir", type=Path, default=ROOT/"data/raw")
+    parser.add_argument("--raw-dir", type=Path, help="source directory override; otherwise RAW_DATA_DIR from config or data/raw")
+    parser.add_argument("--report-dir", type=Path, default=DEFAULT_REPORT_DIR,
+                        help="CSV output directory (default: repository reports)")
     parser.add_argument("--inventory", type=Path, default=ROOT/"docs/03_source_inventory.csv")
     parser.add_argument("--batch-size", type=int, default=10000)
     parser.add_argument("--job", choices=("init","source","model","check","all"), default="all")
     args = parser.parse_args()
-    if args.batch_size < 1 or not re.fullmatch(r"[0-9]{4}(0[1-9]|1[0-2])", args.month):
-        parser.error("valid month and positive batch-size required")
+    try:
+        validate_month(args.month)
+    except ValueError as error:
+        parser.error(str(error))
+    if args.batch_size < 1:
+        parser.error("positive batch-size required")
     if not args.config.is_file():
         parser.error("config file missing")
+    resolve_config(args)
     code_version = subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
     if subprocess.check_output(
         ["git","status","--porcelain","--untracked-files=all","--",
@@ -364,9 +412,10 @@ def main():
     manifest = dict(line.strip().split(None,1)[::-1] for line in
                     (ROOT/"data/manifest/sha256.txt").read_text().splitlines() if line.strip())
     inventory = rows(args.inventory)
-    selected = [item for item in inventory if item["report_month"] == args.month]
-    if sorted(item["family"] for item in selected) != sorted(FAMILIES):
-        parser.error("inventory must contain exactly one file for each family in the selected month")
+    try:
+        selected = selected_sources(inventory, args.month)
+    except ValueError as error:
+        parser.error(str(error))
     if len({item["filename"] for item in inventory}) != len(inventory):
         parser.error("duplicate inventory filename")
     for item in inventory:
@@ -380,7 +429,7 @@ def main():
                 if args.job in ("source","all"):
                     for item in selected:
                         source_load(conn,args,item,code_version)
-                    before_after(conn,args.month)
+                    before_after(conn,args.month,args.report_dir)
                 if args.job in ("model","all"):
                     from g2_model import build_model
                     start = perf_counter()
@@ -391,7 +440,7 @@ def main():
                         with conn.transaction():
                             metrics = build_model(conn,args.month)
                         finish_run(conn,run_id,"SUCCESS",start)
-                        before_after(conn,args.month)
+                        before_after(conn,args.month,args.report_dir)
                         print(json.dumps(metrics,default=str))
                     except Exception as error:
                         finish_run(conn,run_id,"FAIL",start,error=safe_error(error))
@@ -402,13 +451,13 @@ def main():
                                 filename="G2_RECONCILIATION",sha256="",row_count="0")
                     run_id = start_run(conn,"J06",meta,code_version)
                     try:
-                        result = reconciliation(conn,args.month)
+                        result = reconciliation(conn,args.month,args.report_dir)
                         finish_run(conn,run_id,"SUCCESS",start,actual=len(result))
                     except Exception as error:
                         finish_run(conn,run_id,"FAIL",start,error=safe_error(error))
                         raise
             finally:
-                export_logs(conn)
+                export_logs(conn,args.report_dir)
     except Exception as error:
         print("FAIL " + safe_error(error),file=sys.stderr)
         return 1

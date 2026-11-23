@@ -2,10 +2,12 @@
 
 Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và biến động nhân sự liên bang Hoa Kỳ. Môn MI4214; năm vai trò; kế hoạch 39 ngày từ ngày khởi động chưa chốt.
 
-**Hiện trạng (18/11/2026):** gói TV1 tuần 1, profiling v1 của TV2 ([PR #13](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/13)) và môi trường PostgreSQL + ingest prototype của TV3 ([PR #14](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/14)) đã ở `main`, trạng thái **REVIEW**. TV1 đã [đo lại baseline](evidence/TV1_week2/README.md) và số liệu khớp. Chưa có ODS/DW/Mart/Power BI; prototype mới nạp Accessions 202504 đầy đủ + 50.000 dòng Employment mẫu. Chưa có nghiệm thu DONE/PASS. Đích kế tiếp: cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
+**Hiện trạng nhánh `tv3/g2-pipeline` (23/11/2026):** gói TV3 tuần 2 ở trạng thái **REVIEW**, trong [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Đã có pipeline ba nguồn tháng 04/2025 → Staging/ODS → 3 Fact → 2 Mart và bằng chứng SQL K01/K06/K07 = 2.271.969 / 7.153 / 24.088. Mô hình là **PROPOSED, chờ TV4** duyệt grain/bus matrix/Dimension catalog; tích hợp Power BI và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu DONE/PASS. Phạm vi, giới hạn Unknown và bằng chứng nằm trong [báo cáo tuần 2](reports/TV3_week2_summary.md); tiêu chuẩn cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
 
 ## Bắt đầu ở đâu?
 
+- **TV4:** nhận [dump, checksum và mô hình Power BI đề xuất](handoff/TV3_G2/README.md), restore trên Windows, đối soát SQL–DAX và phản hồi PBIX/bus matrix/catalog.
+- **TV5:** dùng [hướng dẫn replay PowerShell](handoff/TV3_G2/TV5_REPLAY.md), database QA riêng và `--report-dir .qa/TV5_G2/<run>/reports`. Thư mục `.qa/` được Git bỏ qua; lưu actual/kết luận độc lập tại đây.
 - **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
 - **TV2:** đọc [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md), sau đó nhận năm task L2-01–L2-05.
 - **Cả nhóm:** đọc [bài toán và dòng công việc](docs/01_business_scope.md), [phạm vi đã chọn](docs/00_scope_decisions.md) và [bảng công việc tuần 1](docs/00_task_board.md).
@@ -21,7 +23,7 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 | D2 — Personnel Flows | Có bao nhiêu lượt tiếp nhận/rời cơ quan theo kỳ báo cáo và loại hành động? | Accessions/Separations |
 | D3 — Workforce Changes | Nhóm nào đóng góp vào mức tăng/giảm quy mô giữa hai kỳ? | So sánh hai snapshot |
 
-Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Đây là tổng nguồn kiểm metadata, chưa phải kết quả pipeline. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
+Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Ba tổng tháng 04 đã khớp SQL pipeline MVP; mức giảm so với tháng 03 vẫn dựa trên baseline nguồn vì MVP hiện chỉ nạp tháng 04. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
 
 ## Nguồn và mô hình đã chọn
 
@@ -55,4 +57,4 @@ Ngày 1–7: phạm vi/nguồn/môi trường; 8–14: thiết kế và bản ch
 - [Đối chiếu ID tracker và phân công](docs/00_task_id_crosswalk.csv)
 - [Sơ đồ chỉnh sửa được và bản xem GitHub](diagrams/README.md)
 
-Các đường dẫn `docs/03_*`, `docs/04_*`, `data/reference/*` trong phiếu giao việc là đầu ra sẽ tạo; sản phẩm TV2 hiện có nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump không commit. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
+Đầu vào TV2 đã có tại `docs/03_*`, `docs/04_*`, `data/reference/*` và `evidence/TV2_week2/`; hồ sơ profiling tuần 1 nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump cục bộ không commit. Ngoại lệ đúng một dump tổng hợp đã kiểm tại [handoff/TV3_G2/workforce_g2.dump](handoff/TV3_G2/workforce_g2.dump) để TV4 nhận qua Git. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
