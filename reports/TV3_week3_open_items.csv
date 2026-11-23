@@ -1,8 +1,8 @@
-id,owner,status,item
-G3-D01,TV1,OPEN,G2 #43 not merged at branch creation; G3 branch inherits 3b30235
-G3-D02,TV4,PENDING,"Approve bus matrix, Dimension catalog, grain and Unknown/time roles"
-G3-D03,TV4/TV3,PENDING_DESIGN,Occupation/location/grade/category Mart extensions require agreed grain; current Marts month/agency
-G3-D04,TV4,NOT_RUN_WINDOWS,"Receive private full-period dump, refresh PBIX, compare total and actual agency filter with SQL"
-G3-D05,TV5,PENDING_INDEPENDENT_QA,Replay full 12 files and May rerun; sign actual SQL-DAX/QA results
-G3-D06,TV2/TV3,NOT_TESTED,Successful replacement with real republish source unavailable; mismatch rejection and skip tested
-G3-D07,TV2/TV4,PARTIAL_REFERENCE,Derived agency/category labels remain PARTIAL; review Unknown and ambiguous/unmapped keys
+id,owner,status,item,task_id,needed_by
+G3-D01,TV1,OPEN_DEPENDENCY,G2 #43 not merged at branch creation; G3 branch inherits 3b30235,G2/G3,Trước merge/nghiệm thu G3
+G3-D02,TV4,BLOCKED,"Approve bus matrix, Dimension catalog, grain and Unknown/time roles",L3-11 / L4-07..09,Trước duyệt Dimension/grain và nghiệm thu G3
+G3-D03,TV4/TV3,BLOCKED,Occupation/location/grade/category Mart extensions require agreed grain; current Marts month/agency,L3-12 / L4-07..09,Trước mở rộng Mart ngoài tháng/cơ quan
+G3-D04,TV4,NOT_RUN_WINDOWS,"Receive private full-period dump, refresh PBIX, compare total and actual agency filter with SQL",H07 / T09,Trước xác nhận TV4 nhận Mart và nghiệm thu G3
+G3-D05,TV5,BLOCKED_ACCEPTANCE,Replay full 12 files and May rerun; sign actual SQL-DAX/QA results,L3-13 / L5-07..09,Trước nghiệm thu G3
+G3-D06,TV2/TV3,NOT_TESTED,Successful replacement with real republish source unavailable; mismatch rejection and skip tested,T08,Trước bật replacement; cần republish thật
+G3-D07,TV2/TV4,PARTIAL_REFERENCE,Derived agency/category labels remain PARTIAL; review Unknown and ambiguous/unmapped keys,L3-11 / T03,Trước kết luận theo agency/category

@@ -88,6 +88,15 @@ def main():
       dict(id='G3-D05',owner='TV5',status='PENDING_INDEPENDENT_QA',item='Replay full 12 files and May rerun; sign actual SQL-DAX/QA results'),
       dict(id='G3-D06',owner='TV2/TV3',status='NOT_TESTED',item='Successful replacement with real republish source unavailable; mismatch rejection and skip tested'),
       dict(id='G3-D07',owner='TV2/TV4',status='PARTIAL_REFERENCE',item='Derived agency/category labels remain PARTIAL; review Unknown and ambiguous/unmapped keys')]
+    dependencies=[('G2/G3','Trước merge/nghiệm thu G3','OPEN_DEPENDENCY'),
+                  ('L3-11 / L4-07..09','Trước duyệt Dimension/grain và nghiệm thu G3','BLOCKED'),
+                  ('L3-12 / L4-07..09','Trước mở rộng Mart ngoài tháng/cơ quan','BLOCKED'),
+                  ('H07 / T09','Trước xác nhận TV4 nhận Mart và nghiệm thu G3','NOT_RUN_WINDOWS'),
+                  ('L3-13 / L5-07..09','Trước nghiệm thu G3','BLOCKED_ACCEPTANCE'),
+                  ('T08','Trước bật replacement; cần republish thật','NOT_TESTED'),
+                  ('L3-11 / T03','Trước kết luận theo agency/category','PARTIAL_REFERENCE')]
+    for item,(task,needed_by,status) in zip(open_items,dependencies,strict=True):
+        item.update(task_id=task,needed_by=needed_by,status=status)
     write_csv(ROOT/'reports/TV3_week3_open_items.csv',open_items)
     lines=['# Bàn giao tuần 3 của TV3','',
            '**REVIEW phần kỹ thuật TV3; G3 chưa được nghiệm thu.** Đã nạp thật đủ 12 Parquet tháng 03–06/2025, build ba Fact và hai Mart theo grain tháng/cơ quan. Mô hình vẫn PROPOSED chờ TV4; Windows/PBIX/SQL–DAX và QA độc lập chờ TV4/TV5.',

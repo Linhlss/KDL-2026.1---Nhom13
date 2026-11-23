@@ -23,3 +23,5 @@ Các điểm kiểm/sửa trong quá trình thực hiện: chặn count khác 1 
 Bốn regression đều đã chạy trên database tạm và dọn sau test; đây là tự kiểm TV3, không thay kết luận TV5. 84 J06 kỹ thuật PASS, 152 quality check PASS và 15 bảng rerun PASS. Có 12 dòng DAX PENDING. Cả 20 báo cáo G2 giữ nguyên byte. [Danh sách còn mở](../../reports/TV3_week3_open_items.csv) ghi owner và trạng thái, gồm dependency PR G2 #43, thiết kế TV4, nhãn PARTIAL, Windows/PBIX, QA độc lập và replacement NOT_TESTED.
 
 Sau tự kiểm, kiểm checkout sạch và các liên kết/artifact rồi mới đẩy nhánh G3, tạo PR nháp dựa trên nhánh G2 chưa merge. Không tự đóng G2/G3 hoặc đánh DONE/PASS thay TV1/TV4/TV5.
+
+Đã kiểm lại checkout sạch commit `342ae0d`: cả bốn regression exit 0, các entrypoint tải được, compile thành công và checkout giữ sạch; mã ETL đã commit khớp SHA-256 lượt dữ liệu thật. [Log kiểm checkout](11_clean_checkout_review.txt) ghi lệnh/kết quả. Lượt nhận xét cũng bổ sung task và mốc cần nhận vào danh sách dependency; phần thiết kế/nghiệm thu thiếu đầu vào ghi BLOCKED, không suy ngày lịch khi chưa có T0.

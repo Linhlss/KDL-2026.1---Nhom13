@@ -17,3 +17,5 @@ Hai Mart giữ grain tháng/cơ quan đã chạy ở G2, mở rộng sang đủ 
 Catalog quan sát có số dòng và ba ví dụ thật mỗi Dimension do pipeline xuất ở [08_dimension_observed.csv](../reports/week3/08_dimension_observed.csv), kèm provenance, Unknown, chính sách version, Fact dùng và cột approval PROPOSED_PENDING_TV4. [Runbook G3](TV3_week3_runbook.md) có lệnh tái tạo và SQL KPI.
 
 Ngày 23/11/2026: GitHub main còn `f109bbf`, PR G2 #43 mở; nhánh `tv4/week1` tại `d3c9359` chưa có bus matrix/Dimension catalog trong tree đã kiểm. Không suy trạng thái này từ tài liệu main cũ. Dependency G2, thiết kế TV4 và review độc lập TV5 được giữ mở trong [báo cáo tuần 3](../reports/TV3_week3_summary.md). Chưa ghi nhận TV2/TV4/TV5 đã ký xác nhận.
+
+Phần chốt thiết kế và nghiệm thu có trạng thái BLOCKED trong [danh sách phụ thuộc](../reports/TV3_week3_open_items.csv), kèm task, owner, đầu vào thiếu và mốc cần nhận theo giai đoạn. Chưa gán ngày lịch khi TV1 chưa điền T0. Trạng thái này áp dụng cho phần phụ thuộc; pipeline tháng/cơ quan đã chạy được và vẫn gửi REVIEW phần kỹ thuật.
