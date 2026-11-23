@@ -8,7 +8,7 @@
 
 | Nội dung trong tài liệu giảng viên | Vị trí nguồn | Sản phẩm nhóm phải làm | Chủ trì | Cách kiểm tra |
 |---|---|---|---|---|
-| Dữ liệu phù hợp chủ đề; kích thước “Lớn hơn 100M” | Hướng dẫn bài tập nhóm, B2:C5 | Phạm vi dữ liệu và inventory; ghi rõ byte, dòng, bảng, cột | TV1/TV2 | TV5 đối chiếu nguồn; cách hiểu “100M” vẫn cần xác nhận riêng |
+| Dữ liệu phù hợp chủ đề; dung lượng **lớn hơn 100 MB** | Hướng dẫn bài tập nhóm, B2:C5 ghi “Lớn hơn 100M”; xem [ghi nhận xác nhận đơn vị](../evidence/TV1_week1/100MB_confirmation.md) | Phạm vi dữ liệu và inventory; ghi rõ byte, dòng, bảng, cột | TV1/TV2 | Bộ 12 Parquet có tổng 301.504.795 byte (khoảng 301,5 MB), vượt ngưỡng dung lượng; TV5 đối chiếu inventory |
 | Các lớp data sources → DW → Mart → BI; Power BI và hệ quản trị CSDL | Hướng dẫn bài tập nhóm, C17:C19, C26:C27 | Kiến trúc, database, luồng xử lý và báo cáo chạy thực tế | TV3/TV4 | Có sản phẩm xuyên suốt, đối soát được ít nhất một KPI |
 | Quy trình nghiệp vụ, điểm phân tích, cây nghiệp vụ, mô hình kinh doanh | Hướng dẫn bài tập nhóm, D35/I35 | Hai quy trình, cây nghiệp vụ, bảng A01–A10; mô tả giá trị, người dùng và nguồn lực phù hợp đề tài | TV1 | TV2 kiểm nguồn; phân biệt bối cảnh có tài liệu với luồng nhóm thiết kế |
 | Chủ điểm, khía cạnh phân tích, cây yêu cầu tổng và từng dashboard | Hướng dẫn bài tập nhóm, D36/I36 | Requirement, KPI, cây D1–D3 | TV1/TV4 | Câu hỏi và chỉ số có trường dữ liệu trả lời; phần chốt chính thức ở tuần 2 |
@@ -41,13 +41,13 @@ Nguồn: sheet **Nội dung báo cáo**, B3:C14, B18:B21.
 | Cần dùng Power BI, hệ quản trị CSDL và các lớp dữ liệu | Có trong tài liệu nguồn |
 | 3 Fact, ít nhất 2 Mart, 3 dashboard; PostgreSQL và Python | Quyết định thiết kế của Nhóm 13, không viết là số lượng tối thiểu do thầy nêu trong các dòng nguồn trên |
 | Lịch 39 ngày | Kế hoạch nhóm; chưa có ngày bắt đầu và hạn nộp lịch thật |
-| Ý nghĩa “100M” | Nguồn ghi nguyên văn như vậy. Nhóm đang dự trù theo MB; chưa có bằng chứng xác nhận riêng cách hiểu này |
+| Ý nghĩa “100M” | Giảng viên xác nhận là **100 MB**, theo xác nhận của TV1; xem [ghi nhận và số byte của bộ nguồn](../evidence/TV1_week1/100MB_confirmation.md) |
 | Mã học kỳ, hạn nộp, kênh nộp và mẫu hiện hành | Cần TV1 đối chiếu thông báo hiện hành khi nhận được; chưa khẳng định đã kiểm đủ |
 | Phương án ERD | Trưởng nhóm xác nhận trong trao đổi ngày 11/11/2026 rằng thầy đã đồng ý. Chưa có ảnh/tin nhắn gốc đính kèm; không tự đặt ngày thầy trả lời |
 | Công bố Power BI | Có yêu cầu public; khả năng của tài khoản thực tế vẫn cần TV4/TV5 thử |
 
 ## 4. Kết quả review và việc theo dõi
 
-TV5 xác nhận bản đối chiếu đủ để TV2 triển khai. Hai góp ý về dashboard và tính điểm báo cáo đã được bổ sung ở mục 1 và 2. [Issue #3](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/3) giữ mở để TV1 bổ sung thông báo học kỳ hiện hành, xác nhận cách hiểu “100M” và hạn nộp chính thức, cùng ảnh/tin nhắn gốc về phương án ERD khi có. PASS này áp dụng cho bản đối chiếu làm đầu vào, không xác nhận từng sản phẩm của nhóm đã đạt yêu cầu.
+TV5 xác nhận bản đối chiếu đủ để TV2 triển khai. Hai góp ý về dashboard và tính điểm báo cáo đã được bổ sung ở mục 1 và 2. Sau review, TV1 ghi nhận giảng viên đã xác nhận đơn vị 100 MB. [Issue #3](https://github.com/Linhlss/KDL-2026.1---Nhom13/issues/3) giữ mở để TV1 bổ sung thông báo học kỳ hiện hành, hạn nộp chính thức và ảnh/tin nhắn gốc về phương án ERD khi có. PASS này áp dụng cho bản đối chiếu làm đầu vào, không xác nhận từng sản phẩm của nhóm đã đạt yêu cầu.
 
 Trích xuất các ô nguồn liên quan được lưu trong [minh chứng yêu cầu](../evidence/TV1_week1/course_requirements_excerpt.json); tên file và SHA-256 giúp đối chiếu bản gốc mà không công bố toàn bộ workbook mẫu.
