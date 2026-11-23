@@ -36,6 +36,8 @@ Separations đã được bổ sung vào prototype tuần 1 với 24.088 dòng, 
 
 Đã tạo `workforce_g2_transfer`, dump chuyển riêng tại `db_dumps/workforce_g2.dump` và kiểm restore trên Mac vào `workforce_g2_restore_check`. Bản chuyển có 3 dòng month, 123 dòng agency, 14 dòng category, 114 dòng workforce Mart và 88 dòng flows Mart. K01/K06/K07 sau restore lần lượt là 2.271.969, 7.153 và 24.088. [Bằng chứng copy/restore và SHA-256 dump](../evidence/TV3_week2/06_transfer_restore.txt) cùng [SQL KPI](../evidence/TV3_week2/02_sql_kpi.txt) phục vụ TV4/TV5 kiểm lại. TV4 vẫn cần tự restore trên Windows và chạy Power BI.
 
+**Bổ sung bàn giao ngày 23/11/2026.** Bản dump đã tạo trước đó nằm trong thư mục local bị Git bỏ qua nên TV4 chưa nhận được khi clone nhánh. Đã bổ sung [workforce_g2.dump](../handoff/TV3_G2/workforce_g2.dump), [checksum](../handoff/TV3_G2/workforce_g2.dump.sha256) và [hướng dẫn restore trên Windows](../handoff/TV3_G2/README.md) vào nhánh để TV4 tải trực tiếp.
+
 Phần agency/category trong DW dùng lookup dẫn xuất TV2 đã gate READY, kèm Unknown và mã gốc. Trạng thái xác minh miền mã vẫn PARTIAL. Mô hình thực thi hiện tại giữ grain một dòng nguồn cho từng Fact và phạm vi Dimension theo tháng. TV4 cần duyệt các quyết định này khi giao bus matrix/catalog.
 
 **Giới hạn agency cần TV2/TV4 review.** Có 206.687 dòng Employment, 1.591 dòng Accessions và 1.936 dòng Separations vào nhóm agency Unknown vì khóa chưa có một nhãn READY trong lookup TV2 theo kỳ. Tổng toàn kỳ vẫn được giữ. Bộ lọc agency dùng nhãn Dimension chỉ tách được các nhóm đã qua gate; phần Unknown cần đối chiếu mã gốc ở ODS/Fact và xử lý trước khi kết luận theo từng agency.

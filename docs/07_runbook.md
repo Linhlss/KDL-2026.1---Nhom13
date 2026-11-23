@@ -73,7 +73,7 @@ J06 kiểm source → Staging → ODS → Fact theo từng file và tổng measu
 
 ## TV4 nhận DB và thử Power BI
 
-TV3 chuẩn bị database chuyển riêng chứa Mart và các Dimension phụ thuộc, tạo dump định dạng custom rồi kiểm restore trên máy Mac. TV4 nhận dump qua kênh riêng, dùng PostgreSQL 18 trên Windows và restore vào database mới/rỗng. `localhost` trong kết nối Power BI chỉ đến PostgreSQL trên máy Windows của TV4.
+TV4 nhận bản dump đã bổ sung trong nhánh tại [handoff/TV3_G2/workforce_g2.dump](../handoff/TV3_G2/workforce_g2.dump), dùng PostgreSQL 18 trên Windows và restore vào database mới/rỗng. [Hướng dẫn PowerShell và checksum](../handoff/TV3_G2/README.md) có lệnh kiểm file, restore và SELECT KPI. `localhost` trong kết nối Power BI chỉ đến PostgreSQL trên máy Windows của TV4.
 
 ```sh
 # Máy Mac TV3, dùng target mới hoặc rỗng.
@@ -89,17 +89,15 @@ pg_restore -h 127.0.0.1 -d workforce_g2_restore_check \
   --no-owner --no-acl --exit-on-error db_dumps/workforce_g2.dump
 ```
 
-Script chuyển dữ liệu chỉ nhận target rỗng, tự tạo database target nếu chưa có và đọc source trong một snapshot nhất quán. Nó chép ba Dimension và hai Mart rồi đối chiếu số dòng từng bảng. File dump nằm trong `db_dumps/` được Git bỏ qua. Lần kiểm lại dùng tên database đích mới để giữ các bản đã kiểm.
+Script chuyển dữ liệu chỉ nhận target rỗng, tự tạo database target nếu chưa có và đọc source trong một snapshot nhất quán. Nó chép ba Dimension và hai Mart rồi đối chiếu số dòng từng bảng. Bản xuất cục bộ trong `db_dumps/` được Git bỏ qua. Bản bàn giao đã kiểm được theo dõi riêng tại `handoff/TV3_G2/workforce_g2.dump`, với ngoại lệ Git áp dụng đúng đường dẫn này. Lần kiểm lại dùng tên database đích mới để giữ các bản đã kiểm.
 
 Lượt bàn giao hiện tại đã copy và restore thử trên Mac vào `workforce_g2_restore_check`, với ba KPI sau restore khớp 2.271.969, 7.153 và 24.088. [Bằng chứng restore](../evidence/TV3_week2/06_transfer_restore.txt) ghi số dòng và SHA-256 dump để TV4 đối chiếu bản nhận.
 
-```sh
-# Máy TV4, thay TV4_ROLE và đường dẫn bằng giá trị thực tế.
+```powershell
+# Chạy từ thư mục gốc repo trên máy TV4, thay TV4_ROLE bằng user thực tế.
 createdb -h 127.0.0.1 -U TV4_ROLE workforce_g2
-pg_restore -h 127.0.0.1 -U TV4_ROLE -d workforce_g2 \
-  --no-owner --no-acl --exit-on-error work/workforce_g2.dump
-psql -X -h 127.0.0.1 -U TV4_ROLE -d workforce_g2 \
-  -c "SELECT month_key, SUM(headcount) FROM mart.workforce_monthly GROUP BY month_key;"
+pg_restore -h 127.0.0.1 -U TV4_ROLE -d workforce_g2 --no-owner --no-acl --exit-on-error .\handoff\TV3_G2\workforce_g2.dump
+psql -X -h 127.0.0.1 -U TV4_ROLE -d workforce_g2 -c "SELECT month_key, SUM(headcount) FROM mart.workforce_monthly GROUP BY month_key;"
 ```
 
 Trong Power BI Desktop, chọn PostgreSQL database, điền host `localhost:5432` và database `workforce_g2` cùng thông tin xác thực của TV4. Nạp `mart.workforce_monthly` và `mart.personnel_flows_monthly`. TV4 duyệt model/filter theo bus matrix, tạo measure thử và chụp model cùng filter đang dùng.
@@ -118,6 +116,6 @@ Lọc `month_key = 202504` khi đối soát. TV5 so SQL–DAX với cùng agency
 - Inventory/manifest cùng commit đầu vào TV2 và ba file raw qua kênh riêng.
 - Log nạp, before–after, reconciliation và bằng chứng SQL trong `evidence/TV3_week2/`.
 - Ba sơ đồ draw.io và PNG, bản thiết kế cần TV4 duyệt.
-- Dump chuyển riêng và kết quả kiểm restore, khi reviewer cần tái hiện tích hợp.
+- [Dump tổng hợp cho TV4](../handoff/TV3_G2/workforce_g2.dump), checksum và kết quả kiểm restore.
 
 TV5 replay dữ liệu nguồn và kiểm độc lập trên database riêng. Chỉ chốt G2 sau khi nhóm ghi nhận kết quả Power BI và QA thực tế trong [báo cáo bàn giao](../reports/TV3_week2_summary.md).
