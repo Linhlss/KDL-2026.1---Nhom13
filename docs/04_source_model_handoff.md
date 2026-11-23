@@ -12,6 +12,8 @@ Trạng thái đề xuất là REVIEW. [ERD](../diagrams/04_relational_source_er
 
 [Audit](04_relationship_audit.csv) · [Nguồn tham chiếu](../data/reference/README.md) · [Lookup theo kỳ](../data/reference/derived_lookup_g2.csv) · [Mapping](04_source_to_target_mapping.csv)
 
+L2-08 đã đối chiếu từng đích của mapping dự kiến với DDL G2 của TV3. [Bảng tên và cột vật lý](04_g2_ddl_comparison.csv) ghi các đích thực thi kèm SQL kiểm. [Biên bản review](04_g2_ddl_review.md) ghi kết quả đối chiếu ERD và các mục cần TV3, TV4, TV5 xác nhận.
+
 **TV3** đối chiếu các bảng/cột ứng viên với DDL. Kiểm tra lineage ODS → Fact phải trả về 0 lỗi cho từng cặp bảng. Báo cáo phân biệt khóa thiếu, thừa, trùng và NULL theo file và ordinal.
 
 **TV4** đối chiếu vai trò tháng và bus matrix. K01–K05/K09 dùng snapshot. K06–K08 mặc định theo tháng báo cáo. K10 đo theo từng file và trường kiểm. Mẫu số là số dòng có mã đủ điều kiện, tử số là số dòng khớp đúng một khóa tham chiếu chính thức. Tỷ lệ để trống cho phạm vi chưa xác minh hoặc mẫu số bằng 0.
