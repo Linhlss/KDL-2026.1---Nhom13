@@ -1,0 +1,21 @@
+﻿dimension,column,data_type,role,source,description,example,unknown_handling,verification_status,notes
+dim_month,month_key,integer,PK,ETL từ file/tháng báo cáo,Khóa tháng dạng yyyymm; 0 = Unknown,202504,0 = Unknown,PROPOSED,"Dùng cho 3 vai trò: snapshot, report, effective"
+dim_month,yyyymm,text,attribute,month_key,"Chuỗi tháng, ràng buộc 6 chữ số hợp lệ",202504,NULL ở key 0,PROPOSED,
+dim_month,calendar_year,integer,attribute,month_key / 100,Năm,2025,NULL ở key 0,PROPOSED,Cấp trên của tháng trong hierarchy Năm > Tháng
+dim_month,calendar_month,integer,attribute,month_key % 100,Tháng trong năm (1-12),4,NULL ở key 0,PROPOSED,Nên thêm cột tên tháng/nhãn hiển thị ở lớp Power BI
+dim_agency,agency_key,bigint,PK (surrogate),ETL identity,"Khóa thay thế; mỗi (tháng, mã agency) có một dòng",—,0 = Unknown,PROPOSED,Khác nhau giữa các tháng với cùng một agency
+dim_agency,month_key,integer,FK -> dim_month,tháng báo cáo,Tháng báo cáo mà dòng agency thuộc về,202504,0 ở dòng Unknown,PROPOSED,UNIQUE cùng agency_code
+dim_agency,agency_code,text,business key,file nguồn,Mã agency gốc,UNKNOWN (dòng key 0),'UNKNOWN',PARTIAL,"So sánh nhiều tháng dùng cột này, không dùng agency_key"
+dim_agency,agency_label,text,attribute,lookup TV2 (chỉ nhãn READY),Tên hiển thị của agency,Unknown (dòng key 0),'Unknown',PARTIAL,Lookup chưa READY hoàn toàn; phần lớn dòng Employment tháng 04 rơi vào Unknown
+dim_agency,provenance,text,metadata,ETL,Nguồn gốc nhãn (DERIVED_LOOKUP / TECHNICAL_UNKNOWN),TECHNICAL_UNKNOWN,TECHNICAL_UNKNOWN,PROPOSED,Không đưa lên dashboard
+dim_agency,verification_status,text,metadata,ETL,Trạng thái xác minh nhãn,PARTIAL,PARTIAL,PROPOSED,Không đưa lên dashboard
+dim_action_category,category_key,bigint,PK (surrogate),ETL identity,"Khóa thay thế; mỗi (tháng, family, mã loại) có một dòng",—,0 = Unknown,PROPOSED,
+dim_action_category,month_key,integer,FK -> dim_month,tháng báo cáo,Tháng báo cáo của dòng category,202504,0 ở dòng Unknown,PROPOSED,"UNIQUE cùng family, category_code"
+dim_action_category,family,text,attribute,ETL,Họ hành động: accessions / separations / unknown,accessions,'unknown',PROPOSED,Cấp trên trong hierarchy Family > Category; luôn lọc theo family trong D2
+dim_action_category,category_code,text,business key,file nguồn,Mã loại hành động gốc,UNKNOWN (dòng key 0),'UNKNOWN',PARTIAL,Danh sách mã quan sát được trong dữ liệu
+dim_action_category,category_label,text,attribute,lookup TV2,Tên loại hành động,Unknown (dòng key 0),'Unknown',PARTIAL,Nhãn tham chiếu chính thức chưa xác minh đầy đủ
+dim_action_category,provenance,text,metadata,ETL,Nguồn gốc nhãn,TECHNICAL_UNKNOWN,TECHNICAL_UNKNOWN,PROPOSED,Không đưa lên dashboard
+dim_action_category,verification_status,text,metadata,ETL,Trạng thái xác minh nhãn,PARTIAL,PARTIAL,PROPOSED,Không đưa lên dashboard
+dim_pay_plan_grade,pay_plan + grade,text,attribute (dự kiến),"ODS employment (pay_plan, grade)",Cặp pay plan và grade,—,NULL pay_plan: 366 / 2488 / 2444 / 2430 dòng (4 tháng),NOT_IN_G2,Grade UNSUPPORTED khi dùng riêng; chỉ dùng như cặp; chưa có trong DW G2
+dim_duty_station,duty_station,text,attribute (dự kiến),ODS employment,Nơi làm việc,—,~46% REDACTED (tháng 03: 1.050.981 / 2.289.192),NOT_IN_G2,Hơn 17.000 giá trị; không dùng làm slicer chính; chưa có trong DW G2
+dim_occupation,occupation,text,attribute (dự kiến),ODS employment,Nhóm nghề,—,chưa xác định,NOT_IN_G2,Chờ audit và lookup tham chiếu của TV2
