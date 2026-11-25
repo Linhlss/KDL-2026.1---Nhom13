@@ -1,0 +1,16 @@
+Verified at 2026-11-25T08:42:38.324312+00:00
+Archive: handoff/TV3_G3/workforce_g3.dump
+Bytes: 29843
+SHA-256: 6d85ea2932e226f05d293bfd48bde7f2cb9b21c54ba9987d419167afbe54e1b8
+PASS same bytes as originally reviewed G3 transfer archive
+PASS dw.dim_month: expected=9, actual=9
+PASS dw.dim_agency: expected=493, actual=493
+PASS dw.dim_action_category: expected=53, actual=53
+PASS mart.workforce_monthly: expected=486, actual=486
+PASS mart.personnel_flows_monthly: expected=340, actual=340
+PASS 202503 K01=2289192 K06=4862 K07=22061
+PASS 202504 K01=2271969 K06=7153 K07=24088
+PASS 202505 K01=2255056 K06=8813 K07=26415
+PASS 202506 K01=2241780 K06=9954 K07=19947
+PASS disposable restore database removed
+Windows restore/Power BI and SQL-DAX confirmation remain with TV4/TV5

@@ -9,7 +9,7 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 ## Bắt đầu ở đâu?
 
 - **G3 tuần 3:** đọc [runbook đầy đủ](docs/TV3_week3_runbook.md), [catalog/mô hình chờ duyệt](docs/TV3_g3_model_review.md) và [sơ đồ G3](diagrams/10_g3_full_pipeline.svg). Reviewer ghi vào `.qa/TV5_G3/<run>`; CSV G2 được giữ nguyên, CSV G3 ở `reports/week3/`.
-- **TV4:** nhận [dump, checksum và mô hình Power BI đề xuất](handoff/TV3_G2/README.md), restore trên Windows, đối soát SQL–DAX và phản hồi PBIX/bus matrix/catalog.
+- **TV4 tuần 3:** nhận [dump G3 đủ bốn kỳ, SHA-256 và lệnh restore](handoff/TV3_G3/README.md), restore trên Windows, đối soát SQL–DAX và phản hồi PBIX/bus matrix/catalog.
 - **TV5:** dùng [hướng dẫn replay PowerShell](handoff/TV3_G2/TV5_REPLAY.md), database QA riêng và `--report-dir .qa/TV5_G2/<run>/reports`. Thư mục `.qa/` được Git bỏ qua; lưu actual/kết luận độc lập tại đây.
 - **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
 - **TV2:** đọc [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md), sau đó nhận năm task L2-01–L2-05.
@@ -60,4 +60,4 @@ Ngày 1–7: phạm vi/nguồn/môi trường; 8–14: thiết kế và bản ch
 - [Đối chiếu ID tracker và phân công](docs/00_task_id_crosswalk.csv)
 - [Sơ đồ chỉnh sửa được và bản xem GitHub](diagrams/README.md)
 
-Đầu vào TV2 đã có tại `docs/03_*`, `docs/04_*`, `data/reference/*` và `evidence/TV2_week2/`; hồ sơ profiling tuần 1 nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump cục bộ không commit. Ngoại lệ đúng một dump tổng hợp đã kiểm tại [handoff/TV3_G2/workforce_g2.dump](handoff/TV3_G2/workforce_g2.dump) để TV4 nhận qua Git. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
+Đầu vào TV2 đã có tại `docs/03_*`, `docs/04_*`, `data/reference/*` và `evidence/TV2_week2/`; hồ sơ profiling tuần 1 nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump cục bộ không commit. Hai ngoại lệ đúng đường dẫn cho dump tổng hợp đã kiểm: [G2 tháng 04](handoff/TV3_G2/workforce_g2.dump) và [G3 đủ bốn kỳ](handoff/TV3_G3/workforce_g3.dump), kèm checksum để TV4 nhận qua Git. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.

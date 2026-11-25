@@ -1,5 +1,7 @@
 # Nhận xét sau triển khai tuần 3 TV3
 
+**Bổ sung bàn giao theo yêu cầu TV3:** bản aggregate G3 đã kiểm nay có trong [handoff/TV3_G3](../../handoff/TV3_G3/README.md), kèm dump, SHA-256 và lệnh restore. Các ghi nhận “dump cục bộ/không commit” bên dưới và trong log cũ mô tả lượt kiểm ban đầu; ngoại lệ bàn giao mới chỉ áp dụng đúng file này. [Bằng chứng kiểm lại bản bổ sung](12_dump_handoff_check.txt) xác nhận năm bảng và KPI bốn kỳ.
+
 Ngày 23/11/2026, tự rà soát lại theo kế hoạch tuần 3 phiên bản 1.0 sau khi lượt nạp thật và rerun May kết thúc SUCCESS. Phạm vi kỹ thuật là 12 Parquet, 3 Fact và 2 Mart đủ tháng 03–06. [Run manifest](../../reports/week3/run_manifest.json) ghi SHA-256 mã/inventory; [lệnh và môi trường](00_environment_and_commands.txt) ghi Python 3.12.14, PostgreSQL 18.7 và database riêng. Các file ETL hiện tại khớp hash đã chạy; DDL Fact/Mart kế thừa G2, không đổi grain hoặc tự thêm FK/hierarchy khi chưa có thiết kế TV4.
 
 **Nhận xét:** chưa phát hiện lỗi chặn phần dữ liệu/ETL trong phạm vi mô hình tháng/cơ quan hiện tại. Có đủ bằng chứng để TV4/TV5 nhận review. G3 chưa được nghiệm thu: bus matrix/catalog/grain chính thức, Windows/PBIX/SQL–DAX và QA độc lập vẫn chờ đúng người phụ trách; phần mở rộng chiều/category không được ghi là đã có.
