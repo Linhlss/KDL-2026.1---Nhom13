@@ -1,0 +1,37 @@
+report_month,period_role,kpi,agency_scope,source_value,mart_value,mart_minus_source,status,reason
+202503,snapshot,K01,ALL,2289192,2289192,0,PASS,"Same period role and all Agency groups, including Unknown"
+202503,snapshot,K01,AF,171750,171750,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202503,snapshot,K01,UNKNOWN,208006,208006,0,PASS,Raw Agency has no unique READY mapping in the report month
+202503,report,K06,ALL,4862,4862,0,PASS,"Same period role and all Agency groups, including Unknown"
+202503,report,K06,AF,72,72,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202503,report,K06,UNKNOWN,265,265,0,PASS,Raw Agency has no unique READY mapping in the report month
+202503,report,K07,ALL,22061,22061,0,PASS,"Same period role and all Agency groups, including Unknown"
+202503,report,K07,AF,1867,1867,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202503,report,K07,UNKNOWN,2514,2514,0,PASS,Raw Agency has no unique READY mapping in the report month
+202504,snapshot,K01,ALL,2271969,2271969,0,PASS,"Same period role and all Agency groups, including Unknown"
+202504,snapshot,K01,AF,170447,170447,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202504,snapshot,K01,UNKNOWN,206687,206687,0,PASS,Raw Agency has no unique READY mapping in the report month
+202504,report,K06,ALL,7153,7153,0,PASS,"Same period role and all Agency groups, including Unknown"
+202504,report,K06,AF,270,270,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202504,report,K06,UNKNOWN,1591,1591,0,PASS,Raw Agency has no unique READY mapping in the report month
+202504,report,K07,ALL,24088,24088,0,PASS,"Same period role and all Agency groups, including Unknown"
+202504,report,K07,AF,1269,1269,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202504,report,K07,UNKNOWN,1936,1936,0,PASS,Raw Agency has no unique READY mapping in the report month
+202505,snapshot,K01,ALL,2255056,2255056,0,PASS,"Same period role and all Agency groups, including Unknown"
+202505,snapshot,K01,AF,170024,170024,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202505,snapshot,K01,UNKNOWN,208558,208558,0,PASS,Raw Agency has no unique READY mapping in the report month
+202505,report,K06,ALL,8813,8813,0,PASS,"Same period role and all Agency groups, including Unknown"
+202505,report,K06,AF,255,255,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202505,report,K06,UNKNOWN,2896,2896,0,PASS,Raw Agency has no unique READY mapping in the report month
+202505,report,K07,ALL,26415,26415,0,PASS,"Same period role and all Agency groups, including Unknown"
+202505,report,K07,AF,1390,1390,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202505,report,K07,UNKNOWN,3591,3591,0,PASS,Raw Agency has no unique READY mapping in the report month
+202506,snapshot,K01,ALL,2241780,2241780,0,PASS,"Same period role and all Agency groups, including Unknown"
+202506,snapshot,K01,AF,169002,169002,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202506,snapshot,K01,UNKNOWN,206978,206978,0,PASS,Raw Agency has no unique READY mapping in the report month
+202506,report,K06,ALL,9954,9954,0,PASS,"Same period role and all Agency groups, including Unknown"
+202506,report,K06,AF,350,350,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202506,report,K06,UNKNOWN,1433,1433,0,PASS,Raw Agency has no unique READY mapping in the report month
+202506,report,K07,ALL,19947,19947,0,PASS,"Same period role and all Agency groups, including Unknown"
+202506,report,K07,AF,1179,1179,0,PASS,Raw Agency AF maps to a unique READY label in each report month
+202506,report,K07,UNKNOWN,2487,2487,0,PASS,Raw Agency has no unique READY mapping in the report month

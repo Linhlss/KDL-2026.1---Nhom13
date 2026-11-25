@@ -1,0 +1,15 @@
+report_month,kpi,agency_code,source_value,detail_export_presence,omitted_rows,reason
+202503,K07,OP,1,MISSING,1,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,BO,6,MISSING,6,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,CE,3,MISSING,3,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,DO,3,MISSING,3,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,EC,1,MISSING,1,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,EQ,2,MISSING,2,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,NS,5,MISSING,5,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,TN,2,MISSING,2,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K06,TS,1,MISSING,1,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K07,BO,4,MISSING,4,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K07,EC,3,MISSING,3,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K07,NS,7,MISSING,7,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K07,QQ,3,MISSING,3,TV3 detail CSV starts from workforce; this group exists only in event source
+202504,K07,TN,1,MISSING,1,TV3 detail CSV starts from workforce; this group exists only in event source
