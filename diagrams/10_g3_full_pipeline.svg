@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="660" viewBox="0 0 1280 660">
+  <rect width="1280" height="660" fill="#f5f7fb" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3564a0" />
+    </marker>
+  </defs>
+  <text x="40" y="58" fill="#172a43" font-family="Arial, sans-serif" font-size="30" font-weight="700">Pipeline G3 đủ bốn kỳ và kiểm chạy lại tháng 05</text>
+  <text x="40" y="94" fill="#172a43" font-family="Arial, sans-serif" font-size="19" font-weight="400">TV3 trên macOS · Python 3.12 · PostgreSQL 18 · G2 dependency còn mở</text>
+  <rect x="40" y="145" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="56" y="177" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">12 Parquet TV2</text>
+  <text x="56" y="212" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">202503–202506</text>
+  <text x="56" y="239" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">SHA-256 + schema/bytes</text>
+  <text x="56" y="266" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Raw ngoài Git</text>
+  <text x="56" y="293" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Inventory + manifest</text>
+  <rect x="350" y="145" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="366" y="177" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">J00 → J01 → J02</text>
+  <text x="366" y="212" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Batch/COPY theo file</text>
+  <text x="366" y="239" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Staging → ODS + DQ</text>
+  <text x="366" y="266" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">file_id + ordinal</text>
+  <text x="366" y="293" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">FAIL rollback; audit còn</text>
+  <rect x="660" y="145" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="676" y="177" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">J03 → J04 → J05</text>
+  <text x="676" y="212" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">3 Dim + 3 Fact</text>
+  <text x="676" y="239" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">count_value = 1</text>
+  <text x="676" y="266" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">2 Mart tháng/cơ quan</text>
+  <text x="676" y="293" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Upsert key; UNION ALL</text>
+  <rect x="970" y="145" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="986" y="177" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">J06 + quality check</text>
+  <text x="986" y="212" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Source → KPI từng kỳ</text>
+  <text x="986" y="239" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Raw–ODS + time roles</text>
+  <text x="986" y="266" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">PK/FK + Unknown</text>
+  <text x="986" y="293" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">DAX vẫn PENDING</text>
+  <rect x="40" y="390" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="56" y="422" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">TV4 / TV5 nhận review</text>
+  <text x="56" y="457" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">TV4 Windows/PBIX</text>
+  <text x="56" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">TV4 duyệt catalog/grain</text>
+  <text x="56" y="511" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">TV5 replay độc lập</text>
+  <text x="56" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">G3 chờ TV1 chốt</text>
+  <rect x="350" y="390" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="366" y="422" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">reports/week3 hoặc QA</text>
+  <text x="366" y="457" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">12-file counts + audit</text>
+  <text x="366" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Before/after + exceptions</text>
+  <text x="366" y="511" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Catalog quan sát + SQL</text>
+  <text x="366" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Run manifest + code hash</text>
+  <rect x="660" y="390" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="676" y="422" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">Chạy lại May thật</text>
+  <text x="676" y="457" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">J00–J06 đủ 3 family</text>
+  <text x="676" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Digest có thứ tự PK</text>
+  <text x="676" y="511" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">So toàn bộ Dim/Fact/Mart</text>
+  <text x="676" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">03/04/06 phải giữ nguyên</text>
+  <rect x="970" y="390" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
+  <text x="986" y="422" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">Bản DB chuyển riêng</text>
+  <text x="986" y="457" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">3 Dim + 2 Mart đủ kỳ</text>
+  <text x="986" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Dump + SHA-256 local</text>
+  <text x="986" y="511" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Restore kiểm đếm/KPI</text>
+  <text x="986" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Không commit dump G3</text>
+  <path d="M310 230 L350 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M620 230 L660 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M930 230 L970 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M795 390 L795 315" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M1105 315 L1105 390" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M660 475 L620 475" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M350 475 L310 475" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="7 5" />
+  <text x="40" y="615" fill="#172a43" font-family="Arial, sans-serif" font-size="18" font-weight="400">Thiết kế nâng thêm chiều/category chờ TV4. Sơ đồ vật lý G2 vẫn khớp DDL, không đổi grain/FK.</text>
+</svg>

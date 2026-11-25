@@ -2,10 +2,13 @@
 
 Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và biến động nhân sự liên bang Hoa Kỳ. Môn MI4214; năm vai trò; kế hoạch 39 ngày từ ngày khởi động chưa chốt.
 
+**Nhánh tuần 3 `tv3/g3-full-pipeline`:** mở rộng từ G2 sang đủ 12 Parquet tháng 03–06, đối soát theo file, kiểm chất lượng trực tiếp và rerun May. [Báo cáo tuần 3](reports/TV3_week3_summary.md) ghi actual, phạm vi tự kiểm và các phần chờ TV4/TV5; [runbook G3](docs/TV3_week3_runbook.md) có lệnh replay. G3 chưa được TV1 nghiệm thu, mô hình còn PROPOSED. PR G2 bên dưới là dependency chưa merge tại lúc tạo nhánh.
+
 **Hiện trạng nhánh `tv3/g2-pipeline` (23/11/2026):** gói TV3 tuần 2 ở trạng thái **REVIEW**, trong [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Đã có pipeline ba nguồn tháng 04/2025 → Staging/ODS → 3 Fact → 2 Mart và bằng chứng SQL K01/K06/K07 = 2.271.969 / 7.153 / 24.088. Mô hình là **PROPOSED, chờ TV4** duyệt grain/bus matrix/Dimension catalog; tích hợp Power BI và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu DONE/PASS. Phạm vi, giới hạn Unknown và bằng chứng nằm trong [báo cáo tuần 2](reports/TV3_week2_summary.md); tiêu chuẩn cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
 
 ## Bắt đầu ở đâu?
 
+- **G3 tuần 3:** đọc [runbook đầy đủ](docs/TV3_week3_runbook.md), [catalog/mô hình chờ duyệt](docs/TV3_g3_model_review.md) và [sơ đồ G3](diagrams/10_g3_full_pipeline.svg). Reviewer ghi vào `.qa/TV5_G3/<run>`; CSV G2 được giữ nguyên, CSV G3 ở `reports/week3/`.
 - **TV4:** nhận [dump, checksum và mô hình Power BI đề xuất](handoff/TV3_G2/README.md), restore trên Windows, đối soát SQL–DAX và phản hồi PBIX/bus matrix/catalog.
 - **TV5:** dùng [hướng dẫn replay PowerShell](handoff/TV3_G2/TV5_REPLAY.md), database QA riêng và `--report-dir .qa/TV5_G2/<run>/reports`. Thư mục `.qa/` được Git bỏ qua; lưu actual/kết luận độc lập tại đây.
 - **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
@@ -23,7 +26,7 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 | D2 — Personnel Flows | Có bao nhiêu lượt tiếp nhận/rời cơ quan theo kỳ báo cáo và loại hành động? | Accessions/Separations |
 | D3 — Workforce Changes | Nhóm nào đóng góp vào mức tăng/giảm quy mô giữa hai kỳ? | So sánh hai snapshot |
 
-Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Ba tổng tháng 04 đã khớp SQL pipeline MVP; mức giảm so với tháng 03 vẫn dựa trên baseline nguồn vì MVP hiện chỉ nạp tháng 04. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
+Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Nhánh G3 có đủ bốn kỳ để tính SQL MoM theo [SQL KPI](sql/07_g3_kpi.sql); kết quả DAX tiếp tục chờ TV4/TV5 kiểm cùng bộ lọc. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
 
 ## Nguồn và mô hình đã chọn
 

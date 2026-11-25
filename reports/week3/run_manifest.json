@@ -1,0 +1,25 @@
+{
+  "code_version": "3b30235243e133d9640911b5801da70e349122de+working-tree",
+  "inventory_sha256": "02e46c60625e57502d423e17ebdbe95d52bca6cf32c208e735ebcd1c58556588",
+  "code_sha256": {
+    "etl/g3_quality.py": "3083f1b41bc9d6da9932a2d467ee012aee913f5e42f6e1fc21264101ec811899",
+    "etl/fetch_baseline.py": "d057ebfa144ae15a77ed951c96182d0e58a4d96799733588ffb64367bcaf50ab",
+    "etl/prototype_ingest.py": "00fdfbc7661720a6f7dc67fdd14bbfbcb2725ccdec3d6e3a4717e44db67935ab",
+    "etl/g3_pipeline.py": "43298f737886b308a96b9312b738d984561b87465f7a15f0a7baecb1e83d0177",
+    "etl/g2_pipeline.py": "7c155ae3566d68ce655c56da1eadbf85855759f3e422796f627e5413f6be4620",
+    "etl/g2_model.py": "1a2d7f91f5b0ff28e2645ff2f728ba75bf94c52634fd9b0328ec98f83b3da9c5",
+    "etl/g2_transfer.py": "c17da4c273c435983c4368ee869452423a06c67d7f4cc6607581aa02c1c1bb60"
+  },
+  "months": [
+    "202503",
+    "202504",
+    "202505",
+    "202506"
+  ],
+  "database": "workforce_dw_g3_20261123",
+  "batch_size": 10000,
+  "started_at": "2026-11-23T07:19:18.019282+00:00",
+  "model_status": "PROPOSED_PENDING_TV4",
+  "status": "SUCCESS",
+  "finished_at": "2026-11-23T07:35:47.803111+00:00"
+}

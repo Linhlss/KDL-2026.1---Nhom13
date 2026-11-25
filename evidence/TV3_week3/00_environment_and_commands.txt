@@ -1,0 +1,7 @@
+Python 3.12.14; PostgreSQL 18.7 (Postgres.app); macOS TV3
+Base G2 commit: 3b30235; branch tv3/g3-full-pipeline
+COMMAND: .venv/bin/python -u etl/g3_pipeline.py --config configs/.env.g3.local --database workforce_dw_g3_20261123 --raw-dir data/raw --report-dir reports/week3 --verify-rerun --quality-check
+PASS code hashes match completed full run; 20 G2 reports byte-identical; 593 mismatches preserved
+PASS April K02=-17223, K08=-16935; missing March prior-month K02/K03 remain NULL
+Actual agency example (same SQL filters for TV4): {"month_key": 202504, "agency_key": 178, "agency_code": "AA", "agency_label": "ADMIN CONFERENCE OF THE UNITED STATES", "headcount": 10, "accessions": 0, "separations": 0}
+NOT_TESTED real republish replacement; PENDING Windows/SQL-DAX and independent TV5 QA

@@ -1,0 +1,13 @@
+PASS CLI > dotenv > legacy database/raw-directory defaults
+PASS direct checker accepts all three verified files in flat and family directories
+PASS direct checker rejects invalid/absent months, missing/duplicate families, missing file and checksum mismatch
+SUCCESS employment_202504_v5.parquet 2 rows
+SUCCESS accessions_202504_v5.parquet 2 rows
+SUCCESS separations_202504_v5.parquet 2 rows
+PASS J06 rejects zero, one and two LOADED families, exports FAIL coverage and records audit FAIL
+PASS complete source coverage alone cannot pass missing Fact/Mart reconciliation
+PASS J06 passes only complete matching layers and excludes inactive/unloaded sources
+PASS J06 valid inventory month without loaded data fails with audit evidence
+PASS source-direct compares all three inputs, rejects absent/invalid months and fails mismatches under python -O
+PASS --report-dir keeps reviewer outputs separate and handed-off report hashes unchanged
+PASS disposable database, Parquet fixtures and reviewer reports removed

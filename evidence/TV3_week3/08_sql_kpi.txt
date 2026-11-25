@@ -1,0 +1,497 @@
+ month_key |   k01   |  k02   |           k03           | k06  |  k07  |  k08
+-----------+---------+--------+-------------------------+------+-------+--------
+    202503 | 2289192 |        |                         | 4862 | 22061 | -17199
+    202504 | 2271969 | -17223 | -0.00752361531929169768 | 7153 | 24088 | -16935
+    202505 | 2255056 | -16913 | -0.00744420368411716885 | 8813 | 26415 | -17602
+    202506 | 2241780 | -13276 | -0.00588721521771521417 | 9954 | 19947 |  -9993
+(4 rows)
+
+ month_key | agency_key | agency_code |               agency_label               | headcount | accessions | separations
+-----------+------------+-------------+------------------------------------------+-----------+------------+-------------
+    202503 |         56 | AA          | ADMIN CONFERENCE OF THE UNITED STATES    |        10 |          0 |           1
+    202503 |         26 | AB          | AMERICAN BATTLE MONUMENTS COMMISSION     |        80 |          1 |           0
+    202503 |         15 | AF          | DEPARTMENT OF THE AIR FORCE              |    171750 |         72 |        1867
+    202503 |         20 | AG          | DEPARTMENT OF AGRICULTURE                |     90840 |        532 |        1112
+    202503 |         19 | AM          | U.S. AGENCY FOR INTERNATIONAL DEV        |      4922 |          3 |          29
+    202503 |         74 | AN          | AFRICAN DEVELOPMENT FOUNDATION           |        32 |          0 |           0
+    202503 |        115 | AP          | APPALACHIAN REGIONAL COMMISSION          |         5 |          0 |           0
+    202503 |         67 | AR          | DEPARTMENT OF THE ARMY                   |    220497 |         75 |        1561
+    202503 |         89 | AU          | FEDERAL LABOR RELATIONS AUTHORITY        |       108 |          0 |           1
+    202503 |         86 | AW          | ARCTIC RESEARCH COMMISSION               |         2 |          0 |           0
+    202503 |         66 | BD          | MERIT SYSTEMS PROTECTION BOARD           |       177 |          1 |           1
+    202503 |         53 | BF          | DEFENSE NUCLEAR FACILITIES SAFETY BOARD  |       112 |          0 |           1
+    202503 |         60 | BG          | PENSION BENEFIT GUARANTY CORPORATION     |       939 |          0 |          33
+    202503 |         24 | BH          | CMSN FOR PRES OF AMERICA'S HERITAGE ABRD |        18 |          0 |           0
+    202503 |          8 | BK          | JAMES MADISON MEMORIAL FELLOWSHIP FOUND  |         5 |          0 |           0
+    202503 |        105 | BO          | OFFICE OF MANAGEMENT AND BUDGET          |       536 |          1 |           7
+    202503 |          2 | BT          | ARCHITECTL & TRANS BARRIER COMPLIANCE BD |        36 |          0 |           1
+    202503 |         32 | BW          | NUCLEAR WASTE TECHNICAL REVIEW BOARD     |        22 |          0 |           0
+    202503 |         57 | CC          | COMMISSION ON CIVIL RIGHTS               |        60 |          0 |           0
+    202503 |         99 | CE          | COUNCIL OF ECONOMIC ADVISERS             |        17 |          4 |           0
+    202503 |         54 | CF          | COMMISSION OF FINE ARTS                  |        12 |          0 |           0
+    202503 |         18 | CM          | DEPARTMENT OF COMMERCE                   |     47410 |         21 |         661
+    202503 |         73 | CT          | COMMODITY FUTURES TRADING COMMISSION     |       680 |          0 |           6
+    202503 |         95 | CU          | NATIONAL CREDIT UNION ADMINISTRATION     |      1214 |          0 |           3
+    202503 |         14 | CX          | NAT CMSN ON LIBRARIES AND INFO SCIENCE   |        17 |          0 |           0
+    202503 |          5 | DA          | DELTA REGIONAL AUTHORITY                 |         2 |          0 |           0
+    202503 |         44 | DB          | PUBLIC INTEREST DECLASSIFICATION BOARD   |         8 |          0 |           0
+    202503 |         61 | DD          | DEPARTMENT OF DEFENSE                    |    158398 |        150 |        1430
+    202503 |         69 | DG          | NORTHERN BORDER REGIONAL COMMISSION      |         3 |          0 |           0
+    202503 |        102 | DJ          | DEPARTMENT OF JUSTICE                    |    116047 |        336 |         824
+    202503 |         45 | DL          | DEPARTMENT OF LABOR                      |     14117 |         29 |         109
+    202503 |         93 | DN          | DEPARTMENT OF ENERGY                     |     17472 |         25 |         188
+    202503 |        114 | DO          | OFC OF THE NAT CYBER DIR                 |        31 |          1 |           1
+    202503 |         97 | DQ          | DENALI COMMISSION                        |        17 |          0 |           0
+    202503 |         35 | EB          | EXPORT-IMPORT BANK OF THE UNITED STATES  |       377 |          0 |           7
+    202503 |         59 | EC          | OFFICE OF ADMINISTRATION                 |       252 |          2 |           2
+    202503 |         72 | ED          | DEPARTMENT OF EDUCATION                  |      4059 |         15 |         368
+    202503 |        123 | EE          | EQUAL EMPLOYMENT OPPORTUNITY COMMISSION  |      2028 |          0 |          28
+    202503 |         76 | EO          | MORRIS K. UDALL & STEWART L. UDALL FOUND |        39 |          0 |           0
+    202503 |        120 | EP          | ENVIRONMENTAL PROTECTION AGENCY          |     16557 |         14 |         213
+    202503 |         23 | EQ          | COUNCIL ON ENVIR QUAL/OFC OF ENVIR QUAL  |        23 |          1 |           1
+    202503 |        124 | EW          | TRADE AND DEVELOPMENT AGENCY             |        59 |          0 |           0
+    202503 |         31 | FC          | FEDERAL COMMUNICATIONS COMMISSION        |      1473 |          2 |          46
+    202503 |         48 | FD          | FEDERAL DEPOSIT INSURANCE CORPORATION    |      6487 |          1 |          57
+    202503 |         11 | FI          | FEDERAL FINANCIAL INST. EXAM. COUNCIL    |        17 |          0 |           0
+    202503 |          3 | FJ          | CHEMICAL SAFETY/HAZARD INVESTIGATION BD  |        46 |          0 |           1
+    202503 |         90 | FK          | FARM CREDIT SYSTEM INSURANCE CORPORATION |        10 |          0 |           0
+    202503 |         46 | FL          | FARM CREDIT ADMINISTRATION               |       333 |          0 |           4
+    202503 |        116 | FM          | FED MEDIATION AND CONCILIATION SERVICE   |       205 |          0 |           4
+    202503 |        108 | FR          | FEDERAL RESERVE SYSTEM                   |      1661 |          2 |          25
+    202503 |         79 | FT          | FEDERAL TRADE COMMISSION                 |      1244 |          6 |          31
+    202503 |         58 | FW          | OFFICE OF SPECIAL COUNSEL                |       123 |          0 |           3
+    202503 |         91 | GB          | DFC                                      |       687 |          0 |          28
+    202503 |         12 | GC          | GULF COAST ECOSYSTEM RESTORATION COUNCIL |        23 |          0 |           0
+    202503 |         27 | GE          | BARRY GOLDWATER SCHOL & EXCEL IN ED FOUN |         3 |          0 |           0
+    202503 |        121 | GG          | OFFICE OF GOVERNMENT ETHICS              |        72 |          0 |           3
+    202503 |         49 | GJ          | PRESIDIO TRUST                           |       332 |          0 |           2
+    202503 |         51 | GQ          | ELECTION ASSISTANCE COMMISSION           |        82 |          0 |           1
+    202503 |          4 | GS          | GENERAL SERVICES ADMINISTRATION          |     13190 |         12 |         416
+    202503 |        103 | GU          | THE US SEMIQUINCENTENNIAL COMMISSION     |         8 |          0 |           0
+    202503 |          1 | GW          | INTER BOUND AND WATER COMM U.S. SECTION  |       279 |          0 |           1
+    202503 |         82 | GX          | INTERNAT BOUNDARY CMSN: U.S. AND CANADA  |         7 |          0 |           0
+    202503 |         63 | GY          | INTERNATIONAL JOINT CMSN: U.S. & CANADA  |        19 |          0 |           0
+    202503 |         85 | HD          | U.S. HOLOCAUST MEMORIAL MUSEUM           |       109 |          0 |           0
+    202503 |         43 | HE          | DEPARTMENT OF HEALTH AND HUMAN SERVICES  |     92269 |        107 |        1062
+    202503 |         34 | HF          | FEDERAL HOUSING FINANCE AGENCY           |       869 |          4 |           5
+    202503 |         75 | HP          | ADV COUNCIL ON HISTORIC PRESERVATION     |        55 |          0 |           2
+    202503 |         28 | HS          | DEPARTMENT OF HOMELAND SECURITY          |    231771 |       1476 |        2029
+    202503 |         13 | HT          | HARRY S. TRUMAN SCHOLARSHIP FOUNDATION   |         5 |          0 |           0
+    202503 |         70 | HW          | U.S. INTERAGENCY COUNCIL ON HOMELESSNESS |        13 |          0 |           0
+    202503 |          7 | IB          | U.S.AGENCY FOR GLOBAL MEDIA              |      1160 |          2 |          79
+    202503 |        110 | IF          | INTER-AMERICAN FOUNDATION                |        36 |          0 |           1
+    202503 |         88 | IG          | COUNCIL OF INSP. GEN. ON INTEG.& EFFIC.  |        31 |          0 |           1
+    202503 |         25 | IP          | INTEL PROPERTY ENFORC COORDINATOR        |         2 |          0 |           0
+    202503 |         55 | JL          | JUDICIAL BRANCH                          |       165 |          3 |           0
+    202503 |         78 | KS          | CORP FOR NATIONAL AND COMMUNITY SERVICE  |       711 |          0 |           6
+    202503 |        118 | KY          | PUBLIC BUILDINGS REFORM BOARD            |         7 |          0 |           0
+    202503 |        113 | LF          | FEDERAL ELECTION COMMISSION              |       280 |          0 |           2
+    202503 |        107 | LP          | GOVERNMENT PRINTING OFFICE               |      1649 |          7 |           8
+    202503 |         10 | MA          | MARINE MAMMAL COMMISSION                 |        23 |          0 |           0
+    202503 |         80 | MC          | FEDERAL MARITIME COMMISSION              |       131 |          2 |           2
+    202503 |         71 | MI          | MILLENNIUM CHALLENGE CORPORATION         |       346 |          0 |           2
+    202503 |         64 | NF          | NATIONAL SCIENCE FOUNDATION              |      1601 |          0 |          17
+    202503 |        109 | NK          | NATIONAL COUNCIL ON DISABILITY           |        18 |          0 |           0
+    202503 |         50 | NL          | NATIONAL LABOR RELATIONS BOARD           |      1237 |          0 |           7
+    202503 |         30 | NM          | NATIONAL MEDIATION BOARD                 |        38 |          0 |           0
+    202503 |         81 | NP          | NATIONAL CAPITAL PLANNING COMMISSION     |        35 |          0 |           0
+    202503 |         52 | NQ          | NAT ARCHIVES AND RECORDS ADMINISTRATION  |      2810 |          0 |          38
+    202503 |        101 | NS          | NATIONAL SECURITY COUNCIL                |        76 |         11 |           5
+    202503 |         98 | NU          | NUCLEAR REGULATORY COMMISSION            |      2941 |          1 |          19
+    202503 |         42 | NV          | DEPARTMENT OF THE NAVY                   |    220459 |        234 |        1322
+    202503 |        112 | OM          | OFFICE OF PERSONNEL MANAGEMENT           |      2941 |          6 |          33
+    202503 |         96 | OS          | OCCUPATIONAL SAFETY & HEALTH REVIEW CMSN |        49 |          0 |           2
+    202503 |        100 | PU          | PEACE CORPS                              |       978 |          1 |           8
+    202503 |         21 | QQ          | OFFICE OF NATIONAL DRUG CONTROL POLICY   |        53 |          0 |           1
+    202503 |         16 | RE          | OFC OF NAVAJO AND HOPI INDIAN RELOCATION |        16 |          0 |           1
+    202503 |         87 | RF          | FED RETIREMENT THRIFT INVESTMENT BOARD   |       236 |          1 |           2
+    202503 |         92 | RH          | ARMED FORCES RETIREMENT HOME             |       311 |          0 |           4
+    202503 |         47 | RJ          | CIVIL RIGHTS COLD CASE REVIEW BOARD      |        12 |          0 |           0
+    202503 |         83 | RO          | MEDICAID & CHIP PAYMENT & ACCESS COMM    |        47 |          1 |           0
+    202503 |        104 | RR          | RAILROAD RETIREMENT BOARD                |       767 |          0 |           4
+    202503 |         65 | RS          | FED MINE SAFETY AND HEALTH REVIEW CMSN   |        55 |          0 |           0
+    202503 |        111 | SB          | SMALL BUSINESS ADMINISTRATION            |      8164 |         16 |         134
+    202503 |         62 | SE          | SECURITIES AND EXCHANGE COMMISSION       |      4744 |          3 |         316
+    202503 |         41 | SK          | CONSUMER PRODUCT SAFETY COMMISSION       |       508 |          1 |           4
+    202503 |         68 | SM          | SMITHSONIAN INSTITUTION                  |      4453 |         19 |          27
+    202503 |         94 | SS          | SELECTIVE SERVICE SYSTEM                 |       162 |          0 |           3
+    202503 |        122 | ST          | DEPARTMENT OF STATE                      |     14163 |         41 |         311
+    202503 |          6 | SZ          | SOCIAL SECURITY ADMINISTRATION           |     56263 |          2 |         718
+    202503 |         33 | TB          | NATIONAL TRANSPORTATION SAFETY BOARD     |       426 |          0 |           5
+    202503 |         36 | TC          | U.S. INTERNATIONAL TRADE COMMISSION      |       443 |          0 |          12
+    202503 |         77 | TD          | DEPARTMENT OF TRANSPORTATION             |     57204 |        262 |         541
+    202503 |         38 | TN          | OFFICE OF THE U.S. TRADE REPRESENTATIVE  |       238 |          3 |           0
+    202503 |         40 | TS          | OFFICE OF SCIENCE AND TECHNOLOGY POLICY  |        20 |          2 |           0
+    202503 |        119 | TW          | SURFACE TRANSPORTATION BOARD             |       126 |          1 |           2
+    202503 |         37 | UJ          | JAPAN-UNITED STATES FRIENDSHIP CMSN      |        12 |          0 |           0
+    202503 |          0 | UNKNOWN     | Unknown                                  |    208006 |        265 |        2514
+    202503 |          9 | UT          | UTAH RECLAMATN MITIGATN & CONSERVTN CMSN |        12 |          0 |           0
+    202503 |        117 | VA          | DEPARTMENT OF VETERANS AFFAIRS           |    474542 |       1084 |        3734
+    202503 |        106 | VD          | PRIVACY AND CIVIL LIBERTIES OVERSIGHT    |        36 |          0 |           0
+    202503 |         39 | WK          | FEDERAL PERMITTING IMPROVEMENT STEER     |        19 |          0 |           0
+    202503 |         17 | WU          | SOUTHWEST BORDER REGIONAL COMMISSION     |         2 |          0 |           0
+    202503 |         29 | ZP          | U.S. CMSN ON INTERNATL RELIGIOUS FREEDOM |        20 |          0 |           0
+    202503 |         84 | ZS          | U.S.-CHINA ECONOMIC & SECURITY REV CMSN  |        26 |          1 |           0
+    202504 |        178 | AA          | ADMIN CONFERENCE OF THE UNITED STATES    |        10 |          0 |           0
+    202504 |        148 | AB          | AMERICAN BATTLE MONUMENTS COMMISSION     |        82 |          1 |           0
+    202504 |        139 | AF          | DEPARTMENT OF THE AIR FORCE              |    170447 |        270 |        1269
+    202504 |        144 | AG          | DEPARTMENT OF AGRICULTURE                |     91578 |       1020 |         847
+    202504 |        143 | AM          | U.S. AGENCY FOR INTERNATIONAL DEV        |      4874 |          1 |          57
+    202504 |        196 | AN          | AFRICAN DEVELOPMENT FOUNDATION           |        31 |          0 |           1
+    202504 |        237 | AP          | APPALACHIAN REGIONAL COMMISSION          |         5 |          0 |           0
+    202504 |        189 | AR          | DEPARTMENT OF THE ARMY                   |    219074 |        120 |        1299
+    202504 |        211 | AU          | FEDERAL LABOR RELATIONS AUTHORITY        |       109 |          1 |           1
+    202504 |        208 | AW          | ARCTIC RESEARCH COMMISSION               |         2 |          0 |           0
+    202504 |        188 | BD          | MERIT SYSTEMS PROTECTION BOARD           |       177 |          1 |           2
+    202504 |        175 | BF          | DEFENSE NUCLEAR FACILITIES SAFETY BOARD  |       111 |          0 |           0
+    202504 |        182 | BG          | PENSION BENEFIT GUARANTY CORPORATION     |       926 |          0 |           6
+    202504 |        147 | BH          | CMSN FOR PRES OF AMERICA'S HERITAGE ABRD |        18 |          0 |           0
+    202504 |        132 | BK          | JAMES MADISON MEMORIAL FELLOWSHIP FOUND  |         5 |          0 |           0
+    202504 |        126 | BT          | ARCHITECTL & TRANS BARRIER COMPLIANCE BD |        35 |          0 |           0
+    202504 |        154 | BW          | NUCLEAR WASTE TECHNICAL REVIEW BOARD     |        21 |          0 |           0
+    202504 |        179 | CC          | COMMISSION ON CIVIL RIGHTS               |        60 |          0 |           1
+    202504 |        176 | CF          | COMMISSION OF FINE ARTS                  |        12 |          0 |           0
+    202504 |        142 | CM          | DEPARTMENT OF COMMERCE                   |     46808 |         33 |        3247
+    202504 |        195 | CT          | COMMODITY FUTURES TRADING COMMISSION     |       667 |          0 |          12
+    202504 |        217 | CU          | NATIONAL CREDIT UNION ADMINISTRATION     |      1208 |          0 |           8
+    202504 |        138 | CX          | NAT CMSN ON LIBRARIES AND INFO SCIENCE   |        17 |          0 |           0
+    202504 |        129 | DA          | DELTA REGIONAL AUTHORITY                 |         2 |          0 |           0
+    202504 |        166 | DB          | PUBLIC INTEREST DECLASSIFICATION BOARD   |         8 |          0 |           0
+    202504 |        183 | DD          | DEPARTMENT OF DEFENSE                    |    157496 |        423 |        1117
+    202504 |        191 | DG          | NORTHERN BORDER REGIONAL COMMISSION      |         3 |          0 |           0
+    202504 |        224 | DJ          | DEPARTMENT OF JUSTICE                    |    115576 |        355 |         816
+    202504 |        167 | DL          | DEPARTMENT OF LABOR                      |     14051 |         24 |          95
+    202504 |        215 | DN          | DEPARTMENT OF ENERGY                     |     17356 |         17 |         109
+    202504 |        219 | DQ          | DENALI COMMISSION                        |        17 |          0 |           0
+    202504 |        157 | EB          | EXPORT-IMPORT BANK OF THE UNITED STATES  |       371 |          0 |           3
+    202504 |        194 | ED          | DEPARTMENT OF EDUCATION                  |      3834 |         11 |          44
+    202504 |        245 | EE          | EQUAL EMPLOYMENT OPPORTUNITY COMMISSION  |      2005 |          0 |          24
+    202504 |        198 | EO          | MORRIS K. UDALL & STEWART L. UDALL FOUND |        39 |          0 |           0
+    202504 |        242 | EP          | ENVIRONMENTAL PROTECTION AGENCY          |     16397 |         12 |         166
+    202504 |        246 | EW          | TRADE AND DEVELOPMENT AGENCY             |        58 |          0 |           1
+    202504 |        153 | FC          | FEDERAL COMMUNICATIONS COMMISSION        |      1429 |          2 |          20
+    202504 |        170 | FD          | FEDERAL DEPOSIT INSURANCE CORPORATION    |      6433 |          0 |          73
+    202504 |        135 | FI          | FEDERAL FINANCIAL INST. EXAM. COUNCIL    |        17 |          0 |           0
+    202504 |        127 | FJ          | CHEMICAL SAFETY/HAZARD INVESTIGATION BD  |        46 |          1 |           0
+    202504 |        212 | FK          | FARM CREDIT SYSTEM INSURANCE CORPORATION |        10 |          0 |           0
+    202504 |        168 | FL          | FARM CREDIT ADMINISTRATION               |       329 |          0 |           2
+    202504 |        238 | FM          | FED MEDIATION AND CONCILIATION SERVICE   |       203 |          0 |           9
+    202504 |        230 | FR          | FEDERAL RESERVE SYSTEM                   |      1669 |          1 |          45
+    202504 |        201 | FT          | FEDERAL TRADE COMMISSION                 |      1228 |          1 |          19
+    202504 |        180 | FW          | OFFICE OF SPECIAL COUNSEL                |       123 |          1 |           1
+    202504 |        213 | GB          | DFC                                      |       673 |          1 |          10
+    202504 |        136 | GC          | GULF COAST ECOSYSTEM RESTORATION COUNCIL |        23 |          0 |           0
+    202504 |        149 | GE          | BARRY GOLDWATER SCHOL & EXCEL IN ED FOUN |         3 |          0 |           0
+    202504 |        243 | GG          | OFFICE OF GOVERNMENT ETHICS              |        70 |          0 |           2
+    202504 |        171 | GJ          | PRESIDIO TRUST                           |       329 |          0 |           3
+    202504 |        173 | GQ          | ELECTION ASSISTANCE COMMISSION           |        81 |          0 |           1
+    202504 |        128 | GS          | GENERAL SERVICES ADMINISTRATION          |     13118 |         10 |         196
+    202504 |        225 | GU          | THE US SEMIQUINCENTENNIAL COMMISSION     |         8 |          0 |           0
+    202504 |        125 | GW          | INTER BOUND AND WATER COMM U.S. SECTION  |       278 |          0 |           2
+    202504 |        204 | GX          | INTERNAT BOUNDARY CMSN: U.S. AND CANADA  |         7 |          0 |           0
+    202504 |        185 | GY          | INTERNATIONAL JOINT CMSN: U.S. & CANADA  |        19 |          0 |           0
+    202504 |        207 | HD          | U.S. HOLOCAUST MEMORIAL MUSEUM           |       109 |          0 |           3
+    202504 |        165 | HE          | DEPARTMENT OF HEALTH AND HUMAN SERVICES  |     90360 |        158 |        2554
+    202504 |        156 | HF          | FEDERAL HOUSING FINANCE AGENCY           |       865 |          2 |           9
+    202504 |        197 | HP          | ADV COUNCIL ON HISTORIC PRESERVATION     |        53 |          0 |           3
+    202504 |        150 | HS          | DEPARTMENT OF HOMELAND SECURITY          |    231406 |       1221 |        1439
+    202504 |        137 | HT          | HARRY S. TRUMAN SCHOLARSHIP FOUNDATION   |         5 |          0 |           0
+    202504 |        192 | HW          | U.S. INTERAGENCY COUNCIL ON HOMELESSNESS |        13 |          0 |           0
+    202504 |        131 | IB          | U.S.AGENCY FOR GLOBAL MEDIA              |      1093 |          0 |           0
+    202504 |        232 | IF          | INTER-AMERICAN FOUNDATION                |        36 |          0 |           0
+    202504 |        210 | IG          | COUNCIL OF INSP. GEN. ON INTEG.& EFFIC.  |        30 |          0 |           1
+    202504 |        177 | JL          | JUDICIAL BRANCH                          |       168 |          0 |           2
+    202504 |        200 | KS          | CORP FOR NATIONAL AND COMMUNITY SERVICE  |       707 |          1 |           1
+    202504 |        240 | KY          | PUBLIC BUILDINGS REFORM BOARD            |         7 |          0 |           0
+    202504 |        235 | LF          | FEDERAL ELECTION COMMISSION              |       276 |          1 |           6
+    202504 |        229 | LP          | GOVERNMENT PRINTING OFFICE               |      1644 |         10 |           4
+    202504 |        134 | MA          | MARINE MAMMAL COMMISSION                 |        23 |          0 |           0
+    202504 |        202 | MC          | FEDERAL MARITIME COMMISSION              |       130 |          0 |           2
+    202504 |        193 | MI          | MILLENNIUM CHALLENGE CORPORATION         |       344 |          0 |           1
+    202504 |        186 | NF          | NATIONAL SCIENCE FOUNDATION              |      1587 |          2 |          13
+    202504 |        231 | NK          | NATIONAL COUNCIL ON DISABILITY           |        17 |          0 |           1
+    202504 |        172 | NL          | NATIONAL LABOR RELATIONS BOARD           |      1229 |          0 |          11
+    202504 |        152 | NM          | NATIONAL MEDIATION BOARD                 |        38 |          0 |           1
+    202504 |        203 | NP          | NATIONAL CAPITAL PLANNING COMMISSION     |        35 |          0 |           0
+    202504 |        174 | NQ          | NAT ARCHIVES AND RECORDS ADMINISTRATION  |      2817 |          0 |          18
+    202504 |        220 | NU          | NUCLEAR REGULATORY COMMISSION            |      2925 |          0 |          24
+    202504 |        164 | NV          | DEPARTMENT OF THE NAVY                   |    219664 |        309 |         839
+    202504 |        234 | OM          | OFFICE OF PERSONNEL MANAGEMENT           |      2915 |          5 |         100
+    202504 |        218 | OS          | OCCUPATIONAL SAFETY & HEALTH REVIEW CMSN |        47 |          0 |           2
+    202504 |        222 | PU          | PEACE CORPS                              |       971 |          0 |           7
+    202504 |        140 | RE          | OFC OF NAVAJO AND HOPI INDIAN RELOCATION |        15 |          0 |           0
+    202504 |        209 | RF          | FED RETIREMENT THRIFT INVESTMENT BOARD   |       237 |          1 |           0
+    202504 |        214 | RH          | ARMED FORCES RETIREMENT HOME             |       309 |          2 |           2
+    202504 |        169 | RJ          | CIVIL RIGHTS COLD CASE REVIEW BOARD      |        12 |          0 |           0
+    202504 |        205 | RO          | MEDICAID & CHIP PAYMENT & ACCESS COMM    |        47 |          0 |           1
+    202504 |        226 | RR          | RAILROAD RETIREMENT BOARD                |       759 |          0 |           7
+    202504 |        187 | RS          | FED MINE SAFETY AND HEALTH REVIEW CMSN   |        55 |          0 |           1
+    202504 |        233 | SB          | SMALL BUSINESS ADMINISTRATION            |      7990 |          8 |         200
+    202504 |        184 | SE          | SECURITIES AND EXCHANGE COMMISSION       |      4336 |          2 |         137
+    202504 |        163 | SK          | CONSUMER PRODUCT SAFETY COMMISSION       |       503 |          1 |           4
+    202504 |        190 | SM          | SMITHSONIAN INSTITUTION                  |      4445 |         24 |          31
+    202504 |        216 | SS          | SELECTIVE SERVICE SYSTEM                 |       160 |          0 |           1
+    202504 |        244 | ST          | DEPARTMENT OF STATE                      |     13890 |         29 |         292
+    202504 |        130 | SZ          | SOCIAL SECURITY ADMINISTRATION           |     53682 |          1 |        2458
+    202504 |        155 | TB          | NATIONAL TRANSPORTATION SAFETY BOARD     |       421 |          0 |           6
+    202504 |        158 | TC          | U.S. INTERNATIONAL TRADE COMMISSION      |       438 |          0 |           3
+    202504 |        199 | TD          | DEPARTMENT OF TRANSPORTATION             |     57008 |        279 |         447
+    202504 |        241 | TW          | SURFACE TRANSPORTATION BOARD             |       128 |          0 |           2
+    202504 |        159 | UJ          | JAPAN-UNITED STATES FRIENDSHIP CMSN      |        12 |          0 |           0
+    202504 |          0 | UNKNOWN     | Unknown                                  |    206687 |       1591 |        1936
+    202504 |        133 | UT          | UTAH RECLAMATN MITIGATN & CONSERVTN CMSN |        12 |          0 |           0
+    202504 |        239 | VA          | DEPARTMENT OF VETERANS AFFAIRS           |    471620 |       1175 |        3991
+    202504 |        228 | VD          | PRIVACY AND CIVIL LIBERTIES OVERSIGHT    |        35 |          0 |           1
+    202504 |        161 | WK          | FEDERAL PERMITTING IMPROVEMENT STEER     |        19 |          0 |           0
+    202504 |        141 | WU          | SOUTHWEST BORDER REGIONAL COMMISSION     |         2 |          0 |           0
+    202504 |        151 | ZP          | U.S. CMSN ON INTERNATL RELIGIOUS FREEDOM |        20 |          1 |           1
+    202504 |        206 | ZS          | U.S.-CHINA ECONOMIC & SECURITY REV CMSN  |        27 |          1 |           0
+    202505 |        301 | AA          | ADMIN CONFERENCE OF THE UNITED STATES    |        10 |          0 |           0
+    202505 |        271 | AB          | AMERICAN BATTLE MONUMENTS COMMISSION     |        83 |          0 |           0
+    202505 |        261 | AF          | DEPARTMENT OF THE AIR FORCE              |    170024 |        255 |        1390
+    202505 |        266 | AG          | DEPARTMENT OF AGRICULTURE                |     92950 |       1303 |        1385
+    202505 |        265 | AM          | U.S. AGENCY FOR INTERNATIONAL DEV        |      4795 |          0 |          68
+    202505 |        319 | AN          | AFRICAN DEVELOPMENT FOUNDATION           |        14 |          0 |           0
+    202505 |        360 | AP          | APPALACHIAN REGIONAL COMMISSION          |         5 |          0 |           0
+    202505 |        312 | AR          | DEPARTMENT OF THE ARMY                   |    214085 |        122 |        1831
+    202505 |        334 | AU          | FEDERAL LABOR RELATIONS AUTHORITY        |       103 |          1 |           7
+    202505 |        331 | AW          | ARCTIC RESEARCH COMMISSION               |         2 |          0 |           0
+    202505 |        311 | BD          | MERIT SYSTEMS PROTECTION BOARD           |       175 |          0 |           1
+    202505 |        298 | BF          | DEFENSE NUCLEAR FACILITIES SAFETY BOARD  |       108 |          0 |           4
+    202505 |        305 | BG          | PENSION BENEFIT GUARANTY CORPORATION     |       921 |          0 |           7
+    202505 |        269 | BH          | CMSN FOR PRES OF AMERICA'S HERITAGE ABRD |        18 |          0 |           0
+    202505 |        254 | BK          | JAMES MADISON MEMORIAL FELLOWSHIP FOUND  |         5 |          0 |           0
+    202505 |        350 | BO          | OFFICE OF MANAGEMENT AND BUDGET          |       529 |          2 |          13
+    202505 |        248 | BT          | ARCHITECTL & TRANS BARRIER COMPLIANCE BD |        37 |          0 |           0
+    202505 |        277 | BW          | NUCLEAR WASTE TECHNICAL REVIEW BOARD     |        21 |          0 |           1
+    202505 |        302 | CC          | COMMISSION ON CIVIL RIGHTS               |        59 |          0 |           0
+    202505 |        344 | CE          | COUNCIL OF ECONOMIC ADVISERS             |        23 |          2 |           0
+    202505 |        299 | CF          | COMMISSION OF FINE ARTS                  |        12 |          0 |           0
+    202505 |        264 | CM          | DEPARTMENT OF COMMERCE                   |     44729 |         15 |         946
+    202505 |        318 | CT          | COMMODITY FUTURES TRADING COMMISSION     |       663 |          1 |           7
+    202505 |        340 | CU          | NATIONAL CREDIT UNION ADMINISTRATION     |      1204 |          0 |           5
+    202505 |        260 | CX          | NAT CMSN ON LIBRARIES AND INFO SCIENCE   |        17 |          0 |           0
+    202505 |        251 | DA          | DELTA REGIONAL AUTHORITY                 |         2 |          0 |           0
+    202505 |        289 | DB          | PUBLIC INTEREST DECLASSIFICATION BOARD   |         9 |          1 |           0
+    202505 |        306 | DD          | DEPARTMENT OF DEFENSE                    |    154159 |        511 |        1692
+    202505 |        314 | DG          | NORTHERN BORDER REGIONAL COMMISSION      |         3 |          0 |           0
+    202505 |        347 | DJ          | DEPARTMENT OF JUSTICE                    |    115063 |        286 |        1145
+    202505 |        290 | DL          | DEPARTMENT OF LABOR                      |     13991 |         19 |          86
+    202505 |        338 | DN          | DEPARTMENT OF ENERGY                     |     17209 |         30 |         163
+    202505 |        359 | DO          | OFC OF THE NAT CYBER DIR                 |        31 |          1 |           2
+    202505 |        342 | DQ          | DENALI COMMISSION                        |        17 |          0 |           0
+    202505 |        280 | EB          | EXPORT-IMPORT BANK OF THE UNITED STATES  |       365 |          0 |           8
+    202505 |        304 | EC          | OFFICE OF ADMINISTRATION                 |       250 |          2 |           2
+    202505 |        317 | ED          | DEPARTMENT OF EDUCATION                  |      3657 |         17 |          70
+    202505 |        368 | EE          | EQUAL EMPLOYMENT OPPORTUNITY COMMISSION  |      1973 |          0 |          23
+    202505 |        321 | EO          | MORRIS K. UDALL & STEWART L. UDALL FOUND |        39 |          0 |           1
+    202505 |        365 | EP          | ENVIRONMENTAL PROTECTION AGENCY          |     16212 |         16 |         158
+    202505 |        268 | EQ          | COUNCIL ON ENVIR QUAL/OFC OF ENVIR QUAL  |        25 |          0 |           0
+    202505 |        369 | EW          | TRADE AND DEVELOPMENT AGENCY             |        56 |          1 |           2
+    202505 |        276 | FC          | FEDERAL COMMUNICATIONS COMMISSION        |      1412 |          0 |          26
+    202505 |        293 | FD          | FEDERAL DEPOSIT INSURANCE CORPORATION    |      6368 |          1 |         134
+    202505 |        257 | FI          | FEDERAL FINANCIAL INST. EXAM. COUNCIL    |        17 |          0 |           0
+    202505 |        249 | FJ          | CHEMICAL SAFETY/HAZARD INVESTIGATION BD  |        47 |          0 |           1
+    202505 |        335 | FK          | FARM CREDIT SYSTEM INSURANCE CORPORATION |        10 |          0 |           0
+    202505 |        291 | FL          | FARM CREDIT ADMINISTRATION               |       330 |          1 |           1
+    202505 |        361 | FM          | FED MEDIATION AND CONCILIATION SERVICE   |       194 |          0 |           1
+    202505 |        353 | FR          | FEDERAL RESERVE SYSTEM                   |      1624 |          1 |          53
+    202505 |        324 | FT          | FEDERAL TRADE COMMISSION                 |      1206 |          3 |          19
+    202505 |        303 | FW          | OFFICE OF SPECIAL COUNSEL                |       122 |          0 |           1
+    202505 |        336 | GB          | DFC                                      |       661 |          2 |           9
+    202505 |        258 | GC          | GULF COAST ECOSYSTEM RESTORATION COUNCIL |        23 |          0 |           0
+    202505 |        272 | GE          | BARRY GOLDWATER SCHOL & EXCEL IN ED FOUN |         3 |          0 |           0
+    202505 |        366 | GG          | OFFICE OF GOVERNMENT ETHICS              |        69 |          0 |           0
+    202505 |        294 | GJ          | PRESIDIO TRUST                           |       324 |          0 |           4
+    202505 |        296 | GQ          | ELECTION ASSISTANCE COMMISSION           |        79 |          0 |           2
+    202505 |        250 | GS          | GENERAL SERVICES ADMINISTRATION          |     12902 |          4 |          85
+    202505 |        348 | GU          | THE US SEMIQUINCENTENNIAL COMMISSION     |         9 |          1 |           0
+    202505 |        247 | GW          | INTER BOUND AND WATER COMM U.S. SECTION  |       278 |          1 |           1
+    202505 |        327 | GX          | INTERNAT BOUNDARY CMSN: U.S. AND CANADA  |         7 |          0 |           0
+    202505 |        308 | GY          | INTERNATIONAL JOINT CMSN: U.S. & CANADA  |        19 |          0 |           0
+    202505 |        330 | HD          | U.S. HOLOCAUST MEMORIAL MUSEUM           |       105 |          0 |           1
+    202505 |        288 | HE          | DEPARTMENT OF HEALTH AND HUMAN SERVICES  |     86316 |        132 |        3435
+    202505 |        279 | HF          | FEDERAL HOUSING FINANCE AGENCY           |       851 |          0 |          11
+    202505 |        320 | HP          | ADV COUNCIL ON HISTORIC PRESERVATION     |        44 |          0 |           2
+    202505 |        273 | HS          | DEPARTMENT OF HOMELAND SECURITY          |    231082 |       1166 |        2704
+    202505 |        259 | HT          | HARRY S. TRUMAN SCHOLARSHIP FOUNDATION   |         5 |          0 |           0
+    202505 |        315 | HW          | U.S. INTERAGENCY COUNCIL ON HOMELESSNESS |        13 |          0 |           0
+    202505 |        253 | IB          | U.S.AGENCY FOR GLOBAL MEDIA              |      1089 |          1 |           7
+    202505 |        355 | IF          | INTER-AMERICAN FOUNDATION                |        35 |          0 |           1
+    202505 |        333 | IG          | COUNCIL OF INSP. GEN. ON INTEG.& EFFIC.  |        30 |          0 |           0
+    202505 |        270 | IP          | INTEL PROPERTY ENFORC COORDINATOR        |         2 |          0 |           0
+    202505 |        300 | JL          | JUDICIAL BRANCH                          |       165 |          2 |           3
+    202505 |        323 | KS          | CORP FOR NATIONAL AND COMMUNITY SERVICE  |       704 |          0 |           8
+    202505 |        363 | KY          | PUBLIC BUILDINGS REFORM BOARD            |         7 |          0 |           0
+    202505 |        358 | LF          | FEDERAL ELECTION COMMISSION              |       275 |          0 |           1
+    202505 |        352 | LP          | GOVERNMENT PRINTING OFFICE               |      1647 |          2 |           9
+    202505 |        256 | MA          | MARINE MAMMAL COMMISSION                 |        23 |          0 |           0
+    202505 |        325 | MC          | FEDERAL MARITIME COMMISSION              |       129 |          0 |           0
+    202505 |        316 | MI          | MILLENNIUM CHALLENGE CORPORATION         |       345 |          1 |           0
+    202505 |        309 | NF          | NATIONAL SCIENCE FOUNDATION              |      1565 |          0 |          17
+    202505 |        354 | NK          | NATIONAL COUNCIL ON DISABILITY           |        17 |          0 |           0
+    202505 |        295 | NL          | NATIONAL LABOR RELATIONS BOARD           |      1200 |          0 |          21
+    202505 |        275 | NM          | NATIONAL MEDIATION BOARD                 |        37 |          0 |           0
+    202505 |        326 | NP          | NATIONAL CAPITAL PLANNING COMMISSION     |        33 |          0 |           2
+    202505 |        297 | NQ          | NAT ARCHIVES AND RECORDS ADMINISTRATION  |      2747 |          1 |          68
+    202505 |        346 | NS          | NATIONAL SECURITY COUNCIL                |        65 |          2 |           7
+    202505 |        343 | NU          | NUCLEAR REGULATORY COMMISSION            |      2850 |          0 |          67
+    202505 |        287 | NV          | DEPARTMENT OF THE NAVY                   |    219488 |        330 |         980
+    202505 |        357 | OM          | OFFICE OF PERSONNEL MANAGEMENT           |      2842 |          9 |          44
+    202505 |        341 | OS          | OCCUPATIONAL SAFETY & HEALTH REVIEW CMSN |        44 |          0 |           1
+    202505 |        345 | PU          | PEACE CORPS                              |       960 |          0 |          16
+    202505 |        267 | QQ          | OFFICE OF NATIONAL DRUG CONTROL POLICY   |        47 |          0 |           3
+    202505 |        262 | RE          | OFC OF NAVAJO AND HOPI INDIAN RELOCATION |        14 |          0 |           1
+    202505 |        332 | RF          | FED RETIREMENT THRIFT INVESTMENT BOARD   |       239 |          5 |           5
+    202505 |        337 | RH          | ARMED FORCES RETIREMENT HOME             |       300 |          1 |          12
+    202505 |        292 | RJ          | CIVIL RIGHTS COLD CASE REVIEW BOARD      |        12 |          0 |           0
+    202505 |        328 | RO          | MEDICAID & CHIP PAYMENT & ACCESS COMM    |        45 |          0 |           2
+    202505 |        349 | RR          | RAILROAD RETIREMENT BOARD                |       754 |          0 |           6
+    202505 |        310 | RS          | FED MINE SAFETY AND HEALTH REVIEW CMSN   |        54 |          0 |           0
+    202505 |        356 | SB          | SMALL BUSINESS ADMINISTRATION            |      7903 |         16 |         135
+    202505 |        307 | SE          | SECURITIES AND EXCHANGE COMMISSION       |      4313 |          2 |          24
+    202505 |        286 | SK          | CONSUMER PRODUCT SAFETY COMMISSION       |       490 |          1 |           4
+    202505 |        313 | SM          | SMITHSONIAN INSTITUTION                  |      4429 |         16 |          51
+    202505 |        339 | SS          | SELECTIVE SERVICE SYSTEM                 |       156 |          0 |           2
+    202505 |        367 | ST          | DEPARTMENT OF STATE                      |     13814 |         28 |         103
+    202505 |        252 | SZ          | SOCIAL SECURITY ADMINISTRATION           |     53052 |          3 |         372
+    202505 |        278 | TB          | NATIONAL TRANSPORTATION SAFETY BOARD     |       411 |          0 |           6
+    202505 |        281 | TC          | U.S. INTERNATIONAL TRADE COMMISSION      |       430 |          0 |           6
+    202505 |        322 | TD          | DEPARTMENT OF TRANSPORTATION             |     56785 |        273 |         495
+    202505 |        283 | TN          | OFFICE OF THE U.S. TRADE REPRESENTATIVE  |       236 |          1 |           4
+    202505 |        285 | TS          | OFFICE OF SCIENCE AND TECHNOLOGY POLICY  |        22 |          1 |           0
+    202505 |        364 | TW          | SURFACE TRANSPORTATION BOARD             |       124 |          2 |           4
+    202505 |        282 | UJ          | JAPAN-UNITED STATES FRIENDSHIP CMSN      |        12 |          0 |           0
+    202505 |          0 | UNKNOWN     | Unknown                                  |    208558 |       2896 |        3591
+    202505 |        255 | UT          | UTAH RECLAMATN MITIGATN & CONSERVTN CMSN |        12 |          0 |           0
+    202505 |        362 | VA          | DEPARTMENT OF VETERANS AFFAIRS           |    468665 |       1320 |        4828
+    202505 |        351 | VD          | PRIVACY AND CIVIL LIBERTIES OVERSIGHT    |        37 |          0 |           0
+    202505 |        284 | WK          | FEDERAL PERMITTING IMPROVEMENT STEER     |        19 |          0 |           0
+    202505 |        263 | WU          | SOUTHWEST BORDER REGIONAL COMMISSION     |         2 |          0 |           0
+    202505 |        274 | ZP          | U.S. CMSN ON INTERNATL RELIGIOUS FREEDOM |        19 |          0 |           1
+    202505 |        329 | ZS          | U.S.-CHINA ECONOMIC & SECURITY REV CMSN  |        30 |          3 |           1
+    202506 |        424 | AA          | ADMIN CONFERENCE OF THE UNITED STATES    |        10 |          0 |           0
+    202506 |        394 | AB          | AMERICAN BATTLE MONUMENTS COMMISSION     |        81 |          0 |           3
+    202506 |        384 | AF          | DEPARTMENT OF THE AIR FORCE              |    169002 |        350 |        1179
+    202506 |        389 | AG          | DEPARTMENT OF AGRICULTURE                |     93215 |        829 |         682
+    202506 |        388 | AM          | U.S. AGENCY FOR INTERNATIONAL DEV        |      4463 |          1 |         407
+    202506 |        442 | AN          | AFRICAN DEVELOPMENT FOUNDATION           |        14 |          0 |           0
+    202506 |        483 | AP          | APPALACHIAN REGIONAL COMMISSION          |         5 |          0 |           0
+    202506 |        435 | AR          | DEPARTMENT OF THE ARMY                   |    216414 |        402 |        1454
+    202506 |        457 | AU          | FEDERAL LABOR RELATIONS AUTHORITY        |       100 |          1 |           6
+    202506 |        454 | AW          | ARCTIC RESEARCH COMMISSION               |         2 |          0 |           0
+    202506 |        434 | BD          | MERIT SYSTEMS PROTECTION BOARD           |       173 |          0 |           1
+    202506 |        421 | BF          | DEFENSE NUCLEAR FACILITIES SAFETY BOARD  |       107 |          1 |           1
+    202506 |        428 | BG          | PENSION BENEFIT GUARANTY CORPORATION     |       915 |          0 |           4
+    202506 |        392 | BH          | CMSN FOR PRES OF AMERICA'S HERITAGE ABRD |        18 |          0 |           0
+    202506 |        377 | BK          | JAMES MADISON MEMORIAL FELLOWSHIP FOUND  |         5 |          0 |           0
+    202506 |        473 | BO          | OFFICE OF MANAGEMENT AND BUDGET          |       538 |         11 |           3
+    202506 |        371 | BT          | ARCHITECTL & TRANS BARRIER COMPLIANCE BD |        37 |          0 |           0
+    202506 |        400 | BW          | NUCLEAR WASTE TECHNICAL REVIEW BOARD     |        20 |          0 |           0
+    202506 |        425 | CC          | COMMISSION ON CIVIL RIGHTS               |        59 |          0 |           0
+    202506 |        467 | CE          | COUNCIL OF ECONOMIC ADVISERS             |        27 |          3 |           2
+    202506 |        422 | CF          | COMMISSION OF FINE ARTS                  |        12 |          0 |           0
+    202506 |        387 | CM          | DEPARTMENT OF COMMERCE                   |     42918 |         70 |         384
+    202506 |        441 | CT          | COMMODITY FUTURES TRADING COMMISSION     |       650 |          0 |           3
+    202506 |        463 | CU          | NATIONAL CREDIT UNION ADMINISTRATION     |      1201 |          0 |           1
+    202506 |        383 | CX          | NAT CMSN ON LIBRARIES AND INFO SCIENCE   |        17 |          0 |           0
+    202506 |        374 | DA          | DELTA REGIONAL AUTHORITY                 |         2 |          0 |           0
+    202506 |        412 | DB          | PUBLIC INTEREST DECLASSIFICATION BOARD   |         9 |          0 |           0
+    202506 |        429 | DD          | DEPARTMENT OF DEFENSE                    |    150482 |        620 |        1808
+    202506 |        437 | DG          | NORTHERN BORDER REGIONAL COMMISSION      |         3 |          0 |           0
+    202506 |        470 | DJ          | DEPARTMENT OF JUSTICE                    |    114503 |        709 |         849
+    202506 |        413 | DL          | DEPARTMENT OF LABOR                      |     13906 |         21 |          77
+    202506 |        461 | DN          | DEPARTMENT OF ENERGY                     |     17046 |         11 |         136
+    202506 |        482 | DO          | OFC OF THE NAT CYBER DIR                 |        28 |          0 |           3
+    202506 |        465 | DQ          | DENALI COMMISSION                        |        17 |          0 |           0
+    202506 |        403 | EB          | EXPORT-IMPORT BANK OF THE UNITED STATES  |       360 |          1 |           6
+    202506 |        427 | EC          | OFFICE OF ADMINISTRATION                 |       253 |          5 |           1
+    202506 |        440 | ED          | DEPARTMENT OF EDUCATION                  |      3633 |         15 |          38
+    202506 |        491 | EE          | EQUAL EMPLOYMENT OPPORTUNITY COMMISSION  |      1952 |          1 |          25
+    202506 |        444 | EO          | MORRIS K. UDALL & STEWART L. UDALL FOUND |        38 |          0 |           0
+    202506 |        488 | EP          | ENVIRONMENTAL PROTECTION AGENCY          |     16112 |         10 |         103
+    202506 |        391 | EQ          | COUNCIL ON ENVIR QUAL/OFC OF ENVIR QUAL  |        25 |          1 |           0
+    202506 |        492 | EW          | TRADE AND DEVELOPMENT AGENCY             |        56 |          0 |           0
+    202506 |        399 | FC          | FEDERAL COMMUNICATIONS COMMISSION        |      1377 |          2 |          23
+    202506 |        416 | FD          | FEDERAL DEPOSIT INSURANCE CORPORATION    |      6169 |          1 |         326
+    202506 |        380 | FI          | FEDERAL FINANCIAL INST. EXAM. COUNCIL    |        16 |          0 |           0
+    202506 |        372 | FJ          | CHEMICAL SAFETY/HAZARD INVESTIGATION BD  |        47 |          0 |           0
+    202506 |        458 | FK          | FARM CREDIT SYSTEM INSURANCE CORPORATION |        10 |          0 |           0
+    202506 |        414 | FL          | FARM CREDIT ADMINISTRATION               |       336 |          0 |           1
+    202506 |        484 | FM          | FED MEDIATION AND CONCILIATION SERVICE   |       180 |          0 |          15
+    202506 |        476 | FR          | FEDERAL RESERVE SYSTEM                   |      1547 |          1 |          62
+    202506 |        447 | FT          | FEDERAL TRADE COMMISSION                 |      1184 |          4 |          48
+    202506 |        426 | FW          | OFFICE OF SPECIAL COUNSEL                |       121 |          0 |           0
+    202506 |        459 | GB          | DFC                                      |       659 |          1 |           6
+    202506 |        381 | GC          | GULF COAST ECOSYSTEM RESTORATION COUNCIL |        23 |          0 |           0
+    202506 |        395 | GE          | BARRY GOLDWATER SCHOL & EXCEL IN ED FOUN |         3 |          0 |           0
+    202506 |        489 | GG          | OFFICE OF GOVERNMENT ETHICS              |        68 |          0 |           1
+    202506 |        417 | GJ          | PRESIDIO TRUST                           |       322 |          1 |           5
+    202506 |        419 | GQ          | ELECTION ASSISTANCE COMMISSION           |        78 |          0 |           0
+    202506 |        373 | GS          | GENERAL SERVICES ADMINISTRATION          |     12818 |          3 |          58
+    202506 |        471 | GU          | THE US SEMIQUINCENTENNIAL COMMISSION     |         9 |          0 |           0
+    202506 |        370 | GW          | INTER BOUND AND WATER COMM U.S. SECTION  |       271 |          0 |           4
+    202506 |        450 | GX          | INTERNAT BOUNDARY CMSN: U.S. AND CANADA  |         7 |          8 |           0
+    202506 |        431 | GY          | INTERNATIONAL JOINT CMSN: U.S. & CANADA  |        19 |          0 |           0
+    202506 |        453 | HD          | U.S. HOLOCAUST MEMORIAL MUSEUM           |       104 |          0 |           0
+    202506 |        411 | HE          | DEPARTMENT OF HEALTH AND HUMAN SERVICES  |     85555 |        165 |         999
+    202506 |        402 | HF          | FEDERAL HOUSING FINANCE AGENCY           |       845 |          0 |          99
+    202506 |        443 | HP          | ADV COUNCIL ON HISTORIC PRESERVATION     |        43 |          0 |           1
+    202506 |        396 | HS          | DEPARTMENT OF HOMELAND SECURITY          |    229635 |       1505 |        1551
+    202506 |        382 | HT          | HARRY S. TRUMAN SCHOLARSHIP FOUNDATION   |         5 |          0 |           0
+    202506 |        438 | HW          | U.S. INTERAGENCY COUNCIL ON HOMELESSNESS |        13 |          0 |           0
+    202506 |        376 | IB          | U.S.AGENCY FOR GLOBAL MEDIA              |      1087 |          1 |           4
+    202506 |        478 | IF          | INTER-AMERICAN FOUNDATION                |        34 |          0 |           1
+    202506 |        456 | IG          | COUNCIL OF INSP. GEN. ON INTEG.& EFFIC.  |        30 |          0 |           1
+    202506 |        393 | IP          | INTEL PROPERTY ENFORC COORDINATOR        |         2 |          0 |           0
+    202506 |        423 | JL          | JUDICIAL BRANCH                          |       165 |          2 |           2
+    202506 |        446 | KS          | CORP FOR NATIONAL AND COMMUNITY SERVICE  |       688 |          0 |          11
+    202506 |        486 | KY          | PUBLIC BUILDINGS REFORM BOARD            |         7 |          0 |           0
+    202506 |        481 | LF          | FEDERAL ELECTION COMMISSION              |       274 |          0 |           0
+    202506 |        475 | LP          | GOVERNMENT PRINTING OFFICE               |      1649 |         15 |          12
+    202506 |        379 | MA          | MARINE MAMMAL COMMISSION                 |        23 |          0 |           0
+    202506 |        448 | MC          | FEDERAL MARITIME COMMISSION              |       126 |          0 |           6
+    202506 |        439 | MI          | MILLENNIUM CHALLENGE CORPORATION         |       345 |          0 |           0
+    202506 |        432 | NF          | NATIONAL SCIENCE FOUNDATION              |      1555 |          0 |          17
+    202506 |        477 | NK          | NATIONAL COUNCIL ON DISABILITY           |        17 |          0 |           0
+    202506 |        418 | NL          | NATIONAL LABOR RELATIONS BOARD           |      1192 |          0 |          11
+    202506 |        398 | NM          | NATIONAL MEDIATION BOARD                 |        37 |          0 |           0
+    202506 |        449 | NP          | NATIONAL CAPITAL PLANNING COMMISSION     |        33 |          0 |           0
+    202506 |        420 | NQ          | NAT ARCHIVES AND RECORDS ADMINISTRATION  |      2724 |          1 |          16
+    202506 |        469 | NS          | NATIONAL SECURITY COUNCIL                |        64 |          2 |           2
+    202506 |        466 | NU          | NUCLEAR REGULATORY COMMISSION            |      2821 |          1 |          26
+    202506 |        410 | NV          | DEPARTMENT OF THE NAVY                   |    218995 |        460 |         962
+    202506 |        480 | OM          | OFFICE OF PERSONNEL MANAGEMENT           |      2820 |          6 |          21
+    202506 |        464 | OS          | OCCUPATIONAL SAFETY & HEALTH REVIEW CMSN |        44 |          0 |           0
+    202506 |        468 | PU          | PEACE CORPS                              |       949 |          5 |           9
+    202506 |        390 | QQ          | OFFICE OF NATIONAL DRUG CONTROL POLICY   |        46 |          1 |           2
+    202506 |        385 | RE          | OFC OF NAVAJO AND HOPI INDIAN RELOCATION |        14 |          0 |           0
+    202506 |        455 | RF          | FED RETIREMENT THRIFT INVESTMENT BOARD   |       239 |          1 |           0
+    202506 |        460 | RH          | ARMED FORCES RETIREMENT HOME             |       297 |          2 |           5
+    202506 |        415 | RJ          | CIVIL RIGHTS COLD CASE REVIEW BOARD      |        12 |          0 |           0
+    202506 |        451 | RO          | MEDICAID & CHIP PAYMENT & ACCESS COMM    |        46 |          5 |           0
+    202506 |        472 | RR          | RAILROAD RETIREMENT BOARD                |       745 |          0 |           6
+    202506 |        433 | RS          | FED MINE SAFETY AND HEALTH REVIEW CMSN   |        54 |          0 |           0
+    202506 |        479 | SB          | SMALL BUSINESS ADMINISTRATION            |      7758 |         11 |          90
+    202506 |        430 | SE          | SECURITIES AND EXCHANGE COMMISSION       |      4288 |          4 |          24
+    202506 |        409 | SK          | CONSUMER PRODUCT SAFETY COMMISSION       |       497 |          0 |           6
+    202506 |        436 | SM          | SMITHSONIAN INSTITUTION                  |      4409 |         18 |          32
+    202506 |        462 | SS          | SELECTIVE SERVICE SYSTEM                 |       155 |          0 |           0
+    202506 |        490 | ST          | DEPARTMENT OF STATE                      |     13835 |        207 |          68
+    202506 |        375 | SZ          | SOCIAL SECURITY ADMINISTRATION           |     52834 |          9 |         310
+    202506 |        401 | TB          | NATIONAL TRANSPORTATION SAFETY BOARD     |       408 |          2 |           6
+    202506 |        404 | TC          | U.S. INTERNATIONAL TRADE COMMISSION      |       425 |          0 |           8
+    202506 |        445 | TD          | DEPARTMENT OF TRANSPORTATION             |     56771 |        366 |         349
+    202506 |        406 | TN          | OFFICE OF THE U.S. TRADE REPRESENTATIVE  |       236 |          1 |           1
+    202506 |        408 | TS          | OFFICE OF SCIENCE AND TECHNOLOGY POLICY  |        23 |          1 |           0
+    202506 |        487 | TW          | SURFACE TRANSPORTATION BOARD             |       124 |          0 |           1
+    202506 |        405 | UJ          | JAPAN-UNITED STATES FRIENDSHIP CMSN      |        12 |          0 |           0
+    202506 |          0 | UNKNOWN     | Unknown                                  |    206978 |       1433 |        2487
+    202506 |        378 | UT          | UTAH RECLAMATN MITIGATN & CONSERVTN CMSN |        11 |          0 |           1
+    202506 |        485 | VA          | DEPARTMENT OF VETERANS AFFAIRS           |    465883 |       2644 |        5071
+    202506 |        474 | VD          | PRIVACY AND CIVIL LIBERTIES OVERSIGHT    |        34 |          0 |           4
+    202506 |        407 | WK          | FEDERAL PERMITTING IMPROVEMENT STEER     |        20 |          1 |           0
+    202506 |        386 | WU          | SOUTHWEST BORDER REGIONAL COMMISSION     |         2 |          0 |           0
+    202506 |        397 | ZP          | U.S. CMSN ON INTERNATL RELIGIOUS FREEDOM |        20 |          1 |           0
+    202506 |        452 | ZS          | U.S.-CHINA ECONOMIC & SECURITY REV CMSN  |        31 |          1 |           0
+(486 rows)

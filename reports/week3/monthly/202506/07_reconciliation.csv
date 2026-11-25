@@ -1,0 +1,25 @@
+family,report_month,file_id,check,expected,actual,status,reviewer
+employment,202506,10,active_loaded_sources,1,1,PASS,TV3; PENDING TV5
+accessions,202506,11,active_loaded_sources,1,1,PASS,TV3; PENDING TV5
+separations,202506,12,active_loaded_sources,1,1,PASS,TV3; PENDING TV5
+employment,202506,10,staging_rows,2241780,2241780,PASS,TV3; PENDING TV5
+employment,202506,10,ods_rows,2241780,2241780,PASS,TV3; PENDING TV5
+employment,202506,10,dw_rows,2241780,2241780,PASS,TV3; PENDING TV5
+employment,202506,10,ods_fact_lineage_differences,0,0,PASS,TV3; PENDING TV5
+employment,202506,10,fact_measure,2241780,2241780,PASS,TV3; PENDING TV5
+employment,202506,10,mart_measure,2241780,2241780,PASS,TV3; PENDING TV5
+employment,202506,10,powerbi_dax,2241780,,PENDING,PENDING TV4/TV5
+accessions,202506,11,staging_rows,9954,9954,PASS,TV3; PENDING TV5
+accessions,202506,11,ods_rows,9954,9954,PASS,TV3; PENDING TV5
+accessions,202506,11,dw_rows,9954,9954,PASS,TV3; PENDING TV5
+accessions,202506,11,ods_fact_lineage_differences,0,0,PASS,TV3; PENDING TV5
+accessions,202506,11,fact_measure,9954,9954,PASS,TV3; PENDING TV5
+accessions,202506,11,mart_measure,9954,9954,PASS,TV3; PENDING TV5
+accessions,202506,11,powerbi_dax,9954,,PENDING,PENDING TV4/TV5
+separations,202506,12,staging_rows,19947,19947,PASS,TV3; PENDING TV5
+separations,202506,12,ods_rows,19947,19947,PASS,TV3; PENDING TV5
+separations,202506,12,dw_rows,19947,19947,PASS,TV3; PENDING TV5
+separations,202506,12,ods_fact_lineage_differences,0,0,PASS,TV3; PENDING TV5
+separations,202506,12,fact_measure,19947,19947,PASS,TV3; PENDING TV5
+separations,202506,12,mart_measure,19947,19947,PASS,TV3; PENDING TV5
+separations,202506,12,powerbi_dax,19947,,PENDING,PENDING TV4/TV5
