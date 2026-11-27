@@ -1,0 +1,15 @@
+SELECT agency_code, sum(headcount) AS headcount
+FROM mart.workforce_monthly
+WHERE month_key = 202504
+GROUP BY agency_code
+
+HashAggregate  (cost=19.98..21.04 rows=85 width=35) (actual time=0.036..0.045 rows=120 loops=1)
+  Group Key: agency_code
+  Batches: 1  Memory Usage: 64kB
+  Buffers: shared hit=13
+  ->  Seq Scan on workforce_monthly  (cost=0.00..19.38 rows=120 width=11) (actual time=0.001..0.019 rows=120 loops=1)
+        Filter: (month_key = 202504)
+        Rows Removed by Filter: 390
+        Buffers: shared hit=13
+Planning Time: 0.010 ms
+Execution Time: 0.051 ms

@@ -1,0 +1,105 @@
+month_key,family,lookup_field,lookup_status,reference_coverage,eligible_rows,official_matched_rows,k10,dw_total_rows,dw_matched_rows,dw_unknown_rows,dw_null_rows,dw_empty_rows,dw_redacted_rows
+202503,accessions,accession_category_code,PARTIAL,SAMPLE,4862,,,4862,4862,0,0,0,0
+202503,accessions,agency_code,PARTIAL,SAMPLE,4862,,,4862,4862,0,0,0,0
+202503,accessions,agency_subelement_code,PARTIAL,COMPLETE,4861,4857,,,,,,,
+202503,accessions,department_code,PARTIAL,NOT_CHECKED,4862,,,,,,,,
+202503,accessions,duty_station_code,PARTIAL,NOT_CHECKED,2833,,,,,,,,
+202503,accessions,occupational_group_code,PARTIAL,NOT_CHECKED,4862,,,,,,,,
+202503,accessions,occupational_series_code,PARTIAL,NOT_CHECKED,4862,,,,,,,,
+202503,accessions,pay_plan_code,PARTIAL,NOT_CHECKED,4859,,,,,,,,
+202503,accessions,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,4858,,,,,,,,
+202503,employment,agency_code,PARTIAL,SAMPLE,2289192,,,2289192,2289192,0,0,0,0
+202503,employment,agency_subelement_code,VERIFIED,COMPLETE,2288769,2288769,1.000000,,,,,,
+202503,employment,department_code,PARTIAL,NOT_CHECKED,2289192,,,,,,,,
+202503,employment,duty_station_code,PARTIAL,NOT_CHECKED,1238211,,,,,,,,
+202503,employment,occupational_group_code,PARTIAL,NOT_CHECKED,2289192,,,,,,,,
+202503,employment,occupational_series_code,PARTIAL,NOT_CHECKED,2289192,,,,,,,,
+202503,employment,pay_plan_code,PARTIAL,NOT_CHECKED,2288826,,,,,,,,
+202503,employment,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,2286605,,,,,,,,
+202503,separations,agency_code,PARTIAL,SAMPLE,22061,,,22061,22061,0,0,0,0
+202503,separations,agency_subelement_code,VERIFIED,COMPLETE,22060,22060,1.000000,,,,,,
+202503,separations,department_code,PARTIAL,NOT_CHECKED,22061,,,,,,,,
+202503,separations,duty_station_code,PARTIAL,NOT_CHECKED,14008,,,,,,,,
+202503,separations,occupational_group_code,PARTIAL,NOT_CHECKED,22058,,,,,,,,
+202503,separations,occupational_series_code,PARTIAL,NOT_CHECKED,21706,,,,,,,,
+202503,separations,pay_plan_code,PARTIAL,NOT_CHECKED,21707,,,,,,,,
+202503,separations,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,21692,,,,,,,,
+202503,separations,separation_category_code,PARTIAL,SAMPLE,22061,,,22061,22061,0,0,0,0
+202504,accessions,accession_category_code,PARTIAL,SAMPLE,7153,,,7153,7153,0,0,0,0
+202504,accessions,agency_code,PARTIAL,SAMPLE,7153,,,7153,7153,0,0,0,0
+202504,accessions,agency_subelement_code,PARTIAL,COMPLETE,7153,7143,,,,,,,
+202504,accessions,department_code,PARTIAL,NOT_CHECKED,7153,,,,,,,,
+202504,accessions,duty_station_code,PARTIAL,NOT_CHECKED,4560,,,,,,,,
+202504,accessions,occupational_group_code,PARTIAL,NOT_CHECKED,7153,,,,,,,,
+202504,accessions,occupational_series_code,PARTIAL,NOT_CHECKED,7153,,,,,,,,
+202504,accessions,pay_plan_code,PARTIAL,NOT_CHECKED,7133,,,,,,,,
+202504,accessions,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,7130,,,,,,,,
+202504,employment,agency_code,PARTIAL,SAMPLE,2271969,,,2271969,2271969,0,0,0,0
+202504,employment,agency_subelement_code,PARTIAL,COMPLETE,2271969,2271538,,,,,,,
+202504,employment,department_code,PARTIAL,NOT_CHECKED,2271969,,,,,,,,
+202504,employment,duty_station_code,PARTIAL,NOT_CHECKED,1225850,,,,,,,,
+202504,employment,occupational_group_code,PARTIAL,NOT_CHECKED,2271969,,,,,,,,
+202504,employment,occupational_series_code,PARTIAL,NOT_CHECKED,2271969,,,,,,,,
+202504,employment,pay_plan_code,PARTIAL,NOT_CHECKED,2269481,,,,,,,,
+202504,employment,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,2267274,,,,,,,,
+202504,separations,agency_code,PARTIAL,SAMPLE,24088,,,24088,24088,0,0,0,0
+202504,separations,agency_subelement_code,PARTIAL,COMPLETE,24088,24084,,,,,,,
+202504,separations,department_code,PARTIAL,NOT_CHECKED,24088,,,,,,,,
+202504,separations,duty_station_code,PARTIAL,NOT_CHECKED,17759,,,,,,,,
+202504,separations,occupational_group_code,PARTIAL,NOT_CHECKED,24088,,,,,,,,
+202504,separations,occupational_series_code,PARTIAL,NOT_CHECKED,23832,,,,,,,,
+202504,separations,pay_plan_code,PARTIAL,NOT_CHECKED,23831,,,,,,,,
+202504,separations,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,23799,,,,,,,,
+202504,separations,separation_category_code,PARTIAL,SAMPLE,24088,,,24088,24088,0,0,0,0
+202505,accessions,accession_category_code,PARTIAL,SAMPLE,8813,,,8813,8813,0,0,0,0
+202505,accessions,agency_code,PARTIAL,SAMPLE,8813,,,8813,8813,0,0,0,0
+202505,accessions,agency_subelement_code,PARTIAL,COMPLETE,8813,8809,,,,,,,
+202505,accessions,department_code,PARTIAL,NOT_CHECKED,8813,,,,,,,,
+202505,accessions,duty_station_code,PARTIAL,NOT_CHECKED,6189,,,,,,,,
+202505,accessions,occupational_group_code,PARTIAL,NOT_CHECKED,8813,,,,,,,,
+202505,accessions,occupational_series_code,PARTIAL,NOT_CHECKED,8813,,,,,,,,
+202505,accessions,pay_plan_code,PARTIAL,NOT_CHECKED,8812,,,,,,,,
+202505,accessions,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,8800,,,,,,,,
+202505,employment,agency_code,PARTIAL,SAMPLE,2255056,,,2255056,2255056,0,0,0,0
+202505,employment,agency_subelement_code,PARTIAL,COMPLETE,2255056,2254614,,,,,,,
+202505,employment,department_code,PARTIAL,NOT_CHECKED,2255056,,,,,,,,
+202505,employment,duty_station_code,PARTIAL,NOT_CHECKED,1218256,,,,,,,,
+202505,employment,occupational_group_code,PARTIAL,NOT_CHECKED,2255056,,,,,,,,
+202505,employment,occupational_series_code,PARTIAL,NOT_CHECKED,2255056,,,,,,,,
+202505,employment,pay_plan_code,PARTIAL,NOT_CHECKED,2252612,,,,,,,,
+202505,employment,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,2250416,,,,,,,,
+202505,separations,agency_code,PARTIAL,SAMPLE,26415,,,26415,26415,0,0,0,0
+202505,separations,agency_subelement_code,PARTIAL,COMPLETE,26415,26403,,,,,,,
+202505,separations,department_code,PARTIAL,NOT_CHECKED,26415,,,,,,,,
+202505,separations,duty_station_code,PARTIAL,NOT_CHECKED,17752,,,,,,,,
+202505,separations,occupational_group_code,PARTIAL,NOT_CHECKED,26415,,,,,,,,
+202505,separations,occupational_series_code,PARTIAL,NOT_CHECKED,25936,,,,,,,,
+202505,separations,pay_plan_code,PARTIAL,NOT_CHECKED,25934,,,,,,,,
+202505,separations,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,25890,,,,,,,,
+202505,separations,separation_category_code,PARTIAL,SAMPLE,26415,,,26415,26415,0,0,0,0
+202506,accessions,accession_category_code,PARTIAL,SAMPLE,9954,,,9954,9954,0,0,0,0
+202506,accessions,agency_code,PARTIAL,SAMPLE,9954,,,9954,9954,0,0,0,0
+202506,accessions,agency_subelement_code,PARTIAL,COMPLETE,9954,9953,,,,,,,
+202506,accessions,department_code,PARTIAL,NOT_CHECKED,9954,,,,,,,,
+202506,accessions,duty_station_code,PARTIAL,NOT_CHECKED,6078,,,,,,,,
+202506,accessions,occupational_group_code,PARTIAL,NOT_CHECKED,9954,,,,,,,,
+202506,accessions,occupational_series_code,PARTIAL,NOT_CHECKED,9954,,,,,,,,
+202506,accessions,pay_plan_code,PARTIAL,NOT_CHECKED,9949,,,,,,,,
+202506,accessions,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,9948,,,,,,,,
+202506,employment,agency_code,PARTIAL,SAMPLE,2241780,,,2241780,2241780,0,0,0,0
+202506,employment,agency_subelement_code,PARTIAL,COMPLETE,2241780,2241354,,,,,,,
+202506,employment,department_code,PARTIAL,NOT_CHECKED,2241780,,,,,,,,
+202506,employment,duty_station_code,PARTIAL,NOT_CHECKED,1208959,,,,,,,,
+202506,employment,occupational_group_code,PARTIAL,NOT_CHECKED,2241780,,,,,,,,
+202506,employment,occupational_series_code,PARTIAL,NOT_CHECKED,2241780,,,,,,,,
+202506,employment,pay_plan_code,PARTIAL,NOT_CHECKED,2239350,,,,,,,,
+202506,employment,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,2237164,,,,,,,,
+202506,separations,agency_code,PARTIAL,SAMPLE,19947,,,19947,19947,0,0,0,0
+202506,separations,agency_subelement_code,PARTIAL,COMPLETE,19947,19942,,,,,,,
+202506,separations,department_code,PARTIAL,NOT_CHECKED,19947,,,,,,,,
+202506,separations,duty_station_code,PARTIAL,NOT_CHECKED,12652,,,,,,,,
+202506,separations,occupational_group_code,PARTIAL,NOT_CHECKED,19947,,,,,,,,
+202506,separations,occupational_series_code,PARTIAL,NOT_CHECKED,19560,,,,,,,,
+202506,separations,pay_plan_code,PARTIAL,NOT_CHECKED,19563,,,,,,,,
+202506,separations,pay_plan_code + grade,UNSUPPORTED,NOT_CHECKED,19476,,,,,,,,
+202506,separations,separation_category_code,PARTIAL,SAMPLE,19947,,,19947,19947,0,0,0,0

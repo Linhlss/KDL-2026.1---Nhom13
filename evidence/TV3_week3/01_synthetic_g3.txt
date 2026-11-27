@@ -1,19 +1,19 @@
 SUCCESS employment_202503_v5.parquet 2 rows
 SUCCESS accessions_202503_v5.parquet 2 rows
 SUCCESS separations_202503_v5.parquet 2 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202503", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202503", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2, "category_groups": 4, "dq_coverage_rows": 0}}
 SUCCESS employment_202504_v5.parquet 2 rows
 SUCCESS accessions_202504_v5.parquet 2 rows
 SUCCESS separations_202504_v5.parquet 2 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2, "category_groups": 4, "dq_coverage_rows": 0}}
 SUCCESS employment_202505_v5.parquet 2 rows
 SUCCESS accessions_202505_v5.parquet 2 rows
 SUCCESS separations_202505_v5.parquet 2 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2, "category_groups": 4, "dq_coverage_rows": 0}}
 SUCCESS employment_202506_v5.parquet 2 rows
 SUCCESS accessions_202506_v5.parquet 2 rows
 SUCCESS separations_202506_v5.parquet 2 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202506", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202506", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2, "category_groups": 4, "dq_coverage_rows": 0}}
 SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
 SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
 SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
@@ -29,10 +29,12 @@ SNAPSHOT dw.dim_agency 521 680bd1f4499939f0dc80e54f3f2a08d3aa1d695dc970e435192b6
 SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
 SNAPSHOT mart.workforce_monthly 8 f2c9d6984148dd5023b0e98cda6167776ec6d3bddfbe21dcd1c368369c5c8584
 SNAPSHOT mart.personnel_flows_monthly 8 ffd3691335405b752b7b443a9163538ec86a91065df261e3ae9d8bc97787f62c
+SNAPSHOT mart.personnel_flows_category_monthly 16 0ad25d9004bb8f8ac043c8a70b9335491e83612f52fd38d2e35f9d8fcb014b22
+SNAPSHOT mart.dq_coverage_monthly 0 62a74fd0e2d1e3a59b88b5b71c06ca8d43662c6787430c516b8e0bc28bbbda02
 SKIPPED employment_202505_v5.parquet 2 rows
 SKIPPED accessions_202505_v5.parquet 2 rows
 SKIPPED separations_202505_v5.parquet 2 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2, "category_groups": 4, "dq_coverage_rows": 0}}
 SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
 SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
 SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
@@ -48,6 +50,8 @@ SNAPSHOT dw.dim_agency 521 680bd1f4499939f0dc80e54f3f2a08d3aa1d695dc970e435192b6
 SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
 SNAPSHOT mart.workforce_monthly 8 f2c9d6984148dd5023b0e98cda6167776ec6d3bddfbe21dcd1c368369c5c8584
 SNAPSHOT mart.personnel_flows_monthly 8 ffd3691335405b752b7b443a9163538ec86a91065df261e3ae9d8bc97787f62c
+SNAPSHOT mart.personnel_flows_category_monthly 16 0ad25d9004bb8f8ac043c8a70b9335491e83612f52fd38d2e35f9d8fcb014b22
+SNAPSHOT mart.dq_coverage_monthly 0 62a74fd0e2d1e3a59b88b5b71c06ca8d43662c6787430c516b8e0bc28bbbda02
 PASS May rerun: full baseline identities, stable Dimension keys, all Facts and Marts unchanged
 PASS 152 direct raw/ODS, ordinal, time-role and FK checks; Dimension uniqueness and constraints validated
 Completed G3 technical run; TV4 model approval / TV5 independent QA pending
@@ -67,6 +71,8 @@ SNAPSHOT dw.dim_agency 521 680bd1f4499939f0dc80e54f3f2a08d3aa1d695dc970e435192b6
 SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
 SNAPSHOT mart.workforce_monthly 8 f2c9d6984148dd5023b0e98cda6167776ec6d3bddfbe21dcd1c368369c5c8584
 SNAPSHOT mart.personnel_flows_monthly 8 ffd3691335405b752b7b443a9163538ec86a91065df261e3ae9d8bc97787f62c
+SNAPSHOT mart.personnel_flows_category_monthly 16 0ad25d9004bb8f8ac043c8a70b9335491e83612f52fd38d2e35f9d8fcb014b22
+SNAPSHOT mart.dq_coverage_monthly 0 62a74fd0e2d1e3a59b88b5b71c06ca8d43662c6787430c516b8e0bc28bbbda02
 SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
 SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
 SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
@@ -82,6 +88,8 @@ SNAPSHOT dw.dim_agency 521 680bd1f4499939f0dc80e54f3f2a08d3aa1d695dc970e435192b6
 SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
 SNAPSHOT mart.workforce_monthly 8 f2c9d6984148dd5023b0e98cda6167776ec6d3bddfbe21dcd1c368369c5c8584
 SNAPSHOT mart.personnel_flows_monthly 8 ffd3691335405b752b7b443a9163538ec86a91065df261e3ae9d8bc97787f62c
+SNAPSHOT mart.personnel_flows_category_monthly 16 0ad25d9004bb8f8ac043c8a70b9335491e83612f52fd38d2e35f9d8fcb014b22
+SNAPSHOT mart.dq_coverage_monthly 0 62a74fd0e2d1e3a59b88b5b71c06ca8d43662c6787430c516b8e0bc28bbbda02
 PASS same-count business mutation is detected by stable ordered typed digests
 PASS count != 1 blocks model publication and preserves existing Mart
 FAIL FileNotFoundError

@@ -1,0 +1,17 @@
+SELECT effective_month_key, sum(count_value) AS events
+FROM dw.fact_separations WHERE agency_code = 'TR'
+GROUP BY effective_month_key
+
+HashAggregate  (cost=2240.19..2240.29 rows=8 width=36) (actual time=1.189..1.189 rows=8 loops=1)
+  Group Key: effective_month_key
+  Batches: 1  Memory Usage: 24kB
+  Buffers: shared hit=1243
+  ->  Bitmap Heap Scan on fact_separations  (cost=72.14..2209.32 rows=6174 width=12) (actual time=0.187..0.635 rows=6240 loops=1)
+        Recheck Cond: (agency_code = 'TR'::text)
+        Heap Blocks: exact=1236
+        Buffers: shared hit=1243
+        ->  Bitmap Index Scan on bench_sep_agency  (cost=0.00..70.60 rows=6174 width=0) (actual time=0.112..0.112 rows=6240 loops=1)
+              Index Cond: (agency_code = 'TR'::text)
+              Buffers: shared hit=7
+Planning Time: 0.015 ms
+Execution Time: 1.194 ms

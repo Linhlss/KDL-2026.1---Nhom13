@@ -1,14 +1,14 @@
 {
-  "code_version": "51ab0d9416ec7acde0b37afa58967af1146750d7",
+  "code_version": "0d36e106eb7693a6eb46d179efee7c66c033f02f",
   "inventory_sha256": "02e46c60625e57502d423e17ebdbe95d52bca6cf32c208e735ebcd1c58556588",
   "code_sha256": {
     "etl/g3_quality.py": "a1f73618cb206afe9fa04bf71b453485985babc5cdb79d264bc65c4c03844f21",
     "etl/fetch_baseline.py": "d057ebfa144ae15a77ed951c96182d0e58a4d96799733588ffb64367bcaf50ab",
     "etl/prototype_ingest.py": "00fdfbc7661720a6f7dc67fdd14bbfbcb2725ccdec3d6e3a4717e44db67935ab",
-    "etl/g3_pipeline.py": "43298f737886b308a96b9312b738d984561b87465f7a15f0a7baecb1e83d0177",
-    "etl/g2_pipeline.py": "5f30ca05c81a325f8749e62a1831524ecf0832f87174c18f7bfc4486d511b683",
-    "etl/g2_model.py": "9c66efd57d60ccfff726a87d84c97d08f7cb8b7c9bc155c158307f4766b208b0",
-    "etl/g2_transfer.py": "0fd7eccff11e34c5c7349a4e971a3752aa96ade3cc758a1c770235f3ecddfbc0"
+    "etl/g3_pipeline.py": "0bb722d3a83efb4e21de72518907d8f27ba3837ffb5f1582a55d38b67b69d066",
+    "etl/g2_pipeline.py": "48fd39082bb4313eeb9402133132cf5fc8b731de237cb9548954bd61c5b0c0f2",
+    "etl/g2_model.py": "e15a16b3e9e51686199ac751e6b5beac822e4ca1bc17b411dd5619f3bd914a7c",
+    "etl/g2_transfer.py": "8d14de9bcd8825c8fca6175f1a7eca91dbd202a31e4392f85af53d67e1d9ff70"
   },
   "months": [
     "202503",
@@ -18,8 +18,8 @@
   ],
   "database": "workforce_dw_g3_tv1",
   "batch_size": 10000,
-  "started_at": "2026-11-27T13:00:51.124783+00:00",
+  "started_at": "2026-11-27T13:53:15.200928+00:00",
   "model_status": "PROPOSED_PENDING_TV4",
   "status": "SUCCESS",
-  "finished_at": "2026-11-27T13:24:08.070340+00:00"
+  "finished_at": "2026-11-27T14:16:33.401991+00:00"
 }

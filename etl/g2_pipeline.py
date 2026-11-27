@@ -92,16 +92,56 @@ def replace_table(conn, table, columns, records):
                 copy.write_row([row[column] for column in columns])
 
 
+def coverage_snapshot_rows(inventory, audit):
+    files = {f"{item['family']}/{item['report_month']}": item for item in inventory}
+    output = []
+    for result in audit:
+        file = files.get(result["scope"])
+        if file is None:
+            continue
+        source_sha256 = result.get("source_sha256")
+        if source_sha256 != file["sha256"]:
+            raise ValueError(f"K10 audit SHA-256 disagrees with inventory for {file['filename']}")
+        if int(result["tested_rows"]) != int(file["row_count"]):
+            raise ValueError(f"K10 audit row count disagrees with inventory for {file['filename']}")
+        eligible = int(result["eligible_rows"])
+        coverage = result["reference_coverage"]
+        matched = None
+        if coverage == "COMPLETE":
+            if int(result["reference_eligible_rows"]) != eligible:
+                raise ValueError(f"K10 audit denominator disagrees for {result['key_columns']} in {file['filename']}")
+            matched = int(result["reference_unique_matches"])
+        output.append((
+            file["family"], file["report_month"], file["filename"], source_sha256,
+            result["key_columns"], result["status"], coverage, eligible, matched,
+        ))
+    return output
+
+
 def initialize(conn):
     for name in ("01_create_schemas.sql", "00_raw_ref_ods_ddl.sql",
                  "03_dw_ddl.sql", "04_create_marts.sql"):
         apply_sql(conn, ROOT / "sql" / name)
     # Snapshot the handed-off TV2 reference without claiming official coverage.
     lookup = rows(ROOT / "data/reference/derived_lookup_g2.csv")
+    coverage = coverage_snapshot_rows(
+        rows(ROOT / "docs/03_source_inventory.csv"), rows(ROOT / "docs/04_relationship_audit.csv")
+    )
     replace_table(conn, sql.Identifier("ref", "derived_lookup"), list(lookup[0]), lookup)
     # TV2's reviewed EHRI label differences decide which REVIEW lookup rows are usable.
     replace_table(conn, sql.Identifier("ref", "label_review"), LABEL_REVIEW_COLUMNS,
                   rows(LABEL_REVIEW))
+    # TV2 K10 audit: official-reference coverage per active source file and lookup field.
+    with conn.transaction():
+        conn.execute("LOCK TABLE audit.lookup_coverage_snapshot IN EXCLUSIVE MODE")
+        conn.execute("DELETE FROM audit.lookup_coverage_snapshot")
+        with conn.cursor().copy(
+            "COPY audit.lookup_coverage_snapshot "
+            "(family, report_month, source_file, source_sha256, lookup_field, lookup_status, "
+            "reference_coverage, eligible_rows, matched_rows) FROM STDIN"
+        ) as copy:
+            for row in coverage:
+                copy.write_row(row)
 
 
 def start_run(conn, job, file, code_version):

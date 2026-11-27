@@ -6,7 +6,9 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 - **Dữ liệu:** đủ 12 Parquet tháng 03–06/2025 đi qua Staging/ODS → 3 Fact → 2 Mart; tổng 9.181.290 dòng khớp TV2.
 - **Kiểm tra:** J06 đối soát theo file, kiểm chất lượng trực tiếp từ Parquet, chạy lại tháng May cho dữ liệu không đổi.
 - **Lỗi Unknown đã sửa:** 7 cơ quan (Bộ Tài chính, Bộ Nội vụ, NASA, HUD…) trước đây bị đưa vào Unknown. Nay pipeline dùng kết quả duyệt nhãn của TV2, nên Agency Unknown của bốn kỳ bằng 0.
-- **Bàn giao cho TV4:** [dump G3 mới (aggregate, bốn kỳ)](handoff/TV3_G3/README.md) để dựng dashboard.
+- **Bàn giao cho TV4:** [dump G3 mới (aggregate, bốn kỳ, SHA-256 `3b467c00…`)](handoff/TV3_G3/README.md) để dựng dashboard. Dump có thêm Mart category cho D2 và Mart K10 (DQ coverage).
+- **Nhánh của TV2 đã gộp:** `codex/g2-alignment` (quy tắc trạng thái tra mã, audit K10).
+- **Benchmark L3-15:** [báo cáo](reports/TV3_week4_benchmark.md). Mart nhanh hơn Fact khoảng 6.400 lần, kết quả trùng khớp.
 - **Chi tiết:** [báo cáo tuần 3](reports/TV3_week3_summary.md), [runbook G3](docs/TV3_week3_runbook.md) và [giải trình các sửa đổi của TV1](docs/TV1_giai_trinh_tich_hop_G3.md).
 - **Trạng thái nghiệm thu:** mô hình vẫn **PROPOSED, chờ TV4** duyệt grain/bus matrix/catalog; SQL–DAX và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu G3 DONE/PASS.
 

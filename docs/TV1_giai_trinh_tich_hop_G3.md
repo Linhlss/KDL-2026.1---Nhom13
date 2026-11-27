@@ -4,13 +4,20 @@
 **Nhánh:** `tv1/g3-integration` → `main`. Nhánh này thay thế PR #43 và giữ nguyên toàn bộ commit của TV3 trong lịch sử.
 **Phạm vi:** sửa các lỗi còn tồn đọng trong pipeline G2/G3 của TV3 (PR #43, #44, #47), chạy lại đủ 12 file, tạo lại dump và bằng chứng, rồi đưa lên `main` để TV4 bắt đầu dashboard.
 
+> **Cập nhật đợt 2 (27/11/2026, mục 11):** TV1 làm thêm các việc mở đang chặn TV4.
+> - Gộp nhánh `codex/g2-alignment` của TV2 (#53).
+> - Thêm Mart category cho D2 (#51) và Mart K10 (#52).
+> - Chạy benchmark L3-15 (#55).
+>
+> Dump bàn giao hiện tại là **`3b467c00…`**, thay cả `ec3ddf32…`. Các số liệu "sau" ở mục 4 vẫn đúng. Mục 11 ghi phần bổ sung.
+
 ## 1. Kết luận nhanh
 
 | Câu hỏi | Trả lời |
 |---|---|
 | Lỗi của TV3 đã sửa hết chưa? | **Đã sửa 6/6 phát hiện của lần review PR #43**: 2 lỗi chặn merge và 4 lỗi nhỏ. Không còn lỗi kỹ thuật nào đang mở trong phần pipeline. |
-| Dữ liệu đã lên repo chưa? | **Đã có trên `main`**: mã ETL/SQL/test, kết quả G3 trong `reports/week3/`, bằng chứng và **dump G3 mới** tại `handoff/TV3_G3/workforce_g3.dump` (SHA-256 `ec3ddf32…`). |
-| TV4 bắt đầu được chưa? | **Được.** `git pull` `main`, restore dump mới theo `handoff/TV3_G3/README.md`, làm mới PBIX. Không dùng dump cũ `6d85ea29…`. |
+| Dữ liệu đã lên repo chưa? | **Đã có trên `main`**: mã ETL/SQL/test, kết quả G3 trong `reports/week3/`, bằng chứng và **dump G3 mới** tại `handoff/TV3_G3/workforce_g3.dump` (SHA-256 `3b467c00…` sau đợt 2; bản đợt 1 là `ec3ddf32…`). |
+| TV4 bắt đầu được chưa? | **Được.** `git pull` `main`, restore dump mới theo `handoff/TV3_G3/README.md`, làm mới PBIX. Không dùng các dump cũ `6d85ea29…` và `ec3ddf32…`. |
 | Bỏ phần nào của TV3? | **Không bỏ gì.** Toàn bộ mã, test, tài liệu, sơ đồ và dump G2 được giữ. Chỉ các kết quả chạy cũ (CSV G3, log, dump G3) được thay bằng lượt chạy mới; bản cũ vẫn còn trong lịch sử Git. |
 
 ## 2. Bối cảnh
@@ -112,3 +119,36 @@ psql -d workforce_dw_g3_check -c "SELECT count(*) FROM dw.fact_employment_snapsh
 | (commit cuối) | Chạy lại G3, dump mới, bằng chứng, tài liệu và file giải trình này |
 
 PR tích hợp và trạng thái merge được ghi trong bình luận trên PR #43 và PR #48.
+
+## 11. Đợt 2 — xử lý nốt các việc mở đang chặn TV4 (27/11/2026)
+
+Sau khi PR #49 merge, còn bốn việc mở. Trong đó ba việc chặn trực tiếp TV4: D2 theo category, K10, và nhánh TV2 đụng vào pipeline. TV1 xử lý ngay thay vì chờ TV3, vì TV4 đang ở giai đoạn dashboard. Các issue tương ứng được chuyển sang `status: REVIEW` để TV3/TV2/TV5 kiểm.
+
+| Issue | Việc đã làm | File |
+|---|---|---|
+| #53 | **Gộp nhánh `codex/g2-alignment` của TV2.** Cherry-pick `aaee4ce`, `dfc3cc5` (giữ tác giả, có `-x`). Xung đột ở `g2_model.py` và `g2_pipeline.py` được gộp bằng cách **giữ cả hai bên**: logic `ref.label_review` của TV1, cộng với `lookup_state_sql()` của TV2 (REDACTED không phân biệt hoa/thường, bỏ khoảng trắng), điều kiện lọc mã chặt hơn, và bảng/VIEW audit K10 (`audit.lookup_coverage_snapshot`, `audit.fk_lookup_coverage`). | `etl/g2_model.py`, `etl/g2_pipeline.py`, `sql/00_raw_ref_ods_ddl.sql`, `tests/g2_coverage_checks.py`, `tests/g2_model_checks.py` |
+| #51 | **Mart D2 `mart.personnel_flows_category_monthly`**, theo đề nghị của TV4 ở #32. Grain: tháng báo cáo × cơ quan × family × category. Tổng hợp riêng từng event Fact rồi `UNION ALL`; key 0 giữ trong tổng. `build_model` kiểm hai chiều với `personnel_flows_monthly`. | `sql/04_create_marts.sql`, `sql/06_g2_transfer.sql`, `etl/g2_model.py`, `etl/g2_transfer.py`, `etl/g3_pipeline.py`, `sql/tests/08_g3_full_baseline.sql`, `sql/07_g3_kpi.sql` |
+| #52 | **Mart K10 `mart.dq_coverage_monthly`**, dựa trên audit độ phủ chính thức của TV2. Tỷ lệ chính thức chỉ có khi TV2 ghi `VERIFIED`/`COMPLETE`, đúng định nghĩa trong `02_kpi_dictionary.csv`. Có thêm số liệu thực tế về việc DW tra mã (khớp/Unknown/NULL/rỗng/REDACTED). | như trên |
+| #54 | **SQL tham chiếu cho từng KPI của dashboard.** File `sql/08_dashboard_reference.sql` có 8 khối, theo đúng quy tắc trong từ điển KPI: K02/K03 so theo `agency_code`; K04 có mẫu số bỏ lọc cơ quan; K10 chỉ ra tỷ lệ khi `VERIFIED`. `reports/week4/sql_dax_reference.csv` có 74 giá trị SQL thật để TV4 điền cột DAX. Các giá trị khớp số TV4 tự kiểm trước đó (AF tháng 04 = 170.447, K02 = −1.303; VA ≈ 20,76%). | `sql/08_dashboard_reference.sql`, `evidence/TV3_week4/build_sql_dax_reference.py`, `reports/week4/sql_reference/*`, `reports/week4/sql_dax_reference.csv` |
+| #56 | **Backup schema đầy đủ**: `handoff/TV3_schema/workforce_schema.sql`. Đã nạp thử vào DB trống: số ràng buộc và số bảng/VIEW khớp DB gốc. **Runbook cuối gộp làm một** trong `docs/07_runbook.md`, gồm 9 mục từ môi trường tới dump/benchmark/SQL–DAX; G2 cũ và G3 chi tiết thành phụ lục. **Sơ đồ vật lý** `diagrams/09_dw_physical_overall.drawio` đổi sang G3 và thêm 4 bảng mới (viền xanh lá). **Còn lại:** xuất lại bản `.png` bằng draw.io (máy TV1 không có draw.io). | `handoff/TV3_schema/*`, `docs/07_runbook.md`, `diagrams/09_dw_physical_overall.drawio` |
+| #55 | **Benchmark L3-15.** Mart trả lời K01 theo cơ quan trong 0,05 ms, so với 320 ms trên Fact (kết quả trùng khớp). Index giúp khoảng 4,5 lần trên Fact Separations, nhưng làm chậm 27% trên Fact Employment (bitmap lossy) ⇒ dùng Mart. | `sql/tests/09_benchmark.sql`, `evidence/TV3_week4/run_benchmark.py`, `reports/TV3_week4_benchmark.md`, `reports/week4/*` |
+
+**Kiểm thử đợt 2** (PostgreSQL 17.12, code `0d36e10`, DB mới `workforce_dw_g3_tv1`):
+- **Regression:** 5 bộ đều PASS, gồm `g2_coverage_checks` của TV2 và ca mới `check_new_marts`.
+- **G3 đầy đủ:** J06 84 PASS + 12 PENDING; 152/152 kiểm chất lượng; **rerun May 17/17 bảng** không đổi (gồm 2 Mart mới); assertion 08 PASS, gồm category = K06/K07 và K10 104 dòng.
+- **Dump `3b467c00…` (53.139 byte):** restore khớp từng dòng 7 bảng. Mart category tách đúng K06/K07 từng tháng; Mart K10 có 104 dòng (2 dòng có % chính thức, 20 dòng có số liệu tra mã của DW). Agency Unknown vẫn = 0.
+
+**Trạng thái mới so với mục 7–8:**
+- **TV4:** dùng dump `3b467c00…`. Đã đủ dữ liệu cho K01–K04, K06–K08, **D2 theo category** và **K10**.
+  - K10: chỉ `agency_subelement_code` ở 2 file có tỷ lệ chính thức; các trường khác hiển thị BLANK kèm trạng thái, theo đúng từ điển KPI.
+  - **K05/K09 vẫn chờ** chiều nghề/địa điểm/cấp bậc, cần TV2 audit.
+- **TV3:** review các commit của đợt 1 và 2 (#50, #51, #52, #54); làm phần còn lại của #56 (sơ đồ, runbook), rồi #57–#58.
+- **Không làm thay được:**
+  - TV3 tự review (#50).
+  - Chạy lại trên máy demo Windows/PostgreSQL 18 (#57).
+  - Slide và phần trình bày của TV3 (#58).
+  - Xuất lại PNG sơ đồ vật lý bằng draw.io (#56).
+  - Kiểm tra độc lập của TV5.
+- **TV2:** xác nhận cách gộp nhánh của mình (#53); mở PR cho nhánh L2-14 (`codex/l2-14-source-mart`).
+- **TV5:** chạy lại G3 và benchmark độc lập. Đây vẫn là điều kiện để nghiệm thu G2/G3.
+

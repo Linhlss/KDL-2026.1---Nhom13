@@ -2,7 +2,7 @@
 
 > **Ghi chú TV1, 27/11/2026:** biên bản này là bản tự rà ngày 23/11 của TV3, được giữ nguyên làm lịch sử.
 > - **Đã thay đổi:** sau khi TV1 sửa lỗi Unknown, các file trong `reports/week3/`, các file log `00`–`08`, `06_transfer_restore.txt`, `12_dump_handoff_check.txt` và dump bàn giao đã được tạo lại. Lượt chạy mới thực hiện trên PostgreSQL 17.12 macOS, code `51ab0d9`.
-> - **Số liệu cũ, không dùng nữa:** `dim_agency` 493, Mart 486/340 nhóm, dump `6d85ea29…`. Số liệu mới là 521, 510/361 và `ec3ddf32…`.
+> - **Số liệu cũ, không dùng nữa:** `dim_agency` 493, Mart 486/340 nhóm, dump `6d85ea29…`. Số liệu mới: 521, 510/361, cùng Mart category 1.697 nhóm và Mart K10 104 dòng. Dump mới nhất là `3b467c00…`; bản `ec3ddf32…` cũng đã được thay.
 > - **Không đổi:** tổng K01/K06/K07 của từng tháng.
 >
 > Xem [giải trình TV1](../../docs/TV1_giai_trinh_tich_hop_G3.md).

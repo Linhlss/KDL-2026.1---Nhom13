@@ -1,0 +1,75 @@
+kpi,filters,sql_value,dax_value,status,sql_block,sql_file,tested_at
+K01,month=202503; all agencies,2289192,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202503; all agencies,,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202503; all agencies,,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202504; all agencies,2271969,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202504; all agencies,-17223,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202504; all agencies,-0.007524,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202505; all agencies,2255056,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202505; all agencies,-16913,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202505; all agencies,-0.007444,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202506; all agencies,2241780,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202506; all agencies,-13276,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202506; all agencies,-0.005887,,PENDING_TV4,K01_K02_K03_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202503; agency_code=AF,171750,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202503; agency_code=AF,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202503; agency_code=AF,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202503; agency_code=IN,63752,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202503; agency_code=IN,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202503; agency_code=IN,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202503; agency_code=TR,116073,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202503; agency_code=TR,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202503; agency_code=TR,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202503; agency_code=VA,474542,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202503; agency_code=VA,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202503; agency_code=VA,,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202504; agency_code=AF,170447,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202504; agency_code=AF,-1303,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202504; agency_code=AF,-0.007587,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202504; agency_code=IN,63962,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202504; agency_code=IN,210,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202504; agency_code=IN,0.003294,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202504; agency_code=TR,114791,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202504; agency_code=TR,-1282,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202504; agency_code=TR,-0.011045,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K01,month=202504; agency_code=VA,471620,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K02,month=202504; agency_code=VA,-2922,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K03,month=202504; agency_code=VA,-0.006158,,PENDING_TV4,K01_K02_K03_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K04,month=202504; agency_code=VA (denominator ignores agency filter),0.207582,,PENDING_TV4,K04_AGENCY_SHARE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K04,month=202504; agency_code=AF (denominator ignores agency filter),0.075022,,PENDING_TV4,K04_AGENCY_SHARE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K04,month=202504; agency_code=TR (denominator ignores agency filter),0.050525,,PENDING_TV4,K04_AGENCY_SHARE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K04,month=202504; agency_code=IN (denominator ignores agency filter),0.028153,,PENDING_TV4,K04_AGENCY_SHARE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202503; all agencies,4862,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202503; all agencies,22061,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202503; all agencies,-17199,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; all agencies,7153,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; all agencies,24088,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202504; all agencies,-16935,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202505; all agencies,8813,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202505; all agencies,26415,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202505; all agencies,-17602,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202506; all agencies,9954,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202506; all agencies,19947,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202506; all agencies,-9993,,PENDING_TV4,K06_K07_K08_TOTAL,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; agency_code=AF,270,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; agency_code=AF,1269,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202504; agency_code=AF,-999,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; agency_code=IN,1553,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; agency_code=IN,665,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202504; agency_code=IN,888,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; agency_code=TR,17,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; agency_code=TR,1060,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202504; agency_code=TR,-1043,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; agency_code=VA,1175,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; agency_code=VA,3991,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K08,month=202504; agency_code=VA,-2816,,PENDING_TV4,K06_K07_K08_AGENCY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K06,month=202504; category=AC NEW HIRE - COMPETITIVE SERVICE APPOINTMENT,3899,,PENDING_TV4,K06_K07_CATEGORY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K07,month=202504; category=SC QUIT,8806,,PENDING_TV4,K06_K07_CATEGORY,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K10,month=202503; family=employment; field=agency_subelement_code [VERIFIED/COMPLETE],1.000000,,PENDING_TV4,K10_COVERAGE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K10,month=202503; family=separations; field=agency_subelement_code [VERIFIED/COMPLETE],1.000000,,PENDING_TV4,K10_COVERAGE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K10,month=202504; family=accessions; field=agency_code [PARTIAL/SAMPLE],,,PENDING_TV4,K10_COVERAGE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K10,month=202504; family=employment; field=agency_code [PARTIAL/SAMPLE],,,PENDING_TV4,K10_COVERAGE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+K10,month=202504; family=separations; field=agency_code [PARTIAL/SAMPLE],,,PENDING_TV4,K10_COVERAGE,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+UNKNOWN,agency key 0 headcount,0,,PENDING_TV4,UNKNOWN_CHECK,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+UNKNOWN,agency key 0 events,0,,PENDING_TV4,UNKNOWN_CHECK,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00
+UNKNOWN,category key 0 events,0,,PENDING_TV4,UNKNOWN_CHECK,sql/08_dashboard_reference.sql,2026-11-27T14:24:45.333437+00:00

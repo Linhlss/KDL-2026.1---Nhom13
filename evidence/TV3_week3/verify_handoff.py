@@ -43,7 +43,9 @@ def main():
         actual={schema+'.'+table for schema,table in restored.execute("SELECT schemaname,tablename FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')")}
         if actual!=set(TABLES):raise ValueError('Unexpected restored tables')
         for name in TABLES:
-            key={'dw.dim_month':'month_key','dw.dim_agency':'agency_key','dw.dim_action_category':'category_key'}.get(name,'month_key,agency_key')
+            key={'dw.dim_month':'month_key','dw.dim_agency':'agency_key','dw.dim_action_category':'category_key',
+                 'mart.personnel_flows_category_monthly':'month_key,agency_key,family,category_key',
+                 'mart.dq_coverage_monthly':'month_key,family,lookup_field'}.get(name,'month_key,agency_key')
             query='SELECT * FROM '+name+' ORDER BY '+key
             expected=source.execute(query).fetchall()
             got=restored.execute(query).fetchall()
@@ -58,6 +60,15 @@ def main():
                   (202505,2255056,8813,26415),(202506,2241780,9954,19947)]
         if kpis!=expected:raise ValueError('Restored KPI baseline differs')
         for row in kpis:print('PASS restored month / K01 / K06 / K07:',*row,flush=True)
+        category=restored.execute('''SELECT month_key,
+          sum(events) FILTER (WHERE family='accessions'),sum(events) FILTER (WHERE family='separations'),
+          sum(events) FILTER (WHERE category_key=0)
+          FROM mart.personnel_flows_category_monthly GROUP BY month_key ORDER BY month_key''').fetchall()
+        if [(m,a,s) for m,a,s,_ in category]!=[(m,a,s) for m,_,a,s in expected]:
+            raise ValueError('Restored category Mart does not split K06/K07 exactly')
+        for m,a,s,unknown in category:print('PASS restored category Mart month / K06 / K07 / key0 events:',m,a,s,unknown,flush=True)
+        dq=restored.execute('SELECT count(*),count(official_coverage_pct),count(dw_total_rows) FROM mart.dq_coverage_monthly').fetchone()
+        print('PASS restored K10 Mart rows / with official % / with DW lookup states:',*dq,flush=True)
     print('PASS temporary restore DB removed; transfer DB and dump retained locally for private handoff',flush=True)
     print('Windows and Power BI execution remain PENDING TV4',flush=True)
 

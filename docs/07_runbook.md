@@ -1,4 +1,133 @@
-# Chạy pipeline G2 tháng 04 năm 2025
+# Runbook cuối — Kho dữ liệu nhân sự liên bang (G3, 12 Parquet 03–06/2025)
+
+**Bản gộp ngày 27/11/2026 (TV1, issue #56).** Đây là **một runbook duy nhất** cho bản trên `main`, đi từ nhận nguồn tới dump bàn giao, benchmark và đối chiếu SQL–DAX.
+- **Chi tiết G3 (cách đọc từng file kết quả, phục hồi lỗi):** [`TV3_week3_runbook.md`](TV3_week3_runbook.md), phụ lục B.
+- **Lệnh G2 tháng 04 cũ:** phụ lục A ở cuối file này.
+- **Bối cảnh các sửa đổi:** [giải trình TV1](TV1_giai_trinh_tich_hop_G3.md).
+
+## 1. Môi trường
+
+| Thành phần | Yêu cầu | Ghi chú |
+|---|---|---|
+| PostgreSQL | ≥ 16; nhóm dùng 18 (Windows/Postgres.app) | Lượt chạy kiểm chứng 27/11 dùng 17.12. Mã dùng `pg_input_is_valid` (có từ 16) |
+| Python | ≥ 3.11; nhóm dùng 3.12 | `pip install -r requirements.txt` |
+| Nguồn | 12 Parquet theo [`docs/03_source_inventory.csv`](03_source_inventory.csv) | Thư mục phẳng hoặc `<raw-dir>/<family>/<file>` |
+| Quyền DB | Role có `CREATEDB`, kết nối được DB `postgres` | Các bộ regression tạo rồi tự xóa DB tạm |
+
+Cấu hình cục bộ: chép `configs/.env.example` thành `configs/.env.g3.local` (bị Git bỏ qua, **không commit**). Điền `PGHOST/PGPORT/PGUSER/PGPASSWORD`, `PGDATABASE` (tên DB mới) và `RAW_DATA_DIR`. Các lệnh `psql`/`createdb`/`pg_dump` không đọc file này, nên phải truyền `-h -p -U` hoặc dùng pgpass.
+
+```sh
+# macOS
+python3.12 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt && .venv/bin/python -m pip check
+```
+
+```powershell
+# Windows
+py -3.12 -m venv .venv; .\.venv\Scripts\python.exe -m pip install -r requirements.txt; .\.venv\Scripts\python.exe -m pip check
+```
+
+Các lệnh bên dưới viết cho macOS (`.venv/bin/python`). Trên Windows, thay bằng `.\.venv\Scripts\python.exe`, thêm `if ($LASTEXITCODE -ne 0) { throw }` sau mỗi lệnh, và đặt `git config core.autocrlf false` trước khi checkout.
+
+## 2. Nhận và kiểm nguồn
+
+```sh
+.venv/bin/python etl/fetch_baseline.py --raw-dir <thư mục 12 Parquet>
+```
+
+Script kiểm SHA-256, bytes, số dòng, số cột, schema hash và kiểu text của cả 12 file. Lệch bất kỳ điểm nào là dừng, không ghi đè. Kỳ vọng: 12 dòng `VERIFIED`.
+
+## 3. Regression trên dữ liệu giả (5 bộ, phải exit 0)
+
+```sh
+for t in g3_full_checks g2_source_checks g2_model_checks g2_replay_checks g2_coverage_checks; do
+  .venv/bin/python -u tests/$t.py --config configs/.env.g3.local || break
+done
+```
+
+`g2_model_checks` phải có các dòng: `PASS TV2-reviewed REVIEW agency loads…`, `PASS Fact lookup states…` và `PASS category Mart keeps key 0…`.
+
+## 4. Nạp đủ 12 file, chạy lại May, kiểm chất lượng (khoảng 25 phút trên Apple M1)
+
+```sh
+createdb -h 127.0.0.1 -U <role> workforce_dw_g3_<tên>          # luôn dùng DB MỚI
+.venv/bin/python -u etl/g3_pipeline.py --config configs/.env.g3.local \
+  --database workforce_dw_g3_<tên> --raw-dir <thư mục 12 Parquet> \
+  --report-dir .qa/<người chạy>/run01 --verify-rerun --quality-check
+```
+
+Bản chính thức trên repo dùng `--report-dir reports/week3`. Reviewer dùng `.qa/…` (Git bỏ qua). **Kỳ vọng:**
+
+| Kiểm tra | Giá trị |
+|---|---|
+| Số dòng Source = Staging = ODS = Fact | 9.181.290 (Employment 9.057.997; Accessions 30.782; Separations 92.511) |
+| J06 (`07_reconciliation.csv`) | 84 PASS + 12 PENDING (DAX) |
+| `09_quality_checks.csv` | 152/152 PASS |
+| Rerun May (`TV3_week3_rerun_results.csv`) | 17/17 bảng PASS |
+| Agency Unknown (`09_source_quality.csv`) | 0 trên cả 12 file |
+| Dimension / Mart | `dim_agency` 521; `workforce_monthly` 510; `personnel_flows_monthly` 361; `personnel_flows_category_monthly` 1.697; `dq_coverage_monthly` 104 |
+
+## 5. Kiểm SQL
+
+```sh
+psql -X -v ON_ERROR_STOP=1 -h 127.0.0.1 -U <role> -d workforce_dw_g3_<tên> -f sql/tests/08_g3_full_baseline.sql
+psql -X -v ON_ERROR_STOP=1 -h 127.0.0.1 -U <role> -d workforce_dw_g3_<tên> -f sql/07_g3_kpi.sql
+```
+
+Assertion phải in `PASS 12-file …, category Mart and K10 Mart baseline`. KPI tháng 04: K01 2.271.969; K02 −17.223; K06 7.153; K07 24.088; K08 −16.935.
+
+## 6. Tạo dump bàn giao cho TV4 và kiểm restore
+
+```sh
+.venv/bin/python -u evidence/TV3_week3/verify_handoff.py --config configs/.env.g3.local \
+  --database workforce_dw_g3_<tên> --target workforce_g3_transfer_<tên> --dump db_dumps/workforce_g3.dump
+```
+
+Script làm các bước sau:
+1. Kiểm DDL chuyển giao khớp `03/04` (`g2_transfer.check_transfer_ddl`).
+2. Chép 3 Dimension và 4 Mart sang DB chuyển giao.
+3. `pg_dump -Fc`, rồi restore vào DB tạm.
+4. So **từng dòng** 7 bảng; kiểm KPI 4 tháng và kiểm Mart category = K06/K07.
+
+Khi bàn giao, chép `db_dumps/workforce_g3.dump` và `.sha256` vào `handoff/TV3_G3/`, rồi cập nhật [README bàn giao](../handoff/TV3_G3/README.md): checksum, số byte, số dòng. TV4 restore theo đúng README đó.
+
+## 7. Bằng chứng, benchmark và đối chiếu SQL–DAX
+
+```sh
+.venv/bin/python -u evidence/TV3_week3/prepare_review.py --database workforce_dw_g3_<tên> --operator "<người chạy>"
+.venv/bin/python -u evidence/TV3_week4/run_benchmark.py --database <DB benchmark RIÊNG> --operator "<người chạy>"
+.venv/bin/python -u evidence/TV3_week4/build_sql_dax_reference.py --database <DB đã restore dump>
+```
+
+- **`prepare_review.py`:**
+  - Kiểm hash code khớp lượt chạy; 20 báo cáo G2 giữ nguyên byte; 593 dòng event lệch kỳ được giữ.
+  - Ghi `evidence/TV3_week3/00`–`08` và `reports/TV3_week3_summary.md`. Cần các log `.qa/TV3_G3/00`–`08_*.txt` từ các bước 2–5.
+- **`run_benchmark.py`:** tạo rồi xóa index, nên **không** chạy trên DB bàn giao. Kết quả: `reports/week4/benchmark_results.csv` và [báo cáo](../reports/TV3_week4_benchmark.md).
+- **`build_sql_dax_reference.py`:** đọc `sql/08_dashboard_reference.sql` (read-only), xuất `reports/week4/sql_dax_reference.csv` để TV4 điền cột `dax_value`.
+
+## 8. Backup
+
+- **Chỉ schema** (đã có trong repo): [`handoff/TV3_schema/workforce_schema.sql`](../handoff/TV3_schema/README.md).
+- **DB đầy đủ** (vài GB, **không commit**):
+  - Tạo: `pg_dump -Fc -d workforce_dw_g3_<tên> -f <ổ cá nhân>/workforce_full.dump`, rồi `shasum -a 256`.
+  - Restore: `pg_restore --no-owner --no-acl --exit-on-error`.
+
+## 9. Lỗi thường gặp
+
+| Hiện tượng | Nguyên nhân / cách xử lý |
+|---|---|
+| `fetch_baseline` báo mismatch | File khác bản TV2. Không sửa hash; lấy lại đúng file từ mirror trong inventory |
+| `Source identity/version conflict` | DB đã có file khác cùng family/tháng. Dùng DB mới; chỉ đổi version khi nhóm đã quyết định |
+| `verify_week1`/LF lỗi trên Windows | `git config core.autocrlf false` rồi checkout lại |
+| `06_g2_transfer.sql differs from 03/04` | Sửa DDL Mart ở `04_create_marts.sql` thì phải chép y hệt sang `06_g2_transfer.sql` |
+| `Category Mart does not reconcile` | Lỗi dựng Mart; dừng lại, giữ DB để đọc `audit.load_run`, báo TV3 |
+| Pipeline FAIL giữa chừng | File đã commit vẫn giữ; file lỗi được rollback. Đọc `run_manifest.json` và `audit.load_run`; sửa nguyên nhân rồi chạy lại cùng lệnh (file đúng sẽ được bỏ qua) |
+
+
+## Phụ lục B — Runbook G3 chi tiết
+
+Xem [`TV3_week3_runbook.md`](TV3_week3_runbook.md): cách đọc từng file kết quả, phục hồi lỗi, version và lệnh PowerShell đầy đủ. Phần TV4/TV5 trong đó nay dùng dump và bảng của mục 6 ở trên.
+
+## Phụ lục A — Runbook G2 tháng 04/2025 (lịch sử, giữ để replay bằng chứng G2)
 
 Tuần 3 có [runbook G3 riêng](TV3_week3_runbook.md) để nạp đủ 12 file, đối soát bốn kỳ và kiểm May rerun. Các lệnh/trạng thái MVP tháng 04 dưới đây được giữ để replay bằng chứng G2.
 
@@ -6,7 +135,7 @@ Pipeline dùng PostgreSQL 18, Python 3.12 và ba file Parquet baseline của TV2
 
 **TV5 trên Windows:** dùng [hướng dẫn PowerShell đầy đủ](../handoff/TV3_G2/TV5_REPLAY.md) để tạo Python 3.12/venv, nhận và kiểm hash ba Parquet, tạo database QA riêng, chạy regression và lưu expected/actual độc lập.
 
-## Môi trường và nguồn
+### Môi trường và nguồn
 
 Mở Postgres.app, kiểm server đang chạy, rồi dùng môi trường Python đã chuẩn bị ở tuần 1. Điền `configs/.env` theo `configs/.env.example`, gồm host, port, database và user của máy chạy. Mật khẩu được lưu cục bộ khi server yêu cầu. [Hướng dẫn môi trường](06_environment_setup.md) có lệnh tạo venv và kiểm kết nối.
 
@@ -36,7 +165,7 @@ Ba checksum đầy đủ nằm trong [manifest](../data/manifest/sha256.txt) và
 
 Inventory/manifest tiếp nhận có 12 file. Lượt MVP TV3 chỉ tính lại hash, kiểm metadata và nạp ba file 202504 trên máy cục bộ. Kết quả kiểm 9 file các kỳ khác vẫn dựa trên đầu vào TV2 cho đến khi TV3 mở rộng pipeline và đo lại.
 
-## Tạo bảng và chạy
+### Tạo bảng và chạy
 
 Database `workforce_dw` đã được dùng cho tuần 1. Nếu replay trên máy mới, kiểm tên database trước rồi chỉ tạo khi chưa tồn tại. Dùng database riêng `workforce_dw_g2_check` cho kiểm DDL sạch. CLI đọc cấu hình cục bộ và nhận `--database` để chọn đích.
 
@@ -61,7 +190,7 @@ Luồng thực thi gồm J00 kiểm manifest/file/schema, J01 COPY theo batch v�
 
 Lượt chạy cùng baseline đã nạp được kiểm rồi SKIPPED. Nếu checksum, bytes, schema hoặc row count lệch inventory, CLI ghi FAIL và kết thúc thất bại. Nếu file đổi version/hash so với metadata đã đăng ký, TV2/TV3 phải xác minh phiên bản dùng tính KPI. Khi xử lý lỗi, kiểm `audit.load_run`, CSV log và dữ liệu theo file_id trước khi chạy lại. Thay đổi nguồn hoặc rule chuẩn hóa cần cập nhật bằng chứng và chạy lại các phép đối soát liên quan.
 
-## Kiểm SQL và dữ liệu bàn giao
+### Kiểm SQL và dữ liệu bàn giao
 
 ```sh
 psql -X -v ON_ERROR_STOP=1 -h 127.0.0.1 -d workforce_dw_g2_check \
@@ -85,7 +214,7 @@ J06 yêu cầu đúng một file active/LOADED cho mỗi family trong tháng r�
   --config configs/.env --database workforce_dw_g2_check --month 202504 --raw-dir data/raw
 ```
 
-## TV4 nhận DB và thử Power BI
+### TV4 nhận DB và thử Power BI
 
 TV4 nhận bản dump đã bổ sung trong nhánh tại [handoff/TV3_G2/workforce_g2.dump](../handoff/TV3_G2/workforce_g2.dump), dùng PostgreSQL 18 trên Windows và restore vào database mới/rỗng. [Hướng dẫn PowerShell và checksum](../handoff/TV3_G2/README.md) có lệnh kiểm file, restore và SELECT KPI. `localhost` trong kết nối Power BI chỉ đến PostgreSQL trên máy Windows của TV4.
 
@@ -126,7 +255,7 @@ K07 Separations = SUM(personnel_flows_monthly[separations])
 
 Lọc `month_key = 202504` khi đối soát. TV5 so SQL–DAX với cùng agency, kỳ và source version, ghi actual/PASS/FAIL vào báo cáo reconciliation và gắn ảnh bằng chứng. TV4 cần phản hồi cả kết quả restore, SELECT và kết nối PBIX. Phần kiểm Power BI trên Windows và ký xác nhận độc lập đang chờ TV4/TV5.
 
-## Gói reviewer cần nhận
+### Gói reviewer cần nhận
 
 - Mã SQL/ETL, requirements, cấu hình mẫu và commit dùng chạy.
 - Inventory/manifest cùng commit đầu vào TV2 và ba file raw qua kênh riêng.

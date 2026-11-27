@@ -9,7 +9,8 @@ from psycopg import sql
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLES = ("dw.dim_month", "dw.dim_agency", "dw.dim_action_category",
-          "mart.workforce_monthly", "mart.personnel_flows_monthly")
+          "mart.workforce_monthly", "mart.personnel_flows_monthly",
+          "mart.personnel_flows_category_monthly", "mart.dq_coverage_monthly")
 TRANSFER_DDL = ROOT / "sql/06_g2_transfer.sql"
 SOURCE_DDL = (ROOT / "sql/03_dw_ddl.sql", ROOT / "sql/04_create_marts.sql")
 
@@ -54,7 +55,9 @@ def main():
         ).fetchone()[0]:
             raise ValueError("Transfer target must be empty; choose a new database name")
         target.execute(TRANSFER_DDL.read_text(encoding="utf-8"))
-        target.execute("TRUNCATE mart.workforce_monthly,mart.personnel_flows_monthly,dw.dim_agency,dw.dim_action_category,dw.dim_month")
+        target.execute("TRUNCATE mart.workforce_monthly,mart.personnel_flows_monthly,"
+                       "mart.personnel_flows_category_monthly,mart.dq_coverage_monthly,"
+                       "dw.dim_agency,dw.dim_action_category,dw.dim_month")
         for name in TABLES:
             table = sql.Identifier(*name.split("."))
             with source.cursor().copy(sql.SQL("COPY {} TO STDOUT").format(table)) as reader:

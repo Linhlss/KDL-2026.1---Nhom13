@@ -43,7 +43,7 @@ def main():
     for r in quality:require(int(r['other_month'])==mismatch.get((r['family'],r['report_month']),0),'Mismatch baseline differs')
     require(sum(int(r['other_month']) for r in quality)==593,'593 cross-month events not retained')
     rerun=rows(p/'TV3_week3_rerun_results.csv')
-    require(len(rerun)==15 and all(r['status']=='PASS' for r in rerun),'Rerun changed business data')
+    require(len(rerun)==17 and all(r['status']=='PASS' for r in rerun),'Rerun changed business data')
     require(json.loads((p/'rerun_before.json').read_text(encoding='utf-8'))==json.loads((p/'rerun_after.json').read_text(encoding='utf-8')),'Snapshot digests differ')
     totals={f:sum(int(r['dw']) for r in files if r['family']==f) for f in ('employment','accessions','separations')}
     require(totals=={'employment':9057997,'accessions':30782,'separations':92511},'Fact baseline differs')
@@ -70,7 +70,9 @@ def main():
         sample=next(r for r in agencies if r['month_key']==202504 and r['agency_key']!=0)
         meta=conn.execute("SELECT current_user,current_setting('server_version')").fetchone()
         mart_groups=dict(workforce=conn.execute('SELECT count(*) FROM mart.workforce_monthly').fetchone()[0],
-                         flows=conn.execute('SELECT count(*) FROM mart.personnel_flows_monthly').fetchone()[0])
+                         flows=conn.execute('SELECT count(*) FROM mart.personnel_flows_monthly').fetchone()[0],
+                         category=conn.execute('SELECT count(*) FROM mart.personnel_flows_category_monthly').fetchone()[0],
+                         dq=conn.execute('SELECT count(*) FROM mart.dq_coverage_monthly').fetchone()[0])
         unknown_agency=sum(conn.execute(sql.SQL('SELECT count(*) FROM dw.{} WHERE agency_key=0').format(sql.Identifier(f))).fetchone()[0]
                            for f in ('fact_employment_snapshot','fact_accessions','fact_separations'))
     observed=rows(p/'08_dimension_observed.csv')
@@ -113,14 +115,14 @@ def main():
            '', '| Task | Trạng thái | Sản phẩm thực chạy |', '| --- | --- | --- |',
            '| L3-10 | REVIEW | 12 file Source=Staging=ODS; [counts](week3/07_file_counts.csv), [audit](week3/07_load_log.csv), [before–after](week3/07_before_after.csv) |',
            '| L3-11 | REVIEW thực thi; model PROPOSED | 3 Fact, khóa/FK/time roles, [catalog quan sát](week3/08_dimension_observed.csv), [quality checks](week3/09_quality_checks.csv) |',
-           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart '+str(mart_groups['workforce'])+' nhóm và flows Mart '+str(mart_groups['flows'])+' nhóm đủ bốn kỳ; [KPI SQL](week3/05_kpi_monthly.csv); category/các chiều bổ sung chờ TV4 |',
+           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart '+str(mart_groups['workforce'])+' nhóm và flows Mart '+str(mart_groups['flows'])+' nhóm đủ bốn kỳ; Mart category (D2) '+str(mart_groups['category'])+' nhóm; Mart K10 '+str(mart_groups['dq'])+' dòng; [KPI SQL](week3/05_kpi_monthly.csv); nghề/địa điểm/cấp bậc chờ TV2 audit |',
            '| L3-13 | REVIEW tự kiểm | [J06](week3/07_reconciliation.csv), [rerun May](week3/TV3_week3_rerun_results.csv), [failure tests](../evidence/TV3_week3/02_source_regression.txt); TV5 độc lập chờ xác nhận |',
            '', '| Tháng | Employment | Accessions | Separations | K02 | K08 |', '| --- | ---: | ---: | ---: | ---: | ---: |']
     for r in monthly:
         lines.append('| '+' | '.join(str(r[k]) if r[k] is not None else 'NULL' for k in ('month_key','k01','k06','k07','k02','k08'))+' |')
     lines.extend(['',f'Tổng dòng Fact: Employment {totals["employment"]:,}; Accessions {totals["accessions"]:,}; Separations {totals["separations"]:,}. Tổng {sum(totals.values()):,} bản ghi qua các kỳ, không phải số người duy nhất.',
        '', '**Kiểm chứng:** 84 J06 PASS + 12 DAX PENDING; 152 kiểm raw/ODS, ordinal, time role và FK PASS. Giữ 593 event khác kỳ (269 Accessions, 324 Separations), riêng May 107. PK/UNIQUE/FK đều validated; lookup không nhân/mất dòng. [Chất lượng theo file và Unknown](week3/09_source_quality.csv) ghi số thực đo.',
-       '', '**Rerun May thật:** ba file được J00 kiểm lại, sáu J01/J02 SKIPPED, J03–J05 rebuild May rồi J06 đủ bốn kỳ. Cả 15 bảng có cùng count/digest trước–sau, gồm stable Dim keys và Fact/Mart mọi tháng; source identity toàn baseline giữ nguyên. Audit được thêm run mới. Mã/cột/thứ tự digest ghi trong runbook. Không gọi nhánh skip là đã thử replacement.',
+       '', '**Rerun May thật:** ba file được J00 kiểm lại, sáu J01/J02 SKIPPED, J03–J05 rebuild May rồi J06 đủ bốn kỳ. Cả '+str(len(rerun))+' bảng có cùng count/digest trước–sau, gồm stable Dim keys và Fact/Mart mọi tháng; source identity toàn baseline giữ nguyên. Audit được thêm run mới. Mã/cột/thứ tự digest ghi trong runbook. Không gọi nhánh skip là đã thử replacement.',
        '', 'Dimension thực đo: '+', '.join(r['table']+' = '+r['actual_rows']+' dòng' for r in observed)+'. Unknown key=0; nhãn dẫn xuất PARTIAL, riêng 28 khóa Agency–tháng TV2 đã duyệt nhãn EHRI là REVIEWED_TV2; Agency Unknown = '+str(unknown_agency)+' dòng trên 12 file. Các tháng hiệu lực ngoài bốn kỳ vẫn có Dimension; không cắt event.',
        '', '**Bàn giao TV4:** [workforce_g3.dump](../handoff/TV3_G3/workforce_g3.dump), [SHA-256](../handoff/TV3_G3/workforce_g3.dump.sha256) và [lệnh restore](../handoff/TV3_G3/README.md) đã có trong repo; ba Dimension và hai Mart; [bằng chứng chuyển/restore](../evidence/TV3_week3/06_transfer_restore.txt) ghi SHA-256, 9/493/53/486/340 dòng và KPI cả bốn kỳ. Đã so toàn bộ nội dung bảng sau restore trên PostgreSQL 18 cùng máy; Windows và Power BI chưa chạy. Raw/config và dump cục bộ không commit; ngoại lệ đúng bản aggregate G3 đã kiểm trong handoff/TV3_G3/.',
        '', '**Kiểm thử lỗi:** fixture QA kiểm file thiếu, checksum/version/hash thay dưới cùng tên, schema không hỗ trợ, lỗi COPY giữa transaction, rollback và audit FAIL; model chặn count != 1 và giữ Mart cũ. Test mới phát hiện thay đổi trường nghiệp vụ dù tổng không đổi. Không sửa raw thật; replacement thành công với file republish thật NOT_TESTED.',

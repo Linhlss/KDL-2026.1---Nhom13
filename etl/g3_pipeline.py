@@ -55,7 +55,9 @@ def snapshot(conn):
     tables.extend([('dw.dim_month','*','month_key'), ('dw.dim_agency','*','agency_key'),
                    ('dw.dim_action_category','*','category_key'),
                    ('mart.workforce_monthly','*','month_key,agency_key'),
-                   ('mart.personnel_flows_monthly','*','month_key,agency_key')])
+                   ('mart.personnel_flows_monthly','*','month_key,agency_key'),
+                   ('mart.personnel_flows_category_monthly','*','month_key,agency_key,family,category_key'),
+                   ('mart.dq_coverage_monthly','*','month_key,family,lookup_field')])
     result = {}
     with conn.transaction():
         conn.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY')

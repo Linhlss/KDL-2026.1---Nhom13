@@ -1,0 +1,29 @@
+SELECT snapshot_month_key, sum(count_value) AS headcount
+FROM dw.fact_employment_snapshot WHERE agency_code = 'TR'
+GROUP BY snapshot_month_key
+
+Finalize GroupAggregate  (cost=215367.58..215368.62 rows=4 width=36) (actual time=216.719..217.520 rows=4 loops=1)
+  Group Key: snapshot_month_key
+  Buffers: shared hit=1330 read=164926
+  ->  Gather Merge  (cost=215367.58..215368.51 rows=8 width=36) (actual time=216.714..217.513 rows=12 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=1330 read=164926
+        ->  Sort  (cost=214367.55..214367.56 rows=4 width=36) (actual time=215.189..215.189 rows=4 loops=3)
+              Sort Key: snapshot_month_key
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1330 read=164926
+              Worker 0:  Sort Method: quicksort  Memory: 25kB
+              Worker 1:  Sort Method: quicksort  Memory: 25kB
+              ->  Partial HashAggregate  (cost=214367.46..214367.51 rows=4 width=36) (actual time=215.176..215.177 rows=4 loops=3)
+                    Group Key: snapshot_month_key
+                    Batches: 1  Memory Usage: 24kB
+                    Buffers: shared hit=1316 read=164926
+                    Worker 0:  Batches: 1  Memory Usage: 24kB
+                    Worker 1:  Batches: 1  Memory Usage: 24kB
+                    ->  Parallel Seq Scan on fact_employment_snapshot  (cost=0.00..213407.80 rows=191933 width=12) (actual time=0.047..203.393 rows=152157 loops=3)
+                          Filter: (agency_code = 'TR'::text)
+                          Rows Removed by Filter: 2867175
+                          Buffers: shared hit=1316 read=164926
+Planning Time: 0.042 ms
+Execution Time: 217.532 ms

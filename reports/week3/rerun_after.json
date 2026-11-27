@@ -58,5 +58,13 @@
   "mart.personnel_flows_monthly": {
     "rows": 361,
     "sha256": "bd1f4d76712e6d36fb0a55f265cc22989c4973eebef5210deee64cff45d180bc"
+  },
+  "mart.personnel_flows_category_monthly": {
+    "rows": 1697,
+    "sha256": "10ac79b21eba12783dcf0700ed62664bda0bf7c17dec8438b1c8e0baa6683b3d"
+  },
+  "mart.dq_coverage_monthly": {
+    "rows": 104,
+    "sha256": "e26df76b612f3394382ae5cab28fd70d16cbcb30fd3e7d9d12fbc9d7920dd385"
   }
 }
