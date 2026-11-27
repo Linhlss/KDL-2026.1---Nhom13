@@ -1,72 +1,75 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
-  <diagram id="tv3-week-one" name="Kiến trúc thành phần v0">
-    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1460" pageHeight="760" background="#f6f8fb">
+  <diagram id="06_architecture_components" name="Kiến trúc thành phần G2">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1800" pageHeight="1120" background="#f7f9fc">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="eyebrow" parent="1" vertex="1" value="NHÓM 13  /  DATA WAREHOUSE &amp; BI  /  TV3 TUẦN 1" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#1d5ca9;fontStyle=1;">
-          <mxGeometry x="42" y="31" width="1300" height="23" as="geometry" />
+        <mxCell id="project" parent="1" vertex="1" value="NHÓM 13  /  TV3 G2  /  THÁNG 04 2025" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="52" y="30" width="1696" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="page-title" parent="1" vertex="1" value="Kiến trúc thành phần v0" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=36;fontColor=#13253b;fontStyle=1;">
-          <mxGeometry x="42" y="60" width="1300" height="44" as="geometry" />
+        <mxCell id="title" parent="1" vertex="1" value="Kiến trúc thành phần G2" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=39;fontColor=#16273d;fontStyle=1;">
+          <mxGeometry x="52" y="75" width="1696" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="page-sub" parent="1" vertex="1" value="Môi trường, dữ liệu nạp thử và phương án bàn giao cho Power BI" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=19;fontColor=#475970;fontStyle=0;">
-          <mxGeometry x="42" y="112" width="1300" height="27" as="geometry" />
+        <mxCell id="subtitle" parent="1" vertex="1" value="Triển khai trên Mac TV3 và phương án bàn giao cho Power BI trên Windows" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=21;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="52" y="135" width="1696" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="mac" parent="1" vertex="1" value="" style="rounded=1;arcSize=5;fillColor=#edf4fd;strokeColor=#b8cce7;strokeWidth=2;">
-          <mxGeometry x="42" y="169" width="985" height="379" as="geometry" />
+        <mxCell id="mac" parent="1" vertex="1" value="" style="rounded=1;arcSize=5;fillColor=#edf3fc;strokeColor=#c4d1e1;strokeWidth=2;">
+          <mxGeometry x="52" y="208" width="1270" height="620" as="geometry" />
         </mxCell>
-        <mxCell id="mac-title" parent="1" vertex="1" value="01  MacBook M3 Pro · TV3" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#13253b;fontStyle=0;">
-          <mxGeometry x="64" y="186" width="941" height="26" as="geometry" />
+        <mxCell id="mac-title" parent="1" vertex="1" value="MacBook M3 Pro · TV3" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=23;fontColor=#16273d;fontStyle=1;">
+          <mxGeometry x="74" y="229" width="1226" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="mac-sub" parent="1" vertex="1" value="Parquet và PostgreSQL lưu trên máy TV3" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#475970;fontStyle=0;">
-          <mxGeometry x="64" y="215" width="941" height="23" as="geometry" />
+        <mxCell id="mac-sub" parent="1" vertex="1" value="Python 3.12 · Postgres.app 18.7 · database workforce_dw" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="74" y="269" width="1226" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="windows" parent="1" vertex="1" value="" style="rounded=1;arcSize=5;fillColor=#faf0f7;strokeColor=#dcc1d3;strokeWidth=2;">
-          <mxGeometry x="1055" y="169" width="363" height="379" as="geometry" />
+        <mxCell id="windows" parent="1" vertex="1" value="" style="rounded=1;arcSize=5;fillColor=#faf1f7;strokeColor=#dcc4d6;strokeWidth=2;">
+          <mxGeometry x="1350" y="208" width="398" height="620" as="geometry" />
         </mxCell>
-        <mxCell id="windows-title" parent="1" vertex="1" value="02  Windows · TV4" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#13253b;fontStyle=0;">
-          <mxGeometry x="1077" y="186" width="319" height="26" as="geometry" />
+        <mxCell id="windows-title" parent="1" vertex="1" value="Windows · TV4" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=23;fontColor=#16273d;fontStyle=1;">
+          <mxGeometry x="1372" y="229" width="354" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="windows-sub" parent="1" vertex="1" value="Môi trường nhận Mart dự kiến" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#475970;fontStyle=0;">
-          <mxGeometry x="1077" y="215" width="319" height="23" as="geometry" />
+        <mxCell id="windows-sub" parent="1" vertex="1" value="Kết nối và DAX chờ TV4 xác nhận" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="1372" y="269" width="354" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="raw" parent="1" vertex="1" value="&lt;font color=&quot;#1d5ca9&quot; style=&quot;font-size:14px&quot;&gt;&lt;b&gt;NGUỒN CÔNG KHAI&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#13253b&quot; style=&quot;font-size:22px&quot;&gt;&lt;b&gt;Parquet OPM&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#475970&quot; style=&quot;font-size:16px&quot;&gt;Accessions + Employment&lt;br&gt;Kỳ 202504 · v5 và v4&lt;br&gt;data/raw/ · checksum cả file&lt;br&gt;TV2 xác nhận baseline nhóm&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=15;fillColor=#ffffff;strokeColor=#b7cde5;strokeWidth=2;fontFamily=Arial;">
-          <mxGeometry x="66" y="270" width="256" height="183" as="geometry" />
+        <mxCell id="source" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;ĐẦU VÀO TV2&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;Parquet + manifest&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;data/raw/ · 3 file 202504&lt;br&gt;Employment v4&lt;br&gt;Accessions / Separations v5&lt;br&gt;TV2 inventory + SHA-256&lt;br&gt;Bản nguồn giữ nguyên&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="78" y="345" width="320" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="etl" parent="1" vertex="1" value="&lt;font color=&quot;#1d5ca9&quot; style=&quot;font-size:14px&quot;&gt;&lt;b&gt;ĐÃ CHẠY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#13253b&quot; style=&quot;font-size:22px&quot;&gt;&lt;b&gt;Python ETL&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#475970&quot; style=&quot;font-size:16px&quot;&gt;Python 3.12 · .venv&lt;br&gt;PyArrow đọc từng batch&lt;br&gt;psycopg ghi bằng COPY&lt;br&gt;Log và ordinal từng dòng&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=15;fillColor=#ffffff;strokeColor=#b7cde5;strokeWidth=2;fontFamily=Arial;">
-          <mxGeometry x="367" y="270" width="276" height="183" as="geometry" />
+        <mxCell id="python" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;ETL G2&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;Python pipeline&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;PyArrow · batch đọc nguồn&lt;br&gt;psycopg · COPY&lt;br&gt;J00/J01/J02&lt;br&gt;J03/J04/J05/J06&lt;br&gt;Cấu hình .env cục bộ&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="460" y="345" width="330" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="pg" parent="1" vertex="1" value="&lt;font color=&quot;#1d5ca9&quot; style=&quot;font-size:14px&quot;&gt;&lt;b&gt;ĐÃ CHẠY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#13253b&quot; style=&quot;font-size:22px&quot;&gt;&lt;b&gt;PostgreSQL 18.7&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#475970&quot; style=&quot;font-size:16px&quot;&gt;Postgres.app · 127.0.0.1:5432&lt;br&gt;workforce_dw · 7 schema&lt;br&gt;staging: hai bảng prototype&lt;br&gt;ODS, DW và Mart: dự kiến&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=15;fillColor=#ffffff;strokeColor=#b7cde5;strokeWidth=2;fontFamily=Arial;">
-          <mxGeometry x="688" y="270" width="315" height="183" as="geometry" />
+        <mxCell id="postgres" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;DATABASE CỤC BỘ&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;PostgreSQL 18.7&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;127.0.0.1:5432 · workforce_dw&lt;br&gt;raw_meta / staging / ods&lt;br&gt;ref / audit&lt;br&gt;dw · 3 Fact + Dimension&lt;br&gt;mart · 2 bảng tổng hợp&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="852" y="345" width="440" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="bi" parent="1" vertex="1" value="&lt;font color=&quot;#880f63&quot; style=&quot;font-size:14px&quot;&gt;&lt;b&gt;DỰ KIẾN&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#13253b&quot; style=&quot;font-size:22px&quot;&gt;&lt;b&gt;Power BI Desktop&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#475970&quot; style=&quot;font-size:16px&quot;&gt;Đọc Mart sau khi khôi phục&lt;br&gt;PostgreSQL 18 trên Windows&lt;br&gt;Xác nhận cách bàn giao với TV4&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=15;fillColor=#ffffff;strokeColor=#d7b5cc;strokeWidth=2;fontFamily=Arial;">
-          <mxGeometry x="1080" y="270" width="314" height="183" as="geometry" />
+        <mxCell id="powerbi" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#8b3f75&quot;&gt;&lt;b&gt;CHỜ TÍCH HỢP&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;Power BI Desktop&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;Restore PostgreSQL 18&lt;br&gt;Đọc Mart + SQL tham chiếu&lt;br&gt;Month / agency + KPI&lt;br&gt;PBIX và ảnh model&lt;br&gt;TV5 đối soát độc lập&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1375" y="345" width="348" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="parquet-io" parent="1" edge="1" source="raw" target="etl" style="edgeStyle=none;strokeColor=#1d5ca9;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+        <mxCell id="read" parent="1" edge="1" source="source" target="python" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="copy-io" parent="1" edge="1" source="etl" target="pg" style="edgeStyle=none;strokeColor=#1d5ca9;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+        <mxCell id="read-label" parent="1" vertex="1" value="Parquet" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="402" y="465" width="65" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="copy" parent="1" edge="1" source="python" target="postgres" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bi-io" parent="1" edge="1" source="pg" target="bi" style="edgeStyle=none;strokeColor=#880f63;strokeWidth=2;endArrow=block;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+        <mxCell id="copy-label" parent="1" vertex="1" value="COPY" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="798" y="465" width="60" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="transfer" parent="1" edge="1" source="postgres" target="powerbi" style="edgeStyle=none;strokeColor=#8b3f75;strokeWidth=2;endArrow=block;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="mac-flow" parent="1" vertex="1" value="Luồng đã chạy   •   Đọc Parquet cục bộ → ghi qua psycopg → đếm bằng SQL" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=16;fontColor=#1d5ca9;fontStyle=1;">
-          <mxGeometry x="67" y="480" width="940" height="24" as="geometry" />
+        <mxCell id="pgfoot" parent="1" vertex="1" value="Audit ghi run_id, file_id, số dòng, thời gian, trạng thái và ngoại lệ DQ." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=20;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="80" y="699" width="1200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bi-flow" parent="1" vertex="1" value="Bản sao DB qua kênh riêng" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=16;fontColor=#880f63;fontStyle=1;">
-          <mxGeometry x="1080" y="480" width="318" height="24" as="geometry" />
+        <mxCell id="scope" parent="1" vertex="1" value="DW và Mart là thiết kế MVP đề xuất, chờ TV4 duyệt grain và bus matrix." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=20;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="80" y="741" width="1200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bi-flow-2" parent="1" vertex="1" value="TV4 khôi phục trên Windows" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#475970;fontStyle=0;">
-          <mxGeometry x="1080" y="506" width="318" height="23" as="geometry" />
+        <mxCell id="repository" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GÓI REVIEW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;Repo GitHub · tv3/g2-pipeline&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;Mã ETL, DDL, log, SQL checks, sơ đồ và hướng dẫn bàn giao có phiên bản.&lt;br&gt;TV4 xác nhận restore / Power BI. TV5 chạy kiểm độc lập và kết luận G2.&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="52" y="875" width="1696" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="handoff" parent="1" vertex="1" value="&lt;font color=&quot;#1d5ca9&quot; style=&quot;font-size:14px&quot;&gt;&lt;b&gt;GÓI REVIEW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#13253b&quot; style=&quot;font-size:22px&quot;&gt;&lt;b&gt;GitHub / repo nhóm&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#475970&quot; style=&quot;font-size:16px&quot;&gt;Mã ETL, cấu hình mẫu, SQL, log và tài liệu  ·  Parquet, .env và bản sao database lưu riêng&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=15;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=2;fontFamily=Arial;">
-          <mxGeometry x="42" y="585" width="1376" height="121" as="geometry" />
-        </mxCell>
-        <mxCell id="foot" parent="1" vertex="1" value="Luồng nét liền đã chạy trên Mac. Luồng nét đứt là phương án bàn giao dự kiến." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#475970;fontStyle=0;">
-          <mxGeometry x="42" y="726" width="1300" height="23" as="geometry" />
+        <mxCell id="footer" parent="1" vertex="1" value="Nét đứt biểu thị bàn giao Windows chưa được xác nhận. Bằng chứng chạy nằm trong reports và evidence/TV3_week2." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=18;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="52" y="1070" width="1696" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

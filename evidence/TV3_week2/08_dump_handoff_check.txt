@@ -1,0 +1,13 @@
+Date: 2026-11-23
+Archive: handoff/TV3_G2/workforce_g2.dump
+Bytes: 20918
+SHA-256: 837729db8c478d0cd8a08fa7aebb0b1154f67fbfeeeff7e31483ab0a48b3bcfa
+Same bytes as original reviewed transfer archive: PASS
+PASS dw.dim_month 3 rows
+PASS dw.dim_agency 123 rows
+PASS dw.dim_action_category 14 rows
+PASS mart.workforce_monthly 114 rows
+PASS mart.personnel_flows_monthly 88 rows
+PASS restored K01/K06/K07: 2271969 7153 24088
+PASS temporary restore database removed
+Windows restore and SQL-DAX review: pending TV4/TV5

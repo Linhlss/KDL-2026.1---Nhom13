@@ -1,0 +1,137 @@
+342ae0d5ab9e446ea63ce346f9f993c10b9eb838
+Final clean checkout commit: 342ae0d5ab9e446ea63ce346f9f993c10b9eb838
+
+Local Markdown link targets checked: 323
+PASS all local Markdown link targets exist
+PASS committed ETL hashes match the successful real 12-file / May-rerun run
+COMMAND: python tests/g2_source_checks.py --config <reviewer-local-config>
+SUCCESS employment_202504_v5.parquet 2 rows
+SKIPPED employment_202504_v5.parquet 2 rows
+PASS identical source rerun skips J01/J02 without duplicating rows
+PASS missing file records FAIL and preserves another valid source
+PASS checksum mismatch records FAIL and preserves the loaded source
+PASS manifest version inconsistent with filename fails before a source can be skipped
+PASS changed hash under an existing filename is rejected without replacing active data
+PASS unsupported non-text source schema records FAIL before registration and preserves valid data
+PASS COPY failure rolls back metadata/Staging/ODS while both FAIL audit records survive
+PASS no unfinished audit runs after handled failures
+PASS temporary database and Parquet fixtures removed
+PASS exit code 0: g2_source_checks.py (intentional failure fixtures are caught assertions, not pipeline baseline failures)
+COMMAND: python tests/g2_model_checks.py --config <reviewer-local-config>
+PASS ambiguous duplicate agency lookup preserves rows under Unknown0
+PASS building another month preserves prior Fact and Mart totals
+PASS repeat model build preserves totals without duplicate Facts
+PASS invalid count blocks publish and preserves previous Mart state
+PASS temporary database removed
+PASS exit code 0: g2_model_checks.py (intentional failure fixtures are caught assertions, not pipeline baseline failures)
+COMMAND: python tests/g2_replay_checks.py --config <reviewer-local-config>
+PASS CLI > dotenv > legacy database/raw-directory defaults
+PASS direct checker accepts all three verified files in flat and family directories
+PASS direct checker rejects invalid/absent months, missing/duplicate families, missing file and checksum mismatch
+SUCCESS employment_202504_v5.parquet 2 rows
+SUCCESS accessions_202504_v5.parquet 2 rows
+SUCCESS separations_202504_v5.parquet 2 rows
+PASS J06 rejects zero, one and two LOADED families, exports FAIL coverage and records audit FAIL
+PASS complete source coverage alone cannot pass missing Fact/Mart reconciliation
+PASS J06 passes only complete matching layers and excludes inactive/unloaded sources
+PASS J06 valid inventory month without loaded data fails with audit evidence
+PASS source-direct compares all three inputs, rejects absent/invalid months and fails mismatches under python -O
+PASS --report-dir keeps reviewer outputs separate and handed-off report hashes unchanged
+PASS disposable database, Parquet fixtures and reviewer reports removed
+PASS exit code 0: g2_replay_checks.py (intentional failure fixtures are caught assertions, not pipeline baseline failures)
+COMMAND: python tests/g3_full_checks.py --config <reviewer-local-config>
+SUCCESS employment_202503_v5.parquet 2 rows
+SUCCESS accessions_202503_v5.parquet 2 rows
+SUCCESS separations_202503_v5.parquet 2 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202503", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+SUCCESS employment_202504_v5.parquet 2 rows
+SUCCESS accessions_202504_v5.parquet 2 rows
+SUCCESS separations_202504_v5.parquet 2 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+SUCCESS employment_202505_v5.parquet 2 rows
+SUCCESS accessions_202505_v5.parquet 2 rows
+SUCCESS separations_202505_v5.parquet 2 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+SUCCESS employment_202506_v5.parquet 2 rows
+SUCCESS accessions_202506_v5.parquet 2 rows
+SUCCESS separations_202506_v5.parquet 2 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202506", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
+SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT dw.fact_employment_snapshot 8 6a61acf21283c2b0290b3cd057ac5abb7ecf16147f5e14a9ba269d6366cae439
+SNAPSHOT staging.accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT ods.ods_accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT dw.fact_accessions 8 d00713f498898acb198ddfc32be1a359e55b694edfd1ac894d9c7e65ce1fc7e9
+SNAPSHOT staging.separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT ods.ods_separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT dw.fact_separations 8 063340c47cd4555e0ef84a03ec7f10a552b22bd67f7f68e446205d4d0a2e9750
+SNAPSHOT dw.dim_month 5 e75e1a75293aaaff573424bbdb1898f4a214b031b69e1e3ded036e373039f941
+SNAPSHOT dw.dim_agency 493 ed1bd9163e6d7e38923ec08207269a75ecd44fb8d62057bec28bccd604bc2666
+SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
+SNAPSHOT mart.workforce_monthly 8 c88f312687fa59ee9d6582389143b5f4ab1b2f1ef5177bd28194277f4f5aa013
+SNAPSHOT mart.personnel_flows_monthly 8 23b3a574987b9fdbdc4e30c45fd9aa27668a712e8d37ad7a4814631208e1a88b
+SKIPPED employment_202505_v5.parquet 2 rows
+SKIPPED accessions_202505_v5.parquet 2 rows
+SKIPPED separations_202505_v5.parquet 2 rows
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "accessions": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}, "separations": {"rows": 2, "measure_sum": 2, "unknown_agency_rows": 1}}, "marts": {"headcount": 2, "accessions": 2, "separations": 2, "workforce_groups": 2, "flow_groups": 2}}
+SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
+SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT dw.fact_employment_snapshot 8 6a61acf21283c2b0290b3cd057ac5abb7ecf16147f5e14a9ba269d6366cae439
+SNAPSHOT staging.accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT ods.ods_accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT dw.fact_accessions 8 d00713f498898acb198ddfc32be1a359e55b694edfd1ac894d9c7e65ce1fc7e9
+SNAPSHOT staging.separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT ods.ods_separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT dw.fact_separations 8 063340c47cd4555e0ef84a03ec7f10a552b22bd67f7f68e446205d4d0a2e9750
+SNAPSHOT dw.dim_month 5 e75e1a75293aaaff573424bbdb1898f4a214b031b69e1e3ded036e373039f941
+SNAPSHOT dw.dim_agency 493 ed1bd9163e6d7e38923ec08207269a75ecd44fb8d62057bec28bccd604bc2666
+SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
+SNAPSHOT mart.workforce_monthly 8 c88f312687fa59ee9d6582389143b5f4ab1b2f1ef5177bd28194277f4f5aa013
+SNAPSHOT mart.personnel_flows_monthly 8 23b3a574987b9fdbdc4e30c45fd9aa27668a712e8d37ad7a4814631208e1a88b
+PASS May rerun: full baseline identities, stable Dimension keys, all Facts and Marts unchanged
+PASS 152 direct raw/ODS, ordinal, time-role and FK checks; Dimension uniqueness and constraints validated
+Completed G3 technical run; TV4 model approval / TV5 independent QA pending
+PASS four months / 12 files, report coverage, 84 technical PASS + 12 pending DAX, May skip and all-table business digests
+SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
+SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT dw.fact_employment_snapshot 8 6a61acf21283c2b0290b3cd057ac5abb7ecf16147f5e14a9ba269d6366cae439
+SNAPSHOT staging.accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT ods.ods_accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT dw.fact_accessions 8 d00713f498898acb198ddfc32be1a359e55b694edfd1ac894d9c7e65ce1fc7e9
+SNAPSHOT staging.separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT ods.ods_separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT dw.fact_separations 8 063340c47cd4555e0ef84a03ec7f10a552b22bd67f7f68e446205d4d0a2e9750
+SNAPSHOT dw.dim_month 5 e75e1a75293aaaff573424bbdb1898f4a214b031b69e1e3ded036e373039f941
+SNAPSHOT dw.dim_agency 493 ed1bd9163e6d7e38923ec08207269a75ecd44fb8d62057bec28bccd604bc2666
+SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
+SNAPSHOT mart.workforce_monthly 8 c88f312687fa59ee9d6582389143b5f4ab1b2f1ef5177bd28194277f4f5aa013
+SNAPSHOT mart.personnel_flows_monthly 8 23b3a574987b9fdbdc4e30c45fd9aa27668a712e8d37ad7a4814631208e1a88b
+SNAPSHOT raw_meta.source_file 12 c1ed746d60b2123a3586af9904d4b3a4818ed386e793738ffd8fcf2f7048a220
+SNAPSHOT staging.employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT ods.ods_employment_record 8 cb6482ab10c29a7c4783d818509331435148898a6383cfb7e82f7e5476cef4d2
+SNAPSHOT dw.fact_employment_snapshot 8 6a61acf21283c2b0290b3cd057ac5abb7ecf16147f5e14a9ba269d6366cae439
+SNAPSHOT staging.accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT ods.ods_accessions_record 8 c5cfb0b480e8ffadce82b1f4a6857f68b2134074be7f1375623f8da1d6e59027
+SNAPSHOT dw.fact_accessions 8 3efc08f9719721b7db9dc4cfe79a5f9cb7949ca17909dd6363f3188e630483e4
+SNAPSHOT staging.separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT ods.ods_separations_record 8 994c26c9a0b8150c86ce173b8e9ca116a09b2ebd1f31dcfed8a01d3ac7b00665
+SNAPSHOT dw.fact_separations 8 063340c47cd4555e0ef84a03ec7f10a552b22bd67f7f68e446205d4d0a2e9750
+SNAPSHOT dw.dim_month 5 e75e1a75293aaaff573424bbdb1898f4a214b031b69e1e3ded036e373039f941
+SNAPSHOT dw.dim_agency 493 ed1bd9163e6d7e38923ec08207269a75ecd44fb8d62057bec28bccd604bc2666
+SNAPSHOT dw.dim_action_category 53 aadbb056c50c6ca0a9fb10f717c0b3f1f8210b7e49e137380464f3a5158f865c
+SNAPSHOT mart.workforce_monthly 8 c88f312687fa59ee9d6582389143b5f4ab1b2f1ef5177bd28194277f4f5aa013
+SNAPSHOT mart.personnel_flows_monthly 8 23b3a574987b9fdbdc4e30c45fd9aa27668a712e8d37ad7a4814631208e1a88b
+PASS same-count business mutation is detected by stable ordered typed digests
+PASS count != 1 blocks model publication and preserves existing Mart
+PASS failed run exports J00 FAIL, records FAIL manifest and preserves previously valid data
+PASS disposable four-month fixtures and database removed
+PASS exit code 0: g3_full_checks.py (intentional failure fixtures are caught assertions, not pipeline baseline failures)
+PASS documented G3, baseline receiver and private handoff CLI entrypoints load from clean checkout
+
+
+PASS checkout remains clean after all four regressions and compilation
+handoff/TV3_G2/workforce_g2.dump
+PASS no G3 raw Parquet, local config or G3 dump committed; existing G2 archive is the only historical exception

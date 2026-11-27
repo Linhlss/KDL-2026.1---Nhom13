@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="09_dw_physical_overall" name="Mô hình vật lý tổng thể G2">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2600" pageHeight="2230" background="#f7f9fc">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="project" parent="1" vertex="1" value="NHÓM 13  /  TV3 G2  /  THÁNG 04 2025" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+          <mxGeometry x="52" y="30" width="2496" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" vertex="1" value="Mô hình vật lý tổng thể G2" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=39;fontColor=#16273d;fontStyle=1;">
+          <mxGeometry x="52" y="75" width="2496" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" vertex="1" value="Khóa, grain, vai trò tháng và các bảng thực thi theo DDL TV3 · Thiết kế đề xuất chờ TV4 duyệt" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=21;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="52" y="135" width="2496" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="source_file" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;FILE / VERSION&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;raw_meta.source_file&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK file_id bigint&lt;br&gt;family · report_month · version&lt;br&gt;filename UNIQUE · sha256 UNIQUE&lt;br&gt;schema_hash · size_bytes · row_count&lt;br&gt;is_active · status&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="50" y="235" width="550" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="month" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;DIMENSION THỜI GIAN&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.dim_month&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK month_key integer (YYYYMM)&lt;br&gt;yyyymm UNIQUE&lt;br&gt;calendar_year · calendar_month&lt;br&gt;Unknown month_key = 0&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="700" y="235" width="550" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="agency" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;DERIVED LOOKUP THEO KỲ&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.dim_agency&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK agency_key bigint&lt;br&gt;FK month_key → dim_month&lt;br&gt;UQ (month_key, agency_code)&lt;br&gt;agency_label · provenance&lt;br&gt;verification_status = PARTIAL&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1350" y="235" width="550" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="category" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;CATEGORY ACCESSIONS / SEPARATIONS&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.dim_action_category&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;PK category_key bigint&lt;br&gt;FK month_key → dim_month&lt;br&gt;UQ (month_key, family, category_code)&lt;br&gt;category_label · provenance&lt;br&gt;verification_status = PARTIAL&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="2000" y="235" width="550" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="staging" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN MỖI DÒNG NGUỒN&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;staging · 3 bảng record&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;employment_record&lt;br&gt;accessions_record · separations_record&lt;br&gt;PK (file_id, source_row_ordinal)&lt;br&gt;FK file_id → source_file&lt;br&gt;64 / 68 / 69 cột raw dạng text&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="50" y="650" width="550" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ods" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;LINEAGE 1-BASED&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;ods · 3 bảng nguồn&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;ods_employment_record&lt;br&gt;ods_accessions_record&lt;br&gt;ods_separations_record&lt;br&gt;PK (file_id, source_row_ordinal)&lt;br&gt;FK file_id → source_file&lt;br&gt;Raw + report_month + effective_month&lt;br&gt;count_value · pay_value · pay_state&lt;br&gt;dq_flags text[]&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="50" y="1010" width="550" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_e" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN 1 FACT ROW / 1 SOURCE ROW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.fact_employment_snapshot&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;PK (file_id, source_row_ordinal)&lt;br&gt;FK cùng khóa → ods_employment_record&lt;br&gt;FK report_month_key → dim_month&lt;br&gt;FK snapshot_month_key → dim_month&lt;br&gt;FK agency_key → dim_agency&lt;br&gt;agency_code · agency_lookup_state&lt;br&gt;count_value bigint · dq_flags text[]&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="700" y="850" width="550" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_a" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN 1 FACT ROW / 1 SOURCE ROW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.fact_accessions&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;PK (file_id, source_row_ordinal)&lt;br&gt;FK cùng khóa → ods_accessions_record&lt;br&gt;FK report_month_key → dim_month&lt;br&gt;FK effective_month_key → dim_month&lt;br&gt;FK agency_key → dim_agency&lt;br&gt;FK category_key → dim_action_category&lt;br&gt;agency / category code + lookup_state&lt;br&gt;count_value bigint · dq_flags text[]&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1350" y="850" width="550" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_s" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN 1 FACT ROW / 1 SOURCE ROW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;dw.fact_separations&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;PK (file_id, source_row_ordinal)&lt;br&gt;FK cùng khóa → ods_separations_record&lt;br&gt;FK report_month_key → dim_month&lt;br&gt;FK effective_month_key → dim_month&lt;br&gt;FK agency_key → dim_agency&lt;br&gt;FK category_key → dim_action_category&lt;br&gt;agency / category code + lookup_state&lt;br&gt;count_value bigint · dq_flags text[]&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="2000" y="850" width="550" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="workforce" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN SNAPSHOT MONTH + AGENCY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;mart.workforce_monthly&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (month_key, agency_key)&lt;br&gt;FK month_key → dim_month&lt;br&gt;FK agency_key → dim_agency&lt;br&gt;headcount · source_rows bigint&lt;br&gt;agency_code · agency_label&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="900" y="1580" width="650" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="flows" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;GRAIN REPORT MONTH + AGENCY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;mart.personnel_flows_monthly&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (month_key, agency_key)&lt;br&gt;FK month_key → dim_month · agency_key → dim_agency&lt;br&gt;accessions · separations · net_actions · source_rows&lt;br&gt;agency_code · agency_label&lt;br&gt;Tổng hợp từng Fact event rồi UNION ALL&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1750" y="1580" width="800" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;LOOKUP / PHẠM VI THAM CHIẾU PARTIAL&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;ref.derived_lookup&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:19px&quot; color=&quot;#52647a&quot;&gt;UQ (relation, report_month, code)&lt;br&gt;Partial unique index khi load_status = READY&lt;br&gt;Nguồn CSV TV2 · provenance DERIVED_LOOKUP&lt;br&gt;Dùng nhãn duy nhất; mã khác vào Unknown&lt;br&gt;Unknown Dimension key = 0&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="50" y="1580" width="650" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="audit_run" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;AUDIT LƯỢT CHẠY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;audit.load_run&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK run_id uuid · FK file_id → raw_meta.source_file&lt;br&gt;job · expected_rows · actual_rows · duration_seconds · code_version&lt;br&gt;status RUNNING / SUCCESS / SKIPPED / FAIL · error&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="50" y="1940" width="1200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="audit_dq" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#235eaa&quot;&gt;&lt;b&gt;AUDIT CHẤT LƯỢNG&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;audit.dq_issue&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK issue_id bigint · FK run_id → audit.load_run · FK file_id → source_file&lt;br&gt;source_row_ordinal · column_name · rule_id · details · affected_rows&lt;br&gt;Ngoại lệ giữ được vị trí nguồn và lượt chạy tạo ra phát hiện.&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#c4d1e1;strokeWidth=2;fontFamily=Arial;">
+          <mxGeometry x="1350" y="1940" width="1200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="month_e" parent="1" edge="1" source="month" target="fact_e" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="month_a" parent="1" edge="1" source="month" target="fact_a" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.2;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="975" y="555" />
+              <mxPoint x="1460" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="month_s" parent="1" edge="1" source="month" target="fact_s" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.2;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="975" y="555" />
+              <mxPoint x="2110" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agency_e" parent="1" edge="1" source="agency" target="fact_e" style="edgeStyle=none;strokeColor=#28756d;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.7;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1625" y="620" />
+              <mxPoint x="1085" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agency_a" parent="1" edge="1" source="agency" target="fact_a" style="edgeStyle=none;strokeColor=#28756d;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agency_s" parent="1" edge="1" source="agency" target="fact_s" style="edgeStyle=none;strokeColor=#28756d;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1625" y="620" />
+              <mxPoint x="2275" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="category_a" parent="1" edge="1" source="category" target="fact_a" style="edgeStyle=none;strokeColor=#8b3f75;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.7;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2275" y="685" />
+              <mxPoint x="1735" y="685" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="category_s" parent="1" edge="1" source="category" target="fact_s" style="edgeStyle=none;strokeColor=#8b3f75;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.8;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2275" y="685" />
+              <mxPoint x="2440" y="685" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="file_staging" parent="1" edge="1" source="source_file" target="staging" style="edgeStyle=none;strokeColor=#52647a;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="file_ods" parent="1" edge="1" source="source_file" target="ods" style="edgeStyle=none;strokeColor=#52647a;strokeWidth=2;endArrow=block;dashed=0;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="25" y="368" />
+              <mxPoint x="25" y="1175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ods_facte" parent="1" edge="1" source="ods" target="fact_e" style="edgeStyle=none;strokeColor=#52647a;strokeWidth=2;endArrow=block;dashed=0;exitX=1;exitY=0.355;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="1127" />
+              <mxPoint x="650" y="1045" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ods_facta" parent="1" edge="1" source="ods" target="fact_a" style="edgeStyle=none;strokeColor=#52647a;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=0;entryY=0.82;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="1420" />
+              <mxPoint x="1300" y="1420" />
+              <mxPoint x="1300" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ods_facts" parent="1" edge="1" source="ods" target="fact_s" style="edgeStyle=none;strokeColor=#52647a;strokeWidth=2;endArrow=block;dashed=0;exitX=0.5;exitY=1;entryX=1;entryY=0.82;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="1420" />
+              <mxPoint x="2580" y="1420" />
+              <mxPoint x="2580" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg_e" parent="1" edge="1" source="fact_e" target="workforce" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="975" y="1480" />
+              <mxPoint x="1225" y="1480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg_a" parent="1" edge="1" source="fact_a" target="flows" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.33;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1625" y="1490" />
+              <mxPoint x="2015" y="1490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg_s" parent="1" edge="1" source="fact_s" target="flows" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.656;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fklegend" parent="1" vertex="1" value="Nét liền 1 → n theo FK, lineage ODS → Fact là 1 → 0..1. Nét đứt là tổng hợp. Trường raw đầy đủ nằm trong SQL DDL." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=20;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="50" y="2180" width="2500" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

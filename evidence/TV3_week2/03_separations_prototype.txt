@@ -1,0 +1,1 @@
+PASS staging.prototype_separations run=0c1e0836-be6c-414b-998d-554f07ebf9b2 expected=24088 sql_count=24088 seconds=0.350633 log=reports/TV3_week2_prototype_log.csv

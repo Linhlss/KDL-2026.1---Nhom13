@@ -1,0 +1,21 @@
+Verified at 2026-11-27T13:26:27.608724+00:00 by TV1 (macOS, pg_restore (PostgreSQL) 17.12 Homebrew)
+Archive: handoff/TV3_G3/workforce_g3.dump
+Bytes: 30343
+SHA-256: ec3ddf32a29cadb8e8c2b974f79d53959b6bcda1d49017925b46a2ed0aa94cef
+PASS SHA-256 matches handoff/TV3_G3/workforce_g3.dump.sha256
+PASS dw.dim_month: expected=9, actual=9
+PASS dw.dim_agency: expected=521, actual=521
+PASS dw.dim_action_category: expected=53, actual=53
+PASS mart.workforce_monthly: expected=510, actual=510
+PASS mart.personnel_flows_monthly: expected=361, actual=361
+PASS 202503 K01=2289192 K06=4862 K07=22061
+PASS 202504 K01=2271969 K06=7153 K07=24088
+PASS 202505 K01=2255056 K06=8813 K07=26415
+PASS 202506 K01=2241780 K06=9954 K07=19947
+PASS agency Unknown (key 0): headcount=0, accessions+separations=0
+PASS 202504 TR = DEPARTMENT OF THE TREASURY [REVIEWED_TV2] headcount=114791
+PASS 202504 IN = DEPARTMENT OF THE INTERIOR [REVIEWED_TV2] headcount=63962
+PASS 202504 NN = NATIONAL AERONAUTICS AND SPACE ADMINISTRATION [REVIEWED_TV2] headcount=17868
+PASS 202504 HU = DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT [REVIEWED_TV2] headcount=8581
+PASS disposable restore database removed
+Windows restore/Power BI and SQL-DAX confirmation remain with TV4/TV5

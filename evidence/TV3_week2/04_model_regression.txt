@@ -1,0 +1,17 @@
+Synthetic regression checks; separate from real 202504 acceptance evidence.
+Command: .venv/bin/python tests/g2_model_checks.py
+PASS ambiguous duplicate agency lookup preserves rows under Unknown0
+PASS building another month preserves prior Fact and Mart totals
+PASS repeat model build preserves totals without duplicate Facts
+PASS invalid count blocks publish and preserves previous Mart state
+PASS temporary database removed
+Command: .venv/bin/python tests/g2_source_checks.py
+SUCCESS employment_202504_v5.parquet 2 rows
+SKIPPED employment_202504_v5.parquet 2 rows
+PASS identical source rerun skips J01/J02 without duplicating rows
+PASS missing file records FAIL and preserves another valid source
+PASS checksum mismatch records FAIL and preserves the loaded source
+PASS manifest version inconsistent with filename fails before a source can be skipped
+PASS COPY failure rolls back metadata/Staging/ODS while both FAIL audit records survive
+PASS no unfinished audit runs after handled failures
+PASS temporary database and Parquet fixtures removed

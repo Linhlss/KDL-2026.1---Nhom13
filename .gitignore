@@ -37,3 +37,9 @@ node_modules/
 .cache/
 tmp/
 reports/TV3_week1_load_log.local.csv
+.qa/
+
+# Reviewed aggregate-only MVP archive for TV4
+!/handoff/TV3_G2/workforce_g2.dump
+# Reviewed aggregate-only full-period archive requested for TV4
+!/handoff/TV3_G3/workforce_g3.dump

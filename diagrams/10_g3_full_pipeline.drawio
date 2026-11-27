@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="G3 full pipeline" id="g3">
+    <mxGraphModel page="1" pageWidth="1280" pageHeight="660">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="raw" parent="1" vertex="1" value="12 Parquet TV2&lt;br&gt;&lt;br&gt;202503–202506&lt;br&gt;SHA-256 + schema/bytes&lt;br&gt;Raw ngoài Git&lt;br&gt;Inventory + manifest" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="40" y="145" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="source" parent="1" vertex="1" value="J00 → J01 → J02&lt;br&gt;&lt;br&gt;Batch/COPY theo file&lt;br&gt;Staging → ODS + DQ&lt;br&gt;file_id + ordinal&lt;br&gt;FAIL rollback; audit còn" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="350" y="145" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="model" parent="1" vertex="1" value="J03 → J04 → J05&lt;br&gt;&lt;br&gt;3 Dim + 3 Fact&lt;br&gt;count_value = 1&lt;br&gt;2 Mart tháng/cơ quan&lt;br&gt;Upsert key; UNION ALL" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="660" y="145" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="check" parent="1" vertex="1" value="J06 + quality check&lt;br&gt;&lt;br&gt;Source → KPI từng kỳ&lt;br&gt;Raw–ODS + time roles&lt;br&gt;PK/FK + Unknown&lt;br&gt;DAX vẫn PENDING" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="970" y="145" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="handoff" parent="1" vertex="1" value="TV4 / TV5 nhận review&lt;br&gt;&lt;br&gt;TV4 Windows/PBIX&lt;br&gt;TV4 duyệt catalog/grain&lt;br&gt;TV5 replay độc lập&lt;br&gt;G3 chờ TV1 chốt" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="40" y="390" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="reports" parent="1" vertex="1" value="reports/week3 hoặc QA&lt;br&gt;&lt;br&gt;12-file counts + audit&lt;br&gt;Before/after + exceptions&lt;br&gt;Catalog quan sát + SQL&lt;br&gt;Run manifest + code hash" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="350" y="390" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rerun" parent="1" vertex="1" value="Chạy lại May thật&lt;br&gt;&lt;br&gt;J00–J06 đủ 3 family&lt;br&gt;Digest có thứ tự PK&lt;br&gt;So toàn bộ Dim/Fact/Mart&lt;br&gt;03/04/06 phải giữ nguyên" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="660" y="390" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="transfer" parent="1" vertex="1" value="Bản DB chuyển riêng&lt;br&gt;&lt;br&gt;3 Dim + 2 Mart đủ kỳ&lt;br&gt;Dump + SHA-256 đã kiểm&lt;br&gt;Restore kiểm đếm/KPI&lt;br&gt;Repo: handoff/TV3_G3" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+          <mxGeometry x="970" y="390" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="flow0" parent="1" edge="1" source="raw" target="source" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow1" parent="1" edge="1" source="source" target="model" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow2" parent="1" edge="1" source="model" target="check" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="loop" parent="1" edge="1" source="rerun" target="model" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="outputs" parent="1" edge="1" source="check" target="transfer" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="report" parent="1" edge="1" source="rerun" target="reports" style="endArrow=block;strokeColor=#3564a0;dashed=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="review" parent="1" edge="1" source="reports" target="handoff" style="endArrow=block;strokeColor=#3564a0;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
