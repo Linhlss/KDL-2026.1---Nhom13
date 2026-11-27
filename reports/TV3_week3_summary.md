@@ -26,7 +26,7 @@ Tổng dòng Fact: Employment 9,057,997; Accessions 30,782; Separations 92,511. 
 
 Dimension thực đo: dw.dim_month = 9 dòng, dw.dim_agency = 493 dòng, dw.dim_action_category = 53 dòng. Unknown key=0; nhãn dẫn xuất PARTIAL. Các tháng hiệu lực ngoài bốn kỳ vẫn có Dimension; không cắt event.
 
-**Bàn giao riêng:** `db_dumps/workforce_g3.dump` cục bộ, ba Dimension và hai Mart; [bằng chứng chuyển/restore](../evidence/TV3_week3/06_transfer_restore.txt) ghi SHA-256, 9/493/53/486/340 dòng và KPI cả bốn kỳ. Đã so toàn bộ nội dung bảng sau restore trên PostgreSQL 18 cùng máy; Windows và Power BI chưa chạy. Dump G3/raw/config không commit.
+**Bàn giao TV4:** [workforce_g3.dump](../handoff/TV3_G3/workforce_g3.dump), [SHA-256](../handoff/TV3_G3/workforce_g3.dump.sha256) và [lệnh restore](../handoff/TV3_G3/README.md) đã có trong repo; ba Dimension và hai Mart; [bằng chứng chuyển/restore](../evidence/TV3_week3/06_transfer_restore.txt) ghi SHA-256, 9/493/53/486/340 dòng và KPI cả bốn kỳ. Đã so toàn bộ nội dung bảng sau restore trên PostgreSQL 18 cùng máy; Windows và Power BI chưa chạy. Raw/config và dump cục bộ không commit; ngoại lệ đúng bản aggregate G3 đã kiểm trong handoff/TV3_G3/.
 
 **Kiểm thử lỗi:** fixture QA kiểm file thiếu, checksum/version/hash thay dưới cùng tên, schema không hỗ trợ, lỗi COPY giữa transaction, rollback và audit FAIL; model chặn count != 1 và giữ Mart cũ. Test mới phát hiện thay đổi trường nghiệp vụ dù tổng không đổi. Không sửa raw thật; replacement thành công với file republish thật NOT_TESTED.
 

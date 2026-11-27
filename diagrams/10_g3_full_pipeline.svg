@@ -53,9 +53,9 @@
   <rect x="970" y="390" width="270" height="170" rx="10" fill="white" stroke="#c5d2e2" stroke-width="2" />
   <text x="986" y="422" fill="#172a43" font-family="Arial, sans-serif" font-size="21" font-weight="700">Bản DB chuyển riêng</text>
   <text x="986" y="457" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">3 Dim + 2 Mart đủ kỳ</text>
-  <text x="986" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Dump + SHA-256 local</text>
+  <text x="986" y="484" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Dump + SHA-256 đã kiểm</text>
   <text x="986" y="511" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Restore kiểm đếm/KPI</text>
-  <text x="986" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Không commit dump G3</text>
+  <text x="986" y="538" fill="#172a43" font-family="Arial, sans-serif" font-size="17" font-weight="400">Repo: handoff/TV3_G3</text>
   <path d="M310 230 L350 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
   <path d="M620 230 L660 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />
   <path d="M930 230 L970 230" fill="none" stroke="#3564a0" stroke-width="2" marker-end="url(#arrow)" />

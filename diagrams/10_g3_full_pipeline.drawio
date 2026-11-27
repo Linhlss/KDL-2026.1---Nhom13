@@ -26,7 +26,7 @@
         <mxCell id="rerun" parent="1" vertex="1" value="Chạy lại May thật&lt;br&gt;&lt;br&gt;J00–J06 đủ 3 family&lt;br&gt;Digest có thứ tự PK&lt;br&gt;So toàn bộ Dim/Fact/Mart&lt;br&gt;03/04/06 phải giữ nguyên" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
           <mxGeometry x="660" y="390" width="270" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="transfer" parent="1" vertex="1" value="Bản DB chuyển riêng&lt;br&gt;&lt;br&gt;3 Dim + 2 Mart đủ kỳ&lt;br&gt;Dump + SHA-256 local&lt;br&gt;Restore kiểm đếm/KPI&lt;br&gt;Không commit dump G3" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
+        <mxCell id="transfer" parent="1" vertex="1" value="Bản DB chuyển riêng&lt;br&gt;&lt;br&gt;3 Dim + 2 Mart đủ kỳ&lt;br&gt;Dump + SHA-256 đã kiểm&lt;br&gt;Restore kiểm đếm/KPI&lt;br&gt;Repo: handoff/TV3_G3" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=15;fontSize=17;fillColor=#ffffff;strokeColor=#c5d2e2;">
           <mxGeometry x="970" y="390" width="270" height="170" as="geometry" />
         </mxCell>
         <mxCell id="flow0" parent="1" edge="1" source="raw" target="source" style="endArrow=block;strokeColor=#3564a0;dashed=0;">

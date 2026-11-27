@@ -4,7 +4,7 @@ Chạy ở gốc repo, nhánh `tv3/g3-full-pipeline`. Nhánh này kế thừa G2
 
 ## Môi trường và nhận nguồn
 
-Python 3.12, PostgreSQL 18 và [requirements](../requirements.txt). Mac dùng `.venv/bin/python`; Windows dùng `.\.venv\Scripts\python.exe`. [Hướng dẫn Windows G2](../handoff/TV3_G2/TV5_REPLAY.md) có cách tạo venv và cấu hình PostgreSQL; lệnh G3 dưới đây thay entrypoint và phạm vi nguồn. Cấu hình cục bộ theo [mẫu](../configs/.env.example). Không commit mật khẩu, raw hoặc dump G3.
+Python 3.12, PostgreSQL 18 và [requirements](../requirements.txt). Mac dùng `.venv/bin/python`; Windows dùng `.\.venv\Scripts\python.exe`. [Hướng dẫn Windows G2](../handoff/TV3_G2/TV5_REPLAY.md) có cách tạo venv và cấu hình PostgreSQL; lệnh G3 dưới đây thay entrypoint và phạm vi nguồn. Cấu hình cục bộ theo [mẫu](../configs/.env.example). Không commit mật khẩu/raw hoặc dump tùy ý; bản bàn giao G3 đã kiểm được theo dõi riêng tại [handoff/TV3_G3](../handoff/TV3_G3/README.md).
 
 ```sh
 python3.12 -m venv .venv
@@ -106,7 +106,7 @@ Hash/version/tên file đổi phải dừng để TV2/TV3 xác minh. Registry hi
 
 ## Bàn giao TV4 và TV5
 
-Tạo bản aggregate-only riêng bằng script đã có; file dump G3 chỉ lưu cục bộ, không thêm ngoại lệ Git mới:
+TV4 tải ngay [workforce_g3.dump và SHA-256 trong repo](../handoff/TV3_G3/README.md). Bản này được bổ sung theo yêu cầu bàn giao, khớp dump đã kiểm. Khi cần tạo lại bản aggregate-only để review, dùng script đã có và xuất cục bộ:
 
 ```sh
 mkdir -p db_dumps
@@ -115,6 +115,6 @@ pg_dump -h 127.0.0.1 -U YOUR_ROLE -d workforce_g3_transfer -Fc --no-owner --no-a
 shasum -a 256 db_dumps/workforce_g3.dump
 ```
 
-Tạo `db_dumps/` trước khi xuất, chọn target mới/rỗng. Ghi checksum/PG version và count; chuyển dump qua kênh riêng theo nhóm. Windows dùng PostgreSQL 18, createdb mới và pg_restore --no-owner --no-acl --exit-on-error. Lệnh chi tiết và bốn relationship Single giống [gói TV4](../handoff/TV3_G2/README.md), nhưng thay dump/database/tổng count bằng bằng chứng G3. Không dùng dump MVP tháng 04 để đại diện G3 đủ bốn kỳ.
+Tạo `db_dumps/` trước khi xuất, chọn target mới/rỗng. Ghi checksum/PG version và count. Bản đã kiểm cho TV4 được commit duy nhất tại handoff/TV3_G3/workforce_g3.dump cùng checksum; db_dumps/ vẫn là thư mục cục bộ. Windows dùng PostgreSQL 18, createdb mới và pg_restore --no-owner --no-acl --exit-on-error. Lệnh chi tiết và bốn relationship Single giống [gói TV4](../handoff/TV3_G2/README.md), nhưng thay dump/database/tổng count bằng bằng chứng G3. Không dùng dump MVP tháng 04 để đại diện G3 đủ bốn kỳ.
 
 TV4 nhận ba Dimension/hai Mart đủ kỳ, catalog quan sát và SQL; phản hồi một tổng/một cơ quan thật cùng bộ lọc, PBIX/model và duyệt thiết kế. TV5 nhận cả 12 Parquet qua kênh nguồn, tự chạy full/rerun trên DB riêng, ghi rõ phạm vi chạy, actual/PASS/FAIL, tên reviewer/ngày/commit. TV1 chốt lịch và G3; không tự tạo số issue tuần 3 khi chưa có.

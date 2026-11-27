@@ -41,7 +41,7 @@ box('check',970,145,'J06 + quality check',['Source → KPI từng kỳ','Raw–O
 box('handoff',40,390,'TV4 / TV5 nhận review',['TV4 Windows/PBIX','TV4 duyệt catalog/grain','TV5 replay độc lập','G3 chờ TV1 chốt'])
 box('reports',350,390,'reports/week3 hoặc QA',['12-file counts + audit','Before/after + exceptions','Catalog quan sát + SQL','Run manifest + code hash'])
 box('rerun',660,390,'Chạy lại May thật',['J00–J06 đủ 3 family','Digest có thứ tự PK','So toàn bộ Dim/Fact/Mart','03/04/06 phải giữ nguyên'])
-box('transfer',970,390,'Bản DB chuyển riêng',['3 Dim + 2 Mart đủ kỳ','Dump + SHA-256 local','Restore kiểm đếm/KPI','Không commit dump G3'])
+box('transfer',970,390,'Bản DB chuyển riêng',['3 Dim + 2 Mart đủ kỳ','Dump + SHA-256 đã kiểm','Restore kiểm đếm/KPI','Repo: handoff/TV3_G3'])
 for i,(a,b) in enumerate([('raw','source'),('source','model'),('model','check')]):
     edge('flow'+str(i),a,b,310+310*i,230,350+310*i,230)
 edge('loop','rerun','model',795,390,795,315)
