@@ -1,0 +1,14 @@
+SELECT effective_month_key, sum(count_value) AS events
+FROM dw.fact_separations WHERE agency_code = 'TR'
+GROUP BY effective_month_key
+
+HashAggregate  (cost=3247.59..3247.69 rows=8 width=36) (actual time=6.096..6.097 rows=8 loops=1)
+  Group Key: effective_month_key
+  Batches: 1  Memory Usage: 24kB
+  Buffers: shared hit=2060
+  ->  Seq Scan on fact_separations  (cost=0.00..3216.39 rows=6241 width=12) (actual time=0.003..5.591 rows=6240 loops=1)
+        Filter: (agency_code = 'TR'::text)
+        Rows Removed by Filter: 86271
+        Buffers: shared hit=2060
+Planning Time: 0.037 ms
+Execution Time: 6.106 ms

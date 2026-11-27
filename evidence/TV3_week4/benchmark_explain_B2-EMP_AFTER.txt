@@ -1,0 +1,33 @@
+SELECT snapshot_month_key, sum(count_value) AS headcount
+FROM dw.fact_employment_snapshot WHERE agency_code = 'TR'
+GROUP BY snapshot_month_key
+
+Finalize GroupAggregate  (cost=211874.48..211875.52 rows=4 width=36) (actual time=272.326..275.012 rows=4 loops=1)
+  Group Key: snapshot_month_key
+  Buffers: shared hit=14 read=109812
+  ->  Gather Merge  (cost=211874.48..211875.41 rows=8 width=36) (actual time=272.321..275.006 rows=12 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=14 read=109812
+        ->  Sort  (cost=210874.45..210874.46 rows=4 width=36) (actual time=269.819..269.820 rows=4 loops=3)
+              Sort Key: snapshot_month_key
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=14 read=109812
+              Worker 0:  Sort Method: quicksort  Memory: 25kB
+              Worker 1:  Sort Method: quicksort  Memory: 25kB
+              ->  Partial HashAggregate  (cost=210874.36..210874.41 rows=4 width=36) (actual time=269.805..269.806 rows=4 loops=3)
+                    Group Key: snapshot_month_key
+                    Batches: 1  Memory Usage: 24kB
+                    Buffers: shared read=109812
+                    Worker 0:  Batches: 1  Memory Usage: 24kB
+                    Worker 1:  Batches: 1  Memory Usage: 24kB
+                    ->  Parallel Bitmap Heap Scan on fact_employment_snapshot  (cost=5339.39..209876.79 rows=199514 width=12) (actual time=17.798..256.260 rows=152157 loops=3)
+                          Recheck Cond: (agency_code = 'TR'::text)
+                          Rows Removed by Index Recheck: 1403389
+                          Heap Blocks: exact=14430 lossy=22428
+                          Buffers: shared read=109812
+                          ->  Bitmap Index Scan on bench_emp_agency  (cost=0.00..5219.68 rows=478833 width=0) (actual time=15.370..15.370 rows=456472 loops=1)
+                                Index Cond: (agency_code = 'TR'::text)
+                                Buffers: shared read=387
+Planning Time: 0.054 ms
+Execution Time: 275.031 ms

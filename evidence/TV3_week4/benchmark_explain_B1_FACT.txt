@@ -1,0 +1,40 @@
+SELECT a.agency_code, sum(f.count_value) AS headcount
+FROM dw.fact_employment_snapshot f JOIN dw.dim_agency a USING (agency_key)
+WHERE f.snapshot_month_key = 202504
+GROUP BY a.agency_code
+
+Finalize GroupAggregate  (cost=221759.33..221793.77 rows=132 width=35) (actual time=318.016..318.937 rows=120 loops=1)
+  Group Key: a.agency_code
+  Buffers: shared hit=813 read=165502
+  ->  Gather Merge  (cost=221759.33..221790.14 rows=264 width=35) (actual time=318.010..318.836 rows=354 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=813 read=165502
+        ->  Sort  (cost=220759.31..220759.64 rows=132 width=35) (actual time=316.400..316.404 rows=118 loops=3)
+              Sort Key: a.agency_code
+              Sort Method: quicksort  Memory: 30kB
+              Buffers: shared hit=813 read=165502
+              Worker 0:  Sort Method: quicksort  Memory: 30kB
+              Worker 1:  Sort Method: quicksort  Memory: 30kB
+              ->  Partial HashAggregate  (cost=220753.01..220754.66 rows=132 width=35) (actual time=316.252..316.265 rows=118 loops=3)
+                    Group Key: a.agency_code
+                    Batches: 1  Memory Usage: 48kB
+                    Buffers: shared hit=797 read=165502
+                    Worker 0:  Batches: 1  Memory Usage: 64kB
+                    Worker 1:  Batches: 1  Memory Usage: 48kB
+                    ->  Hash Join  (cost=20.72..215963.48 rows=957906 width=11) (actual time=37.254..251.846 rows=757323 loops=3)
+                          Hash Cond: (f.agency_key = a.agency_key)
+                          Buffers: shared hit=797 read=165502
+                          ->  Parallel Seq Scan on fact_employment_snapshot f  (cost=0.00..213407.80 rows=957906 width=16) (actual time=37.097..173.032 rows=757323 loops=3)
+                                Filter: (snapshot_month_key = 202504)
+                                Rows Removed by Filter: 2262009
+                                Buffers: shared hit=740 read=165502
+                          ->  Hash  (cost=14.21..14.21 rows=521 width=11) (actual time=0.123..0.123 rows=521 loops=3)
+                                Buckets: 1024  Batches: 1  Memory Usage: 33kB
+                                Buffers: shared hit=27
+                                ->  Seq Scan on dim_agency a  (cost=0.00..14.21 rows=521 width=11) (actual time=0.056..0.089 rows=521 loops=3)
+                                      Buffers: shared hit=27
+Planning:
+  Buffers: shared hit=6
+Planning Time: 0.114 ms
+Execution Time: 318.958 ms
