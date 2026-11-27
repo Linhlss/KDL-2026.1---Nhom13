@@ -38,6 +38,24 @@ BEGIN
     IF measure IS DISTINCT FROM item.accessions::numeric THEN RAISE EXCEPTION 'K06 mismatch %',item.month_key; END IF;
     SELECT sum(separations) INTO measure FROM mart.personnel_flows_monthly WHERE month_key=item.month_key;
     IF measure IS DISTINCT FROM item.separations::numeric THEN RAISE EXCEPTION 'K07 mismatch %',item.month_key; END IF;
+    -- D2 category Mart (issue #51) must split K06/K07 exactly, key 0 included.
+    SELECT sum(events) INTO measure FROM mart.personnel_flows_category_monthly
+      WHERE month_key=item.month_key AND family='accessions';
+    IF measure IS DISTINCT FROM item.accessions::numeric THEN RAISE EXCEPTION 'Category K06 mismatch %',item.month_key; END IF;
+    SELECT sum(events) INTO measure FROM mart.personnel_flows_category_monthly
+      WHERE month_key=item.month_key AND family='separations';
+    IF measure IS DISTINCT FROM item.separations::numeric THEN RAISE EXCEPTION 'Category K07 mismatch %',item.month_key; END IF;
+    -- K10 Mart (issue #52): DW lookup states cover every Fact row of the month.
+    SELECT sum(dw_total_rows) INTO measure FROM mart.dq_coverage_monthly
+      WHERE month_key=item.month_key AND family='employment' AND lookup_field='agency_code';
+    IF measure IS DISTINCT FROM item.employment::numeric THEN RAISE EXCEPTION 'K10 DW rows mismatch %',item.month_key; END IF;
   END LOOP;
-  RAISE NOTICE 'PASS 12-file Source/Staging/ODS/Fact and four-month Mart baseline';
+  IF (SELECT count(*) FROM mart.dq_coverage_monthly) <> 104 THEN
+    RAISE EXCEPTION 'K10 Mart must carry the 104 TV2 audit rows for the 12 active files';
+  END IF;
+  IF EXISTS (SELECT 1 FROM mart.dq_coverage_monthly WHERE dw_total_rows IS NOT NULL
+             AND dw_total_rows <> dw_matched_rows+dw_unknown_rows+dw_null_rows+dw_empty_rows+dw_redacted_rows) THEN
+    RAISE EXCEPTION 'K10 DW lookup states do not add up';
+  END IF;
+  RAISE NOTICE 'PASS 12-file Source/Staging/ODS/Fact, four-month Mart, category Mart and K10 Mart baseline';
 END $$;

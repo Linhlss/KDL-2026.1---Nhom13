@@ -14,7 +14,13 @@ from g2_test_support import ROOT, temporary_database
 def fixture(conn):
     conn.execute(
         "CREATE SCHEMA raw_meta; CREATE SCHEMA ods; CREATE SCHEMA ref; "
-        "CREATE SCHEMA dw; CREATE SCHEMA mart;"
+        "CREATE SCHEMA dw; CREATE SCHEMA mart; CREATE SCHEMA audit;"
+    )
+    # Minimal stand-in for the TV2 K10 view (sql/00_raw_ref_ods_ddl.sql) used by build_model.
+    conn.execute(
+        "CREATE TABLE audit.fk_lookup_coverage(file_id bigint, family text, source_file text, "
+        "source_sha256 text, report_month text, lookup_field text, lookup_status text, "
+        "reference_coverage text, eligible_rows bigint, matched_rows bigint, coverage_pct numeric)"
     )
     conn.execute(
         "CREATE TABLE raw_meta.source_file(file_id bigint primary key, family text, "
@@ -165,6 +171,36 @@ def check_label_review(conn):
     print("PASS TV2-reviewed REVIEW agency loads with display label; HOLD stays Unknown")
 
 
+def check_new_marts(conn):
+    """Category Mart splits event totals (key 0 kept); K10 Mart carries TV2 audit + DW states."""
+    fixture(conn)
+    conn.execute("UPDATE ods.ods_accessions_record SET accession_category_code='ZZ' "
+                 "WHERE report_month='202504' AND source_row_ordinal=2")
+    conn.execute(
+        "INSERT INTO audit.fk_lookup_coverage VALUES "
+        "(1,'employment','e.parquet','sha','202504','agency_code','VERIFIED','COMPLETE',2,2,100),"
+        "(2,'accessions','a.parquet','sha','202504','accession_category_code','PARTIAL','SAMPLE',2,NULL,NULL)"
+    )
+    with conn.transaction():
+        result = build_model(conn, "202504")
+    rows = dict(conn.execute(
+        "SELECT category_key = 0, sum(events) FROM mart.personnel_flows_category_monthly "
+        "WHERE month_key=202504 AND family='accessions' GROUP BY 1").fetchall())
+    assert rows == {False: 1, True: 1}, rows
+    assert result["marts"]["category_groups"] >= 3, result
+    employment = conn.execute(
+        "SELECT lookup_status, official_coverage_pct, dw_total_rows, dw_matched_rows, dw_unknown_rows "
+        "FROM mart.dq_coverage_monthly WHERE month_key=202504 AND family='employment' "
+        "AND lookup_field='agency_code'").fetchone()
+    assert employment == ("VERIFIED", 100, 2, 1, 1), employment
+    accessions = conn.execute(
+        "SELECT official_matched_rows, official_coverage_pct, dw_matched_rows, dw_unknown_rows "
+        "FROM mart.dq_coverage_monthly WHERE month_key=202504 AND family='accessions' "
+        "AND lookup_field='accession_category_code'").fetchone()
+    assert accessions == (None, None, 1, 1), accessions
+    print("PASS category Mart keeps key 0 in totals; K10 Mart shows TV2 coverage and DW lookup states")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/.env")
@@ -173,6 +209,8 @@ def main():
         check(conn)
     with temporary_database(args.config) as conn:
         check_label_review(conn)
+    with temporary_database(args.config) as conn:
+        check_new_marts(conn)
     print("PASS temporary database removed")
 
 

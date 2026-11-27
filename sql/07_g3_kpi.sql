@@ -26,3 +26,18 @@ SELECT month_key,agency_key,
 FROM mart.workforce_monthly w
 FULL JOIN mart.personnel_flows_monthly f USING(month_key,agency_key)
 ORDER BY month_key,agency_code;
+
+-- D2 reference (issue #51): events by report month, family and action category; key 0 kept.
+SELECT month_key,family,category_key,category_code,category_label,
+       sum(events) AS events,sum(source_rows) AS source_rows
+FROM mart.personnel_flows_category_monthly
+GROUP BY month_key,family,category_key,category_code,category_label
+ORDER BY month_key,family,events DESC;
+
+-- K10 reference (issue #52): official % only where TV2 marked VERIFIED/COMPLETE; otherwise BLANK.
+-- dw_* columns show how the DW lookup actually resolved the field (not an official coverage claim).
+SELECT month_key,family,lookup_field,lookup_status,reference_coverage,eligible_rows,
+       official_matched_rows,official_coverage_pct,
+       dw_total_rows,dw_matched_rows,dw_unknown_rows,dw_null_rows,dw_empty_rows,dw_redacted_rows
+FROM mart.dq_coverage_monthly
+ORDER BY month_key,family,lookup_field;

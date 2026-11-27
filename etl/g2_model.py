@@ -163,6 +163,8 @@ def build_model(conn, month):
             "sum(f.source_rows) FROM flows f JOIN dw.dim_agency d USING(agency_key) "
             "GROUP BY f.report_month_key, f.agency_key, d.agency_code, d.agency_label"
         )
+        build_category_mart(cur)
+        build_dq_coverage_mart(cur)
         cur.execute(
             "SELECT coalesce(sum(headcount),0), count(*) FROM mart.workforce_monthly "
             "WHERE month_key=%s", (month_key,),
@@ -181,7 +183,87 @@ def build_model(conn, month):
         if (accessions != metrics["facts"]["accessions"]["measure_sum"]
                 or separations != metrics["facts"]["separations"]["measure_sum"]):
             raise ValueError("Event Mart sums do not reconcile to report-month Facts")
+        # Category Mart must split, not change, every month/agency/family total (key 0 included).
+        cur.execute(
+            "WITH flow_totals AS ("
+            " SELECT month_key, agency_key, 'accessions' AS family, accessions::numeric AS events "
+            " FROM mart.personnel_flows_monthly WHERE accessions > 0 "
+            " UNION ALL SELECT month_key, agency_key, 'separations', separations::numeric "
+            " FROM mart.personnel_flows_monthly WHERE separations > 0), "
+            "category_totals AS ("
+            " SELECT month_key, agency_key, family, sum(events)::numeric AS events "
+            " FROM mart.personnel_flows_category_monthly GROUP BY 1, 2, 3 HAVING sum(events) > 0) "
+            "SELECT count(*) FROM ("
+            "(SELECT * FROM flow_totals EXCEPT SELECT * FROM category_totals) UNION ALL "
+            "(SELECT * FROM category_totals EXCEPT SELECT * FROM flow_totals)) differences"
+        )
+        if cur.fetchone()[0]:
+            raise ValueError("Category Mart does not reconcile to personnel_flows_monthly")
+        cur.execute(
+            "SELECT count(*), coalesce(sum(events), 0) FROM mart.personnel_flows_category_monthly "
+            "WHERE month_key=%s", (month_key,),
+        )
+        category_groups, category_events = cur.fetchone()
+        if category_events != accessions + separations:
+            raise ValueError("Category Mart month total differs from event Facts")
+        cur.execute("SELECT count(*) FROM mart.dq_coverage_monthly WHERE month_key=%s", (month_key,))
+        metrics["marts"]["category_groups"] = category_groups
+        metrics["marts"]["dq_coverage_rows"] = cur.fetchone()[0]
         return metrics
+
+
+def build_category_mart(cur):
+    """D2: report month + agency + family + category; aggregate each Fact, then UNION ALL."""
+    cur.execute("DELETE FROM mart.personnel_flows_category_monthly")
+    cur.execute(
+        "INSERT INTO mart.personnel_flows_category_monthly "
+        "WITH flows AS ("
+        "SELECT report_month_key, agency_key, 'accessions'::text AS family, category_key, "
+        "sum(count_value) AS events, count(*) AS source_rows FROM dw.fact_accessions "
+        "GROUP BY report_month_key, agency_key, category_key "
+        "UNION ALL "
+        "SELECT report_month_key, agency_key, 'separations', category_key, "
+        "sum(count_value), count(*) FROM dw.fact_separations "
+        "GROUP BY report_month_key, agency_key, category_key) "
+        "SELECT f.report_month_key, f.agency_key, a.agency_code, a.agency_label, f.family, "
+        "f.category_key, c.category_code, c.category_label, f.events, f.source_rows "
+        "FROM flows f JOIN dw.dim_agency a USING(agency_key) "
+        "JOIN dw.dim_action_category c USING(category_key)"
+    )
+
+
+def build_dq_coverage_mart(cur):
+    """K10 inputs: TV2 audit coverage per active file/field plus observed DW lookup states."""
+    cur.execute("DELETE FROM mart.dq_coverage_monthly")
+    cur.execute(
+        "INSERT INTO mart.dq_coverage_monthly "
+        "WITH states AS ("
+        "SELECT report_month_key AS month_key, 'employment'::text AS family, "
+        "'agency_code'::text AS lookup_field, agency_lookup_state AS state, count(*) AS n "
+        "FROM dw.fact_employment_snapshot GROUP BY 1, 4 "
+        "UNION ALL SELECT report_month_key, 'accessions', 'agency_code', agency_lookup_state, count(*) "
+        "FROM dw.fact_accessions GROUP BY 1, 4 "
+        "UNION ALL SELECT report_month_key, 'accessions', 'accession_category_code', "
+        "category_lookup_state, count(*) FROM dw.fact_accessions GROUP BY 1, 4 "
+        "UNION ALL SELECT report_month_key, 'separations', 'agency_code', agency_lookup_state, count(*) "
+        "FROM dw.fact_separations GROUP BY 1, 4 "
+        "UNION ALL SELECT report_month_key, 'separations', 'separation_category_code', "
+        "category_lookup_state, count(*) FROM dw.fact_separations GROUP BY 1, 4"
+        "), observed AS ("
+        "SELECT month_key, family, lookup_field, sum(n) AS total, "
+        "coalesce(sum(n) FILTER (WHERE state = 'MATCHED_DERIVED'), 0) AS matched, "
+        "coalesce(sum(n) FILTER (WHERE state = 'UNKNOWN'), 0) AS unknown, "
+        "coalesce(sum(n) FILTER (WHERE state = 'NULL'), 0) AS nul, "
+        "coalesce(sum(n) FILTER (WHERE state = 'EMPTY'), 0) AS empty, "
+        "coalesce(sum(n) FILTER (WHERE state = 'REDACTED'), 0) AS redacted "
+        "FROM states GROUP BY 1, 2, 3) "
+        "SELECT c.report_month::integer, c.family, c.lookup_field, c.lookup_status, "
+        "c.reference_coverage, c.eligible_rows, c.matched_rows, c.coverage_pct, "
+        "o.total, o.matched, o.unknown, o.nul, o.empty, o.redacted "
+        "FROM audit.fk_lookup_coverage c JOIN dw.dim_month m ON m.month_key = c.report_month::integer "
+        "LEFT JOIN observed o ON o.month_key = c.report_month::integer "
+        "AND o.family = c.family AND o.lookup_field = c.lookup_field"
+    )
 
 
 def lookup_state_sql(raw_code, dimension_key):

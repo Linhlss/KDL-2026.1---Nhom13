@@ -73,3 +73,35 @@ COMMENT ON TABLE mart.workforce_monthly IS
     'PROPOSED pending TV4. Grain snapshot month + report-month-scoped agency; headcount SUM(count_value) in one snapshot.';
 COMMENT ON TABLE mart.personnel_flows_monthly IS
     'PROPOSED pending TV4. Grain report month + agency; separately aggregate event Facts then UNION ALL. net_actions = accessions - separations.';
+
+CREATE TABLE IF NOT EXISTS mart.personnel_flows_category_monthly (
+    month_key integer NOT NULL REFERENCES dw.dim_month(month_key),
+    agency_key bigint NOT NULL REFERENCES dw.dim_agency(agency_key),
+    agency_code text NOT NULL,
+    agency_label text NOT NULL,
+    family text NOT NULL CHECK (family IN ('accessions', 'separations')),
+    category_key bigint NOT NULL REFERENCES dw.dim_action_category(category_key),
+    category_code text NOT NULL,
+    category_label text NOT NULL,
+    events bigint NOT NULL CHECK (events >= 0),
+    source_rows bigint NOT NULL CHECK (source_rows >= 0),
+    PRIMARY KEY (month_key, agency_key, family, category_key)
+);
+
+CREATE TABLE IF NOT EXISTS mart.dq_coverage_monthly (
+    month_key integer NOT NULL REFERENCES dw.dim_month(month_key),
+    family text NOT NULL CHECK (family IN ('employment', 'accessions', 'separations')),
+    lookup_field text NOT NULL,
+    lookup_status text NOT NULL,
+    reference_coverage text NOT NULL,
+    eligible_rows bigint NOT NULL CHECK (eligible_rows >= 0),
+    official_matched_rows bigint CHECK (official_matched_rows >= 0),
+    official_coverage_pct numeric,
+    dw_total_rows bigint,
+    dw_matched_rows bigint,
+    dw_unknown_rows bigint,
+    dw_null_rows bigint,
+    dw_empty_rows bigint,
+    dw_redacted_rows bigint,
+    PRIMARY KEY (month_key, family, lookup_field)
+);
