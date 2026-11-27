@@ -1,11 +1,13 @@
-Verified at 2026-11-27T13:26:27.608724+00:00 by TV1 (macOS, pg_restore (PostgreSQL) 17.12 Homebrew)
+Verified at 2026-11-27T14:17:40.414137+00:00 by TV1 (macOS, pg_restore (PostgreSQL) 17.12 Homebrew)
 Archive: handoff/TV3_G3/workforce_g3.dump
-Bytes: 30343
-SHA-256: ec3ddf32a29cadb8e8c2b974f79d53959b6bcda1d49017925b46a2ed0aa94cef
+Bytes: 53139
+SHA-256: 3b467c0049ac56ba973ebea4952486d4052631cb71baf99d421c456c9b66dbd7
 PASS SHA-256 matches handoff/TV3_G3/workforce_g3.dump.sha256
 PASS dw.dim_month: expected=9, actual=9
 PASS dw.dim_agency: expected=521, actual=521
 PASS dw.dim_action_category: expected=53, actual=53
+PASS mart.personnel_flows_category_monthly: expected=1697, actual=1697
+PASS mart.dq_coverage_monthly: expected=104, actual=104
 PASS mart.workforce_monthly: expected=510, actual=510
 PASS mart.personnel_flows_monthly: expected=361, actual=361
 PASS 202503 K01=2289192 K06=4862 K07=22061

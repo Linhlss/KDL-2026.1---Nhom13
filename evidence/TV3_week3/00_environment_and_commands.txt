@@ -1,7 +1,7 @@
 Python 3.13.5; PostgreSQL 17.12 (Homebrew); Darwin arm64; operator TV1 (Linh), máy macOS
-Base G2 commit: 3b30235; branch tv1/g3-integration; full-run code 51ab0d9416ec7acde0b37afa58967af1146750d7
+Base G2 commit: 3b30235; branch tv1/g3-d2-k10; full-run code 0d36e106eb7693a6eb46d179efee7c66c033f02f
 COMMAND: python -u etl/g3_pipeline.py --config configs/.env.g3.local --database workforce_dw_g3_tv1 --raw-dir <12 Parquet TV2> --report-dir reports/week3 --verify-rerun --quality-check
-Run window (UTC): 2026-11-27T13:00:51.124783+00:00 -> 2026-11-27T13:24:08.070340+00:00
+Run window (UTC): 2026-11-27T13:53:15.200928+00:00 -> 2026-11-27T14:16:33.401991+00:00
 PASS code hashes match completed full run; 20 G2 reports byte-identical; 593 mismatches preserved
 PASS April K02=-17223, K08=-16935; missing March prior-month K02/K03 remain NULL
 Actual agency example (same SQL filters for TV4): {"month_key": 202504, "agency_key": 187, "agency_code": "AA", "agency_label": "ADMIN CONFERENCE OF THE UNITED STATES", "headcount": 10, "accessions": 0, "separations": 0}

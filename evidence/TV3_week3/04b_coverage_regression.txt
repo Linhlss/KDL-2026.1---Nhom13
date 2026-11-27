@@ -1,0 +1,1 @@
+PASS K10 initialization, official scope, zero denominator and source hash at load and query

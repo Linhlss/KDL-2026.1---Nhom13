@@ -70,7 +70,9 @@ def main():
         sample=next(r for r in agencies if r['month_key']==202504 and r['agency_key']!=0)
         meta=conn.execute("SELECT current_user,current_setting('server_version')").fetchone()
         mart_groups=dict(workforce=conn.execute('SELECT count(*) FROM mart.workforce_monthly').fetchone()[0],
-                         flows=conn.execute('SELECT count(*) FROM mart.personnel_flows_monthly').fetchone()[0])
+                         flows=conn.execute('SELECT count(*) FROM mart.personnel_flows_monthly').fetchone()[0],
+                         category=conn.execute('SELECT count(*) FROM mart.personnel_flows_category_monthly').fetchone()[0],
+                         dq=conn.execute('SELECT count(*) FROM mart.dq_coverage_monthly').fetchone()[0])
         unknown_agency=sum(conn.execute(sql.SQL('SELECT count(*) FROM dw.{} WHERE agency_key=0').format(sql.Identifier(f))).fetchone()[0]
                            for f in ('fact_employment_snapshot','fact_accessions','fact_separations'))
     observed=rows(p/'08_dimension_observed.csv')
@@ -113,7 +115,7 @@ def main():
            '', '| Task | Trạng thái | Sản phẩm thực chạy |', '| --- | --- | --- |',
            '| L3-10 | REVIEW | 12 file Source=Staging=ODS; [counts](week3/07_file_counts.csv), [audit](week3/07_load_log.csv), [before–after](week3/07_before_after.csv) |',
            '| L3-11 | REVIEW thực thi; model PROPOSED | 3 Fact, khóa/FK/time roles, [catalog quan sát](week3/08_dimension_observed.csv), [quality checks](week3/09_quality_checks.csv) |',
-           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart '+str(mart_groups['workforce'])+' nhóm và flows Mart '+str(mart_groups['flows'])+' nhóm đủ bốn kỳ; [KPI SQL](week3/05_kpi_monthly.csv); category/các chiều bổ sung chờ TV4 |',
+           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart '+str(mart_groups['workforce'])+' nhóm và flows Mart '+str(mart_groups['flows'])+' nhóm đủ bốn kỳ; Mart category (D2) '+str(mart_groups['category'])+' nhóm; Mart K10 '+str(mart_groups['dq'])+' dòng; [KPI SQL](week3/05_kpi_monthly.csv); nghề/địa điểm/cấp bậc chờ TV2 audit |',
            '| L3-13 | REVIEW tự kiểm | [J06](week3/07_reconciliation.csv), [rerun May](week3/TV3_week3_rerun_results.csv), [failure tests](../evidence/TV3_week3/02_source_regression.txt); TV5 độc lập chờ xác nhận |',
            '', '| Tháng | Employment | Accessions | Separations | K02 | K08 |', '| --- | ---: | ---: | ---: | ---: | ---: |']
     for r in monthly:

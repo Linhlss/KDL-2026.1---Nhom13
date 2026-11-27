@@ -1,2 +1,2 @@
-psql:sql/tests/08_g3_full_baseline.sql:43: NOTICE:  PASS 12-file Source/Staging/ODS/Fact and four-month Mart baseline
+psql:sql/tests/08_g3_full_baseline.sql:61: NOTICE:  PASS 12-file Source/Staging/ODS/Fact, four-month Mart, category Mart and K10 Mart baseline
 DO

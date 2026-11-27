@@ -8,7 +8,7 @@ Nhánh `tv3/g3-full-pipeline` kế thừa G2 commit `3b30235`, PR G2 #43 chưa m
 | --- | --- | --- |
 | L3-10 | REVIEW | 12 file Source=Staging=ODS; [counts](week3/07_file_counts.csv), [audit](week3/07_load_log.csv), [before–after](week3/07_before_after.csv) |
 | L3-11 | REVIEW thực thi; model PROPOSED | 3 Fact, khóa/FK/time roles, [catalog quan sát](week3/08_dimension_observed.csv), [quality checks](week3/09_quality_checks.csv) |
-| L3-12 | REVIEW tháng/cơ quan | Workforce Mart 510 nhóm và flows Mart 361 nhóm đủ bốn kỳ; [KPI SQL](week3/05_kpi_monthly.csv); category/các chiều bổ sung chờ TV4 |
+| L3-12 | REVIEW tháng/cơ quan | Workforce Mart 510 nhóm và flows Mart 361 nhóm đủ bốn kỳ; Mart category (D2) 1697 nhóm; Mart K10 104 dòng; [KPI SQL](week3/05_kpi_monthly.csv); nghề/địa điểm/cấp bậc chờ TV2 audit |
 | L3-13 | REVIEW tự kiểm | [J06](week3/07_reconciliation.csv), [rerun May](week3/TV3_week3_rerun_results.csv), [failure tests](../evidence/TV3_week3/02_source_regression.txt); TV5 độc lập chờ xác nhận |
 
 | Tháng | Employment | Accessions | Separations | K02 | K08 |
@@ -22,7 +22,7 @@ Tổng dòng Fact: Employment 9,057,997; Accessions 30,782; Separations 92,511. 
 
 **Kiểm chứng:** 84 J06 PASS + 12 DAX PENDING; 152 kiểm raw/ODS, ordinal, time role và FK PASS. Giữ 593 event khác kỳ (269 Accessions, 324 Separations), riêng May 107. PK/UNIQUE/FK đều validated; lookup không nhân/mất dòng. [Chất lượng theo file và Unknown](week3/09_source_quality.csv) ghi số thực đo.
 
-**Rerun May thật:** ba file được J00 kiểm lại, sáu J01/J02 SKIPPED, J03–J05 rebuild May rồi J06 đủ bốn kỳ. Cả 15 bảng có cùng count/digest trước–sau, gồm stable Dim keys và Fact/Mart mọi tháng; source identity toàn baseline giữ nguyên. Audit được thêm run mới. Mã/cột/thứ tự digest ghi trong runbook. Không gọi nhánh skip là đã thử replacement.
+**Rerun May thật:** ba file được J00 kiểm lại, sáu J01/J02 SKIPPED, J03–J05 rebuild May rồi J06 đủ bốn kỳ. Cả 17 bảng có cùng count/digest trước–sau, gồm stable Dim keys và Fact/Mart mọi tháng; source identity toàn baseline giữ nguyên. Audit được thêm run mới. Mã/cột/thứ tự digest ghi trong runbook. Không gọi nhánh skip là đã thử replacement.
 
 Dimension thực đo: dw.dim_month = 9 dòng, dw.dim_agency = 521 dòng, dw.dim_action_category = 53 dòng. Unknown key=0; nhãn dẫn xuất PARTIAL, riêng 28 khóa Agency–tháng TV2 đã duyệt nhãn EHRI là REVIEWED_TV2; Agency Unknown = 0 dòng trên 12 file. Các tháng hiệu lực ngoài bốn kỳ vẫn có Dimension; không cắt event.
 
