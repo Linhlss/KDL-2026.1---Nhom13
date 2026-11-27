@@ -79,7 +79,7 @@ def export_quality(conn, args, selected):
         if duplicates: raise ValueError('Duplicate Dimension natural key')
         catalog.append(dict(table='dw.'+name,grain=grain,natural_key=natural,surrogate_key=key,actual_rows=count,
                             unknown_key=0,version_policy='calendar' if name=='dim_month' else 'key scoped by report month; stable upsert',
-                            provenance='source months' if name=='dim_month' else 'data/reference/derived_lookup_g2.csv; DERIVED_LOOKUP; PARTIAL',
+                            provenance='source months' if name=='dim_month' else 'data/reference/derived_lookup_g2.csv + TV2 label review (ehri_label_review_131.csv); PARTIAL or REVIEWED_TV2',
                             hierarchy='not asserted; pending TV4',fact_usage='all three Facts',
                             examples=json.dumps([s[0] for s in samples],ensure_ascii=False),approval='PROPOSED_PENDING_TV4'))
     write_csv(args.report_dir/'08_dimension_observed.csv',catalog)

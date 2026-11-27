@@ -36,6 +36,14 @@ CREATE TABLE IF NOT EXISTS ref.derived_lookup (
 CREATE UNIQUE INDEX IF NOT EXISTS derived_ready_key
  ON ref.derived_lookup(relation, report_month, code) WHERE load_status = 'READY';
 
+-- TV2 label review (evidence/TV2_week2/ehri_label_review_131.csv): REVIEW lookup rows whose
+-- Parquet label differs from EHRI only by wording. Benign results become usable; HOLD stays out.
+CREATE TABLE IF NOT EXISTS ref.label_review (
+ relation text NOT NULL, report_month text NOT NULL, code text NOT NULL,
+ review_result text NOT NULL, proposed_display_label text,
+ PRIMARY KEY (relation, report_month, code)
+);
+
 CREATE TABLE IF NOT EXISTS staging.employment_record (
  file_id bigint NOT NULL REFERENCES raw_meta.source_file,
  source_row_ordinal bigint NOT NULL CHECK (source_row_ordinal > 0),

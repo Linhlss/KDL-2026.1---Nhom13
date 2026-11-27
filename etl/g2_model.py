@@ -12,6 +12,10 @@ FACTS = {
     "accessions": "fact_accessions",
     "separations": "fact_separations",
 }
+# TV2 review results (ehri_label_review_131.csv) meaning "same organisation, different
+# wording". HOLD_ORG_SCOPE and anything unreviewed stay out of the dimensions.
+BENIGN_REVIEW = ("ABBREVIATION", "FORMATTING", "TEXT_VARIANT", "DOCUMENTED_RENAME",
+                 "APOSTROPHE_REPAIR")
 
 
 def build_model(conn, month):
@@ -41,21 +45,33 @@ def build_model(conn, month):
                 raise ValueError(f"{family} has invalid count values or empty ODS; KPI build blocked")
 
         for path in ("sql/03_dw_ddl.sql", "sql/04_create_marts.sql"):
-            cur.execute((ROOT / path).read_text())
+            cur.execute((ROOT / path).read_text(encoding="utf-8"))
 
         # A source lookup row is usable only if the complete observed key is unique.
         # Invalid/unreviewed rows cannot become eligible by filtering before grouping.
+        # REVIEW rows become usable only when TV2's EHRI label review classifies the
+        # difference as wording only (BENIGN_REVIEW); the reviewed display label is used.
         cur.execute("DROP TABLE IF EXISTS pg_temp.g2_ready_lookup")
         cur.execute(
             "CREATE TEMP TABLE g2_ready_lookup ON COMMIT DROP AS "
-            "SELECT relation, report_month, code, min(label) AS label, "
-            "min(provenance) AS provenance "
-            "FROM ref.derived_lookup WHERE report_month = %s "
-            "AND relation IN ('agency', 'accession_category', 'separation_category') "
-            "AND code IS NOT NULL AND btrim(code) <> '' AND code <> 'REDACTED' "
-            "GROUP BY relation, report_month, code HAVING count(*) = 1 "
-            "AND bool_and(load_status = 'READY' AND label IS NOT NULL AND btrim(label) <> '')",
-            (month,),
+            "SELECT d.relation, d.report_month, d.code, "
+            "min(CASE WHEN d.load_status = 'READY' THEN d.label "
+            "ELSE r.proposed_display_label END) AS label, "
+            "min(d.provenance) AS provenance, "
+            "CASE WHEN bool_and(d.load_status = 'READY') THEN 'PARTIAL' "
+            "ELSE 'REVIEWED_TV2' END AS verification_status "
+            "FROM ref.derived_lookup d LEFT JOIN ref.label_review r "
+            "ON r.relation = d.relation AND r.report_month = d.report_month AND r.code = d.code "
+            "WHERE d.report_month = %s "
+            "AND d.relation IN ('agency', 'accession_category', 'separation_category') "
+            "AND d.code IS NOT NULL AND btrim(d.code) <> '' AND d.code <> 'REDACTED' "
+            "GROUP BY d.relation, d.report_month, d.code HAVING count(*) = 1 "
+            "AND bool_and(CASE WHEN d.load_status = 'READY' THEN d.label "
+            "WHEN d.load_status = 'REVIEW' AND r.review_result = ANY(%s) "
+            "THEN r.proposed_display_label END IS NOT NULL) "
+            "AND bool_and(btrim(CASE WHEN d.load_status = 'READY' THEN d.label "
+            "ELSE r.proposed_display_label END) <> '')",
+            (month, list(BENIGN_REVIEW)),
         )
         cur.execute(
             "CREATE UNIQUE INDEX ON g2_ready_lookup(relation, report_month, code)"
@@ -83,7 +99,7 @@ def build_model(conn, month):
         cur.execute(
             "INSERT INTO dw.dim_agency "
             "(month_key, agency_code, agency_label, provenance, verification_status) "
-            "SELECT %s, code, label, provenance, 'PARTIAL' FROM g2_ready_lookup "
+            "SELECT %s, code, label, provenance, verification_status FROM g2_ready_lookup "
             "WHERE relation = 'agency' "
             "ON CONFLICT(month_key, agency_code) DO UPDATE SET "
             "agency_label=excluded.agency_label, provenance=excluded.provenance, "
@@ -93,7 +109,7 @@ def build_model(conn, month):
             "INSERT INTO dw.dim_action_category "
             "(month_key, family, category_code, category_label, provenance, verification_status) "
             "SELECT %s, CASE relation WHEN 'accession_category' THEN 'accessions' "
-            "ELSE 'separations' END, code, label, provenance, 'PARTIAL' "
+            "ELSE 'separations' END, code, label, provenance, verification_status "
             "FROM g2_ready_lookup WHERE relation IN ('accession_category', 'separation_category') "
             "ON CONFLICT(month_key, family, category_code) DO UPDATE SET "
             "category_label=excluded.category_label, provenance=excluded.provenance, "

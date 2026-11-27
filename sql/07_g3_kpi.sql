@@ -17,8 +17,12 @@ SELECT w.month_key,k01,k01-previous_headcount AS k02,
 FROM previous w LEFT JOIN flows USING(month_key) ORDER BY month_key;
 
 -- Match a Power BI Dimension filter to SQL using agency_code across scoped keys.
-SELECT w.month_key,w.agency_key,w.agency_code,w.agency_label,w.headcount,
+-- FULL JOIN keeps agencies that have flows but no headcount row in that month.
+SELECT month_key,agency_key,
+       coalesce(w.agency_code,f.agency_code) AS agency_code,
+       coalesce(w.agency_label,f.agency_label) AS agency_label,
+       coalesce(w.headcount,0) AS headcount,
        coalesce(f.accessions,0) AS accessions,coalesce(f.separations,0) AS separations
 FROM mart.workforce_monthly w
-LEFT JOIN mart.personnel_flows_monthly f USING(month_key,agency_key)
-ORDER BY w.month_key,w.agency_code;
+FULL JOIN mart.personnel_flows_monthly f USING(month_key,agency_key)
+ORDER BY month_key,agency_code;

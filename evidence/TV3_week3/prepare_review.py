@@ -26,7 +26,7 @@ def main():
     parser.add_argument('--log-dir',type=Path,default=ROOT/'.qa/TV3_G3')
     args=parser.parse_args()
     p=args.report_dir
-    manifest=json.loads((p/'run_manifest.json').read_text())
+    manifest=json.loads((p/'run_manifest.json').read_text(encoding='utf-8'))
     require(manifest['status']=='SUCCESS','Wait for the specific running pipeline process to complete successfully')
     for name,digest in manifest['code_sha256'].items():
         require(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,'ETL changed since full run: '+name)
@@ -41,7 +41,7 @@ def main():
     require(sum(int(r['other_month']) for r in quality)==593,'593 cross-month events not retained')
     rerun=rows(p/'TV3_week3_rerun_results.csv')
     require(len(rerun)==15 and all(r['status']=='PASS' for r in rerun),'Rerun changed business data')
-    require(json.loads((p/'rerun_before.json').read_text())==json.loads((p/'rerun_after.json').read_text()),'Snapshot digests differ')
+    require(json.loads((p/'rerun_before.json').read_text(encoding='utf-8'))==json.loads((p/'rerun_after.json').read_text(encoding='utf-8')),'Snapshot digests differ')
     totals={f:sum(int(r['dw']) for r in files if r['family']==f) for f in ('employment','accessions','separations')}
     require(totals=={'employment':9057997,'accessions':30782,'separations':92511},'Fact baseline differs')
     audit=rows(p/'07_load_log.csv')
@@ -51,7 +51,7 @@ def main():
     for name in original:
         require(subprocess.check_output(['git','show','3b30235:'+name],cwd=ROOT)==(ROOT/name).read_bytes(),'G2 report modified: '+name)
     with connect(args) as conn:
-        script='\n'.join(line for line in (ROOT/'sql/07_g3_kpi.sql').read_text().splitlines() if not line.startswith('\\'))
+        script='\n'.join(line for line in (ROOT/'sql/07_g3_kpi.sql').read_text(encoding='utf-8').splitlines() if not line.startswith('\\'))
         with conn.cursor() as cur:
             cur.execute(script)
             columns=[c.name for c in cur.description]

@@ -70,10 +70,26 @@ def connect(args):
     return psycopg.connect(dbname=database, connect_timeout=5, autocommit=True, **settings)
 
 
+LABEL_REVIEW = ROOT / "evidence/TV2_week2/ehri_label_review_131.csv"
+LABEL_REVIEW_COLUMNS = ("relation", "report_month", "code", "review_result", "proposed_display_label")
+
+
 def apply_sql(conn, path):
-    content = "\n".join(line for line in path.read_text().splitlines()
+    content = "\n".join(line for line in path.read_text(encoding="utf-8").splitlines()
                         if not line.startswith("\\"))
     conn.execute(content)
+
+
+def replace_table(conn, table, columns, records):
+    """Replace a small reference snapshot atomically from CSV records."""
+    with conn.transaction():
+        conn.execute(sql.SQL("LOCK TABLE {} IN EXCLUSIVE MODE").format(table))
+        conn.execute(sql.SQL("DELETE FROM {}").format(table))
+        with conn.cursor().copy(sql.SQL("COPY {} ({}) FROM STDIN").format(
+            table, sql.SQL(",").join(map(sql.Identifier, columns))
+        )) as copy:
+            for row in records:
+                copy.write_row([row[column] for column in columns])
 
 
 def initialize(conn):
@@ -82,15 +98,10 @@ def initialize(conn):
         apply_sql(conn, ROOT / "sql" / name)
     # Snapshot the handed-off TV2 reference without claiming official coverage.
     lookup = rows(ROOT / "data/reference/derived_lookup_g2.csv")
-    with conn.transaction():
-        conn.execute("LOCK TABLE ref.derived_lookup IN EXCLUSIVE MODE")
-        conn.execute("DELETE FROM ref.derived_lookup")
-        columns = list(lookup[0])
-        with conn.cursor().copy(sql.SQL("COPY ref.derived_lookup ({}) FROM STDIN").format(
-            sql.SQL(",").join(map(sql.Identifier, columns))
-        )) as copy:
-            for row in lookup:
-                copy.write_row([row[column] for column in columns])
+    replace_table(conn, sql.Identifier("ref", "derived_lookup"), list(lookup[0]), lookup)
+    # TV2's reviewed EHRI label differences decide which REVIEW lookup rows are usable.
+    replace_table(conn, sql.Identifier("ref", "label_review"), LABEL_REVIEW_COLUMNS,
+                  rows(LABEL_REVIEW))
 
 
 def start_run(conn, job, file, code_version):
@@ -364,16 +375,24 @@ def reconciliation(conn, month, report_dir=DEFAULT_REPORT_DIR):
                                expected=0,actual=missing,status="PASS" if missing==0 else "FAIL",reviewer="TV3; PENDING TV5"))
             field = {"employment":"headcount","accessions":"accessions","separations":"separations"}[family]
             mart = "workforce_monthly" if family == "employment" else "personnel_flows_monthly"
+            # Each Mart is keyed by its own time role: Employment by snapshot month, event
+            # Marts by report month. Compare the Mart cell with every Fact row in that role,
+            # so a snapshot month differing from the file's report month cannot fail J06.
+            mart_key = "snapshot_month_key" if family == "employment" else "report_month_key"
             measure = conn.execute(sql.SQL(
                 "SELECT coalesce(sum(count_value),0) FROM dw.{} WHERE file_id=%s"
             ).format(sql.Identifier(fact)), (file_id,)).fetchone()[0]
+            mart_expected = conn.execute(sql.SQL(
+                "SELECT coalesce(sum(count_value),0) FROM dw.{} WHERE {}=%s"
+            ).format(sql.Identifier(fact), sql.Identifier(mart_key)), (int(month),)).fetchone()[0]
             actual = conn.execute(sql.SQL(
                 "SELECT coalesce(sum({}),0) FROM mart.{} WHERE month_key=%s"
             ).format(sql.Identifier(field),sql.Identifier(mart)), (int(month),)).fetchone()[0]
-            for check, value in (("fact_measure",measure),("mart_measure",actual)):
+            for check, target, value in (("fact_measure",expected,measure),
+                                         ("mart_measure",int(mart_expected),actual)):
                 result.append(dict(family=family,report_month=month,file_id=file_id,check=check,
-                                   expected=expected,actual=int(value),
-                                   status="PASS" if value==expected else "FAIL",reviewer="TV3; PENDING TV5"))
+                                   expected=target,actual=int(value),
+                                   status="PASS" if value==target else "FAIL",reviewer="TV3; PENDING TV5"))
             result.append(dict(family=family,report_month=month,file_id=file_id,check="powerbi_dax",
                                expected=expected,actual="",status="PENDING",reviewer="PENDING TV4/TV5"))
     write_csv(report_dir / "07_reconciliation.csv", result, fields)
@@ -410,7 +429,8 @@ def main():
     ):
         code_version += "+working-tree"
     manifest = dict(line.strip().split(None,1)[::-1] for line in
-                    (ROOT/"data/manifest/sha256.txt").read_text().splitlines() if line.strip())
+                    (ROOT/"data/manifest/sha256.txt").read_text(encoding="utf-8").splitlines()
+                    if line.strip())
     inventory = rows(args.inventory)
     try:
         selected = selected_sources(inventory, args.month)

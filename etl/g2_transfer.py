@@ -1,5 +1,6 @@
 """Create an aggregate-only PostgreSQL database for TV4."""
 import argparse
+import re
 from pathlib import Path
 
 import psycopg
@@ -9,6 +10,25 @@ from psycopg import sql
 ROOT = Path(__file__).resolve().parents[1]
 TABLES = ("dw.dim_month", "dw.dim_agency", "dw.dim_action_category",
           "mart.workforce_monthly", "mart.personnel_flows_monthly")
+TRANSFER_DDL = ROOT / "sql/06_g2_transfer.sql"
+SOURCE_DDL = (ROOT / "sql/03_dw_ddl.sql", ROOT / "sql/04_create_marts.sql")
+
+
+def table_blocks(text):
+    """CREATE TABLE statements keyed by table name, whitespace-normalised."""
+    return {name: " ".join(body.split()) for name, body in re.findall(
+        r"CREATE TABLE IF NOT EXISTS ([a-z_.]+) (\(.*?\n\);)", text, re.S)}
+
+
+def check_transfer_ddl():
+    """06_g2_transfer.sql copies the Dimension/Mart DDL; refuse to run if it drifted."""
+    transfer = table_blocks(TRANSFER_DDL.read_text(encoding="utf-8"))
+    source = {}
+    for path in SOURCE_DDL:
+        source.update(table_blocks(path.read_text(encoding="utf-8")))
+    drift = [name for name in TABLES if transfer.get(name) is None or transfer[name] != source.get(name)]
+    if drift:
+        raise ValueError("06_g2_transfer.sql differs from 03/04 DDL for: " + ", ".join(drift))
 
 
 def main():
@@ -19,6 +39,7 @@ def main():
     args = parser.parse_args()
     if args.source == args.target:
         parser.error("source and target must differ")
+    check_transfer_ddl()
     config = dotenv_values(args.config, interpolate=False)
     settings = {k[2:].lower():config[k] for k in
                 ("PGHOST","PGPORT","PGUSER","PGPASSWORD") if config.get(k)}
@@ -32,7 +53,7 @@ def main():
             "SELECT count(*) FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')"
         ).fetchone()[0]:
             raise ValueError("Transfer target must be empty; choose a new database name")
-        target.execute((ROOT/"sql/06_g2_transfer.sql").read_text())
+        target.execute(TRANSFER_DDL.read_text(encoding="utf-8"))
         target.execute("TRUNCATE mart.workforce_monthly,mart.personnel_flows_monthly,dw.dim_agency,dw.dim_action_category,dw.dim_month")
         for name in TABLES:
             table = sql.Identifier(*name.split("."))

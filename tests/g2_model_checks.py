@@ -20,7 +20,10 @@ def fixture(conn):
         "CREATE TABLE raw_meta.source_file(file_id bigint primary key, family text, "
         "report_month text, is_active boolean, status text, row_count bigint); "
         "CREATE TABLE ref.derived_lookup(relation text, report_month text, code text, "
-        "label text, provenance text, load_status text)"
+        "label text, provenance text, load_status text); "
+        "CREATE TABLE ref.label_review(relation text, report_month text, code text, "
+        "review_result text, proposed_display_label text, "
+        "PRIMARY KEY(relation, report_month, code))"
     )
     for family in ("employment", "accessions", "separations"):
         conn.execute(sql.SQL(
@@ -90,12 +93,43 @@ def check(conn):
     print("PASS invalid count blocks publish and preserves previous Mart state")
 
 
+def check_label_review(conn):
+    """REVIEW rows: TV2-reviewed wording differences load; HOLD/unreviewed stay Unknown."""
+    fixture(conn)
+    conn.execute("UPDATE ods.ods_employment_record SET agency_code = CASE source_row_ordinal "
+                 "WHEN 1 THEN 'TR' ELSE 'HL' END WHERE report_month = '202505'")
+    conn.execute(
+        "INSERT INTO ref.derived_lookup VALUES "
+        "('agency','202505','TR','DEPARTMENT OF TREASURY','DERIVED_LOOKUP','REVIEW'),"
+        "('agency','202505','HL','HELD AGENCY','DERIVED_LOOKUP','REVIEW')"
+    )
+    conn.execute(
+        "INSERT INTO ref.label_review VALUES "
+        "('agency','202505','TR','ABBREVIATION','DEPARTMENT OF THE TREASURY'),"
+        "('agency','202505','HL','HOLD_ORG_SCOPE','HELD AGENCY FULL NAME')"
+    )
+    with conn.transaction():
+        result = build_model(conn, "202505")
+    assert result["facts"]["employment"]["unknown_agency_rows"] == 1, result
+    label, status = conn.execute(
+        "SELECT agency_label, verification_status FROM dw.dim_agency "
+        "WHERE month_key = 202505 AND agency_code = 'TR'").fetchone()
+    assert (label, status) == ("DEPARTMENT OF THE TREASURY", "REVIEWED_TV2"), (label, status)
+    assert conn.execute("SELECT count(*) FROM dw.dim_agency WHERE agency_code = 'HL'"
+                        ).fetchone()[0] == 0
+    assert conn.execute("SELECT verification_status FROM dw.dim_agency "
+                        "WHERE month_key = 202505 AND agency_code = 'AA'").fetchone()[0] == "PARTIAL"
+    print("PASS TV2-reviewed REVIEW agency loads with display label; HOLD stays Unknown")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/.env")
     args = parser.parse_args()
     with temporary_database(args.config) as conn:
         check(conn)
+    with temporary_database(args.config) as conn:
+        check_label_review(conn)
     print("PASS temporary database removed")
 
 
