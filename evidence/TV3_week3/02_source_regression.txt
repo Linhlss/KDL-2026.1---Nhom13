@@ -1,0 +1,11 @@
+SUCCESS employment_202504_v5.parquet 2 rows
+SKIPPED employment_202504_v5.parquet 2 rows
+PASS identical source rerun skips J01/J02 without duplicating rows
+PASS missing file records FAIL and preserves another valid source
+PASS checksum mismatch records FAIL and preserves the loaded source
+PASS manifest version inconsistent with filename fails before a source can be skipped
+PASS changed hash under an existing filename is rejected without replacing active data
+PASS unsupported non-text source schema records FAIL before registration and preserves valid data
+PASS COPY failure rolls back metadata/Staging/ODS while both FAIL audit records survive
+PASS no unfinished audit runs after handled failures
+PASS temporary database and Parquet fixtures removed

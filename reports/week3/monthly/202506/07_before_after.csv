@@ -1,0 +1,13 @@
+file_id,family,report_month,column,rule,before,after,affected_rows,before_rows,after_rows,invalid_count,pay_null,pay_empty,pay_redacted,pay_invalid,reviewer
+10,employment,202506,count,DQ01,raw text,validated bigint; raw retained,2241780,2241780,2241780,0,4228,0,1036146,0,PENDING TV5
+10,employment,202506,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,1040374,2241780,2241780,0,4228,0,1036146,0,PENDING TV5
+10,employment,202506,business_month,DQ04,raw source month,report and business month retained,0,2241780,2241780,0,4228,0,1036146,0,PENDING TV5
+10,employment,202506,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,206978,2241780,2241780,0,4228,0,1036146,0,PENDING TV4/TV5
+11,accessions,202506,count,DQ01,raw text,validated bigint; raw retained,9954,9954,9954,0,190,0,3876,0,PENDING TV5
+11,accessions,202506,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,4066,9954,9954,0,190,0,3876,0,PENDING TV5
+11,accessions,202506,business_month,DQ04,raw source month,report and business month retained,120,9954,9954,0,190,0,3876,0,PENDING TV5
+11,accessions,202506,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,1433,9954,9954,0,190,0,3876,0,PENDING TV4/TV5
+12,separations,202506,count,DQ01,raw text,validated bigint; raw retained,19947,19947,19947,0,188,0,7306,0,PENDING TV5
+12,separations,202506,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,7494,19947,19947,0,188,0,7306,0,PENDING TV5
+12,separations,202506,business_month,DQ04,raw source month,report and business month retained,146,19947,19947,0,188,0,7306,0,PENDING TV5
+12,separations,202506,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,2487,19947,19947,0,188,0,7306,0,PENDING TV4/TV5

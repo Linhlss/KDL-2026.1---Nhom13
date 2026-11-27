@@ -1,0 +1,103 @@
+"""Run synthetic DW/Mart regressions against a disposable PostgreSQL database."""
+
+import argparse
+import sys
+from pathlib import Path
+
+from psycopg import sql
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+from g2_model import build_model
+from g2_test_support import ROOT, temporary_database
+
+
+def fixture(conn):
+    conn.execute(
+        "CREATE SCHEMA raw_meta; CREATE SCHEMA ods; CREATE SCHEMA ref; "
+        "CREATE SCHEMA dw; CREATE SCHEMA mart;"
+    )
+    conn.execute(
+        "CREATE TABLE raw_meta.source_file(file_id bigint primary key, family text, "
+        "report_month text, is_active boolean, status text, row_count bigint); "
+        "CREATE TABLE ref.derived_lookup(relation text, report_month text, code text, "
+        "label text, provenance text, load_status text)"
+    )
+    for family in ("employment", "accessions", "separations"):
+        conn.execute(sql.SQL(
+            "CREATE TABLE {}(file_id bigint, source_row_ordinal bigint, report_month text, "
+            "count_value bigint, snapshot_yyyymm text, effective_month text, agency_code text, "
+            "accession_category_code text, separation_category_code text, dq_flags text[], "
+            "PRIMARY KEY(file_id,source_row_ordinal))"
+        ).format(sql.Identifier("ods", f"ods_{family}_record")))
+    file_id = 0
+    for month in ("202504", "202505"):
+        for family in ("employment", "accessions", "separations"):
+            file_id += 1
+            conn.execute(
+                "INSERT INTO raw_meta.source_file VALUES(%s,%s,%s,true,'LOADED',2)",
+                (file_id, family, month),
+            )
+            for ordinal, agency in ((1, "AA"), (2, "BB")):
+                conn.execute(sql.SQL(
+                    "INSERT INTO {} VALUES(%s,%s,%s,1,%s,'202503',%s,'AC','SB',ARRAY[]::text[])"
+                ).format(sql.Identifier("ods", f"ods_{family}_record")),
+                    (file_id, ordinal, month, month, agency))
+        for relation, code in (
+            ("agency", "AA"), ("agency", "BB"),
+            ("accession_category", "AC"), ("separation_category", "SB"),
+        ):
+            conn.execute(
+                "INSERT INTO ref.derived_lookup VALUES(%s,%s,%s,%s,'DERIVED_LOOKUP','READY')",
+                (relation, month, code, "Label " + code),
+            )
+    conn.execute(
+        "INSERT INTO ref.derived_lookup "
+        "VALUES('agency','202504','BB','Conflicting label','DERIVED_LOOKUP','READY')"
+    )
+
+
+def check(conn):
+    fixture(conn)
+    with conn.transaction():
+        initial = build_model(conn, "202504")
+    assert initial["marts"]["headcount"] == 2
+    assert initial["marts"]["accessions"] == 2
+    assert initial["marts"]["separations"] == 2
+    assert all(f["unknown_agency_rows"] == 1 for f in initial["facts"].values())
+    print("PASS ambiguous duplicate agency lookup preserves rows under Unknown0")
+    with conn.transaction():
+        following = build_model(conn, "202505")
+    assert following["marts"]["headcount"] == 2
+    assert conn.execute("SELECT sum(headcount) FROM mart.workforce_monthly").fetchone()[0] == 4
+    print("PASS building another month preserves prior Fact and Mart totals")
+    with conn.transaction():
+        repeated = build_model(conn, "202504")
+    assert repeated == initial
+    assert conn.execute("SELECT count(*) FROM dw.fact_accessions").fetchone()[0] == 4
+    print("PASS repeat model build preserves totals without duplicate Facts")
+    try:
+        with conn.transaction():
+            conn.execute(
+                "UPDATE ods.ods_accessions_record SET count_value=NULL "
+                "WHERE file_id=2 AND source_row_ordinal=1"
+            )
+            build_model(conn, "202504")
+    except ValueError as error:
+        assert "invalid count" in str(error)
+    else:
+        raise AssertionError("Invalid counts unexpectedly published")
+    assert conn.execute("SELECT sum(headcount) FROM mart.workforce_monthly").fetchone()[0] == 4
+    print("PASS invalid count blocks publish and preserves previous Mart state")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/.env")
+    args = parser.parse_args()
+    with temporary_database(args.config) as conn:
+        check(conn)
+    print("PASS temporary database removed")
+
+
+if __name__ == "__main__":
+    main()

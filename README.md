@@ -2,10 +2,15 @@
 
 Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và biến động nhân sự liên bang Hoa Kỳ. Môn MI4214; năm vai trò; kế hoạch 39 ngày từ ngày khởi động chưa chốt.
 
-**Hiện trạng (18/11/2026):** gói TV1 tuần 1, profiling v1 của TV2 ([PR #13](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/13)) và môi trường PostgreSQL + ingest prototype của TV3 ([PR #14](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/14)) đã ở `main`, trạng thái **REVIEW**. TV1 đã [đo lại baseline](evidence/TV1_week2/README.md) và số liệu khớp. Chưa có ODS/DW/Mart/Power BI; prototype mới nạp Accessions 202504 đầy đủ + 50.000 dòng Employment mẫu. Chưa có nghiệm thu DONE/PASS. Đích kế tiếp: cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
+**Nhánh tuần 3 `tv3/g3-full-pipeline`:** mở rộng từ G2 sang đủ 12 Parquet tháng 03–06, đối soát theo file, kiểm chất lượng trực tiếp và rerun May. [Báo cáo tuần 3](reports/TV3_week3_summary.md) ghi actual, phạm vi tự kiểm và các phần chờ TV4/TV5; [runbook G3](docs/TV3_week3_runbook.md) có lệnh replay. G3 chưa được TV1 nghiệm thu, mô hình còn PROPOSED. PR G2 bên dưới là dependency chưa merge tại lúc tạo nhánh.
+
+**Hiện trạng nhánh `tv3/g2-pipeline` (23/11/2026):** gói TV3 tuần 2 ở trạng thái **REVIEW**, trong [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Đã có pipeline ba nguồn tháng 04/2025 → Staging/ODS → 3 Fact → 2 Mart và bằng chứng SQL K01/K06/K07 = 2.271.969 / 7.153 / 24.088. Mô hình là **PROPOSED, chờ TV4** duyệt grain/bus matrix/Dimension catalog; tích hợp Power BI và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu DONE/PASS. Phạm vi, giới hạn Unknown và bằng chứng nằm trong [báo cáo tuần 2](reports/TV3_week2_summary.md); tiêu chuẩn cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
 
 ## Bắt đầu ở đâu?
 
+- **G3 tuần 3:** đọc [runbook đầy đủ](docs/TV3_week3_runbook.md), [catalog/mô hình chờ duyệt](docs/TV3_g3_model_review.md) và [sơ đồ G3](diagrams/10_g3_full_pipeline.svg). Reviewer ghi vào `.qa/TV5_G3/<run>`; CSV G2 được giữ nguyên, CSV G3 ở `reports/week3/`.
+- **TV4 tuần 3:** nhận [dump G3 đủ bốn kỳ, SHA-256 và lệnh restore](handoff/TV3_G3/README.md), restore trên Windows, đối soát SQL–DAX và phản hồi PBIX/bus matrix/catalog.
+- **TV5:** dùng [hướng dẫn replay PowerShell](handoff/TV3_G2/TV5_REPLAY.md), database QA riêng và `--report-dir .qa/TV5_G2/<run>/reports`. Thư mục `.qa/` được Git bỏ qua; lưu actual/kết luận độc lập tại đây.
 - **Mọi thành viên (từ 18/11):** đọc [**Việc tiếp theo của từng thành viên — theo thứ tự**](docs/00_next_steps_by_member.md), tạo nhánh mới từ `main`.
 - **TV2:** đọc [TV2 bắt đầu từ đây](docs/00_handoff_tv1_tv2.md), sau đó nhận năm task L2-01–L2-05.
 - **TV4 và TV5:** đọc [yêu cầu dashboard D1–D3 và số cần đối soát](docs/02_requirements.md).
@@ -22,7 +27,7 @@ Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và
 | D2 — Personnel Flows | Có bao nhiêu lượt tiếp nhận/rời cơ quan theo kỳ báo cáo và loại hành động? | Accessions/Separations |
 | D3 — Workforce Changes | Nhóm nào đóng góp vào mức tăng/giảm quy mô giữa hai kỳ? | So sánh hai snapshot |
 
-Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Đây là tổng nguồn kiểm metadata, chưa phải kết quả pipeline. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
+Ví dụ tháng 04/2025: headcount 2.271.969, giảm 17.223 so với tháng 03; 7.153 lượt Accessions và 24.088 lượt Separations, chênh −16.935 lượt. Nhánh G3 có đủ bốn kỳ để tính SQL MoM theo [SQL KPI](sql/07_g3_kpi.sql); kết quả DAX tiếp tục chờ TV4/TV5 kiểm cùng bộ lọc. Thay đổi headcount và chênh lệch lượt hành động là hai phép đo khác nhau.
 
 ## Nguồn và mô hình đã chọn
 
@@ -56,4 +61,4 @@ Ngày 1–7: phạm vi/nguồn/môi trường; 8–14: thiết kế và bản ch
 - [Đối chiếu ID tracker và phân công](docs/00_task_id_crosswalk.csv)
 - [Sơ đồ chỉnh sửa được và bản xem GitHub](diagrams/README.md)
 
-Các đường dẫn `docs/03_*`, `docs/04_*`, `data/reference/*` trong phiếu giao việc là đầu ra sẽ tạo; sản phẩm TV2 hiện có nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump không commit. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
+Đầu vào TV2 đã có tại `docs/03_*`, `docs/04_*`, `data/reference/*` và `evidence/TV2_week2/`; hồ sơ profiling tuần 1 nằm ở `evidence/TV2_week1/`. Raw Parquet, file tạm Office, secrets và DB dump cục bộ không commit. Hai ngoại lệ đúng đường dẫn cho dump tổng hợp đã kiểm: [G2 tháng 04](handoff/TV3_G2/workforce_g2.dump) và [G3 đủ bốn kỳ](handoff/TV3_G3/workforce_g3.dump), kèm checksum để TV4 nhận qua Git. Tên thành viên và ngày bắt đầu vẫn để nhóm điền; repo chưa gán tài khoản GitHub cho TV2–TV5.
