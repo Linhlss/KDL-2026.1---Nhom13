@@ -130,7 +130,7 @@ Sau khi PR #49 merge, còn bốn việc mở. Trong đó ba việc chặn trực
 | #51 | **Mart D2 `mart.personnel_flows_category_monthly`**, theo đề nghị của TV4 ở #32. Grain: tháng báo cáo × cơ quan × family × category. Tổng hợp riêng từng event Fact rồi `UNION ALL`; key 0 giữ trong tổng. `build_model` kiểm hai chiều với `personnel_flows_monthly`. | `sql/04_create_marts.sql`, `sql/06_g2_transfer.sql`, `etl/g2_model.py`, `etl/g2_transfer.py`, `etl/g3_pipeline.py`, `sql/tests/08_g3_full_baseline.sql`, `sql/07_g3_kpi.sql` |
 | #52 | **Mart K10 `mart.dq_coverage_monthly`**, dựa trên audit độ phủ chính thức của TV2. Tỷ lệ chính thức chỉ có khi TV2 ghi `VERIFIED`/`COMPLETE`, đúng định nghĩa trong `02_kpi_dictionary.csv`. Có thêm số liệu thực tế về việc DW tra mã (khớp/Unknown/NULL/rỗng/REDACTED). | như trên |
 | #54 | **SQL tham chiếu cho từng KPI của dashboard.** File `sql/08_dashboard_reference.sql` có 8 khối, theo đúng quy tắc trong từ điển KPI: K02/K03 so theo `agency_code`; K04 có mẫu số bỏ lọc cơ quan; K10 chỉ ra tỷ lệ khi `VERIFIED`. `reports/week4/sql_dax_reference.csv` có 74 giá trị SQL thật để TV4 điền cột DAX. Các giá trị khớp số TV4 tự kiểm trước đó (AF tháng 04 = 170.447, K02 = −1.303; VA ≈ 20,76%). | `sql/08_dashboard_reference.sql`, `evidence/TV3_week4/build_sql_dax_reference.py`, `reports/week4/sql_reference/*`, `reports/week4/sql_dax_reference.csv` |
-| #56 (một phần) | **Backup schema đầy đủ**: `handoff/TV3_schema/workforce_schema.sql`. Đã nạp thử vào DB trống: số ràng buộc và số bảng/VIEW khớp DB gốc. **Còn lại của #56:** cập nhật sơ đồ vật lý cho các bảng mới, và gộp runbook thành một bản. | `handoff/TV3_schema/*` |
+| #56 | **Backup schema đầy đủ**: `handoff/TV3_schema/workforce_schema.sql`. Đã nạp thử vào DB trống: số ràng buộc và số bảng/VIEW khớp DB gốc. **Runbook cuối gộp làm một** trong `docs/07_runbook.md`, gồm 9 mục từ môi trường tới dump/benchmark/SQL–DAX; G2 cũ và G3 chi tiết thành phụ lục. **Sơ đồ vật lý** `diagrams/09_dw_physical_overall.drawio` đổi sang G3 và thêm 4 bảng mới (viền xanh lá). **Còn lại:** xuất lại bản `.png` bằng draw.io (máy TV1 không có draw.io). | `handoff/TV3_schema/*`, `docs/07_runbook.md`, `diagrams/09_dw_physical_overall.drawio` |
 | #55 | **Benchmark L3-15.** Mart trả lời K01 theo cơ quan trong 0,05 ms, so với 320 ms trên Fact (kết quả trùng khớp). Index giúp khoảng 4,5 lần trên Fact Separations, nhưng làm chậm 27% trên Fact Employment (bitmap lossy) ⇒ dùng Mart. | `sql/tests/09_benchmark.sql`, `evidence/TV3_week4/run_benchmark.py`, `reports/TV3_week4_benchmark.md`, `reports/week4/*` |
 
 **Kiểm thử đợt 2** (PostgreSQL 17.12, code `0d36e10`, DB mới `workforce_dw_g3_tv1`):
@@ -147,6 +147,7 @@ Sau khi PR #49 merge, còn bốn việc mở. Trong đó ba việc chặn trực
   - TV3 tự review (#50).
   - Chạy lại trên máy demo Windows/PostgreSQL 18 (#57).
   - Slide và phần trình bày của TV3 (#58).
+  - Xuất lại PNG sơ đồ vật lý bằng draw.io (#56).
   - Kiểm tra độc lập của TV5.
 - **TV2:** xác nhận cách gộp nhánh của mình (#53); mở PR cho nhánh L2-14 (`codex/l2-14-source-mart`).
 - **TV5:** chạy lại G3 và benchmark độc lập. Đây vẫn là điều kiện để nghiệm thu G2/G3.

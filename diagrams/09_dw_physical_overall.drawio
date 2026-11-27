@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
-  <diagram id="09_dw_physical_overall" name="Mô hình vật lý tổng thể G2">
-    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2600" pageHeight="2230" background="#f7f9fc">
+  <diagram id="09_dw_physical_overall" name="Mô hình vật lý tổng thể G3">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2600" pageHeight="2720" background="#f7f9fc">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="project" parent="1" vertex="1" value="NHÓM 13  /  TV3 G2  /  THÁNG 04 2025" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
+        <mxCell id="project" parent="1" vertex="1" value="NHÓM 13  /  TV3 G3  /  THÁNG 03–06 2025  /  CẬP NHẬT TV1 27/11/2026" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=17;fontColor=#235eaa;fontStyle=1;">
           <mxGeometry x="52" y="30" width="2496" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="title" parent="1" vertex="1" value="Mô hình vật lý tổng thể G2" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=39;fontColor=#16273d;fontStyle=1;">
+        <mxCell id="title" parent="1" vertex="1" value="Mô hình vật lý tổng thể G3" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=39;fontColor=#16273d;fontStyle=1;">
           <mxGeometry x="52" y="75" width="2496" height="55" as="geometry" />
         </mxCell>
         <mxCell id="subtitle" parent="1" vertex="1" value="Khóa, grain, vai trò tháng và các bảng thực thi theo DDL TV3 · Thiết kế đề xuất chờ TV4 duyệt" style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=21;fontColor=#52647a;fontStyle=0;">
@@ -166,8 +166,35 @@
         <mxCell id="agg_s" parent="1" edge="1" source="fact_s" target="flows" style="edgeStyle=none;strokeColor=#235eaa;strokeWidth=2;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.656;entryY=0;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fklegend" parent="1" vertex="1" value="Nét liền 1 → n theo FK, lineage ODS → Fact là 1 → 0..1. Nét đứt là tổng hợp. Trường raw đầy đủ nằm trong SQL DDL." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=20;fontColor=#52647a;fontStyle=0;">
-          <mxGeometry x="50" y="2180" width="2500" height="30" as="geometry" />
+        <mxCell id="fklegend" parent="1" vertex="1" value="Nét liền 1 → n theo FK, lineage ODS → Fact là 1 → 0..1. Nét đứt là tổng hợp. Trường raw đầy đủ nằm trong SQL DDL. Viền xanh lá: bảng thêm ngày 27/11/2026 (PR #49, #60)." style="text;html=1;align=left;verticalAlign=top;spacing=0;fontFamily=Arial;fontSize=20;fontColor=#52647a;fontStyle=0;">
+          <mxGeometry x="50" y="2640" width="2500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label_review" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#2e7d32&quot;&gt;&lt;b&gt;MỚI 27/11 · TV2 LABEL REVIEW&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;ref.label_review&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (relation, report_month, code)&lt;br&gt;review_result · proposed_display_label&lt;br&gt;REVIEW + kết quả lành tính → dim_agency&lt;br&gt;verification_status = REVIEWED_TV2&lt;br&gt;HOLD_ORG_SCOPE giữ Unknown&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#2e7d32;strokeWidth=3;fontFamily=Arial;">
+          <mxGeometry x="50" y="2260" width="600" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup_cov" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#2e7d32&quot;&gt;&lt;b&gt;MỚI 27/11 · TV2 K10 AUDIT&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;audit.lookup_coverage_snapshot&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (family, report_month, source_sha256, lookup_field)&lt;br&gt;lookup_status · reference_coverage&lt;br&gt;eligible_rows · matched_rows&lt;br&gt;VIEW audit.fk_lookup_coverage&lt;br&gt;= snapshot ⨝ source_file đang hoạt động&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#2e7d32;strokeWidth=3;fontFamily=Arial;">
+          <mxGeometry x="700" y="2260" width="600" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="category_mart" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#2e7d32&quot;&gt;&lt;b&gt;MỚI 27/11 · GRAIN REPORT MONTH + AGENCY + FAMILY + CATEGORY&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;mart.personnel_flows_category_monthly&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (month_key, agency_key, family, category_key)&lt;br&gt;FK → dim_month, dim_agency, dim_action_category&lt;br&gt;events · source_rows bigint&lt;br&gt;aggregate từng event Fact rồi UNION ALL&lt;br&gt;key 0 nằm trong tổng (D2)&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#2e7d32;strokeWidth=3;fontFamily=Arial;">
+          <mxGeometry x="1350" y="2260" width="600" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="dq_mart" parent="1" vertex="1" value="&lt;font style=&quot;font-size:15px&quot; color=&quot;#2e7d32&quot;&gt;&lt;b&gt;MỚI 27/11 · GRAIN MONTH + FAMILY + FIELD&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:23px&quot; color=&quot;#16273d&quot;&gt;&lt;b&gt;mart.dq_coverage_monthly&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:20px&quot; color=&quot;#52647a&quot;&gt;PK (month_key, family, lookup_field)&lt;br&gt;FK month_key → dim_month&lt;br&gt;official_matched_rows · official_coverage_pct&lt;br&gt;(chỉ khi VERIFIED/COMPLETE)&lt;br&gt;dw_total/matched/unknown/null/empty/redacted (K10)&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fillColor=white;strokeColor=#2e7d32;strokeWidth=3;fontFamily=Arial;">
+          <mxGeometry x="2000" y="2260" width="550" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="rev_agency" parent="1" edge="1" source="label_review" target="agency" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2e7d32;strokeWidth=2;endArrow=block;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="acc_cat" parent="1" edge="1" source="fact_a" target="category_mart" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2e7d32;strokeWidth=2;endArrow=block;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sep_cat" parent="1" edge="1" source="fact_s" target="category_mart" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2e7d32;strokeWidth=2;endArrow=block;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cov_dq" parent="1" edge="1" source="lookup_cov" target="dq_mart" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2e7d32;strokeWidth=2;endArrow=block;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="facts_dq" parent="1" edge="1" source="fact_e" target="dq_mart" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2e7d32;strokeWidth=2;endArrow=block;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
