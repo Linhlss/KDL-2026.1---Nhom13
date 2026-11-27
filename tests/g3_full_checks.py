@@ -80,7 +80,7 @@ def check(config):
         (directory/records[0]['filename']).unlink()
         with patch.object(g3,'ROOT',directory), patch.object(sys,'argv',command), patch.object(g3.subprocess,'check_output',side_effect=['synthetic-test-commit\n','']):
             require(g3.main()==1,'Missing file falsely completed')
-        require(json.loads((output/'run_manifest.json').read_text())['status']=='FAIL','Run manifest falsely SUCCESS')
+        require(json.loads((output/'run_manifest.json').read_text(encoding='utf-8'))['status']=='FAIL','Run manifest falsely SUCCESS')
         require(any(r['status']=='FAIL' and r['job']=='J00' for r in rows(output/'07_load_log.csv')),'Failure missing from exported load log')
         require(conn.execute('SELECT sum(headcount) FROM mart.workforce_monthly').fetchone()[0]==8,'Source failure damaged valid Mart')
         print('PASS failed run exports J00 FAIL, records FAIL manifest and preserves previously valid data')

@@ -70,7 +70,11 @@ psql -X -v ON_ERROR_STOP=1 -h 127.0.0.1 -d workforce_dw_g2_check \
 
 K01 toàn tháng 04 kỳ vọng 2.271.969. K06 theo report month kỳ vọng 7.153 và K07 kỳ vọng 24.088. Khi lọc agency trên Power BI, SQL tham chiếu dùng cùng `month_key` và `agency_key` hoặc `agency_code` của Mart. Key 0 là nhóm Unknown, tập hợp các mã chưa có một nhãn READY trong lookup theo kỳ. Mã gốc vẫn nằm trong ODS/Fact để TV2/TV5 kiểm lại.
 
-Lượt chạy tháng 04 có 206.687 dòng Employment, 1.591 dòng Accessions và 1.936 dòng Separations trong agency Unknown. TV4 cần trình bày rõ nhóm này khi thử slicer; TV2/TV5 dùng mã gốc và trạng thái lookup để xác minh nhãn. [Báo cáo tuần 2](../reports/TV3_week2_summary.md) ghi phạm vi kết quả SQL và phần còn chờ xác nhận.
+Lượt chạy G2 tháng 04 (bản cũ) có 206.687 dòng Employment, 1.591 dòng Accessions và 1.936 dòng Separations trong agency Unknown.
+
+> **Đã sửa ngày 27/11/2026.** Các dòng Unknown này đều thuộc 7 mã cơ quan ở trạng thái `REVIEW` vì nhãn khác EHRI. TV2 đã duyệt các mã đó là chỉ khác cách viết. Từ bản tích hợp G3, pipeline dùng kết quả duyệt này ([data/reference/README.md](../data/reference/README.md)), nên Agency Unknown của bốn kỳ bằng 0. Hãy dùng số của [báo cáo tuần 3](../reports/TV3_week3_summary.md); các con số ở trên chỉ còn giá trị lịch sử của G2.
+
+TV4 cần trình bày rõ nhóm Unknown, nếu có, khi thử slicer; TV2/TV5 dùng mã gốc và trạng thái lookup để xác minh nhãn. [Báo cáo tuần 2](../reports/TV3_week2_summary.md) ghi phạm vi kết quả SQL và phần còn chờ xác nhận.
 
 J06 yêu cầu đúng một file active/LOADED cho mỗi family trong tháng rồi kiểm source → Staging → ODS → Fact theo từng file và tổng measure Mart cùng kỳ. Thiếu hoặc trùng nguồn trả mã lỗi, CSV ghi FAIL tại `active_loaded_sources` và `audit.load_run` giữ J06 FAIL. Khi đủ nguồn và đúng số có 21 dòng PASS (3 coverage + 18 SQL), 3 dòng DAX PENDING chờ TV4/TV5. Truy vấn [lineage TV2](../sql/tests/06_fact_lineage.sql) là mẫu SQL cần bind cặp bảng cụ thể; CLI thực hiện các phép kiểm đã gắn tên bảng. Các trường hợp tháng hiệu lực khác tháng báo cáo được giữ. Baseline 202504 có 43 Accessions và 61 Separations lệch kỳ theo đối chiếu TV2.
 

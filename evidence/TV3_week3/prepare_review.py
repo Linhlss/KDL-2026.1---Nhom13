@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import platform
 import shutil
 import subprocess
 import sys
@@ -11,6 +12,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'etl'))
+from psycopg import sql
 from g2_pipeline import connect,rows,write_csv
 
 
@@ -24,6 +26,7 @@ def main():
     parser.add_argument('--database',required=True)
     parser.add_argument('--report-dir',type=Path,default=ROOT/'reports/week3')
     parser.add_argument('--log-dir',type=Path,default=ROOT/'.qa/TV3_G3')
+    parser.add_argument('--operator',default='TV3',help='who ran the full pipeline (written to evidence)')
     args=parser.parse_args()
     p=args.report_dir
     manifest=json.loads((p/'run_manifest.json').read_text(encoding='utf-8'))
@@ -66,28 +69,34 @@ def main():
         require(monthly[0]['k02'] is None and monthly[0]['k03'] is None,'Missing prior month must stay NULL')
         sample=next(r for r in agencies if r['month_key']==202504 and r['agency_key']!=0)
         meta=conn.execute("SELECT current_user,current_setting('server_version')").fetchone()
+        mart_groups=dict(workforce=conn.execute('SELECT count(*) FROM mart.workforce_monthly').fetchone()[0],
+                         flows=conn.execute('SELECT count(*) FROM mart.personnel_flows_monthly').fetchone()[0])
+        unknown_agency=sum(conn.execute(sql.SQL('SELECT count(*) FROM dw.{} WHERE agency_key=0').format(sql.Identifier(f))).fetchone()[0]
+                           for f in ('fact_employment_snapshot','fact_accessions','fact_separations'))
     observed=rows(p/'08_dimension_observed.csv')
     evidence=ROOT/'evidence/TV3_week3'
     for name in ['00_receive_sources.txt','01_synthetic_g3.txt','02_source_regression.txt','03_model_regression.txt',
                  '04_replay_regression.txt','05_full_pipeline.txt','06_transfer_restore.txt','07_sql_assertions.txt','08_sql_kpi.txt']:
         text=(args.log_dir/name).read_text(encoding='utf-8')
         (evidence/name).write_text('\n'.join(line.rstrip() for line in text.rstrip().splitlines())+'\n',encoding='utf-8')
-    environment='Python '+sys.version.split()[0]+'; PostgreSQL '+meta[1]+'; macOS TV3\n'
-    environment+='Base G2 commit: 3b30235; branch tv3/g3-full-pipeline\n'
-    environment+='COMMAND: .venv/bin/python -u etl/g3_pipeline.py --config configs/.env.g3.local --database workforce_dw_g3_20261123 --raw-dir data/raw --report-dir reports/week3 --verify-rerun --quality-check\n'
+    branch=subprocess.check_output(['git','rev-parse','--abbrev-ref','HEAD'],cwd=ROOT,text=True).strip()
+    environment='Python '+sys.version.split()[0]+'; PostgreSQL '+meta[1]+'; '+platform.system()+' '+platform.machine()+'; operator '+args.operator+'\n'
+    environment+='Base G2 commit: 3b30235; branch '+branch+'; full-run code '+manifest['code_version']+'\n'
+    environment+='COMMAND: python -u etl/g3_pipeline.py --config configs/.env.g3.local --database '+str(manifest['database'])+' --raw-dir <12 Parquet TV2> --report-dir reports/week3 --verify-rerun --quality-check\n'
+    environment+='Run window (UTC): '+manifest['started_at']+' -> '+manifest['finished_at']+'\n'
     environment+=f'PASS code hashes match completed full run; {len(original)} G2 reports byte-identical; 593 mismatches preserved\n'
     environment+='PASS April K02=-17223, K08=-16935; missing March prior-month K02/K03 remain NULL\n'
     environment+='Actual agency example (same SQL filters for TV4): '+json.dumps(sample,default=str,ensure_ascii=False)+'\n'
     environment+='NOT_TESTED real republish replacement; PENDING Windows/SQL-DAX and independent TV5 QA\n'
     (evidence/'00_environment_and_commands.txt').write_text(environment,encoding='utf-8')
     open_items=[
-      dict(id='G3-D01',owner='TV1',status='OPEN',item='G2 #43 not merged at branch creation; G3 branch inherits 3b30235'),
+      dict(id='G3-D01',owner='TV1',status='OPEN',item='G2 #43 superseded by TV1 integration branch tv1/g3-integration (TV3 commits kept); close #43 after merge'),
       dict(id='G3-D02',owner='TV4',status='PENDING',item='Approve bus matrix, Dimension catalog, grain and Unknown/time roles'),
       dict(id='G3-D03',owner='TV4/TV3',status='PENDING_DESIGN',item='Occupation/location/grade/category Mart extensions require agreed grain; current Marts month/agency'),
       dict(id='G3-D04',owner='TV4',status='NOT_RUN_WINDOWS',item='Receive private full-period dump, refresh PBIX, compare total and actual agency filter with SQL'),
       dict(id='G3-D05',owner='TV5',status='PENDING_INDEPENDENT_QA',item='Replay full 12 files and May rerun; sign actual SQL-DAX/QA results'),
       dict(id='G3-D06',owner='TV2/TV3',status='NOT_TESTED',item='Successful replacement with real republish source unavailable; mismatch rejection and skip tested'),
-      dict(id='G3-D07',owner='TV2/TV4',status='PARTIAL_REFERENCE',item='Derived agency/category labels remain PARTIAL; review Unknown and ambiguous/unmapped keys')]
+      dict(id='G3-D07',owner='TV2/TV4',status='PARTIAL_REFERENCE',item='Agency labels PARTIAL or REVIEWED_TV2 (TV2 EHRI label review applied, agency Unknown = 0); HOLD_ORG_SCOPE subelements stay out; official verification pending')]
     dependencies=[('G2/G3','Trước merge/nghiệm thu G3','OPEN_DEPENDENCY'),
                   ('L3-11 / L4-07..09','Trước duyệt Dimension/grain và nghiệm thu G3','BLOCKED'),
                   ('L3-12 / L4-07..09','Trước mở rộng Mart ngoài tháng/cơ quan','BLOCKED'),
@@ -104,7 +113,7 @@ def main():
            '', '| Task | Trạng thái | Sản phẩm thực chạy |', '| --- | --- | --- |',
            '| L3-10 | REVIEW | 12 file Source=Staging=ODS; [counts](week3/07_file_counts.csv), [audit](week3/07_load_log.csv), [before–after](week3/07_before_after.csv) |',
            '| L3-11 | REVIEW thực thi; model PROPOSED | 3 Fact, khóa/FK/time roles, [catalog quan sát](week3/08_dimension_observed.csv), [quality checks](week3/09_quality_checks.csv) |',
-           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart 486 nhóm và flows Mart 340 nhóm đủ bốn kỳ; [KPI SQL](week3/05_kpi_monthly.csv); category/các chiều bổ sung chờ TV4 |',
+           '| L3-12 | REVIEW tháng/cơ quan | Workforce Mart '+str(mart_groups['workforce'])+' nhóm và flows Mart '+str(mart_groups['flows'])+' nhóm đủ bốn kỳ; [KPI SQL](week3/05_kpi_monthly.csv); category/các chiều bổ sung chờ TV4 |',
            '| L3-13 | REVIEW tự kiểm | [J06](week3/07_reconciliation.csv), [rerun May](week3/TV3_week3_rerun_results.csv), [failure tests](../evidence/TV3_week3/02_source_regression.txt); TV5 độc lập chờ xác nhận |',
            '', '| Tháng | Employment | Accessions | Separations | K02 | K08 |', '| --- | ---: | ---: | ---: | ---: | ---: |']
     for r in monthly:
@@ -112,7 +121,7 @@ def main():
     lines.extend(['',f'Tổng dòng Fact: Employment {totals["employment"]:,}; Accessions {totals["accessions"]:,}; Separations {totals["separations"]:,}. Tổng {sum(totals.values()):,} bản ghi qua các kỳ, không phải số người duy nhất.',
        '', '**Kiểm chứng:** 84 J06 PASS + 12 DAX PENDING; 152 kiểm raw/ODS, ordinal, time role và FK PASS. Giữ 593 event khác kỳ (269 Accessions, 324 Separations), riêng May 107. PK/UNIQUE/FK đều validated; lookup không nhân/mất dòng. [Chất lượng theo file và Unknown](week3/09_source_quality.csv) ghi số thực đo.',
        '', '**Rerun May thật:** ba file được J00 kiểm lại, sáu J01/J02 SKIPPED, J03–J05 rebuild May rồi J06 đủ bốn kỳ. Cả 15 bảng có cùng count/digest trước–sau, gồm stable Dim keys và Fact/Mart mọi tháng; source identity toàn baseline giữ nguyên. Audit được thêm run mới. Mã/cột/thứ tự digest ghi trong runbook. Không gọi nhánh skip là đã thử replacement.',
-       '', 'Dimension thực đo: '+', '.join(r['table']+' = '+r['actual_rows']+' dòng' for r in observed)+'. Unknown key=0; nhãn dẫn xuất PARTIAL. Các tháng hiệu lực ngoài bốn kỳ vẫn có Dimension; không cắt event.',
+       '', 'Dimension thực đo: '+', '.join(r['table']+' = '+r['actual_rows']+' dòng' for r in observed)+'. Unknown key=0; nhãn dẫn xuất PARTIAL, riêng 28 khóa Agency–tháng TV2 đã duyệt nhãn EHRI là REVIEWED_TV2; Agency Unknown = '+str(unknown_agency)+' dòng trên 12 file. Các tháng hiệu lực ngoài bốn kỳ vẫn có Dimension; không cắt event.',
        '', '**Bàn giao TV4:** [workforce_g3.dump](../handoff/TV3_G3/workforce_g3.dump), [SHA-256](../handoff/TV3_G3/workforce_g3.dump.sha256) và [lệnh restore](../handoff/TV3_G3/README.md) đã có trong repo; ba Dimension và hai Mart; [bằng chứng chuyển/restore](../evidence/TV3_week3/06_transfer_restore.txt) ghi SHA-256, 9/493/53/486/340 dòng và KPI cả bốn kỳ. Đã so toàn bộ nội dung bảng sau restore trên PostgreSQL 18 cùng máy; Windows và Power BI chưa chạy. Raw/config và dump cục bộ không commit; ngoại lệ đúng bản aggregate G3 đã kiểm trong handoff/TV3_G3/.',
        '', '**Kiểm thử lỗi:** fixture QA kiểm file thiếu, checksum/version/hash thay dưới cùng tên, schema không hỗ trợ, lỗi COPY giữa transaction, rollback và audit FAIL; model chặn count != 1 và giữ Mart cũ. Test mới phát hiện thay đổi trường nghiệp vụ dù tổng không đổi. Không sửa raw thật; replacement thành công với file republish thật NOT_TESTED.',
        '', f'Giữ nguyên byte của {len(original)} báo cáo G2. CSV G3 ở reports/week3; QA riêng dùng --report-dir .qa/TV5_G3/<run>. [Run manifest](week3/run_manifest.json) ghi code/inventory SHA-256 và thời gian; lượt full chạy trên working tree có hash mã chính xác để đối chiếu commit sau.',

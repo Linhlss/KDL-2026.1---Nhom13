@@ -13,7 +13,7 @@
   },
   "dw.fact_employment_snapshot": {
     "rows": 9057997,
-    "sha256": "28f26227cc3d1780df45c35e8db1cc8df214a7a0422ccda4f0a2bef0aabe28c5"
+    "sha256": "6f1768a8e5dcf13f115425dc1182c7760203a56ce0e6edcd82f63c5dbaab385f"
   },
   "staging.accessions_record": {
     "rows": 30782,
@@ -25,7 +25,7 @@
   },
   "dw.fact_accessions": {
     "rows": 30782,
-    "sha256": "987ef3a846f73c84d37159451e40ca2e6523c63aa510fd26742912862baaea77"
+    "sha256": "da97844645ea004f3cb0751d28d84cc4d28b65b06e4ece83388103f126ea7f46"
   },
   "staging.separations_record": {
     "rows": 92511,
@@ -37,26 +37,26 @@
   },
   "dw.fact_separations": {
     "rows": 92511,
-    "sha256": "d16a62aa9a673836d94ad13a006b69ffdd4794e14eb7fee38104f5c5c817d7f9"
+    "sha256": "39d69db00153fa3576498b50392019ba98313037711f46e36fd30e8390c8cb0d"
   },
   "dw.dim_month": {
     "rows": 9,
     "sha256": "4e729881189952437967f146d7c976f1b4b031deda349f1b150b876185a4bdea"
   },
   "dw.dim_agency": {
-    "rows": 493,
-    "sha256": "f5efbc03716b14f296e13b9c06c44f56e3769afdf46fd9d538b088939d38b3be"
+    "rows": 521,
+    "sha256": "4ff328a9b01d030dcf35bc248daef67f850b3d32cc4371ff2b8001d005654e7f"
   },
   "dw.dim_action_category": {
     "rows": 53,
-    "sha256": "c7ee6f001bb0cd501c505650fc902f051fd15e5a9d5e2598e591a0806e4a4228"
+    "sha256": "405bd3b130ca87ae2653fbf240040fcae61b1cb6fa6905007fc1bc725d0b075a"
   },
   "mart.workforce_monthly": {
-    "rows": 486,
-    "sha256": "f25773d2358a067e009704a9afc8eb82727d5e71e06ba692679f5793c3022809"
+    "rows": 510,
+    "sha256": "c97b05b1a055571fc49cf73584c35e37733a9792fc60f1f083875611e7c5996e"
   },
   "mart.personnel_flows_monthly": {
-    "rows": 340,
-    "sha256": "90df92d77ecf2c8883e72eedcb9992b79976d1e31eb93e84e527a6cf52c7ac4a"
+    "rows": 361,
+    "sha256": "bd1f4d76712e6d36fb0a55f265cc22989c4973eebef5210deee64cff45d180bc"
   }
 }

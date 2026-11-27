@@ -2,9 +2,15 @@
 
 Kho dữ liệu và Business Intelligence cho phân tích quy mô, cơ cấu và biến động nhân sự liên bang Hoa Kỳ. Môn MI4214; năm vai trò; kế hoạch 39 ngày từ ngày khởi động chưa chốt.
 
-**Nhánh tuần 3 `tv3/g3-full-pipeline`:** mở rộng từ G2 sang đủ 12 Parquet tháng 03–06, đối soát theo file, kiểm chất lượng trực tiếp và rerun May. [Báo cáo tuần 3](reports/TV3_week3_summary.md) ghi actual, phạm vi tự kiểm và các phần chờ TV4/TV5; [runbook G3](docs/TV3_week3_runbook.md) có lệnh replay. G3 chưa được TV1 nghiệm thu, mô hình còn PROPOSED. PR G2 bên dưới là dependency chưa merge tại lúc tạo nhánh.
+**Hiện trạng (27/11/2026):** pipeline G2/G3 của TV3 đã có trên `main`, đi qua nhánh tích hợp của TV1 `tv1/g3-integration`. Nhánh này thay thế PR #43 và giữ nguyên commit của TV3.
+- **Dữ liệu:** đủ 12 Parquet tháng 03–06/2025 đi qua Staging/ODS → 3 Fact → 2 Mart; tổng 9.181.290 dòng khớp TV2.
+- **Kiểm tra:** J06 đối soát theo file, kiểm chất lượng trực tiếp từ Parquet, chạy lại tháng May cho dữ liệu không đổi.
+- **Lỗi Unknown đã sửa:** 7 cơ quan (Bộ Tài chính, Bộ Nội vụ, NASA, HUD…) trước đây bị đưa vào Unknown. Nay pipeline dùng kết quả duyệt nhãn của TV2, nên Agency Unknown của bốn kỳ bằng 0.
+- **Bàn giao cho TV4:** [dump G3 mới (aggregate, bốn kỳ)](handoff/TV3_G3/README.md) để dựng dashboard.
+- **Chi tiết:** [báo cáo tuần 3](reports/TV3_week3_summary.md), [runbook G3](docs/TV3_week3_runbook.md) và [giải trình các sửa đổi của TV1](docs/TV1_giai_trinh_tich_hop_G3.md).
+- **Trạng thái nghiệm thu:** mô hình vẫn **PROPOSED, chờ TV4** duyệt grain/bus matrix/catalog; SQL–DAX và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu G3 DONE/PASS.
 
-**Hiện trạng nhánh `tv3/g2-pipeline` (23/11/2026):** gói TV3 tuần 2 ở trạng thái **REVIEW**, trong [PR nháp #43](https://github.com/Linhlss/KDL-2026.1---Nhom13/pull/43). Đã có pipeline ba nguồn tháng 04/2025 → Staging/ODS → 3 Fact → 2 Mart và bằng chứng SQL K01/K06/K07 = 2.271.969 / 7.153 / 24.088. Mô hình là **PROPOSED, chờ TV4** duyệt grain/bus matrix/Dimension catalog; tích hợp Power BI và QA độc lập **chờ TV4/TV5**. Chưa có nghiệm thu DONE/PASS. Phạm vi, giới hạn Unknown và bằng chứng nằm trong [báo cáo tuần 2](reports/TV3_week2_summary.md); tiêu chuẩn cổng **G2** theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
+Lịch sử G2: pipeline ba nguồn tháng 04/2025 với K01/K06/K07 = 2.271.969 / 7.153 / 24.088, xem [báo cáo tuần 2](reports/TV3_week2_summary.md). Tiêu chuẩn cổng theo [Kế hoạch thực thi](Ke_hoach_thuc_thi_TV2_TV3_phoi_hop_TV4_TV5_Nhom13.md).
 
 ## Bắt đầu ở đâu?
 

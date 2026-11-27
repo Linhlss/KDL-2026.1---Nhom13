@@ -2,12 +2,12 @@ file_id,family,report_month,column,rule,before,after,affected_rows,before_rows,a
 7,employment,202505,count,DQ01,raw text,validated bigint; raw retained,2255056,2255056,2255056,0,4328,0,1040131,0,PENDING TV5
 7,employment,202505,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,1044459,2255056,2255056,0,4328,0,1040131,0,PENDING TV5
 7,employment,202505,business_month,DQ04,raw source month,report and business month retained,0,2255056,2255056,0,4328,0,1040131,0,PENDING TV5
-7,employment,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,208558,2255056,2255056,0,4328,0,1040131,0,PENDING TV4/TV5
+7,employment,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,0,2255056,2255056,0,4328,0,1040131,0,PENDING TV4/TV5
 8,accessions,202505,count,DQ01,raw text,validated bigint; raw retained,8813,8813,8813,0,132,0,2625,0,PENDING TV5
 8,accessions,202505,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,2757,8813,8813,0,132,0,2625,0,PENDING TV5
 8,accessions,202505,business_month,DQ04,raw source month,report and business month retained,53,8813,8813,0,132,0,2625,0,PENDING TV5
-8,accessions,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,2896,8813,8813,0,132,0,2625,0,PENDING TV4/TV5
+8,accessions,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,0,8813,8813,0,132,0,2625,0,PENDING TV4/TV5
 9,separations,202505,count,DQ01,raw text,validated bigint; raw retained,26415,26415,26415,0,402,0,8687,0,PENDING TV5
 9,separations,202505,annualized_adjusted_basic_pay,DQ02,raw text,numeric plus raw/state,9089,26415,26415,0,402,0,8687,0,PENDING TV5
 9,separations,202505,business_month,DQ04,raw source month,report and business month retained,54,26415,26415,0,402,0,8687,0,PENDING TV5
-9,separations,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,3591,26415,26415,0,402,0,8687,0,PENDING TV4/TV5
+9,separations,202505,agency_code,DQ03,raw agency code,derived lookup key or Unknown; raw retained,0,26415,26415,0,402,0,8687,0,PENDING TV4/TV5

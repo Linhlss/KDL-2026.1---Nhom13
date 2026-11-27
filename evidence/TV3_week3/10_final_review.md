@@ -1,5 +1,12 @@
 # Nhận xét sau triển khai tuần 3 TV3
 
+> **Ghi chú TV1, 27/11/2026:** biên bản này là bản tự rà ngày 23/11 của TV3, được giữ nguyên làm lịch sử.
+> - **Đã thay đổi:** sau khi TV1 sửa lỗi Unknown, các file trong `reports/week3/`, các file log `00`–`08`, `06_transfer_restore.txt`, `12_dump_handoff_check.txt` và dump bàn giao đã được tạo lại. Lượt chạy mới thực hiện trên PostgreSQL 17.12 macOS, code `51ab0d9`.
+> - **Số liệu cũ, không dùng nữa:** `dim_agency` 493, Mart 486/340 nhóm, dump `6d85ea29…`. Số liệu mới là 521, 510/361 và `ec3ddf32…`.
+> - **Không đổi:** tổng K01/K06/K07 của từng tháng.
+>
+> Xem [giải trình TV1](../../docs/TV1_giai_trinh_tich_hop_G3.md).
+
 **Bổ sung bàn giao theo yêu cầu TV3:** bản aggregate G3 đã kiểm nay có trong [handoff/TV3_G3](../../handoff/TV3_G3/README.md), kèm dump, SHA-256 và lệnh restore. Các ghi nhận “dump cục bộ/không commit” bên dưới và trong log cũ mô tả lượt kiểm ban đầu; ngoại lệ bàn giao mới chỉ áp dụng đúng file này. [Bằng chứng kiểm lại bản bổ sung](12_dump_handoff_check.txt) xác nhận năm bảng và KPI bốn kỳ.
 
 Ngày 23/11/2026, tự rà soát lại theo kế hoạch tuần 3 phiên bản 1.0 sau khi lượt nạp thật và rerun May kết thúc SUCCESS. Phạm vi kỹ thuật là 12 Parquet, 3 Fact và 2 Mart đủ tháng 03–06. [Run manifest](../../reports/week3/run_manifest.json) ghi SHA-256 mã/inventory; [lệnh và môi trường](00_environment_and_commands.txt) ghi Python 3.12.14, PostgreSQL 18.7 và database riêng. Các file ETL hiện tại khớp hash đã chạy; DDL Fact/Mart kế thừa G2, không đổi grain hoặc tự thêm FK/hierarchy khi chưa có thiết kế TV4.

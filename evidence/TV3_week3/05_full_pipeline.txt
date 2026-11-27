@@ -1,53 +1,56 @@
 SUCCESS employment_202503_v4.parquet 2289192 rows
 SUCCESS accessions_202503_v5.parquet 4862 rows
 SUCCESS separations_202503_v5.parquet 22061 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202503", "facts": {"employment": {"rows": 2289192, "measure_sum": 2289192, "unknown_agency_rows": 208006}, "accessions": {"rows": 4862, "measure_sum": 4862, "unknown_agency_rows": 265}, "separations": {"rows": 22061, "measure_sum": 22061, "unknown_agency_rows": 2514}}, "marts": {"headcount": 2289192, "accessions": 4862, "separations": 22061, "workforce_groups": 124, "flow_groups": 86}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202503", "facts": {"employment": {"rows": 2289192, "measure_sum": 2289192, "unknown_agency_rows": 0}, "accessions": {"rows": 4862, "measure_sum": 4862, "unknown_agency_rows": 0}, "separations": {"rows": 22061, "measure_sum": 22061, "unknown_agency_rows": 0}}, "marts": {"headcount": 2289192, "accessions": 4862, "separations": 22061, "workforce_groups": 130, "flow_groups": 91}}
 SUCCESS employment_202504_v4.parquet 2271969 rows
 SUCCESS accessions_202504_v5.parquet 7153 rows
 SUCCESS separations_202504_v5.parquet 24088 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2271969, "measure_sum": 2271969, "unknown_agency_rows": 206687}, "accessions": {"rows": 7153, "measure_sum": 7153, "unknown_agency_rows": 1591}, "separations": {"rows": 24088, "measure_sum": 24088, "unknown_agency_rows": 1936}}, "marts": {"headcount": 2271969, "accessions": 7153, "separations": 24088, "workforce_groups": 114, "flow_groups": 88}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202504", "facts": {"employment": {"rows": 2271969, "measure_sum": 2271969, "unknown_agency_rows": 0}, "accessions": {"rows": 7153, "measure_sum": 7153, "unknown_agency_rows": 0}, "separations": {"rows": 24088, "measure_sum": 24088, "unknown_agency_rows": 0}}, "marts": {"headcount": 2271969, "accessions": 7153, "separations": 24088, "workforce_groups": 120, "flow_groups": 94}}
 SUCCESS employment_202505_v4.parquet 2255056 rows
 SUCCESS accessions_202505_v5.parquet 8813 rows
 SUCCESS separations_202505_v5.parquet 26415 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2255056, "measure_sum": 2255056, "unknown_agency_rows": 208558}, "accessions": {"rows": 8813, "measure_sum": 8813, "unknown_agency_rows": 2896}, "separations": {"rows": 26415, "measure_sum": 26415, "unknown_agency_rows": 3591}}, "marts": {"headcount": 2255056, "accessions": 8813, "separations": 26415, "workforce_groups": 124, "flow_groups": 86}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2255056, "measure_sum": 2255056, "unknown_agency_rows": 0}, "accessions": {"rows": 8813, "measure_sum": 8813, "unknown_agency_rows": 0}, "separations": {"rows": 26415, "measure_sum": 26415, "unknown_agency_rows": 0}}, "marts": {"headcount": 2255056, "accessions": 8813, "separations": 26415, "workforce_groups": 130, "flow_groups": 91}}
 SUCCESS employment_202506_v4.parquet 2241780 rows
 SUCCESS accessions_202506_v5.parquet 9954 rows
 SUCCESS separations_202506_v5.parquet 19947 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202506", "facts": {"employment": {"rows": 2241780, "measure_sum": 2241780, "unknown_agency_rows": 206978}, "accessions": {"rows": 9954, "measure_sum": 9954, "unknown_agency_rows": 1433}, "separations": {"rows": 19947, "measure_sum": 19947, "unknown_agency_rows": 2487}}, "marts": {"headcount": 2241780, "accessions": 9954, "separations": 19947, "workforce_groups": 124, "flow_groups": 80}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202506", "facts": {"employment": {"rows": 2241780, "measure_sum": 2241780, "unknown_agency_rows": 0}, "accessions": {"rows": 9954, "measure_sum": 9954, "unknown_agency_rows": 0}, "separations": {"rows": 19947, "measure_sum": 19947, "unknown_agency_rows": 0}}, "marts": {"headcount": 2241780, "accessions": 9954, "separations": 19947, "workforce_groups": 130, "flow_groups": 85}}
 SNAPSHOT raw_meta.source_file 12 d9a9761b296e15ab0ebb64be00e7c07cad355a9ad15c182e874b9316703370b4
 SNAPSHOT staging.employment_record 9057997 4631bf930323f43d5295891e23074474b6c30bf07674bbe375bbcee503c27899
 SNAPSHOT ods.ods_employment_record 9057997 4631bf930323f43d5295891e23074474b6c30bf07674bbe375bbcee503c27899
-SNAPSHOT dw.fact_employment_snapshot 9057997 28f26227cc3d1780df45c35e8db1cc8df214a7a0422ccda4f0a2bef0aabe28c5
+SNAPSHOT dw.fact_employment_snapshot 9057997 6f1768a8e5dcf13f115425dc1182c7760203a56ce0e6edcd82f63c5dbaab385f
 SNAPSHOT staging.accessions_record 30782 ae9e2d9850f50b1207f40413d43a4c81d9fd5f6daf8721db34ff22641ba7f309
 SNAPSHOT ods.ods_accessions_record 30782 ae9e2d9850f50b1207f40413d43a4c81d9fd5f6daf8721db34ff22641ba7f309
-SNAPSHOT dw.fact_accessions 30782 987ef3a846f73c84d37159451e40ca2e6523c63aa510fd26742912862baaea77
+SNAPSHOT dw.fact_accessions 30782 da97844645ea004f3cb0751d28d84cc4d28b65b06e4ece83388103f126ea7f46
 SNAPSHOT staging.separations_record 92511 57eeede4bf745f1df4f5a15d7d05304ac8df39cc5ab42b17e65fef52e0607696
 SNAPSHOT ods.ods_separations_record 92511 57eeede4bf745f1df4f5a15d7d05304ac8df39cc5ab42b17e65fef52e0607696
-SNAPSHOT dw.fact_separations 92511 d16a62aa9a673836d94ad13a006b69ffdd4794e14eb7fee38104f5c5c817d7f9
+SNAPSHOT dw.fact_separations 92511 39d69db00153fa3576498b50392019ba98313037711f46e36fd30e8390c8cb0d
 SNAPSHOT dw.dim_month 9 4e729881189952437967f146d7c976f1b4b031deda349f1b150b876185a4bdea
-SNAPSHOT dw.dim_agency 493 f5efbc03716b14f296e13b9c06c44f56e3769afdf46fd9d538b088939d38b3be
-SNAPSHOT dw.dim_action_category 53 c7ee6f001bb0cd501c505650fc902f051fd15e5a9d5e2598e591a0806e4a4228
-SNAPSHOT mart.workforce_monthly 486 f25773d2358a067e009704a9afc8eb82727d5e71e06ba692679f5793c3022809
-SNAPSHOT mart.personnel_flows_monthly 340 90df92d77ecf2c8883e72eedcb9992b79976d1e31eb93e84e527a6cf52c7ac4a
+SNAPSHOT dw.dim_agency 521 4ff328a9b01d030dcf35bc248daef67f850b3d32cc4371ff2b8001d005654e7f
+SNAPSHOT dw.dim_action_category 53 405bd3b130ca87ae2653fbf240040fcae61b1cb6fa6905007fc1bc725d0b075a
+SNAPSHOT mart.workforce_monthly 510 c97b05b1a055571fc49cf73584c35e37733a9792fc60f1f083875611e7c5996e
+SNAPSHOT mart.personnel_flows_monthly 361 bd1f4d76712e6d36fb0a55f265cc22989c4973eebef5210deee64cff45d180bc
 SKIPPED employment_202505_v4.parquet 2255056 rows
 SKIPPED accessions_202505_v5.parquet 8813 rows
 SKIPPED separations_202505_v5.parquet 26415 rows
-{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2255056, "measure_sum": 2255056, "unknown_agency_rows": 208558}, "accessions": {"rows": 8813, "measure_sum": 8813, "unknown_agency_rows": 2896}, "separations": {"rows": 26415, "measure_sum": 26415, "unknown_agency_rows": 3591}}, "marts": {"headcount": 2255056, "accessions": 8813, "separations": 26415, "workforce_groups": 124, "flow_groups": 86}}
+{"model_status": "PROPOSED_PENDING_TV4", "month": "202505", "facts": {"employment": {"rows": 2255056, "measure_sum": 2255056, "unknown_agency_rows": 0}, "accessions": {"rows": 8813, "measure_sum": 8813, "unknown_agency_rows": 0}, "separations": {"rows": 26415, "measure_sum": 26415, "unknown_agency_rows": 0}}, "marts": {"headcount": 2255056, "accessions": 8813, "separations": 26415, "workforce_groups": 130, "flow_groups": 91}}
 SNAPSHOT raw_meta.source_file 12 d9a9761b296e15ab0ebb64be00e7c07cad355a9ad15c182e874b9316703370b4
 SNAPSHOT staging.employment_record 9057997 4631bf930323f43d5295891e23074474b6c30bf07674bbe375bbcee503c27899
 SNAPSHOT ods.ods_employment_record 9057997 4631bf930323f43d5295891e23074474b6c30bf07674bbe375bbcee503c27899
-SNAPSHOT dw.fact_employment_snapshot 9057997 28f26227cc3d1780df45c35e8db1cc8df214a7a0422ccda4f0a2bef0aabe28c5
+SNAPSHOT dw.fact_employment_snapshot 9057997 6f1768a8e5dcf13f115425dc1182c7760203a56ce0e6edcd82f63c5dbaab385f
 SNAPSHOT staging.accessions_record 30782 ae9e2d9850f50b1207f40413d43a4c81d9fd5f6daf8721db34ff22641ba7f309
 SNAPSHOT ods.ods_accessions_record 30782 ae9e2d9850f50b1207f40413d43a4c81d9fd5f6daf8721db34ff22641ba7f309
-SNAPSHOT dw.fact_accessions 30782 987ef3a846f73c84d37159451e40ca2e6523c63aa510fd26742912862baaea77
+SNAPSHOT dw.fact_accessions 30782 da97844645ea004f3cb0751d28d84cc4d28b65b06e4ece83388103f126ea7f46
 SNAPSHOT staging.separations_record 92511 57eeede4bf745f1df4f5a15d7d05304ac8df39cc5ab42b17e65fef52e0607696
 SNAPSHOT ods.ods_separations_record 92511 57eeede4bf745f1df4f5a15d7d05304ac8df39cc5ab42b17e65fef52e0607696
-SNAPSHOT dw.fact_separations 92511 d16a62aa9a673836d94ad13a006b69ffdd4794e14eb7fee38104f5c5c817d7f9
+SNAPSHOT dw.fact_separations 92511 39d69db00153fa3576498b50392019ba98313037711f46e36fd30e8390c8cb0d
 SNAPSHOT dw.dim_month 9 4e729881189952437967f146d7c976f1b4b031deda349f1b150b876185a4bdea
-SNAPSHOT dw.dim_agency 493 f5efbc03716b14f296e13b9c06c44f56e3769afdf46fd9d538b088939d38b3be
-SNAPSHOT dw.dim_action_category 53 c7ee6f001bb0cd501c505650fc902f051fd15e5a9d5e2598e591a0806e4a4228
-SNAPSHOT mart.workforce_monthly 486 f25773d2358a067e009704a9afc8eb82727d5e71e06ba692679f5793c3022809
-SNAPSHOT mart.personnel_flows_monthly 340 90df92d77ecf2c8883e72eedcb9992b79976d1e31eb93e84e527a6cf52c7ac4a
+SNAPSHOT dw.dim_agency 521 4ff328a9b01d030dcf35bc248daef67f850b3d32cc4371ff2b8001d005654e7f
+SNAPSHOT dw.dim_action_category 53 405bd3b130ca87ae2653fbf240040fcae61b1cb6fa6905007fc1bc725d0b075a
+SNAPSHOT mart.workforce_monthly 510 c97b05b1a055571fc49cf73584c35e37733a9792fc60f1f083875611e7c5996e
+SNAPSHOT mart.personnel_flows_monthly 361 bd1f4d76712e6d36fb0a55f265cc22989c4973eebef5210deee64cff45d180bc
 PASS May rerun: full baseline identities, stable Dimension keys, all Facts and Marts unchanged
 PASS 152 direct raw/ODS, ordinal, time-role and FK checks; Dimension uniqueness and constraints validated
 Completed G3 technical run; TV4 model approval / TV5 independent QA pending
+real 1397.21
+user 96.81
+sys 4.12
